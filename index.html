@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Guide Intervenant O2 Nord Touraine</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
+        .fade-in { animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .nav-btn.active { color: #11183b; background-color: #eff6ff; }
+        .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body class="text-slate-900 pb-24 md:pb-10 bg-slate-50/80 min-h-screen relative">
+
+    <!-- HEADER -->
+    <header class="sticky top-0 bg-white/95 backdrop-blur-xl z-40 border-b border-slate-200 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <!-- Custom Logo -->
+                <div class="flex items-center justify-center w-10 h-10 bg-[#11183b] rounded-full text-white shadow-md border-2 border-teal-400 relative">
+                    <i data-lucide="home" class="w-5 h-5 text-white fill-white"></i>
+                    <div class="absolute -top-1 -right-1 w-3 h-3 bg-teal-500 border-2 border-white rounded-full"></div>
+                </div>
+                <div class="flex flex-col justify-center">
+                    <span class="text-[10px] text-teal-600 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
+                    <h1 class="text-base font-bold text-[#11183b] leading-tight">O2 Nord Touraine</h1>
+                </div>
+            </div>
+            
+            <!-- Quick Call Button -->
+            <a href="tel:0243724345" class="flex items-center gap-2 bg-red-50 hover:bg-red-100 text-red-700 px-3 py-2 rounded-xl border border-red-100 transition-all active:scale-95 shadow-sm">
+                <div class="bg-red-500 text-white p-1 rounded-full flex items-center justify-center">
+                    <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                </div>
+                <div class="hidden sm:flex flex-col items-start leading-none">
+                    <span class="text-[10px] uppercase font-bold text-red-400">Urgence / Retard</span>
+                    <span class="text-xs font-bold">Ligne Salariés</span>
+                </div>
+                <span class="sm:hidden text-xs font-bold">Ligne Salariés</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
+
+        <!-- SECTION: HOME -->
+        <div id="tab-home" class="tab-content active space-y-6 fade-in">
+            <!-- Hero Banner -->
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[160px] flex flex-col justify-center bg-[#11183b]">
+                <div class="absolute inset-0 bg-gradient-to-br from-[#11183b] via-[#2d3b6e] to-[#009688]"></div>
+                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                <div class="absolute bottom-0 left-0 w-40 h-40 bg-teal-400/20 rounded-full blur-2xl -ml-10 -mb-10"></div>
+                
+                <div class="relative z-10 p-8 text-white">
+                    <h1 class="text-3xl font-bold mb-2 tracking-tight">Bonjour,</h1>
+                    <p class="text-teal-50 text-base font-light max-w-md">
+                        Bienvenue sur votre espace intervenant. Retrouvez l'essentiel de vos informations RH et avantages.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- Shortcuts -->
+                <div class="lg:col-span-2">
+                    <h2 class="text-[#11183b] font-bold text-lg mb-4 flex items-center gap-2">
+                        <span class="w-1 h-6 bg-teal-500 rounded-full"></span>
+                        Accès Rapide
+                    </h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        <button onclick="switchTab('admin')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
+                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#11183b]">
+                                <i data-lucide="calendar" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">Poser Congés</span>
+                        </button>
+                        
+                        <button onclick="switchTab('daily')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
+                            <div class="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center text-teal-600">
+                                <i data-lucide="briefcase" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">Mon Quotidien</span>
+                        </button>
+                        
+                        <a href="tel:0246656880" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
+                            <div class="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600">
+                                <i data-lucide="phone" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">Appeler</span>
+                        </a>
+
+                        <button onclick="switchTab('money')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
+                            <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
+                                <i data-lucide="award" class="w-6 h-6"></i>
+                            </div>
+                            <span class="text-sm font-bold text-slate-700">Mes Avantages</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Values -->
+                <div class="lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 h-full">
+                        <h3 class="font-bold text-[#11183b] mb-4 flex items-center gap-2">
+                            <i data-lucide="heart" class="w-5 h-5 text-teal-500 fill-teal-500"></i> Nos Valeurs
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-3">
+                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Respect</p>
+                                    <p class="text-xs text-slate-500">Le respect des clients et des collègues.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="award" class="w-5 h-5"></i></div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Excellence</p>
+                                    <p class="text-xs text-slate-500">Le goût du travail bien fait et de l'amélioration continue.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="smile" class="w-5 h-5"></i></div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Attitude Positive</p>
+                                    <p class="text-xs text-slate-500">Le sourire, fournisseur de confort</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="heart" class="w-5 h-5"></i></div>
+                                <div>
+                                    <p class="text-sm font-bold text-slate-800">Esprit d'équipe</p>
+                                    <p class="text-xs text-slate-500">Communication & Entraide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION: MONEY -->
+        <div id="tab-money" class="tab-content space-y-6 fade-in">
+            <!-- Banner -->
+            <div class="relative bg-[#11183b] rounded-3xl overflow-hidden shadow-xl p-6 sm:p-8">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
+                <div class="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl -ml-10 -mb-10"></div>
+                <i data-lucide="coins" class="absolute right-10 bottom-0 opacity-10 transform translate-y-4 w-32 h-32 text-white"></i>
+
+                <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="p-4 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl shadow-lg text-white">
+                            <i data-lucide="calendar-clock" class="w-8 h-8"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-white font-bold text-2xl mb-1">Paie & Avantages</h2>
+                            <div class="flex flex-col gap-1">
+                                <p class="text-teal-100 text-sm flex items-center gap-2">
+                                    <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
+                                    Versement le 7 du mois M+1
+                                </p>
+                                <p class="text-slate-400 text-xs">(ex: salaire de Janvier versé le 7 Février)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-xl border border-white/10 flex items-center justify-between gap-4 w-full md:w-auto">
+                        <div class="text-xs font-medium text-teal-200 uppercase tracking-wider">Acompte</div>
+                        <div class="text-white font-bold">le 26 du mois</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Grille Salaire -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-slate-50 to-white">
+                        <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-100 text-[#11183b]"><i data-lucide="euro" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base text-slate-800">Grille de Salaire</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="overflow-hidden rounded-xl border border-slate-200">
+                            <table class="w-full text-sm text-left">
+                                <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                                    <tr><th class="px-4 py-3 font-semibold">Niveau</th><th class="px-4 py-3 font-semibold">Postes</th></tr>
+                                </thead>
+                                <tbody class="divide-y divide-slate-100 bg-white">
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC (ou Conv)</td><td class="px-4 py-3 text-slate-600 text-xs">AM1</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC (ou Conv)</td><td class="px-4 py-3 text-slate-600 text-xs">AM2, GE2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 5 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 10 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 15 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 20 cts</td><td class="px-4 py-3 text-slate-600 text-xs">GE3 Référent, AV3 Expert</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prime Ancienneté -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Prime d'Ancienneté</h3>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <p class="text-xs text-slate-500 mb-2">Majoration du taux horaire selon l'ancienneté :</p>
+                        <div class="space-y-3">
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>1 an</span><span class="text-teal-700">+5 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 16%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>2 ans</span><span class="text-teal-700">+10 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 33%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>3 ans</span><span class="text-teal-700">+15 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 50%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>5 ans</span><span class="text-teal-700">+20 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 66%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>10 ans</span><span class="text-teal-700">+30 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 100%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transport -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="car" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Mobilité & Transport</h3>
+                    </div>
+                    <div class="p-5 space-y-4">
+                        <div class="bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex gap-3 items-center">
+                                    <div class="bg-white p-2 rounded-lg shadow-sm text-orange-500"><i data-lucide="car" class="w-5 h-5"></i></div>
+                                    <span class="font-bold text-slate-800 text-sm">Indemnités Km</span>
+                                </div>
+                                <div class="text-right">
+                                    <span class="block text-2xl font-bold text-orange-600">0,45€</span>
+                                    <span class="text-[10px] text-orange-400 font-medium">/ km</span>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 rounded-lg border border-orange-100">
+                                <p class="text-xs text-slate-600 font-medium">
+                                    Rémunération du temps de trajet et des frais kilométriques entre 2 prestations, 
+                                    si le temps d'intermission (hors trajet) est inférieur à 15 min.
+                                </p>
+                            </div>
+                            <p class="text-[10px] text-slate-500 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-3">
+                            <div class="flex justify-between items-center">
+                                <div class="flex gap-3 items-center">
+                                    <div class="bg-white p-2 rounded-lg shadow-sm text-slate-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                                    <div><p class="font-bold text-slate-800 text-sm">Prime Carburant</p><p class="text-[10px] text-slate-500">Juin & Décembre</p></div>
+                                </div>
+                                <span class="bg-[#11183b] text-white px-3 py-1 rounded-lg text-sm font-bold shadow-sm">300 € /an</span>
+                            </div>
+                            <p class="text-[10px] text-slate-500 italic border-t border-slate-200 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Titres Restaurant -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="utensils" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Titres Restaurant</h3>
+                    </div>
+                    <div class="p-5">
+                        <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 mb-4">
+                            <div class="flex justify-between items-end mb-2">
+                                <h4 class="font-bold text-blue-900">Valeur Faciale</h4>
+                                <span class="text-2xl font-black text-blue-600">6 €</span>
+                            </div>
+                            <div class="w-full h-2 bg-blue-200 rounded-full overflow-hidden flex">
+                                <div class="w-1/2 bg-[#11183b]"></div>
+                                <div class="w-1/2 bg-blue-400"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] font-bold mt-1 uppercase tracking-wide">
+                                <span class="text-[#11183b]">Part O2 : 3€</span>
+                                <span class="text-blue-500">Votre Part : 3€</span>
+                            </div>
+                        </div>
+                        <div class="space-y-2">
+                            <div class="flex items-center gap-2 text-xs text-slate-600">
+                                <i data-lucide="sparkles" class="w-3.5 h-3.5 text-yellow-500"></i>
+                                <span class="font-bold">Sans condition d'ancienneté</span>
+                            </div>
+                            <p class="text-xs text-slate-500 leading-relaxed">Eligible si la pause méridienne est > 1h. Carte UPone.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chèques Cadeaux -->
+                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Chèques Cadeaux</h3>
+                    </div>
+                    <div class="p-5 space-y-3">
+                        <div class="flex items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                            <div class="bg-pink-100 p-3 rounded-full text-pink-600"><i data-lucide="gift" class="w-6 h-6"></i></div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-slate-800">Noël</h4><span class="bg-pink-100 text-pink-700 text-xs font-bold px-2 py-1 rounded-full">Novembre</span></div>
+                                <p class="text-xs text-slate-500 mt-1"><span class="font-bold text-pink-600">50€ /an</span> + 15€ / enfant (-16 ans)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                            <div class="bg-orange-100 p-3 rounded-full text-orange-600"><i data-lucide="sun" class="w-6 h-6"></i></div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-slate-800">Vacances</h4><span class="bg-orange-100 text-orange-700 text-xs font-bold px-2 py-1 rounded-full">Juin</span></div>
+                                <p class="text-xs text-slate-500 mt-1"><span class="font-bold text-orange-600">100€ /an</span> (Co-fi 20% salarié)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parrainages -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Parrainage Client -->
+                <div class="bg-[#ee9572] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
+                    <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Clients</h3>
+                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
+                    <div class="text-5xl font-black tracking-tighter">40 €</div>
+                    <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
+                </div>
+                <!-- Parrainage Salarié -->
+                <div class="bg-[#b93c7d] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
+                    <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Salariés</h3>
+                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
+                    <div class="text-5xl font-black tracking-tighter">200 €</div>
+                    <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
+                </div>
+            </div>
+
+            <!-- Mutuelle Santé (Avant dernier) -->
+            <div class="bg-gradient-to-br from-white to-blue-50/50 rounded-2xl shadow-sm border border-slate-100 p-5">
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+                    <div class="flex items-start gap-4">
+                        <div class="bg-blue-100 p-3 rounded-2xl text-blue-600"><i data-lucide="heart-handshake" class="w-8 h-8"></i></div>
+                        <div>
+                            <p class="font-bold text-lg text-slate-800">Mutuelle Santé (CPMS)</p>
+                            <p class="text-sm text-slate-500 mb-2">Prise en charge à 50% par O2</p>
+                            <div class="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded-full">Sans condition d'ancienneté</div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col items-end">
+                        <div class="text-right">
+                            <span class="text-sm text-slate-400 font-medium">Votre part / mois</span>
+                            <div class="flex items-baseline gap-1"><span class="text-3xl font-extrabold text-[#11183b]">13,55</span><span class="text-lg font-bold text-[#11183b]">€</span></div>
+                        </div>
+                        <p class="text-[10px] text-slate-400 mt-1">Déduit du salaire</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Majorations (Dernier) -->
+            <div class="bg-white rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
+                 <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-purple-100 p-2 rounded-lg text-purple-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-slate-800">Majorations Horaires</h3>
+                 </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-3 bg-teal-50 rounded-xl border border-teal-100 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Dimanche & Nuit</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-teal-600 block">+ 10%</span></div>
+                    </div>
+                    <div class="p-3 bg-purple-50 rounded-xl border border-purple-100 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 uppercase">Heures Compl.</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-purple-600 block">10 à 25%</span></div>
+                    </div>
+                    <div class="p-3 bg-[#11183b] text-white rounded-xl flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center shadow-md">
+                        <span class="text-xs font-bold text-teal-100 uppercase">Jours Fériés</span>
+                        <div class="text-right sm:text-center"><span class="text-2xl font-black block">+ 100%</span></div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+
+        <!-- SECTION: DAILY -->
+        <div id="tab-daily" class="tab-content space-y-6 fade-in">
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Pointage & Tel -->
+                <div class="space-y-6 lg:col-span-1">
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-[#11183b] to-[#1e2952] text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Téléphone & Pointage</h3>
+                        </div>
+                        <div class="p-5 space-y-5">
+                            <div class="bg-[#11183b] rounded-2xl p-5 shadow-lg text-white">
+                                <div class="flex gap-4 items-center">
+                                    <div class="bg-white/20 p-3 rounded-xl"><i data-lucide="qr-code" class="w-7 h-7 text-teal-300"></i></div>
+                                    <div><h4 class="font-bold text-lg leading-none">Scan</h4><span class="inline-block mt-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm animate-pulse">OBLIGATOIRE</span></div>
+                                </div>
+                                <p class="mt-4 text-xs text-slate-300 leading-relaxed">À réaliser au début et à la fin de chaque intervention. Garantit le paiement de vos heures.</p>
+                            </div>
+                            
+                            <div class="bg-white rounded-xl border border-slate-100 p-1">
+                                <div class="bg-slate-50 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600"></i> Usage Professionnel</h4></div>
+                                <div class="p-3 grid grid-cols-2 gap-2">
+                                    <div class="text-center p-2 bg-blue-50/50 rounded-lg"><span class="block font-bold text-blue-700 text-sm">Illimités</span><span class="text-slate-500 text-xs">Appels & SMS</span></div>
+                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg"><span class="block font-bold text-teal-700 text-sm">4 Go</span><span class="text-[10px] text-slate-500">Internet / mois</span></div>
+                                </div>
+                                <p class="text-[10px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
+                            </div>
+
+                            <div class="bg-[#00cba9] text-white p-4 rounded-xl shadow-md">
+                                <h4 class="font-bold text-sm mb-2 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Les bons comportements :</h4>
+                                <p class="text-xs leading-relaxed font-medium">Toujours emporter le téléphone en intervention (poche dédiée tablier), batterie chargée.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Mes Équipements</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-orange-50/50 p-3 rounded-xl border border-orange-100 flex flex-col items-center text-center gap-2"><div class="bg-white p-2 rounded-full text-orange-500"><i data-lucide="book-open" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700">Guides</span></div>
+                                <div class="bg-orange-50/50 p-3 rounded-xl border border-orange-100 flex flex-col items-center text-center gap-2"><div class="bg-white p-2 rounded-full text-orange-500"><i data-lucide="footprints" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700">Chaussures</span></div>
+                                <div class="bg-orange-50/50 p-3 rounded-xl border border-orange-100 flex flex-col items-center text-center gap-2"><div class="bg-white p-2 rounded-full text-orange-500"><i data-lucide="shirt" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700">Tabliers/Gants</span></div>
+                                <div class="bg-orange-50/50 p-3 rounded-xl border border-orange-100 flex flex-col items-center text-center gap-2"><div class="bg-white p-2 rounded-full text-orange-500"><i data-lucide="shield-check" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700">Gilet/Bracelet</span></div>
+                            </div>
+                            <p class="text-[10px] text-slate-400 text-center mt-4">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 uppercase">obligatoirement</span>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Docs & Obligations -->
+                <div class="space-y-6 md:col-span-1 lg:col-span-2">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Fiche Route -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
+                             <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
+                                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
+                                <h3 class="font-bold text-base">Fiche de Route</h3>
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <p class="text-xs text-slate-600 mb-2">Dispo sur <span class="font-bold">O2 et moi</span> & Cahier liaison.</p>
+                                <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
+                                    <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
+                                    <p class="text-xs leading-relaxed">Si informations manquantes ou obsolètes, il est <span class="font-bold underline">impératif</span> d'informer l'agence.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Cahier Liaison -->
+                        <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
+                             <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+                                <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="book-open" class="w-5 h-5"></i></div>
+                                <h3 class="font-bold text-base">Cahier de Liaison</h3>
+                            </div>
+                            <div class="p-5 space-y-3">
+                                <p class="text-xs text-slate-600 mb-2">Essentiel pour les échanges avec le client.</p>
+                                <div class="bg-[#c2185b] text-white p-4 rounded-xl shadow-sm">
+                                    <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
+                                    <p class="text-xs leading-relaxed">À remplir obligatoirement à la fin de chaque prestation avec une formule de politesse.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-teal-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="info" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Obligations</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="shirt" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Tenue correcte</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="clock" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Ponctualité</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="gift" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Pas de cadeaux</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="user-check" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Discrétion</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="heart-handshake" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Politesse</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="key" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Clés</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="alert-triangle" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Sinistres</span></div>
+                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="ban" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Matériel Client</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+        </div>
+
+        <!-- SECTION: ADMIN -->
+        <div id="tab-admin" class="tab-content space-y-6 fade-in">
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                 <!-- Contacts -->
+                 <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 h-fit">
+                     <h2 class="text-xl font-bold text-[#11183b] mb-6 flex items-center gap-3">
+                         <div class="bg-teal-50 p-2 rounded-lg text-teal-600"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                         Annuaire Utile
+                     </h2>
+                     <div class="space-y-4">
+                         <!-- Urgences -->
+                         <div class="relative group rounded-2xl p-5 border transition-all bg-red-50/50 border-red-100">
+                             <div class="flex justify-between items-start gap-4">
+                                 <div class="flex-1">
+                                     <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-base text-red-700">Urgences</h3></div>
+                                     <p class="text-xs text-slate-500 mb-3">Médical, Police, Pompiers, Danger immédiat</p>
+                                 </div>
+                                 <a href="tel:112" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-red-500 text-white"><i data-lucide="phone" class="w-5 h-5"></i></a>
+                             </div>
+                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-red-600">112</div>
+                         </div>
+                         <!-- Ligne Salarié -->
+                         <div class="relative group rounded-2xl p-5 border transition-all bg-slate-50/50 border-slate-100">
+                             <div class="flex justify-between items-start gap-4">
+                                 <div class="flex-1">
+                                     <div class="flex items-center gap-2 mb-1"><h3 class="font-bold text-base text-[#11183b]">Ligne Salariés O2</h3></div>
+                                     <p class="text-xs text-slate-500 mb-3">Retards, Problèmes scan, Maladie</p>
+                                     <div class="inline-flex items-center gap-1 px-2 py-1 bg-white rounded border border-slate-100 text-[10px] text-slate-400"><i data-lucide="clock" class="w-3 h-3"></i> Lun-Ven: 7h-20h30</div>
+                                 </div>
+                                 <a href="tel:0243724345" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-100"><i data-lucide="phone" class="w-5 h-5"></i></a>
+                             </div>
+                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-slate-700">02 43 72 43 45</div>
+                         </div>
+                         <!-- Agence -->
+                         <div class="relative group rounded-2xl p-5 border transition-all bg-slate-50/50 border-slate-100">
+                             <div class="flex justify-between items-start gap-4">
+                                 <div class="flex-1">
+                                     <div class="flex items-center gap-2 mb-1"><h3 class="font-bold text-base text-[#11183b]">Agence / Planning</h3></div>
+                                     <p class="text-xs text-slate-500 mb-3">Accident, Sinistre, Planning</p>
+                                     <div class="inline-flex items-center gap-1 px-2 py-1 bg-white rounded border border-slate-100 text-[10px] text-slate-400"><i data-lucide="clock" class="w-3 h-3"></i> 9h-12h / 14h-18h</div>
+                                 </div>
+                                 <a href="tel:0246656880" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-100"><i data-lucide="phone" class="w-5 h-5"></i></a>
+                             </div>
+                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-slate-700">02 46 65 68 80</div>
+                         </div>
+                     </div>
+                 </div>
+
+                 <!-- Infos -->
+                 <div class="space-y-6">
+                     <!-- Maladie -->
+                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="stethoscope" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Arrêt Maladie</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="bg-orange-50 p-4 rounded-xl border-l-4 border-orange-400">
+                                <h4 class="font-bold text-orange-900 text-sm mb-1">Délai 48h strict</h4>
+                                <p class="text-xs text-orange-800">Justificatif à l'agence sous 48h.</p>
+                            </div>
+                            <div class="bg-[#60a5fa] text-white p-4 rounded-xl shadow-sm">
+                                <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
+                                <p class="text-xs leading-relaxed">Contactez l'agence avant la fin de l'arrêt pour organiser la reprise.</p>
+                            </div>
+                        </div>
+                     </div>
+                     
+                     <!-- Congés -->
+                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="calendar" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Règles des Congés</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                             <div class="grid grid-cols-2 gap-3 text-center mb-2">
+                                <div class="bg-teal-50 p-3 rounded-xl border border-teal-100"><div class="text-2xl font-bold text-teal-700">2,5</div><div class="text-[10px] uppercase font-bold text-teal-800/60">Jours / mois</div></div>
+                                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100"><div class="text-2xl font-bold text-blue-700">5</div><div class="text-[10px] uppercase font-bold text-blue-800/60">Semaines / an</div></div>
+                            </div>
+                            <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
+                                <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
+                                <p class="text-xs leading-relaxed">Déposez vos clés à l'agence avant de partir en congés.</p>
+                            </div>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+
+             <!-- MySilae -->
+             <div class="bg-[#11183b] rounded-2xl p-1 shadow-lg overflow-hidden mt-6">
+                <div class="bg-white/5 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
+                   <div class="flex items-center gap-5">
+                      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg shrink-0"><span class="font-extrabold text-2xl text-[#11183b] tracking-tighter">S</span></div>
+                      <div class="text-white text-center sm:text-left">
+                         <h2 class="text-2xl font-bold mb-1">My Silae</h2>
+                         <p class="text-teal-200 text-sm font-medium">Votre portail RH</p>
+                         <p class="text-teal-100 text-xs mt-1 bg-white/10 px-2 py-1 rounded inline-block">Pose du Lundi au Samedi</p>
+                      </div>
+                   </div>
+                   <a href="https://www.mysilae.fr" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all active:scale-95">
+                      <span>Accéder</span> <i data-lucide="external-link" class="w-4 h-4"></i>
+                   </a>
+                </div>
+             </div>
+        </div>
+
+    </main>
+
+    <!-- NAVIGATION BAR -->
+    <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
+        <div class="pointer-events-auto bg-white/95 backdrop-blur-lg border-t md:border border-slate-200 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-2xl mx-auto pb-safe md:pb-0">
+            <div class="flex justify-around items-center h-full px-2 md:px-6">
+                <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
+                    <div class="transition-transform duration-300"><i data-lucide="home" class="w-6 h-6"></i></div>
+                    <span class="text-[10px] md:text-sm font-medium">Accueil</span>
+                </button>
+                
+                <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-daily">
+                    <div class="transition-transform duration-300"><i data-lucide="calendar-check" class="w-6 h-6"></i></div>
+                    <span class="text-[10px] md:text-sm font-medium">Quotidien</span>
+                </button>
+
+                <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-money">
+                    <div class="transition-transform duration-300"><i data-lucide="euro" class="w-6 h-6"></i></div>
+                    <span class="text-[10px] md:text-sm font-medium">Paie</span>
+                </button>
+                
+                <button onclick="switchTab('admin')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-admin">
+                    <div class="transition-transform duration-300"><i data-lucide="phone" class="w-6 h-6"></i></div>
+                    <span class="text-[10px] md:text-sm font-medium">Contacts</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        // Init Icons
+        lucide.createIcons();
+
+        function switchTab(tabName) {
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            // Show target tab
+            document.getElementById('tab-' + tabName).classList.add('active');
+            
+            // Update Navigation State
+            document.querySelectorAll('.nav-btn').forEach(el => {
+                el.classList.remove('active', 'text-[#11183b]');
+                el.classList.add('text-slate-400');
+            });
+            const btn = document.getElementById('btn-' + tabName);
+            btn.classList.add('active', 'text-[#11183b]');
+            btn.classList.remove('text-slate-400');
+            
+            // Re-render icons if needed (sometimes needed for dynamic content)
+            lucide.createIcons();
+            
+            // Scroll top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
