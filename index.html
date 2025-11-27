@@ -11,7 +11,7 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
@@ -23,7 +23,7 @@
         .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
     </style>
 </head>
-<body class="text-slate-900 pb-24 md:pb-10 bg-slate-50/80 min-h-screen relative">
+<body class="text-slate-900 pb-28 md:pb-10 bg-slate-100 min-h-screen relative">
 
     <!-- HEADER -->
     <header class="sticky top-0 bg-white/95 backdrop-blur-xl z-40 border-b border-slate-200 shadow-sm">
@@ -57,96 +57,140 @@
     <!-- MAIN CONTENT -->
     <main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
 
-        <!-- SECTION: HOME -->
+        <!-- SECTION: ACCUEIL (Fusionné avec Contacts) -->
         <div id="tab-home" class="tab-content active space-y-6 fade-in">
             <!-- Hero Banner -->
-            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[160px] flex flex-col justify-center bg-[#11183b]">
+            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[140px] flex flex-col justify-center bg-[#11183b]">
                 <div class="absolute inset-0 bg-gradient-to-br from-[#11183b] via-[#2d3b6e] to-[#009688]"></div>
                 <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-40 h-40 bg-teal-400/20 rounded-full blur-2xl -ml-10 -mb-10"></div>
                 
-                <div class="relative z-10 p-8 text-white">
-                    <h1 class="text-3xl font-bold mb-2 tracking-tight">Bonjour,</h1>
-                    <p class="text-teal-50 text-base font-light max-w-md">
-                        Bienvenue sur votre espace intervenant. Retrouvez l'essentiel de vos informations RH et avantages.
+                <div class="relative z-10 p-6 md:p-8 text-white">
+                    <h1 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">Bonjour,</h1>
+                    <p class="text-teal-50 text-sm md:text-base font-light max-w-md">
+                        Bienvenue sur votre espace intervenant. Retrouvez ici vos contacts et l'essentiel de vos informations.
                     </p>
                 </div>
             </div>
 
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                <!-- Shortcuts -->
-                <div class="lg:col-span-2">
-                    <h2 class="text-[#11183b] font-bold text-lg mb-4 flex items-center gap-2">
-                        <span class="w-1 h-6 bg-teal-500 rounded-full"></span>
-                        Accès Rapide
-                    </h2>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <button onclick="switchTab('admin')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
-                            <div class="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-[#11183b]">
-                                <i data-lucide="calendar" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-sm font-bold text-slate-700">Poser Congés</span>
-                        </button>
-                        
-                        <button onclick="switchTab('daily')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
-                            <div class="w-12 h-12 bg-teal-50 rounded-full flex items-center justify-center text-teal-600">
-                                <i data-lucide="briefcase" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-sm font-bold text-slate-700">Mon Quotidien</span>
-                        </button>
-                        
-                        <a href="tel:0246656880" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
-                            <div class="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600">
-                                <i data-lucide="phone" class="w-6 h-6"></i>
-                            </div>
-                            <span class="text-sm font-bold text-slate-700">Appeler</span>
-                        </a>
+                
+                <!-- Colonne Gauche : Contacts & MySilae -->
+                <div class="lg:col-span-2 space-y-6">
+                    <!-- Annuaire Utile -->
+                     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
+                         <h2 class="text-lg font-bold text-[#11183b] mb-4 flex items-center gap-2">
+                             <div class="bg-teal-50 p-1.5 rounded-lg text-teal-600"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                             Annuaire Utile
+                         </h2>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                             <!-- Urgences -->
+                             <div class="relative group rounded-xl p-4 border transition-all bg-red-50/50 border-red-100 hover:bg-red-50">
+                                 <div class="flex justify-between items-center gap-3">
+                                     <div>
+                                         <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-sm text-red-700">Urgences</h3></div>
+                                         <p class="text-[10px] text-slate-500">Médical, Police, Danger</p>
+                                     </div>
+                                     <a href="tel:112" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-red-500 text-white active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                 </div>
+                             </div>
+                             <!-- Ligne Salarié -->
+                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 border-slate-100 hover:bg-slate-50">
+                                 <div class="flex justify-between items-center gap-3">
+                                     <div>
+                                         <h3 class="font-bold text-sm text-[#11183b]">Ligne Salariés</h3>
+                                         <p class="text-[10px] text-slate-500">Retards, Planning, Maladie</p>
+                                     </div>
+                                     <a href="tel:0243724345" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                 </div>
+                             </div>
+                             <!-- Agence -->
+                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 border-slate-100 hover:bg-slate-50 md:col-span-2">
+                                 <div class="flex justify-between items-center gap-3">
+                                     <div>
+                                         <h3 class="font-bold text-sm text-[#11183b]">Agence O2 Nord Touraine</h3>
+                                         <p class="text-[10px] text-slate-500">Accident, Sinistre, Administration</p>
+                                         <span class="text-[10px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h / 14h-18h</span>
+                                     </div>
+                                     <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
 
-                        <button onclick="switchTab('money')" class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center justify-center gap-3 hover:shadow-md transition-all active:scale-95">
-                            <div class="w-12 h-12 bg-purple-50 rounded-full flex items-center justify-center text-purple-600">
-                                <i data-lucide="award" class="w-6 h-6"></i>
+                     <!-- MySilae Banner -->
+                     <div class="bg-[#11183b] rounded-2xl shadow-lg overflow-hidden">
+                        <div class="bg-white/5 p-6 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
+                           <div class="flex items-center gap-4">
+                              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-lg shrink-0"><span class="font-extrabold text-xl text-[#11183b]">S</span></div>
+                              <div class="text-white text-center sm:text-left">
+                                 <h2 class="text-lg font-bold">My Silae</h2>
+                                 <p class="text-teal-200 text-xs font-medium">Votre portail RH & Congés</p>
+                                 <p class="text-teal-100 text-[10px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">Pose du Lundi au Samedi</p>
+                              </div>
+                           </div>
+                           <a href="https://www.mysilae.fr" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2.5 px-5 rounded-lg shadow-lg transition-all active:scale-95 text-sm">
+                              <span>Se connecter</span> <i data-lucide="external-link" class="w-3 h-3"></i>
+                           </a>
+                        </div>
+                     </div>
+                </div>
+
+                <!-- Colonne Droite : Infos Pratiques -->
+                <div class="lg:col-span-1 space-y-6">
+                    <!-- Arrêt Maladie -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-white">
+                            <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i data-lucide="stethoscope" class="w-4 h-4"></i></div>
+                            <h3 class="font-bold text-sm text-slate-800">Arrêt Maladie</h3>
+                        </div>
+                        <div class="p-4 space-y-3">
+                            <div class="bg-orange-50 p-3 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-bold text-orange-900 text-xs mb-0.5">Délai 48h strict</h4>
+                                <p class="text-[10px] text-orange-800">Justificatif à envoyer à l'agence.</p>
                             </div>
-                            <span class="text-sm font-bold text-slate-700">Mes Avantages</span>
-                        </button>
+                            <p class="text-[10px] text-slate-500 leading-relaxed"><span class="font-bold text-slate-700">Important :</span> Contactez l'agence avant la fin de l'arrêt pour organiser votre reprise.</p>
+                        </div>
+                    </div>
+                     
+                    <!-- Règles Congés -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white">
+                            <div class="p-1.5 bg-blue-100 rounded text-blue-600"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
+                            <h3 class="font-bold text-sm text-slate-800">Règles des Congés</h3>
+                        </div>
+                        <div class="p-4 space-y-3">
+                             <div class="flex justify-between items-center bg-slate-50 p-2 rounded-lg text-xs">
+                                <span class="text-slate-600">Acquisition</span>
+                                <span class="font-bold text-[#11183b]">2,5 jours / mois</span>
+                            </div>
+                            <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-400">
+                                <p class="text-[10px] text-blue-900"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Values -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6 h-full">
-                        <h3 class="font-bold text-[#11183b] mb-4 flex items-center gap-2">
-                            <i data-lucide="heart" class="w-5 h-5 text-teal-500 fill-teal-500"></i> Nos Valeurs
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="flex items-center gap-3">
-                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="shield" class="w-5 h-5"></i></div>
-                                <div>
-                                    <p class="text-sm font-bold text-slate-800">Respect</p>
-                                    <p class="text-xs text-slate-500">Le respect des clients et des collègues.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="award" class="w-5 h-5"></i></div>
-                                <div>
-                                    <p class="text-sm font-bold text-slate-800">Excellence</p>
-                                    <p class="text-xs text-slate-500">Le goût du travail bien fait et de l'amélioration continue.</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="smile" class="w-5 h-5"></i></div>
-                                <div>
-                                    <p class="text-sm font-bold text-slate-800">Attitude Positive</p>
-                                    <p class="text-xs text-slate-500">Le sourire, fournisseur de confort</p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-3">
-                                <div class="bg-slate-50 p-2 rounded-lg text-[#11183b]"><i data-lucide="heart" class="w-5 h-5"></i></div>
-                                <div>
-                                    <p class="text-sm font-bold text-slate-800">Esprit d'équipe</p>
-                                    <p class="text-xs text-slate-500">Communication & Entraide</p>
-                                </div>
-                            </div>
-                        </div>
+            </div>
+
+            <!-- Nos Valeurs (En bas) -->
+            <div class="mt-8 pt-8 border-t border-slate-200">
+                <h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Nos Valeurs O2</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800">Respect</h4>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="award" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800">Excellence</h4>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="smile" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800">Attitude</h4>
+                    </div>
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="heart" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800">Esprit d'équipe</h4>
                     </div>
                 </div>
             </div>
@@ -559,117 +603,11 @@
              </div>
         </div>
 
-        <!-- SECTION: ADMIN -->
-        <div id="tab-admin" class="tab-content space-y-6 fade-in">
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                 <!-- Contacts -->
-                 <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-100 h-fit">
-                     <h2 class="text-xl font-bold text-[#11183b] mb-6 flex items-center gap-3">
-                         <div class="bg-teal-50 p-2 rounded-lg text-teal-600"><i data-lucide="phone" class="w-6 h-6"></i></div>
-                         Annuaire Utile
-                     </h2>
-                     <div class="space-y-4">
-                         <!-- Urgences -->
-                         <div class="relative group rounded-2xl p-5 border transition-all bg-red-50/50 border-red-100">
-                             <div class="flex justify-between items-start gap-4">
-                                 <div class="flex-1">
-                                     <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-base text-red-700">Urgences</h3></div>
-                                     <p class="text-xs text-slate-500 mb-3">Médical, Police, Pompiers, Danger immédiat</p>
-                                 </div>
-                                 <a href="tel:112" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-red-500 text-white"><i data-lucide="phone" class="w-5 h-5"></i></a>
-                             </div>
-                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-red-600">112</div>
-                         </div>
-                         <!-- Ligne Salarié -->
-                         <div class="relative group rounded-2xl p-5 border transition-all bg-slate-50/50 border-slate-100">
-                             <div class="flex justify-between items-start gap-4">
-                                 <div class="flex-1">
-                                     <div class="flex items-center gap-2 mb-1"><h3 class="font-bold text-base text-[#11183b]">Ligne Salariés O2</h3></div>
-                                     <p class="text-xs text-slate-500 mb-3">Retards, Problèmes scan, Maladie</p>
-                                     <div class="inline-flex items-center gap-1 px-2 py-1 bg-white rounded border border-slate-100 text-[10px] text-slate-400"><i data-lucide="clock" class="w-3 h-3"></i> Lun-Ven: 7h-20h30</div>
-                                 </div>
-                                 <a href="tel:0243724345" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-100"><i data-lucide="phone" class="w-5 h-5"></i></a>
-                             </div>
-                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-slate-700">02 43 72 43 45</div>
-                         </div>
-                         <!-- Agence -->
-                         <div class="relative group rounded-2xl p-5 border transition-all bg-slate-50/50 border-slate-100">
-                             <div class="flex justify-between items-start gap-4">
-                                 <div class="flex-1">
-                                     <div class="flex items-center gap-2 mb-1"><h3 class="font-bold text-base text-[#11183b]">Agence / Planning</h3></div>
-                                     <p class="text-xs text-slate-500 mb-3">Accident, Sinistre, Planning</p>
-                                     <div class="inline-flex items-center gap-1 px-2 py-1 bg-white rounded border border-slate-100 text-[10px] text-slate-400"><i data-lucide="clock" class="w-3 h-3"></i> 9h-12h / 14h-18h</div>
-                                 </div>
-                                 <a href="tel:0246656880" class="w-12 h-12 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-100"><i data-lucide="phone" class="w-5 h-5"></i></a>
-                             </div>
-                             <div class="mt-3 font-mono text-lg font-bold tracking-tight text-slate-700">02 46 65 68 80</div>
-                         </div>
-                     </div>
-                 </div>
-
-                 <!-- Infos -->
-                 <div class="space-y-6">
-                     <!-- Maladie -->
-                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
-                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="stethoscope" class="w-5 h-5"></i></div>
-                            <h3 class="font-bold text-base">Arrêt Maladie</h3>
-                        </div>
-                        <div class="p-5 space-y-4">
-                            <div class="bg-orange-50 p-4 rounded-xl border-l-4 border-orange-400">
-                                <h4 class="font-bold text-orange-900 text-sm mb-1">Délai 48h strict</h4>
-                                <p class="text-xs text-orange-800">Justificatif à l'agence sous 48h.</p>
-                            </div>
-                            <div class="bg-[#60a5fa] text-white p-4 rounded-xl shadow-sm">
-                                <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
-                                <p class="text-xs leading-relaxed">Contactez l'agence avant la fin de l'arrêt pour organiser la reprise.</p>
-                            </div>
-                        </div>
-                     </div>
-                     
-                     <!-- Congés -->
-                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-blue-600 text-white">
-                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="calendar" class="w-5 h-5"></i></div>
-                            <h3 class="font-bold text-base">Règles des Congés</h3>
-                        </div>
-                        <div class="p-5 space-y-4">
-                             <div class="grid grid-cols-2 gap-3 text-center mb-2">
-                                <div class="bg-teal-50 p-3 rounded-xl border border-teal-100"><div class="text-2xl font-bold text-teal-700">2,5</div><div class="text-[10px] uppercase font-bold text-teal-800/60">Jours / mois</div></div>
-                                <div class="bg-blue-50 p-3 rounded-xl border border-blue-100"><div class="text-2xl font-bold text-blue-700">5</div><div class="text-[10px] uppercase font-bold text-blue-800/60">Semaines / an</div></div>
-                            </div>
-                            <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
-                                <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
-                                <p class="text-xs leading-relaxed">Déposez vos clés à l'agence avant de partir en congés.</p>
-                            </div>
-                        </div>
-                     </div>
-                 </div>
-             </div>
-
-             <!-- MySilae -->
-             <div class="bg-[#11183b] rounded-2xl p-1 shadow-lg overflow-hidden mt-6">
-                <div class="bg-white/5 p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
-                   <div class="flex items-center gap-5">
-                      <div class="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg shrink-0"><span class="font-extrabold text-2xl text-[#11183b] tracking-tighter">S</span></div>
-                      <div class="text-white text-center sm:text-left">
-                         <h2 class="text-2xl font-bold mb-1">My Silae</h2>
-                         <p class="text-teal-200 text-sm font-medium">Votre portail RH</p>
-                         <p class="text-teal-100 text-xs mt-1 bg-white/10 px-2 py-1 rounded inline-block">Pose du Lundi au Samedi</p>
-                      </div>
-                   </div>
-                   <a href="https://www.mysilae.fr" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all active:scale-95">
-                      <span>Accéder</span> <i data-lucide="external-link" class="w-4 h-4"></i>
-                   </a>
-                </div>
-             </div>
-        </div>
-
     </main>
 
     <!-- NAVIGATION BAR -->
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
-        <div class="pointer-events-auto bg-white/95 backdrop-blur-lg border-t md:border border-slate-200 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-2xl mx-auto pb-safe md:pb-0">
+        <div class="pointer-events-auto bg-white/95 backdrop-blur-lg border-t md:border border-slate-200 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-xl mx-auto pb-safe md:pb-0">
             <div class="flex justify-around items-center h-full px-2 md:px-6">
                 <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-6 h-6"></i></div>
@@ -685,11 +623,6 @@
                     <div class="transition-transform duration-300"><i data-lucide="euro" class="w-6 h-6"></i></div>
                     <span class="text-[10px] md:text-sm font-medium">Paie</span>
                 </button>
-                
-                <button onclick="switchTab('admin')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-admin">
-                    <div class="transition-transform duration-300"><i data-lucide="phone" class="w-6 h-6"></i></div>
-                    <span class="text-[10px] md:text-sm font-medium">Contacts</span>
-                </button>
             </div>
         </div>
     </div>
@@ -703,7 +636,12 @@
             // Hide all tabs
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             // Show target tab
-            document.getElementById('tab-' + tabName).classList.add('active');
+            const target = document.getElementById('tab-' + tabName);
+            if(target) {
+                target.classList.add('active');
+            } else {
+                console.error('Tab not found:', tabName);
+            }
             
             // Update Navigation State
             document.querySelectorAll('.nav-btn').forEach(el => {
@@ -711,10 +649,12 @@
                 el.classList.add('text-slate-400');
             });
             const btn = document.getElementById('btn-' + tabName);
-            btn.classList.add('active', 'text-[#11183b]');
-            btn.classList.remove('text-slate-400');
+            if(btn) {
+                btn.classList.add('active', 'text-[#11183b]');
+                btn.classList.remove('text-slate-400');
+            }
             
-            // Re-render icons if needed (sometimes needed for dynamic content)
+            // Re-render icons
             lucide.createIcons();
             
             // Scroll top
