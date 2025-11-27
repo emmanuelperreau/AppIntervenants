@@ -22,7 +22,6 @@
         .nav-btn.active { color: #11183b; background-color: #eff6ff; }
         .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
     </style>
-<link rel="stylesheet" href="/index.css">
 </head>
 <body class="text-slate-900 pb-24 md:pb-10 bg-slate-50/80 min-h-screen relative">
 
@@ -474,18 +473,85 @@
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-teal-500 text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="info" class="w-5 h-5"></i></div>
-                            <h3 class="font-bold text-base">Obligations</h3>
+                            <h3 class="font-bold text-base">Obligations au quotidien</h3>
                         </div>
                         <div class="p-5">
-                            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="shirt" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Tenue correcte</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="clock" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Ponctualité</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="gift" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Pas de cadeaux</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="user-check" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Discrétion</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="heart-handshake" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Politesse</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="key" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Clés</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="alert-triangle" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Sinistres</span></div>
-                                <div class="p-3 bg-slate-50 rounded-xl flex flex-col items-center text-center gap-2"><i data-lucide="ban" class="w-6 h-6 text-slate-500"></i><span class="text-[10px] text-slate-600 font-medium">Matériel Client</span></div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <!-- 1. Présentation -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-pink-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="shirt" class="w-8 h-8 text-pink-600"></i>
+                                    <p class="text-xs font-medium text-pink-900 leading-snug">Avoir une présentation correcte et une tenue de travail adaptée en portant les équipements fournis par O2</p>
+                                </div>
+                                <!-- 2. Ponctualité -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-blue-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="clock" class="w-8 h-8 text-blue-600"></i>
+                                    <p class="text-xs font-medium text-blue-900 leading-snug">Être ponctuel (ne pas décaler les horaires) et avertir en cas de retard ou d'absence</p>
+                                </div>
+                                <!-- 3. Remonter Info -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-sky-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="ear" class="w-8 h-8 text-sky-400"></i>
+                                    <p class="text-xs font-medium text-sky-900 leading-snug">Remonter à votre agence toute modification de planning convenue avec le client ou tout évolution de ses besoins</p>
+                                </div>
+                                <!-- 4. Cadeaux -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-red-100 flex flex-col items-center text-center gap-3">
+                                    <div class="relative"><i data-lucide="gift" class="w-8 h-8 text-red-500"></i><i data-lucide="x" class="w-4 h-4 text-red-600 absolute -top-1 -right-1 bg-white rounded-full"></i></div>
+                                    <p class="text-xs font-medium text-red-900 leading-snug">Ne pas accepter d'argent ou de cadeaux de la part des clients</p>
+                                </div>
+                                <!-- 5. Signaler Changement -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-blue-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="file-edit" class="w-8 h-8 text-blue-700"></i>
+                                    <p class="text-xs font-medium text-blue-900 leading-snug">Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis, aptitude...)</p>
+                                </div>
+                                <!-- 6. Discrétion -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-emerald-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="eye-off" class="w-8 h-8 text-emerald-500"></i>
+                                    <p class="text-xs font-medium text-emerald-900 leading-snug">Faire preuve de discrétion (ne pas diffuser les informations personnelles, ne pas se confier...)</p>
+                                </div>
+                                <!-- 7. Respect -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-rose-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="heart" class="w-8 h-8 text-rose-500 fill-rose-100"></i>
+                                    <p class="text-xs font-medium text-rose-900 leading-snug">Respecter les habitudes et les choix de vie (religion, culture, intimité...)</p>
+                                </div>
+                                <!-- 8. Vouvoiement -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-fuchsia-100 flex flex-col items-center text-center gap-3">
+                                    <div class="relative"><i data-lucide="message-circle" class="w-8 h-8 text-fuchsia-500"></i><span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8px] font-bold text-white uppercase">Nous</span></div>
+                                    <p class="text-xs font-medium text-fuchsia-900 leading-snug">Vouvoyer les clients, être poli et utiliser un vocabulaire correct</p>
+                                </div>
+                                <!-- 9. Clés -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-orange-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="key" class="w-8 h-8 text-orange-500"></i>
+                                    <p class="text-xs font-medium text-orange-900 leading-snug">Être responsable des clés confiées *</p>
+                                </div>
+                                <!-- 10. Animaux -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-slate-100 flex flex-col items-center text-center gap-3">
+                                    <div class="relative"><i data-lucide="paw-print" class="w-8 h-8 text-slate-400"></i><i data-lucide="ban" class="w-10 h-10 text-slate-300 absolute -top-1 -left-1 opacity-50"></i></div>
+                                    <p class="text-xs font-medium text-slate-600 leading-snug">Ne pas laisser entrer ou sortir les animaux de compagnie des clients sans leur autorisation</p>
+                                </div>
+                                <!-- 11. Sinistre -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-cyan-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="alert-octagon" class="w-8 h-8 text-cyan-500"></i>
+                                    <p class="text-xs font-medium text-cyan-900 leading-snug">Informer immédiatement O2 de tout sinistre, casse ou problème</p>
+                                </div>
+                                <!-- 12. Remplacement -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-amber-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="arrow-left-right" class="w-8 h-8 text-amber-500"></i>
+                                    <p class="text-xs font-medium text-amber-900 leading-snug">Assurer les remplacements avec professionnalisme (présentez votre carte O2 auprès d'un nouveau client)</p>
+                                </div>
+                                <!-- 13. Cahier -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-green-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="book-open" class="w-8 h-8 text-green-600"></i>
+                                    <p class="text-xs font-medium text-green-900 leading-snug">Remplir le cahier de liaison à chaque intervention</p>
+                                </div>
+                                <!-- 14. Situation préoc -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-indigo-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="headset" class="w-8 h-8 text-indigo-600"></i>
+                                    <p class="text-xs font-medium text-indigo-900 leading-snug">Informer O2 en cas de situation préoccupante</p>
+                                </div>
+                                <!-- 15. Objets -->
+                                <div class="p-4 bg-white rounded-xl border-2 border-red-100 flex flex-col items-center text-center gap-3">
+                                    <i data-lucide="lock" class="w-8 h-8 text-red-600"></i>
+                                    <p class="text-xs font-medium text-red-900 leading-snug">Ne pas utiliser d'objets et matériels appartenant aux clients sans leur autorisation</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -655,6 +721,5 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
     </script>
-<script type="module" src="/index.tsx"></script>
 </body>
 </html>
