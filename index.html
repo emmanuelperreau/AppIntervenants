@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Intervenant O2</title>
     
-    <!-- Favicon (Navigateur) -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
-    <link rel="alternate icon" href="apple-touch-icon.png?v=5">
+    <!-- Favicon (Navigateur PC/Mac - Supporte le SVG) -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
     
-    <!-- Apple Touch Icon (iPhone/iPad) -->
-    <!-- Le paramètre ?v=5 force l'iPhone à recharger l'image si elle a changé -->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=5">
+    <!-- Apple Touch Icon (iPhone/iPad - NE SUPPORTE PAS LE SVG) -->
+    <!-- Solution : Image PNG Base64 d'un pixel couleur #11183b (Bleu O2). iOS l'étire pour faire une icône unie propre. -->
+    <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mM8c/7CfwAIpANsM1DyWAAAAABJRU5ErkJggg==">
     
     <meta name="apple-mobile-web-app-title" content="Intervenant O2">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -779,6 +778,5 @@
         }
     </script>
 </body>
-</html>--- START OF FILE favicon.svg ---
+</html>
 
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#11183b"/><path d="M12 5l-7 7h2v7h4v-5h2v5h4v-7h2L12 5z" fill="white"/><circle cx="19" cy="5" r="2" fill="#14b8a6" stroke="white" stroke-width="1"/></svg>
