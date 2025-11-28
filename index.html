@@ -147,29 +147,31 @@
 
                 <!-- Colonne Droite : Infos Pratiques -->
                 <div class="lg:col-span-1 space-y-6">
-                    <!-- Arrêt Maladie -->
+                    <!-- Maladie & Accident -->
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-white">
-                            <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i data-lucide="stethoscope" class="w-4 h-4"></i></div>
-                            <h3 class="font-bold text-sm text-slate-800">Arrêt Maladie</h3>
+                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-red-50">
+                            <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i data-lucide="ambulance" class="w-4 h-4"></i></div>
+                            <h3 class="font-bold text-sm text-slate-800">Maladie & Accident</h3>
                         </div>
-                        <div class="p-4">
-                            <div class="space-y-4">
-                                <div class="flex items-start gap-3">
-                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">1</div>
-                                    <p class="text-xs text-slate-600">Appeler la <span class="font-bold">Ligne Salariés</span> immédiatement.</p>
+                        <div class="p-4 space-y-4">
+                            <!-- Section Maladie -->
+                            <div>
+                                <h4 class="text-xs font-bold text-orange-600 uppercase mb-2">Arrêt Maladie</h4>
+                                <div class="space-y-2">
+                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">1</div> Appeler la Ligne Salariés.</div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">2</div> Envoyer l'arrêt sous <span class="font-bold">48h</span>.</div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">3</div> Clés à disposition Agence.</div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">4</div> Organiser la reprise.</div>
                                 </div>
-                                <div class="flex items-start gap-3">
-                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">2</div>
-                                    <p class="text-xs text-slate-600">Envoyer l'arrêt à l'agence sous <span class="font-bold">48h</span>.</p>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">3</div>
-                                    <p class="text-xs text-slate-600">Mettre à disposition les <span class="font-bold">clés</span> des clients.</p>
-                                </div>
-                                <div class="flex items-start gap-3">
-                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">4</div>
-                                    <p class="text-xs text-slate-600">Reprendre contact afin d'organiser la <span class="font-bold">reprise</span> et la gestion des clés.</p>
+                            </div>
+                            <!-- Separator -->
+                            <div class="border-t border-slate-100"></div>
+                            <!-- Section Accident -->
+                            <div>
+                                <h4 class="text-xs font-bold text-red-600 uppercase mb-2 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Accident Travail / Trajet</h4>
+                                <div class="bg-red-50 p-3 rounded-lg border border-red-100 space-y-2">
+                                    <p class="text-[10px] text-red-800 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
+                                    <p class="text-[10px] text-red-800 leading-tight">Ne rentrez pas chez vous sans avis médical ou accord de l'agence.</p>
                                 </div>
                             </div>
                         </div>
@@ -268,12 +270,12 @@
                                     <tr><th class="px-4 py-3 font-semibold">Niveau</th><th class="px-4 py-3 font-semibold">Postes</th></tr>
                                 </thead>
                                 <tbody class="divide-y divide-slate-100 bg-white">
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC (ou Conv)</td><td class="px-4 py-3 text-slate-600 text-xs">AM1</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC (ou Conv)</td><td class="px-4 py-3 text-slate-600 text-xs">AM2, GE2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 5 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 10 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 15 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">SMIC + 20 cts</td><td class="px-4 py-3 text-slate-600 text-xs">GE3 Référent, AV3 Expert</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 text-xs">AM1</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 text-xs">AM2, GE2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 5 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 10 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 15 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 20 cts</td><td class="px-4 py-3 text-slate-600 text-xs">GE3 Référent, AV3 Expert</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -514,6 +516,28 @@
                             <p class="text-[10px] text-slate-400 text-center mt-4">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 uppercase">obligatoirement</span>.</p>
                         </div>
                     </div>
+
+                    <!-- Porte Close / Client Absent -->
+                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="door-closed" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Porte Close / Client Absent</h3>
+                        </div>
+                        <div class="p-5 space-y-4">
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">1</div> Appeler la <span class="font-bold">Ligne Salariés</span>.</div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">2</div> Attendre <span class="font-bold">15 minutes</span>.</div>
+                                <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">3</div> Contacter l'agence pour mission de <span class="font-bold">Tractage</span>.</div>
+                            </div>
+                            <div class="bg-red-50 border border-red-100 p-3 rounded-lg text-center">
+                                <p class="text-[10px] text-red-700 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
+                                <p class="text-[10px] text-red-600 leading-tight">Tout retour à domicile sera considéré comme un <strong>refus de mission</strong> (non payé).</p>
+                            </div>
+                            <div class="bg-amber-50 p-2 rounded-lg text-center text-[10px] text-amber-800 font-medium">
+                                Payé : Temps de trajet + 15 min d'attente
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Docs & Obligations -->
@@ -645,6 +669,29 @@
                  <p class="text-teal-200 text-sm">Retrouvez ici les notes de services et documents officiels.</p>
              </div>
 
+             <!-- Médecine du Travail -->
+             <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mb-6">
+                <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white">
+                    <div class="bg-white/20 p-1.5 rounded-lg"><i data-lucide="heart-pulse" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-sm">Médecine du Travail (APST 37)</h3>
+                </div>
+                <div class="p-4">
+                    <div class="flex flex-col gap-2 text-sm text-slate-600">
+                        <div class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-teal-600 mt-0.5 shrink-0"></i>
+                            <span>25 Rue de la Milletière, 37100 Tours</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i data-lucide="phone" class="w-4 h-4 text-teal-600 shrink-0"></i>
+                            <a href="tel:0247628888" class="font-bold hover:text-teal-600 transition-colors">02 47 62 88 88</a>
+                        </div>
+                        <div class="mt-2 bg-teal-50 p-2 rounded-lg text-xs text-teal-800">
+                            Visite obligatoire tous les 2 ans ou sur demande du salarié.
+                        </div>
+                    </div>
+                </div>
+             </div>
+
              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <a href="#" class="block group">
                      <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
@@ -710,6 +757,16 @@
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-orange-500"></i>
                      </div>
                  </a>
+             </div>
+
+             <!-- Mentions Légales -->
+             <div class="mt-8 pt-6 border-t border-slate-200 text-center pb-4">
+                 <h3 class="text-[10px] font-bold text-slate-400 uppercase mb-2">Mentions Légales</h3>
+                 <div class="text-[10px] text-slate-400 space-y-1">
+                     <p>Éditeur : Agence O2 Nord Touraine</p>
+                     <p>Directeur de publication : Emmanuel PERREAU</p>
+                     <p>Hébergeur : GitHub</p>
+                 </div>
              </div>
         </div>
 
