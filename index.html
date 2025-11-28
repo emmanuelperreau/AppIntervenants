@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Intervenant O2</title>
     
-    <!-- Favicon (Navigateur) : Fichier externe -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <!-- Favicon (Navigateur) -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg?v=5">
+    <link rel="alternate icon" href="apple-touch-icon.png?v=5">
     
-    <!-- Apple Touch Icon (iPhone/iPad) : Fichier externe OBLIGATOIRE -->
-    <!-- Vous devez placer une image nommée 'apple-touch-icon.png' dans le même dossier -->
-    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <!-- Apple Touch Icon (iPhone/iPad) -->
+    <!-- Le paramètre ?v=5 force l'iPhone à recharger l'image si elle a changé -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=5">
     
     <meta name="apple-mobile-web-app-title" content="Intervenant O2">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -125,7 +126,7 @@
                            <div class="flex items-center gap-4">
                               <!-- Custom MySilae Icon : Palm Tree / Beach Theme -->
                               <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-300 to-orange-400 flex items-center justify-center shadow-lg shrink-0 text-white">
-                                  <i data-lucide="palmtree" class="w-7 h-7 transform -rotate-6 text-white"></i>
+                                  <i data-lucide="palmtree" class="w-7 h-7 transform -rotate-6 text-white stroke-[2.5]"></i>
                               </div>
                               <div class="text-white text-center sm:text-left">
                                  <h2 class="text-lg font-bold">My Silae</h2>
@@ -778,4 +779,6 @@
         }
     </script>
 </body>
-</html>
+</html>--- START OF FILE favicon.svg ---
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#11183b"/><path d="M12 5l-7 7h2v7h4v-5h2v5h4v-7h2L12 5z" fill="white"/><circle cx="19" cy="5" r="2" fill="#14b8a6" stroke="white" stroke-width="1"/></svg>
