@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Prevent Caching -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
     <title>Intervenant O2</title>
     
     <!-- Favicon (Navigateur PC/Mac - Supporte le SVG) -->
@@ -51,13 +56,13 @@
                 </div>
             </div>
             
-            <!-- Quick Call Button (Updated: Blue/Teal, no 112) -->
-            <a href="tel:0243724345" class="flex items-center gap-2 bg-teal-50 hover:bg-teal-100 text-teal-700 px-3 py-2 rounded-xl border border-teal-100 transition-all active:scale-95 shadow-sm">
-                <div class="bg-teal-500 text-white p-1.5 rounded-full flex items-center justify-center">
+            <!-- Quick Call Button (Updated: Orange/Amber, no 112) -->
+            <a href="tel:0243724345" class="flex items-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-800 px-3 py-2 rounded-xl border border-amber-100 transition-all active:scale-95 shadow-sm">
+                <div class="bg-amber-500 text-white p-1.5 rounded-full flex items-center justify-center">
                     <i data-lucide="phone" class="w-3 h-3 fill-white"></i>
                 </div>
                 <div class="hidden sm:flex flex-col items-start leading-none">
-                    <span class="text-[10px] uppercase font-bold text-teal-500">Maladie/Urgence</span>
+                    <span class="text-[10px] uppercase font-bold text-amber-600">Maladie/Urgence</span>
                     <span class="text-xs font-bold">Ligne Salariés</span>
                 </div>
                 <span class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
@@ -158,10 +163,22 @@
                             <div>
                                 <h4 class="text-xs font-bold text-orange-600 uppercase mb-2">Arrêt Maladie</h4>
                                 <div class="space-y-2">
-                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">1</div> Appeler la Ligne Salariés.</div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">2</div> Envoyer l'arrêt sous <strong>48h.</strong></div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">3</div> Clés à disposition Agence.</div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600"><div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500">4</div> Organiser la reprise.</div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                                        <div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">1</div> 
+                                        <span>Appeler la Ligne Salariés.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                                        <div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">2</div> 
+                                        <span>Envoyer l'arrêt sous <strong>48h.</strong></span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                                        <div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">3</div> 
+                                        <span>Clés à disposition Agence.</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 text-xs text-slate-600">
+                                        <div class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">4</div> 
+                                        <span>Organiser la reprise.</span>
+                                    </div>
                                 </div>
                             </div>
                             <!-- Separator -->
@@ -511,9 +528,18 @@
                     </div>
                     <div class="p-5 space-y-4">
                         <div class="space-y-2">
-                            <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">1</div> Appeler la <span class="font-bold">Ligne Salariés.</span></div>
-                            <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">2</div> Attendre <strong>15 minutes.</strong></div>
-                            <div class="flex items-center gap-3 text-xs text-slate-600"><div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px]">3</div> Contacter l'agence pour mission de <span class="font-bold">Tractage.</span></div>
+                            <div class="flex items-center gap-3 text-xs text-slate-600">
+                                <div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">1</div> 
+                                <span>Appeler la <span class="font-bold">Ligne Salariés.</span></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-slate-600">
+                                <div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">2</div> 
+                                <span>Attendre <strong>15 minutes.</strong></span>
+                            </div>
+                            <div class="flex items-center gap-3 text-xs text-slate-600">
+                                <div class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">3</div> 
+                                <span>Contacter l'agence pour mission de <span class="font-bold">Tractage.</span></span>
+                            </div>
                         </div>
                         <div class="bg-red-50 border border-red-100 p-3 rounded-lg text-center">
                             <p class="text-[10px] text-red-700 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
@@ -833,6 +859,21 @@
             // Scroll top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        // AUTO-RELOAD FOR WEBAPP
+        let lastVisibilityChange = Date.now();
+        document.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible') {
+                const now = Date.now();
+                // If app hidden for > 10 mins (600000ms), force reload to get updates
+                if (now - lastVisibilityChange > 600000) {
+                    window.location.reload();
+                }
+                lastVisibilityChange = now;
+            } else {
+                lastVisibilityChange = Date.now();
+            }
+        });
     </script>
 </body>
 </html>
