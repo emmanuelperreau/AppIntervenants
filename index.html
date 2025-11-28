@@ -59,28 +59,16 @@
 
         <!-- SECTION: ACCUEIL (Fusionné avec Contacts) -->
         <div id="tab-home" class="tab-content active space-y-6 fade-in">
-            <!-- Hero Banner -->
-            <div class="relative rounded-3xl overflow-hidden shadow-xl min-h-[140px] flex flex-col justify-center bg-[#11183b]">
-                <div class="absolute inset-0 bg-gradient-to-br from-[#11183b] via-[#2d3b6e] to-[#009688]"></div>
-                <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                
-                <div class="relative z-10 p-6 md:p-8 text-white">
-                    <h1 class="text-2xl md:text-3xl font-bold mb-2 tracking-tight">Bonjour,</h1>
-                    <p class="text-teal-50 text-sm md:text-base font-light max-w-md">
-                        Bienvenue sur votre espace intervenant. Retrouvez ici vos contacts et l'essentiel de vos informations.
-                    </p>
-                </div>
-            </div>
-
+            
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 <!-- Colonne Gauche : Contacts & MySilae -->
                 <div class="lg:col-span-2 space-y-6">
-                    <!-- Annuaire Utile -->
+                    <!-- Vos Contacts -->
                      <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
                          <h2 class="text-lg font-bold text-[#11183b] mb-4 flex items-center gap-2">
                              <div class="bg-teal-50 p-1.5 rounded-lg text-teal-600"><i data-lucide="phone" class="w-5 h-5"></i></div>
-                             Annuaire Utile
+                             Vos Contacts
                          </h2>
                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                              <!-- Urgences -->
@@ -98,7 +86,7 @@
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
                                          <h3 class="font-bold text-sm text-[#11183b]">Ligne Salariés</h3>
-                                         <p class="text-[10px] text-slate-500">Retards, Planning, Maladie</p>
+                                         <p class="text-[10px] text-slate-500">Retards, Gestion de planning, Maladie</p>
                                      </div>
                                      <a href="tel:0243724345" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
@@ -108,8 +96,8 @@
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
                                          <h3 class="font-bold text-sm text-[#11183b]">Agence O2 Nord Touraine</h3>
-                                         <p class="text-[10px] text-slate-500">Accident, Sinistre, Administration</p>
-                                         <span class="text-[10px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h / 14h-18h</span>
+                                         <p class="text-[10px] text-slate-500">Accident, Sinistre, Gestion de contrat</p>
+                                         <span class="text-[10px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h30 / 13h30-17h30</span>
                                      </div>
                                      <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
@@ -125,7 +113,7 @@
                               <div class="text-white text-center sm:text-left">
                                  <h2 class="text-lg font-bold">My Silae</h2>
                                  <p class="text-teal-200 text-xs font-medium">Votre portail RH & Congés</p>
-                                 <p class="text-teal-100 text-[10px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">Pose du Lundi au Samedi</p>
+                                 <p class="text-teal-100 text-[10px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">La pose des congés se fait du lundi au samedi inclus</p>
                               </div>
                            </div>
                            <a href="https://www.mysilae.fr" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2.5 px-5 rounded-lg shadow-lg transition-all active:scale-95 text-sm">
@@ -143,20 +131,33 @@
                             <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i data-lucide="stethoscope" class="w-4 h-4"></i></div>
                             <h3 class="font-bold text-sm text-slate-800">Arrêt Maladie</h3>
                         </div>
-                        <div class="p-4 space-y-3">
-                            <div class="bg-orange-50 p-3 rounded-lg border-l-4 border-orange-400">
-                                <h4 class="font-bold text-orange-900 text-xs mb-0.5">Délai 48h strict</h4>
-                                <p class="text-[10px] text-orange-800">Justificatif à envoyer à l'agence.</p>
+                        <div class="p-4">
+                            <div class="space-y-4">
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                                    <p class="text-xs text-slate-600">Appeler la <span class="font-bold">Ligne Salariés</span> immédiatement.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                                    <p class="text-xs text-slate-600">Envoyer l'arrêt à l'agence sous <span class="font-bold">48h</span>.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                                    <p class="text-xs text-slate-600">Mettre à disposition les <span class="font-bold">clés</span> des clients.</p>
+                                </div>
+                                <div class="flex items-start gap-3">
+                                    <div class="flex-shrink-0 w-6 h-6 bg-orange-100 text-orange-600 rounded-full flex items-center justify-center text-xs font-bold">4</div>
+                                    <p class="text-xs text-slate-600">Reprendre contact afin d'organiser la <span class="font-bold">reprise</span> et la gestion des clés.</p>
+                                </div>
                             </div>
-                            <p class="text-[10px] text-slate-500 leading-relaxed"><span class="font-bold text-slate-700">Important :</span> Contactez l'agence avant la fin de l'arrêt pour organiser votre reprise.</p>
                         </div>
                     </div>
                      
-                    <!-- Règles Congés -->
+                    <!-- Acquisition Congés -->
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white">
                             <div class="p-1.5 bg-blue-100 rounded text-blue-600"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
-                            <h3 class="font-bold text-sm text-slate-800">Règles des Congés</h3>
+                            <h3 class="font-bold text-sm text-slate-800">Acquisition des Congés</h3>
                         </div>
                         <div class="p-4 space-y-3">
                              <div class="flex justify-between items-center bg-slate-50 p-2 rounded-lg text-xs">
@@ -174,23 +175,27 @@
 
             <!-- Nos Valeurs (En bas) -->
             <div class="mt-8 pt-8 border-t border-slate-200">
-                <h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Nos Valeurs O2</h3>
+                <h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Nos Valeurs</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="shield" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Respect</h4>
+                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Vis à vis des salariés, des clients et des collègues</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="award" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Excellence</h4>
+                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Le goût du travail bien fait et de l'amélioration continue</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="smile" class="w-5 h-5"></i></div>
-                        <h4 class="font-bold text-sm text-slate-800">Attitude</h4>
+                        <h4 class="font-bold text-sm text-slate-800">Attitude Positive</h4>
+                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Le sourire, fournisseur de confort</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center">
+                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="heart" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Esprit d'équipe</h4>
+                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Communication & Entraide</p>
                     </div>
                 </div>
             </div>
@@ -437,7 +442,7 @@
                     <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
                         <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-[#11183b] to-[#1e2952] text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
-                            <h3 class="font-bold text-base">Téléphone & Pointage</h3>
+                            <h3 class="font-bold text-base">Téléphone & Scan</h3>
                         </div>
                         <div class="p-5 space-y-5">
                             <div class="bg-[#11183b] rounded-2xl p-5 shadow-lg text-white">
@@ -452,14 +457,18 @@
                                 <div class="bg-slate-50 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600"></i> Usage Professionnel</h4></div>
                                 <div class="p-3 grid grid-cols-2 gap-2">
                                     <div class="text-center p-2 bg-blue-50/50 rounded-lg"><span class="block font-bold text-blue-700 text-sm">Illimités</span><span class="text-slate-500 text-xs">Appels & SMS</span></div>
-                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg"><span class="block font-bold text-teal-700 text-sm">4 Go</span><span class="text-[10px] text-slate-500">Internet / mois</span></div>
+                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg"><span class="block font-bold text-teal-700 text-sm">4 Go + GPS</span><span class="text-[10px] text-slate-500">Waze / Maps</span></div>
                                 </div>
                                 <p class="text-[10px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
                             </div>
 
-                            <div class="bg-[#00cba9] text-white p-4 rounded-xl shadow-md">
-                                <h4 class="font-bold text-sm mb-2 flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Les bons comportements :</h4>
-                                <p class="text-xs leading-relaxed font-medium">Toujours emporter le téléphone en intervention (poche dédiée tablier), batterie chargée.</p>
+                            <div class="bg-[#00cba9] text-white p-4 rounded-xl shadow-md space-y-2">
+                                <h4 class="font-bold text-sm flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Les bons comportements :</h4>
+                                <ul class="text-xs leading-relaxed font-medium list-disc list-inside space-y-1">
+                                    <li>Être joignable sur vos heures de travail.</li>
+                                    <li>Emporter le téléphone chargé en prestation.</li>
+                                    <li>QR Code HS/Absent ? Faire un <strong>Scan Manuel</strong> et prévenir l'agence.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -491,10 +500,10 @@
                                 <h3 class="font-bold text-base">Fiche de Route</h3>
                             </div>
                             <div class="p-5 space-y-3">
-                                <p class="text-xs text-slate-600 mb-2">Dispo sur <span class="font-bold">O2 et moi</span> & Cahier liaison.</p>
+                                <p class="text-xs text-slate-600 mb-2 font-medium">Disponible sur l'appli <span class="font-bold">O2 et Nous</span> & au domicile client. C'est votre feuille de route pour une prestation réussie : <span class="font-bold">Respect scrupuleux des consignes = Client Satisfait !</span></p>
                                 <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
                                     <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
-                                    <p class="text-xs leading-relaxed">Si informations manquantes ou obsolètes, il est <span class="font-bold underline">impératif</span> d'informer l'agence.</p>
+                                    <p class="text-xs leading-relaxed">Données erronées ou manquantes ? <span class="font-bold underline">Informez immédiatement</span> l'agence pour rectification.</p>
                                 </div>
                             </div>
                         </div>
@@ -505,10 +514,10 @@
                                 <h3 class="font-bold text-base">Cahier de Liaison</h3>
                             </div>
                             <div class="p-5 space-y-3">
-                                <p class="text-xs text-slate-600 mb-2">Essentiel pour les échanges avec le client.</p>
+                                <p class="text-xs text-slate-600 mb-2 font-medium">Le lien essentiel entre vous, le client et l'agence pour communiquer.</p>
                                 <div class="bg-[#c2185b] text-white p-4 rounded-xl shadow-sm">
-                                    <h4 class="font-bold text-sm mb-1">Les bons comportements :</h4>
-                                    <p class="text-xs leading-relaxed">À remplir obligatoirement à la fin de chaque prestation avec une formule de politesse.</p>
+                                    <h4 class="font-bold text-sm mb-1">Remplissage OBLIGATOIRE :</h4>
+                                    <p class="text-xs leading-relaxed">À chaque fin de prestation : notez les tâches réalisées + une formule de politesse.</p>
                                 </div>
                             </div>
                         </div>
