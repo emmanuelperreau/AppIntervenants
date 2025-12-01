@@ -26,12 +26,24 @@
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          darkMode: 'media', // Utilise le réglage système (media query)
+          theme: {
+            extend: {
+              colors: {
+                slate: { 850: '#151e32', 900: '#0f172a' }
+              }
+            }
+          }
+        }
+    </script>
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; -webkit-tap-highlight-color: transparent; }
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
@@ -40,16 +52,17 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .nav-btn.active { color: #11183b; background-color: #eff6ff; }
+        .dark .nav-btn.active { color: #fff; background-color: #1e293b; }
         .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
         /* Banner Animation */
         .slide-up { animation: slideUp 0.5s ease-out forwards; }
         @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
-<body class="text-slate-900 pb-28 md:pb-10 bg-slate-100 min-h-screen relative">
+<body class="text-slate-900 dark:text-slate-100 pb-28 md:pb-10 bg-slate-100 dark:bg-slate-900 min-h-screen relative transition-colors duration-200">
 
     <!-- HEADER -->
-    <header class="sticky top-0 bg-white/95 backdrop-blur-xl z-40 border-b border-slate-200 shadow-sm">
+    <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
         <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
             <div class="flex items-center gap-3">
                 <!-- Custom Logo -->
@@ -58,18 +71,18 @@
                     <div class="absolute -top-1 -right-1 w-3 h-3 bg-teal-500 border-2 border-white rounded-full"></div>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="text-[11px] text-teal-600 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
-                    <h1 class="text-base font-bold text-[#11183b] leading-tight">O2 Nord Touraine</h1>
+                    <span class="text-[11px] text-teal-600 dark:text-teal-400 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
+                    <h1 class="text-base font-bold text-[#11183b] dark:text-white leading-tight">O2 Nord Touraine</h1>
                 </div>
             </div>
             
-            <!-- Quick Call Button (Updated: Teal/Blue, no 112 visual) -->
-            <a href="tel:0243724345" class="flex items-center gap-2 bg-amber-50 hover:bg-amber-100 text-amber-800 px-3 py-2 rounded-xl border border-amber-100 transition-all active:scale-95 shadow-sm">
+            <!-- Quick Call Button (Teal/Blue) -->
+            <a href="tel:0243724345" class="flex items-center gap-2 bg-amber-50 hover:bg-amber-100 dark:bg-amber-900/30 dark:border-amber-800 text-amber-800 dark:text-amber-300 px-3 py-2 rounded-xl border border-amber-100 transition-all active:scale-95 shadow-sm">
                 <div class="bg-amber-500 text-white p-1.5 rounded-full flex items-center justify-center">
                     <i data-lucide="phone" class="w-3 h-3 fill-white"></i>
                 </div>
                 <div class="hidden sm:flex flex-col items-start leading-none">
-                    <span class="text-[11px] uppercase font-bold text-amber-600">Maladie/Urgence</span>
+                    <span class="text-[11px] uppercase font-bold text-amber-600 dark:text-amber-400">Maladie/Urgence</span>
                     <span class="text-xs font-bold">Ligne Salariés</span>
                 </div>
                 <span class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
@@ -103,18 +116,18 @@
                 <!-- Colonne Gauche : Contacts & MySilae -->
                 <div class="lg:col-span-2 space-y-6">
                     <!-- Vos Contacts -->
-                     <div class="bg-white rounded-2xl p-5 shadow-sm border border-slate-100">
-                         <h2 class="text-lg font-bold text-[#11183b] mb-4 flex items-center gap-2">
-                             <div class="bg-teal-50 p-1.5 rounded-lg text-teal-600"><i data-lucide="phone" class="w-5 h-5"></i></div>
+                     <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-100 dark:border-slate-700">
+                         <h2 class="text-lg font-bold text-[#11183b] dark:text-white mb-4 flex items-center gap-2">
+                             <div class="bg-teal-50 dark:bg-teal-900/30 p-1.5 rounded-lg text-teal-600 dark:text-teal-400"><i data-lucide="phone" class="w-5 h-5"></i></div>
                              Vos Contacts
                          </h2>
                          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                              <!-- Urgences -->
-                             <div class="relative group rounded-xl p-4 border transition-all bg-red-50/50 border-red-100 hover:bg-red-50">
+                             <div class="relative group rounded-xl p-4 border transition-all bg-red-50/50 dark:bg-red-900/20 border-red-100 dark:border-red-900/30 hover:bg-red-50 dark:hover:bg-red-900/30">
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
-                                         <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-sm text-red-700">Urgences</h3></div>
-                                         <p class="text-[11px] text-slate-500">Médical, Police, Danger</p>
+                                         <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-sm text-red-700 dark:text-red-400">Urgences</h3></div>
+                                         <p class="text-[11px] text-slate-500 dark:text-slate-400">Médical, Police, Danger</p>
                                      </div>
                                      <a href="tel:112" class="px-3 h-10 flex items-center justify-center gap-2 rounded-full shadow-sm bg-red-500 text-white active:scale-95 transition-transform font-bold text-sm">
                                          <i data-lucide="phone" class="w-4 h-4"></i> 112
@@ -122,27 +135,27 @@
                                  </div>
                              </div>
                              <!-- Ligne Salarié -->
-                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 border-slate-100 hover:bg-slate-50">
+                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 dark:bg-slate-700/30 border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50">
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
-                                         <h3 class="font-bold text-sm text-[#11183b]">Ligne Salariés</h3>
-                                         <p class="text-[11px] text-slate-500">Gestion de planning, Retards, Maladie</p>
+                                         <h3 class="font-bold text-sm text-[#11183b] dark:text-white">Ligne Salariés</h3>
+                                         <p class="text-[11px] text-slate-500 dark:text-slate-400">Gestion de planning, Retards, Maladie</p>
                                      </div>
-                                     <a href="tel:0243724345" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                     <a href="tel:0243724345" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white dark:bg-slate-700 text-teal-600 dark:text-teal-400 border border-slate-200 dark:border-slate-600 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
                              </div>
                              <!-- Agence -->
-                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 border-slate-100 hover:bg-slate-50 md:col-span-2">
+                             <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 dark:bg-slate-700/30 border-slate-100 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700/50 md:col-span-2">
                                  <div class="flex justify-between items-start gap-3">
                                      <div>
-                                         <h3 class="font-bold text-sm text-[#11183b]">Agence O2 Nord Touraine</h3>
-                                         <p class="text-[11px] text-slate-500">Accident, Sinistre, Gestion de contrat</p>
-                                         <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" class="text-[11px] font-medium text-teal-600 hover:text-teal-800 hover:underline mt-1 flex items-center gap-1">
+                                         <h3 class="font-bold text-sm text-[#11183b] dark:text-white">Agence O2 Nord Touraine</h3>
+                                         <p class="text-[11px] text-slate-500 dark:text-slate-400">Accident, Sinistre, Gestion de contrat</p>
+                                         <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" class="text-[11px] font-medium text-teal-600 dark:text-teal-400 hover:text-teal-800 hover:underline mt-1 flex items-center gap-1">
                                              <i data-lucide="map-pin" class="w-3 h-3"></i> 134 Bd Charles de Gaulle, 37540
                                          </a>
                                          <span class="text-[11px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h30 / 13h30-17h30</span>
                                      </div>
-                                     <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                     <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white dark:bg-slate-700 text-teal-600 dark:text-teal-400 border border-slate-200 dark:border-slate-600 active:scale-95 transition-transform shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
                              </div>
                          </div>
@@ -178,60 +191,60 @@
                 <!-- Colonne Droite : Infos Pratiques -->
                 <div class="lg:col-span-1 space-y-6">
                     <!-- Maladie & Accident -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-red-50">
-                            <div class="p-1.5 bg-orange-100 rounded text-orange-600"><i data-lucide="ambulance" class="w-4 h-4"></i></div>
-                            <h3 class="font-bold text-sm text-slate-800">Maladie & Accident</h3>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20">
+                            <div class="p-1.5 bg-orange-100 dark:bg-orange-900/50 rounded text-orange-600 dark:text-orange-400"><i data-lucide="ambulance" class="w-4 h-4"></i></div>
+                            <h3 class="font-bold text-sm text-slate-800 dark:text-white">Maladie & Accident</h3>
                         </div>
                         <div class="p-4 space-y-4">
                             <!-- Section Maladie -->
                             <div>
-                                <h4 class="text-xs font-bold text-orange-600 uppercase mb-2">Arrêt Maladie</h4>
+                                <h4 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase mb-2">Arrêt Maladie</h4>
                                 <div class="space-y-2">
-                                    <div class="flex items-center gap-2 text-xs text-slate-600">
-                                        <span class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">1</span> 
+                                    <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                        <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">1</span> 
                                         <span>Appeler la <span class="font-bold">Ligne Salariés.</span></span>
                                     </div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600">
-                                        <span class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">2</span> 
+                                    <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                        <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">2</span> 
                                         <span>Envoyer l'arrêt sous <strong>48h.</strong></span>
                                     </div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600">
-                                        <span class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">3</span> 
+                                    <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                        <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">3</span> 
                                         <span>Mettre les clés à disposition de l'agence.</span>
                                     </div>
-                                    <div class="flex items-center gap-2 text-xs text-slate-600">
-                                        <span class="w-4 h-4 bg-slate-100 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 shrink-0">4</span> 
+                                    <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
+                                        <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">4</span> 
                                         <span>Organiser la reprise.</span>
                                     </div>
                                 </div>
                             </div>
                             <!-- Separator -->
-                            <div class="border-t border-slate-100"></div>
+                            <div class="border-t border-slate-100 dark:border-slate-700"></div>
                             <!-- Section Accident -->
                             <div>
-                                <h4 class="text-xs font-bold text-red-600 uppercase mb-2 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Accident Travail / Trajet</h4>
-                                <div class="bg-red-50 p-3 rounded-lg border border-red-100 space-y-2">
-                                    <p class="text-[11px] text-red-800 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
-                                    <p class="text-[11px] text-red-800 leading-tight">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
+                                <h4 class="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Accident Travail / Trajet</h4>
+                                <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-100 dark:border-red-900/30 space-y-2">
+                                    <p class="text-[11px] text-red-800 dark:text-red-300 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
+                                    <p class="text-[11px] text-red-800 dark:text-red-300 leading-tight">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                      
                     <!-- Acquisition Congés -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white">
-                            <div class="p-1.5 bg-blue-100 rounded text-blue-600"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
-                            <h3 class="font-bold text-sm text-slate-800">Acquisition des Congés</h3>
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800">
+                            <div class="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded text-blue-600 dark:text-blue-400"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
+                            <h3 class="font-bold text-sm text-slate-800 dark:text-white">Acquisition des Congés</h3>
                         </div>
                         <div class="p-4 space-y-3">
-                             <div class="flex justify-between items-center bg-slate-50 p-2 rounded-lg text-xs">
-                                <span class="text-slate-600">Acquisition</span>
-                                <span class="font-bold text-[#11183b]">2,5 jours / mois</span>
+                             <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-700/50 p-2 rounded-lg text-xs">
+                                <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
+                                <span class="font-bold text-[#11183b] dark:text-white">2,5 jours / mois</span>
                             </div>
-                            <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-400">
-                                <p class="text-[11px] text-blue-900"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
+                                <p class="text-[11px] text-blue-900 dark:text-blue-200"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
                             </div>
                         </div>
                     </div>
@@ -240,28 +253,28 @@
             </div>
 
             <!-- Nos Valeurs (En bas) -->
-            <div class="mt-8 pt-8 border-t border-slate-200">
+            <div class="mt-8 pt-8 border-t border-slate-200 dark:border-slate-700">
                 <h3 class="text-center text-sm font-bold text-slate-400 uppercase tracking-widest mb-6">Nos Valeurs</h3>
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
-                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="shield" class="w-5 h-5"></i></div>
-                        <h4 class="font-bold text-sm text-slate-800">Respect</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Vis à vis des salariés, des clients et des collègues</p>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 text-center flex flex-col items-center">
+                        <div class="inline-flex p-2 bg-slate-50 dark:bg-slate-700 rounded-full text-[#11183b] dark:text-white mb-2"><i data-lucide="shield" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-white">Respect</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight">Vis à vis des salariés, des clients et des collègues</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
-                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="award" class="w-5 h-5"></i></div>
-                        <h4 class="font-bold text-sm text-slate-800">Excellence</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Le goût du travail bien fait et de l'amélioration continue</p>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 text-center flex flex-col items-center">
+                        <div class="inline-flex p-2 bg-slate-50 dark:bg-slate-700 rounded-full text-[#11183b] dark:text-white mb-2"><i data-lucide="award" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-white">Excellence</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight">Le goût du travail bien fait et de l'amélioration continue</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
-                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="smile" class="w-5 h-5"></i></div>
-                        <h4 class="font-bold text-sm text-slate-800">Attitude Positive</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Le sourire, fournisseur de confort</p>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 text-center flex flex-col items-center">
+                        <div class="inline-flex p-2 bg-slate-50 dark:bg-slate-700 rounded-full text-[#11183b] dark:text-white mb-2"><i data-lucide="smile" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-white">Attitude Positive</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight">Le sourire, fournisseur de confort</p>
                     </div>
-                    <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
-                        <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="heart" class="w-5 h-5"></i></div>
-                        <h4 class="font-bold text-sm text-slate-800">Esprit d'équipe</h4>
-                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Communication & Entraide</p>
+                    <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 text-center flex flex-col items-center">
+                        <div class="inline-flex p-2 bg-slate-50 dark:bg-slate-700 rounded-full text-[#11183b] dark:text-white mb-2"><i data-lucide="heart" class="w-5 h-5"></i></div>
+                        <h4 class="font-bold text-sm text-slate-800 dark:text-white">Esprit d'équipe</h4>
+                        <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 leading-tight">Communication & Entraide</p>
                     </div>
                 </div>
             </div>
@@ -300,24 +313,24 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Grille Salaire -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-slate-50 to-white">
-                        <div class="bg-white p-2 rounded-xl shadow-sm border border-slate-100 text-[#11183b]"><i data-lucide="euro" class="w-5 h-5"></i></div>
-                        <h3 class="font-bold text-base text-slate-800">Grille de Salaire</h3>
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-slate-50 to-white dark:from-slate-700 dark:to-slate-800">
+                        <div class="bg-white dark:bg-slate-700 p-2 rounded-xl shadow-sm border border-slate-100 dark:border-slate-600 text-[#11183b] dark:text-white"><i data-lucide="euro" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base text-slate-800 dark:text-white">Grille de Salaire</h3>
                     </div>
                     <div class="p-5">
-                        <div class="overflow-hidden rounded-xl border border-slate-200">
+                        <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
                             <table class="w-full text-sm text-left">
-                                <thead class="text-xs text-slate-500 uppercase bg-slate-50 border-b border-slate-200">
+                                <thead class="text-xs text-slate-500 dark:text-slate-400 uppercase bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
                                     <tr><th class="px-4 py-3 font-semibold">Niveau</th><th class="px-4 py-3 font-semibold">Postes</th></tr>
                                 </thead>
-                                <tbody class="divide-y divide-slate-100 bg-white">
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 text-xs">AM1</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 text-xs">AM2, GE2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 5 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 10 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 15 cts</td><td class="px-4 py-3 text-slate-600 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b]">11,88€ + 20 cts</td><td class="px-4 py-3 text-slate-600 text-xs">GE3 Référent, AV3 Expert</td></tr>
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800">
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM1</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2, GE2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 5 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 10 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 15 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
+                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 20 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">GE3 Référent, AV3 Expert</td></tr>
                                 </tbody>
                             </table>
                         </div>
@@ -325,63 +338,76 @@
                 </div>
 
                 <!-- Prime Ancienneté -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Prime d'Ancienneté</h3>
                     </div>
                     <div class="p-5 space-y-4">
-                        <p class="text-xs text-slate-500 mb-2">Majoration du taux horaire selon l'ancienneté :</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Majoration du taux horaire selon l'ancienneté :</p>
                         <div class="space-y-3">
-                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>1 an</span><span class="text-teal-700">+5 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 16%" class="h-full bg-teal-500 rounded-full"></div></div></div>
-                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>2 ans</span><span class="text-teal-700">+10 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 33%" class="h-full bg-teal-500 rounded-full"></div></div></div>
-                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>3 ans</span><span class="text-teal-700">+15 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 50%" class="h-full bg-teal-500 rounded-full"></div></div></div>
-                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>5 ans</span><span class="text-teal-700">+20 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 66%" class="h-full bg-teal-500 rounded-full"></div></div></div>
-                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 mb-1"><span>10 ans</span><span class="text-teal-700">+30 cts/h</span></div><div class="h-3 w-full bg-slate-100 rounded-full"><div style="width: 100%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-1"><span>1 an</span><span class="text-teal-700 dark:text-teal-400">+5 cts/h</span></div><div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full"><div style="width: 16%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-1"><span>2 ans</span><span class="text-teal-700 dark:text-teal-400">+10 cts/h</span></div><div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full"><div style="width: 33%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-1"><span>3 ans</span><span class="text-teal-700 dark:text-teal-400">+15 cts/h</span></div><div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full"><div style="width: 50%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-1"><span>5 ans</span><span class="text-teal-700 dark:text-teal-400">+20 cts/h</span></div><div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full"><div style="width: 66%" class="h-full bg-teal-500 rounded-full"></div></div></div>
+                            <div class="relative"><div class="flex justify-between text-sm font-bold text-slate-700 dark:text-slate-300 mb-1"><span>10 ans</span><span class="text-teal-700 dark:text-teal-400">+30 cts/h</span></div><div class="h-3 w-full bg-slate-100 dark:bg-slate-700 rounded-full"><div style="width: 100%" class="h-full bg-teal-500 rounded-full"></div></div></div>
                         </div>
                     </div>
                 </div>
 
                 <!-- Transport (Tall Column) -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden flex flex-col h-full">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="car" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Mobilité & Transport</h3>
                     </div>
                     <div class="p-5 space-y-4 flex-1">
-                        <div class="bg-orange-50/50 p-4 rounded-xl border border-orange-100">
+                        <div class="bg-orange-50/50 dark:bg-orange-900/10 p-4 rounded-xl border border-orange-100 dark:border-orange-900/30">
                             <div class="flex justify-between items-center mb-2">
                                 <div class="flex gap-3 items-center">
-                                    <div class="bg-white p-2 rounded-lg shadow-sm text-orange-500"><i data-lucide="car" class="w-5 h-5"></i></div>
-                                    <span class="font-bold text-slate-800 text-sm">Indemnités Km</span>
+                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-orange-500"><i data-lucide="car" class="w-5 h-5"></i></div>
+                                    <span class="font-bold text-slate-800 dark:text-white text-sm">Indemnités Km</span>
                                 </div>
                                 <div class="text-right">
-                                    <span class="block text-2xl font-bold text-orange-600">0,45€</span>
+                                    <span class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45€</span>
                                     <span class="text-[11px] text-orange-400 font-medium">/ km</span>
                                 </div>
                             </div>
-                            <div class="bg-white p-3 rounded-lg border border-orange-100">
-                                <p class="text-xs text-slate-600 font-medium">
+                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">
                                     Rémunération du temps de trajet et des frais kilométriques entre 2 prestations, 
                                     si le temps d'intermission (hors trajet) est inférieur à 15 min.
                                 </p>
                             </div>
-                            <p class="text-[11px] text-slate-500 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
                         </div>
 
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-3">
+                        <!-- Prime Carburant avec Simulations Statiques -->
+                        <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-100 dark:border-slate-700 flex flex-col gap-3">
                             <div class="flex justify-between items-center mb-1">
                                 <div class="flex gap-3 items-center">
-                                    <div class="bg-white p-2 rounded-lg shadow-sm text-slate-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                                    <div><p class="font-bold text-slate-800 text-sm">Prime Carburant</p><p class="text-[11px] text-slate-500">Juin & Décembre</p></div>
+                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-slate-600 dark:text-slate-300"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                                    <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-[11px] text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
                                 </div>
                                 <div class="text-right">
-                                    <span class="block text-2xl font-bold text-[#11183b]">300 €</span>
+                                    <span class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
                                     <span class="text-[11px] text-slate-400 font-medium">/ an (max)</span>
                                 </div>
                             </div>
+
+                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-600">
+                                <p class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Simulations (si présent toute l'année) :</p>
+                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400 border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">
+                                    <span>Contrat 30h :</span>
+                                    <span class="font-bold text-[#11183b] dark:text-white">~ 257 € /an</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400">
+                                    <span>Contrat 25h :</span>
+                                    <span class="font-bold text-[#11183b] dark:text-white">~ 214 € /an</span>
+                                </div>
+                            </div>
                             
-                            <p class="text-[11px] text-slate-500 italic border-t border-slate-200 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
+                            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic border-t border-slate-200 dark:border-slate-700 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
                         </div>
                     </div>
                 </div>
@@ -389,55 +415,55 @@
                 <!-- Column for Restaurant + Mutuelle -->
                 <div class="flex flex-col gap-6">
                     <!-- Titres Restaurant -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="utensils" class="w-5 h-5"></i></div>
                             <h3 class="font-bold text-base">Titres Restaurant</h3>
                         </div>
                         <div class="p-5">
-                            <div class="p-4 bg-blue-50/50 rounded-xl border border-blue-100 mb-4">
+                            <div class="p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-900/30 mb-4">
                                 <div class="flex justify-between items-center mb-2">
-                                    <h4 class="font-bold text-blue-900">Valeur Faciale</h4>
+                                    <h4 class="font-bold text-blue-900 dark:text-blue-200">Valeur Faciale</h4>
                                     <div class="text-right">
-                                        <span class="block text-2xl font-bold text-blue-600">6 €</span>
+                                        <span class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
                                         <span class="text-[11px] text-blue-400 font-bold">/ jour travaillé</span>
                                     </div>
                                 </div>
-                                <div class="w-full h-2 bg-blue-200 rounded-full overflow-hidden flex">
-                                    <div class="w-1/2 bg-[#11183b]"></div>
-                                    <div class="w-1/2 bg-blue-400"></div>
+                                <div class="w-full h-2 bg-blue-200 dark:bg-blue-900 rounded-full overflow-hidden flex">
+                                    <div class="w-1/2 bg-[#11183b] dark:bg-blue-400"></div>
+                                    <div class="w-1/2 bg-blue-400 dark:bg-blue-600"></div>
                                 </div>
                                 <div class="flex justify-between text-[11px] font-bold mt-1 uppercase tracking-wide">
-                                    <span class="text-[#11183b]">Part O2 : 3€</span>
-                                    <span class="text-blue-500">Votre Part : 3€</span>
+                                    <span class="text-[#11183b] dark:text-blue-200">Part O2 : 3€</span>
+                                    <span class="text-blue-500 dark:text-blue-400">Votre Part : 3€</span>
                                 </div>
                             </div>
                             <div class="space-y-2">
-                                <div class="flex items-center gap-2 text-xs text-slate-600 bg-green-50 p-2 rounded-lg border border-green-100">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-green-600"></i>
-                                    <span class="font-bold text-green-800">Sans condition d'ancienneté</span>
+                                <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg border border-green-100 dark:border-green-900/30">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-green-600 dark:text-green-400"></i>
+                                    <span class="font-bold text-green-800 dark:text-green-300">Sans condition d'ancienneté</span>
                                 </div>
-                                <p class="text-xs text-slate-500 leading-relaxed px-1">Eligible pour tous les jours ayant une pause méridienne.</p>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed px-1">Eligible pour tous les jours ayant une pause méridienne.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Mutuelle Santé -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
                             <h3 class="font-bold text-base">Mutuelle Santé (CPMS)</h3>
                         </div>
                         <div class="p-5">
                             <div class="flex items-center justify-between mb-4">
                                 <div>
-                                    <p class="text-sm text-slate-500 mb-1">Prise en charge à 50% par O2</p>
-                                    <div class="inline-block bg-green-100 text-green-800 text-[11px] font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Prise en charge à 50% par O2</p>
+                                    <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-[11px] font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
                                     <p class="text-[11px] text-slate-400 italic">Obligatoire sauf motifs de dispense.</p>
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[11px] text-slate-400 font-medium block">Votre part / mois</span>
-                                    <span class="text-3xl font-extrabold text-[#11183b]">13,55 €</span>
+                                    <span class="text-3xl font-extrabold text-[#11183b] dark:text-white">13,55 €</span>
                                     <span class="text-[11px] text-slate-400 block">Déduit du salaire</span>
                                 </div>
                             </div>
@@ -446,25 +472,25 @@
                 </div>
 
                 <!-- Chèques Cadeaux (Full Width) -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden lg:col-span-2">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Chèques Cadeaux</h3>
                         <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-[11px] font-bold">Sans condition d'ancienneté</div>
                     </div>
                     <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-pink-100 bg-pink-50/30">
-                            <div class="bg-pink-100 p-4 rounded-full text-pink-600"><i data-lucide="gift" class="w-8 h-8"></i></div>
+                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-pink-100 dark:border-pink-900/30 bg-pink-50/30 dark:bg-pink-900/10">
+                            <div class="bg-pink-100 dark:bg-pink-900 p-4 rounded-full text-pink-600 dark:text-pink-300"><i data-lucide="gift" class="w-8 h-8"></i></div>
                             <div class="flex-1">
-                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800">Noël</h4><span class="bg-pink-100 text-pink-700 text-xs font-bold px-3 py-1 rounded-full">Novembre</span></div>
-                                <p class="text-sm text-slate-600 mt-1"><span class="font-black text-pink-600 text-lg">50€ /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Noël</h4><span class="bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-200 text-xs font-bold px-3 py-1 rounded-full">Novembre</span></div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-pink-600 dark:text-pink-400 text-lg">50€ /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
                             </div>
                         </div>
-                        <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-orange-100 bg-orange-50/30">
-                            <div class="bg-orange-100 p-4 rounded-full text-orange-600"><i data-lucide="sun" class="w-8 h-8"></i></div>
+                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-orange-100 dark:border-orange-900/30 bg-orange-50/30 dark:bg-orange-900/10">
+                            <div class="bg-orange-100 dark:bg-orange-900 p-4 rounded-full text-orange-600 dark:text-orange-300"><i data-lucide="sun" class="w-8 h-8"></i></div>
                             <div class="flex-1">
-                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800">Vacances</h4><span class="bg-orange-100 text-orange-700 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
-                                <p class="text-sm text-slate-600 mt-1"><span class="font-black text-orange-600 text-lg">100€ /an</span> <span class="text-xs text-slate-400">(Co-financement 20%)</span></p>
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Vacances</h4><span class="bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg">100€ /an</span> <span class="text-xs text-slate-400">(Co-financement 20%)</span></p>
                             </div>
                         </div>
                     </div>
@@ -490,19 +516,19 @@
             </div>
 
             <!-- Majorations (Dernier) -->
-            <div class="bg-white rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
                  <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-purple-100 p-2 rounded-lg text-purple-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-slate-800">Majorations Horaires</h3>
+                    <div class="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-400"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-slate-800 dark:text-white">Majorations Horaires</h3>
                  </div>
                  <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="p-3 bg-teal-50 rounded-xl border border-teal-100 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase">Dimanche & Nuit</span>
-                        <div class="text-right sm:text-center"><span class="text-xl font-black text-teal-600 block">+ 10%</span></div>
+                    <div class="p-3 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-100 dark:border-teal-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Dimanche & Nuit</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-teal-600 dark:text-teal-400 block">+ 10%</span></div>
                     </div>
-                    <div class="p-3 bg-purple-50 rounded-xl border border-purple-100 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
-                        <span class="text-xs font-bold text-slate-500 uppercase">Heures Complémentaires</span>
-                        <div class="text-right sm:text-center"><span class="text-xl font-black text-purple-600 block">10 à 25%</span></div>
+                    <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-100 dark:border-purple-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Heures Complémentaires</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-purple-600 dark:text-purple-400 block">10 à 25%</span></div>
                     </div>
                     <div class="p-3 bg-[#11183b] text-white rounded-xl flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center shadow-md">
                         <span class="text-xs font-bold text-teal-100 uppercase">Jours Fériés</span>
@@ -517,8 +543,8 @@
              <!-- Row 1: Phone & Porte Close (Priority) -->
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- 1. Téléphone & Scan (Takes 2 cols on Large) -->
-                <div class="lg:col-span-2 bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-[#11183b] to-[#1e2952] text-white">
+                <div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-[#11183b] to-[#1e2952] text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Téléphone & Scan</h3>
                     </div>
@@ -532,11 +558,11 @@
                                 <p class="mt-4 text-xs text-slate-300 leading-relaxed">À réaliser au début et à la fin de chaque intervention. Garantit le paiement de vos heures.</p>
                             </div>
                             
-                            <div class="bg-white rounded-xl border border-slate-100 p-1 flex flex-col">
-                                <div class="bg-slate-50 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600"></i> Usage Professionnel</h4></div>
+                            <div class="bg-white dark:bg-slate-700 rounded-xl border border-slate-100 dark:border-slate-600 p-1 flex flex-col">
+                                <div class="bg-slate-50 dark:bg-slate-600 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 dark:text-white text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i> Usage Professionnel</h4></div>
                                 <div class="p-3 grid grid-cols-2 gap-2 flex-1">
-                                    <div class="text-center p-2 bg-blue-50/50 rounded-lg flex flex-col justify-center"><span class="block font-bold text-blue-700 text-sm">Illimités</span><span class="text-slate-500 text-xs">Appels & SMS</span></div>
-                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 text-sm">4 Go + GPS</span><span class="text-[11px] text-slate-500">Waze / Maps</span></div>
+                                    <div class="text-center p-2 bg-blue-50/50 dark:bg-blue-900/30 rounded-lg flex flex-col justify-center"><span class="block font-bold text-blue-700 dark:text-blue-300 text-sm">Illimités</span><span class="text-slate-500 dark:text-slate-400 text-xs">Appels & SMS</span></div>
+                                    <div class="text-center p-2 bg-teal-50/50 dark:bg-teal-900/30 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 dark:text-teal-300 text-sm">4 Go + GPS</span><span class="text-[11px] text-slate-500 dark:text-slate-400">Waze / Maps</span></div>
                                 </div>
                                 <p class="text-[11px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
                             </div>
@@ -555,29 +581,29 @@
                 </div>
 
                 <!-- 2. Porte Close / Client Absent -->
-                <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="door-closed" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Porte Close / Client Absent</h3>
                     </div>
                     <div class="p-5 space-y-4">
                         <div class="space-y-2">
-                            <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">1</span> 
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
+                                <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">1</span> 
                                 <span>Appeler la <span class="font-bold">Ligne Salariés.</span></span>
                             </div>
-                            <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">2</span> 
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
+                                <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">2</span> 
                                 <span>Attendre <strong>15 minutes.</strong></span>
                             </div>
-                            <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">3</span> 
+                            <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
+                                <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">3</span> 
                                 <span>Contacter l'agence pour effectuer une mission de <span class="font-bold">Tractage</span> sur le temps prévu.</span>
                             </div>
                         </div>
-                        <div class="bg-red-50 border border-red-100 p-3 rounded-lg text-center">
-                            <p class="text-[11px] text-red-700 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
-                            <p class="text-[11px] text-red-600 leading-tight">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
+                        <div class="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 p-3 rounded-lg text-center">
+                            <p class="text-[11px] text-red-700 dark:text-red-300 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
+                            <p class="text-[11px] text-red-600 dark:text-red-300 leading-tight">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
                         </div>
                     </div>
                 </div>
@@ -588,26 +614,26 @@
                  <!-- 3. Fiche & Cahier (Grouped in 2 cols on Large) -->
                  <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
                     <!-- Fiche Route -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
-                         <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full">
+                         <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="briefcase" class="w-5 h-5"></i></div>
                             <h3 class="font-bold text-base">Fiche de Route</h3>
                         </div>
                         <div class="p-5 space-y-3">
-                            <p class="text-xs text-slate-600 mb-2 font-medium">Disponible sur l'appli <span class="font-bold">O2 et Nous</span> & au domicile client. C'est votre guide pour une prestation réussie : <span class="font-bold">Respect scrupuleux des consignes = Client Satisfait !</span></p>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 mb-2 font-medium">Disponible sur l'appli <span class="font-bold">O2 et Nous</span> & au domicile client. C'est votre guide pour une prestation réussie : <span class="font-bold">Respect scrupuleux des consignes = Client Satisfait !</span></p>
                             <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
                                 <p class="text-xs leading-relaxed">Données erronées ou manquantes ? <span class="font-bold underline">Informez immédiatement</span> l'agence pour rectification.</p>
                             </div>
                         </div>
                     </div>
                     <!-- Cahier Liaison -->
-                    <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
-                         <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full">
+                         <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="book-open" class="w-5 h-5"></i></div>
                             <h3 class="font-bold text-base">Cahier de Liaison</h3>
                         </div>
                         <div class="p-5 space-y-3">
-                            <p class="text-xs text-slate-600 mb-2 font-medium">Le lien essentiel entre vous, le client et l'agence pour communiquer.</p>
+                            <p class="text-xs text-slate-600 dark:text-slate-300 mb-2 font-medium">Le lien essentiel entre vous, le client et l'agence pour communiquer.</p>
                             <div class="bg-[#c2185b] text-white p-4 rounded-xl shadow-sm">
                                 <h4 class="font-bold text-sm mb-1">Remplissage OBLIGATOIRE :</h4>
                                 <p class="text-xs leading-relaxed">À chaque fin de prestation : notez les tâches réalisées + une formule de politesse.</p>
@@ -617,105 +643,105 @@
                  </div>
 
                  <!-- 4. Equipements (Col 3 on Large) -->
-                 <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden h-full">
-                    <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white">
+                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Équipements</h3>
                     </div>
                     <div class="p-4">
                         <div class="grid grid-cols-2 gap-2">
-                            <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="book-open" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Guides</span></div>
-                            <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="footprints" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Chaussures</span></div>
-                            <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="shirt" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Tabliers/Gants</span></div>
-                            <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="shield-check" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Gilet/Bracelet</span></div>
+                            <div class="bg-orange-50/50 dark:bg-orange-900/20 p-2 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="book-open" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Guides</span></div>
+                            <div class="bg-orange-50/50 dark:bg-orange-900/20 p-2 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="footprints" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Chaussures</span></div>
+                            <div class="bg-orange-50/50 dark:bg-orange-900/20 p-2 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="shirt" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Tabliers/Gants</span></div>
+                            <div class="bg-orange-50/50 dark:bg-orange-900/20 p-2 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="shield-check" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Gilet/Bracelet</span></div>
                         </div>
-                        <p class="text-[11px] text-slate-400 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 uppercase">obligatoirement</span>.</p>
+                        <p class="text-[11px] text-slate-400 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 dark:text-orange-400 uppercase">obligatoirement</span>.</p>
                     </div>
                  </div>
              </div>
 
              <!-- Row 3: Obligations (Last) -->
-             <div class="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden">
-                <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-teal-500 text-white">
+             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-teal-500 text-white">
                     <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="info" class="w-5 h-5"></i></div>
                     <h3 class="font-bold text-base">Obligations au quotidien</h3>
                 </div>
                 <div class="p-5">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         <!-- 1. Présentation -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-pink-100 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="shirt" class="w-8 h-8 text-pink-600"></i>
-                            <p class="text-xs font-medium text-pink-900 leading-snug">Avoir une présentation correcte et une tenue de travail adaptée en portant les équipements fournis par O2</p>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-pink-100 dark:border-pink-900/30 flex flex-col items-center text-center gap-3">
+                            <i data-lucide="shirt" class="w-8 h-8 text-pink-600 dark:text-pink-400"></i>
+                            <p class="text-xs font-medium text-pink-900 dark:text-pink-200 leading-snug">Avoir une présentation correcte et une tenue de travail adaptée en portant les équipements fournis par O2</p>
                         </div>
                         <!-- 2. Ponctualité -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-blue-100 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="clock" class="w-8 h-8 text-blue-600"></i>
-                            <p class="text-xs font-medium text-blue-900 leading-snug">Être ponctuel (ne pas décaler les horaires) et avertir en cas de retard ou d'absence</p>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-blue-100 dark:border-blue-900/30 flex flex-col items-center text-center gap-3">
+                            <i data-lucide="clock" class="w-8 h-8 text-blue-600 dark:text-blue-400"></i>
+                            <p class="text-xs font-medium text-blue-900 dark:text-blue-200 leading-snug">Être ponctuel (ne pas décaler les horaires) et avertir en cas de retard ou d'absence</p>
                         </div>
                         <!-- 3. Remonter Info -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-sky-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-sky-100 dark:border-sky-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="ear" class="w-8 h-8 text-sky-400"></i>
-                            <p class="text-xs font-medium text-sky-900 leading-snug">Remonter à votre agence toute modification de planning convenue avec le client ou tout évolution de ses besoins</p>
+                            <p class="text-xs font-medium text-sky-900 dark:text-sky-200 leading-snug">Remonter à votre agence toute modification de planning convenue avec le client ou tout évolution de ses besoins</p>
                         </div>
                         <!-- 4. Cadeaux -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-red-100 flex flex-col items-center text-center gap-3">
-                            <div class="relative"><i data-lucide="gift" class="w-8 h-8 text-red-500"></i><i data-lucide="x" class="w-4 h-4 text-red-600 absolute -top-1 -right-1 bg-white rounded-full"></i></div>
-                            <p class="text-xs font-medium text-red-900 leading-snug">Ne pas accepter d'argent ou de cadeaux de la part des clients</p>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-red-100 dark:border-red-900/30 flex flex-col items-center text-center gap-3">
+                            <div class="relative"><i data-lucide="gift" class="w-8 h-8 text-red-500"></i><i data-lucide="x" class="w-4 h-4 text-red-600 absolute -top-1 -right-1 bg-white dark:bg-slate-700 rounded-full"></i></div>
+                            <p class="text-xs font-medium text-red-900 dark:text-red-200 leading-snug">Ne pas accepter d'argent ou de cadeaux de la part des clients</p>
                         </div>
                         <!-- 5. Signaler Changement -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-blue-100 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="file-edit" class="w-8 h-8 text-blue-700"></i>
-                            <p class="text-xs font-medium text-blue-900 leading-snug">Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis, aptitude...)</p>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-blue-100 dark:border-blue-900/30 flex flex-col items-center text-center gap-3">
+                            <i data-lucide="file-edit" class="w-8 h-8 text-blue-700 dark:text-blue-400"></i>
+                            <p class="text-xs font-medium text-blue-900 dark:text-blue-200 leading-snug">Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis, aptitude...)</p>
                         </div>
                         <!-- 6. Discrétion -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-emerald-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-emerald-100 dark:border-emerald-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="eye-off" class="w-8 h-8 text-emerald-500"></i>
-                            <p class="text-xs font-medium text-emerald-900 leading-snug">Faire preuve de discrétion (ne pas diffuser les informations personnelles, ne pas se confier...)</p>
+                            <p class="text-xs font-medium text-emerald-900 dark:text-emerald-200 leading-snug">Faire preuve de discrétion (ne pas diffuser les informations personnelles, ne pas se confier...)</p>
                         </div>
                         <!-- 7. Respect -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-rose-100 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="heart" class="w-8 h-8 text-rose-500 fill-rose-100"></i>
-                            <p class="text-xs font-medium text-rose-900 leading-snug">Respecter les habitudes et les choix de vie (religion, culture, intimité...)</p>
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-rose-100 dark:border-rose-900/30 flex flex-col items-center text-center gap-3">
+                            <i data-lucide="heart" class="w-8 h-8 text-rose-500 fill-rose-100 dark:fill-rose-900"></i>
+                            <p class="text-xs font-medium text-rose-900 dark:text-rose-200 leading-snug">Respecter les habitudes et les choix de vie (religion, culture, intimité...)</p>
                         </div>
                         <!-- 8. Vouvoiement -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-fuchsia-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-fuchsia-100 dark:border-fuchsia-900/30 flex flex-col items-center text-center gap-3">
                             <div class="relative"><i data-lucide="message-circle" class="w-8 h-8 text-fuchsia-500"></i><span class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-[8px] font-bold text-white uppercase">Nous</span></div>
-                            <p class="text-xs font-medium text-fuchsia-900 leading-snug">Vouvoyer les clients, être poli et utiliser un vocabulaire correct</p>
+                            <p class="text-xs font-medium text-fuchsia-900 dark:text-fuchsia-200 leading-snug">Vouvoyer les clients, être poli et utiliser un vocabulaire correct</p>
                         </div>
                         <!-- 9. Clés -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-orange-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-orange-100 dark:border-orange-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="key" class="w-8 h-8 text-orange-500"></i>
-                            <p class="text-xs font-medium text-orange-900 leading-snug">Être responsable des clés confiées</p>
+                            <p class="text-xs font-medium text-orange-900 dark:text-orange-200 leading-snug">Être responsable des clés confiées</p>
                         </div>
                         <!-- 10. Animaux -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-slate-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-slate-100 dark:border-slate-600 flex flex-col items-center text-center gap-3">
                             <div class="relative"><i data-lucide="paw-print" class="w-8 h-8 text-slate-400"></i><i data-lucide="ban" class="w-10 h-10 text-slate-300 absolute -top-1 -left-1 opacity-50"></i></div>
-                            <p class="text-xs font-medium text-slate-600 leading-snug">Ne pas laisser entrer ou sortir les animaux de compagnie des clients sans leur autorisation</p>
+                            <p class="text-xs font-medium text-slate-600 dark:text-slate-300 leading-snug">Ne pas laisser entrer ou sortir les animaux de compagnie des clients sans leur autorisation</p>
                         </div>
                         <!-- 11. Sinistre -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-cyan-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-cyan-100 dark:border-cyan-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="alert-octagon" class="w-8 h-8 text-cyan-500"></i>
-                            <p class="text-xs font-medium text-cyan-900 leading-snug">Informer immédiatement O2 de tout sinistre, casse ou problème</p>
+                            <p class="text-xs font-medium text-cyan-900 dark:text-cyan-200 leading-snug">Informer immédiatement O2 de tout sinistre, casse ou problème</p>
                         </div>
                         <!-- 12. Remplacement -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-amber-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-amber-100 dark:border-amber-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="arrow-left-right" class="w-8 h-8 text-amber-500"></i>
-                            <p class="text-xs font-medium text-amber-900 leading-snug">Assurer les remplacements avec professionnalisme (présentez votre carte O2 auprès d'un nouveau client)</p>
+                            <p class="text-xs font-medium text-amber-900 dark:text-amber-200 leading-snug">Assurer les remplacements avec professionnalisme (présentez votre carte O2 auprès d'un nouveau client)</p>
                         </div>
                         <!-- 13. Cahier -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-green-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-green-100 dark:border-green-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="book-open" class="w-8 h-8 text-green-600"></i>
-                            <p class="text-xs font-medium text-green-900 leading-snug">Remplir le cahier de liaison à chaque intervention</p>
+                            <p class="text-xs font-medium text-green-900 dark:text-green-200 leading-snug">Remplir le cahier de liaison à chaque intervention</p>
                         </div>
                         <!-- 14. Situation préoc -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-indigo-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-indigo-100 dark:border-indigo-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="headset" class="w-8 h-8 text-indigo-600"></i>
-                            <p class="text-xs font-medium text-indigo-900 leading-snug">Informer O2 en cas de situation préoccupante</p>
+                            <p class="text-xs font-medium text-indigo-900 dark:text-indigo-200 leading-snug">Informer O2 en cas de situation préoccupante</p>
                         </div>
                         <!-- 15. Objets -->
-                        <div class="p-4 bg-white rounded-xl border-2 border-red-100 flex flex-col items-center text-center gap-3">
+                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-red-100 dark:border-red-900/30 flex flex-col items-center text-center gap-3">
                             <i data-lucide="lock" class="w-8 h-8 text-red-600"></i>
-                            <p class="text-xs font-medium text-red-900 leading-snug">Ne pas utiliser d'objets et matériels appartenant aux clients sans leur autorisation</p>
+                            <p class="text-xs font-medium text-red-900 dark:text-red-200 leading-snug">Ne pas utiliser d'objets et matériels appartenant aux clients sans leur autorisation</p>
                         </div>
                     </div>
                 </div>
@@ -730,22 +756,22 @@
              </div>
 
              <!-- Médecine du Travail -->
-             <div class="bg-white rounded-xl shadow-sm border border-slate-100 overflow-hidden mb-6">
-                <div class="px-5 py-3 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white">
+             <div class="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden mb-6">
+                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-teal-500 to-emerald-500 text-white">
                     <div class="bg-white/20 p-1.5 rounded-lg"><i data-lucide="heart-pulse" class="w-5 h-5"></i></div>
                     <h3 class="font-bold text-sm">Médecine du Travail (APST 37)</h3>
                 </div>
                 <div class="p-4">
-                    <div class="flex flex-col gap-2 text-sm text-slate-600">
+                    <div class="flex flex-col gap-2 text-sm text-slate-600 dark:text-slate-300">
                         <div class="flex items-start gap-3">
-                            <i data-lucide="map-pin" class="w-4 h-4 text-teal-600 mt-0.5 shrink-0"></i>
+                            <i data-lucide="map-pin" class="w-4 h-4 text-teal-600 dark:text-teal-400 mt-0.5 shrink-0"></i>
                             <span>25 Rue de la Milletière, 37100 Tours</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i data-lucide="phone" class="w-4 h-4 text-teal-600 shrink-0"></i>
-                            <a href="tel:0247628888" class="font-bold hover:text-teal-600 transition-colors">02 47 62 88 88</a>
+                            <i data-lucide="phone" class="w-4 h-4 text-teal-600 dark:text-teal-400 shrink-0"></i>
+                            <a href="tel:0247628888" class="font-bold hover:text-teal-600 dark:hover:text-teal-400 transition-colors">02 47 62 88 88</a>
                         </div>
-                        <div class="mt-2 bg-teal-50 p-2 rounded-lg text-xs text-teal-800">
+                        <div class="mt-2 bg-teal-50 dark:bg-teal-900/30 p-2 rounded-lg text-xs text-teal-800 dark:text-teal-200">
                             Visite obligatoire tous les 5 ans ou sur demande du salarié.
                         </div>
                     </div>
@@ -754,78 +780,78 @@
 
              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                  <a href="#" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-teal-50 p-3 rounded-lg text-teal-600 group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-teal-50 dark:bg-teal-900/30 p-3 rounded-lg text-teal-600 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white transition-colors">
                              <i data-lucide="file-text" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-teal-700">Avantages et Rémunération</h3>
-                             <p class="text-xs text-slate-500">Note de service</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-teal-700 dark:group-hover:text-teal-400">Avantages et Rémunération</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Note de service</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-teal-500"></i>
                      </div>
                  </a>
 
                  <a href="#" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-teal-50 p-3 rounded-lg text-teal-600 group-hover:bg-teal-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-teal-50 dark:bg-teal-900/30 p-3 rounded-lg text-teal-600 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white transition-colors">
                              <i data-lucide="file-text" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-teal-700">Pose des congés payés</h3>
-                             <p class="text-xs text-slate-500">Note de service</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-teal-700 dark:group-hover:text-teal-400">Pose des congés payés</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Note de service</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-teal-500"></i>
                      </div>
                  </a>
 
                  <a href="#" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-blue-50 p-3 rounded-lg text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                              <i data-lucide="file-heart" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-blue-700">DUE Santé</h3>
-                             <p class="text-xs text-slate-500">Document Unique</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-blue-700 dark:group-hover:text-blue-400">DUE Santé</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Document Unique</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-blue-500"></i>
                      </div>
                  </a>
 
                  <a href="#" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-blue-50 p-3 rounded-lg text-blue-600 group-hover:bg-blue-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
                              <i data-lucide="shield-check" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-blue-700">Garantie Frais de Santé</h3>
-                             <p class="text-xs text-slate-500">Notice d'information</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-blue-700 dark:group-hover:text-blue-400">Garantie Frais de Santé</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Notice d'information</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-blue-500"></i>
                      </div>
                  </a>
 
                  <a href="#" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-purple-50 p-3 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-purple-50 dark:bg-purple-900/30 p-3 rounded-lg text-purple-600 dark:text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
                              <i data-lucide="piggy-bank" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-purple-700">DUE Intéressement</h3>
-                             <p class="text-xs text-slate-500">Accord d'entreprise</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-purple-700 dark:group-hover:text-purple-400">DUE Intéressement</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Accord d'entreprise</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-purple-500"></i>
                      </div>
                  </a>
 
                  <a href="https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing" target="_blank" class="block group">
-                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-orange-50 p-3 rounded-lg text-orange-600 group-hover:bg-orange-500 group-hover:text-white transition-colors">
+                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
+                         <div class="bg-orange-50 dark:bg-orange-900/30 p-3 rounded-lg text-orange-600 dark:text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
                              <i data-lucide="clock" class="w-6 h-6"></i>
                          </div>
                          <div>
-                             <h3 class="font-bold text-slate-800 text-sm group-hover:text-orange-700">Accord d'aménagement du temps de travail</h3>
-                             <p class="text-xs text-slate-500">Accord d'entreprise</p>
+                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-orange-700 dark:group-hover:text-orange-400">Accord d'aménagement du temps de travail</h3>
+                             <p class="text-xs text-slate-500 dark:text-slate-400">Accord d'entreprise</p>
                          </div>
                          <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-orange-500"></i>
                      </div>
@@ -833,7 +859,7 @@
              </div>
 
              <!-- Mentions Légales -->
-             <div class="mt-8 pt-6 border-t border-slate-200 text-center pb-4">
+             <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 text-center pb-4">
                  <h3 class="text-[11px] font-bold text-slate-400 uppercase mb-2">Mentions Légales</h3>
                  <div class="text-[11px] text-slate-400 space-y-1">
                      <p>Éditeur : Agence O2 Nord Touraine</p>
@@ -847,7 +873,7 @@
 
     <!-- NAVIGATION BAR -->
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
-        <div class="pointer-events-auto bg-white/95 backdrop-blur-lg border-t md:border border-slate-200 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-xl mx-auto pb-safe md:pb-0">
+        <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-xl mx-auto pb-safe md:pb-0">
             <div class="flex justify-around items-center h-full px-2 md:px-6">
                 <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i></div>
