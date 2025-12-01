@@ -1,0 +1,21 @@
+{
+  "name": "Intervenant O2",
+  "short_name": "Intervenant O2",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#11183b",
+  "theme_color": "#11183b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

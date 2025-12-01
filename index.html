@@ -10,6 +10,10 @@
     
     <title>Intervenant O2</title>
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#11183b">
+    
     <!-- Favicon (Navigateur PC/Mac - Supporte le SVG) -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=6">
     
@@ -37,6 +41,9 @@
         .tab-content.active { display: block; }
         .nav-btn.active { color: #11183b; background-color: #eff6ff; }
         .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
+        /* Banner Animation */
+        .slide-up { animation: slideUp 0.5s ease-out forwards; }
+        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
     </style>
 </head>
 <body class="text-slate-900 pb-28 md:pb-10 bg-slate-100 min-h-screen relative">
@@ -51,7 +58,7 @@
                     <div class="absolute -top-1 -right-1 w-3 h-3 bg-teal-500 border-2 border-white rounded-full"></div>
                 </div>
                 <div class="flex flex-col justify-center">
-                    <span class="text-[10px] text-teal-600 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
+                    <span class="text-[11px] text-teal-600 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
                     <h1 class="text-base font-bold text-[#11183b] leading-tight">O2 Nord Touraine</h1>
                 </div>
             </div>
@@ -62,13 +69,28 @@
                     <i data-lucide="phone" class="w-3 h-3 fill-white"></i>
                 </div>
                 <div class="hidden sm:flex flex-col items-start leading-none">
-                    <span class="text-[10px] uppercase font-bold text-amber-600">Maladie/Urgence</span>
+                    <span class="text-[11px] uppercase font-bold text-amber-600">Maladie/Urgence</span>
                     <span class="text-xs font-bold">Ligne Salariés</span>
                 </div>
                 <span class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
             </a>
         </div>
     </header>
+
+    <!-- INSTALL BANNER (Hidden by default) -->
+    <div id="install-banner" class="hidden fixed bottom-24 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-[#11183b] text-white p-4 rounded-xl shadow-2xl z-50 slide-up border border-teal-500/30">
+        <div class="flex items-start gap-4">
+            <div class="bg-white/10 p-2 rounded-lg shrink-0">
+                <i data-lucide="download" class="w-6 h-6 text-teal-400"></i>
+            </div>
+            <div class="flex-1">
+                <h4 class="font-bold text-sm mb-1">Installer l'application</h4>
+                <p id="install-text" class="text-xs text-slate-300 leading-snug mb-3">Pour un accès rapide et hors-ligne :</p>
+                <button onclick="dismissInstall()" class="text-[11px] font-bold text-slate-400 underline decoration-dotted">Pas maintenant</button>
+            </div>
+            <button onclick="dismissInstall()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+        </div>
+    </div>
 
     <!-- MAIN CONTENT -->
     <main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
@@ -92,7 +114,7 @@
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
                                          <div class="flex items-center gap-2 mb-1"><i data-lucide="shield-alert" class="w-4 h-4 text-red-500"></i><h3 class="font-bold text-sm text-red-700">Urgences</h3></div>
-                                         <p class="text-[10px] text-slate-500">Médical, Police, Danger</p>
+                                         <p class="text-[11px] text-slate-500">Médical, Police, Danger</p>
                                      </div>
                                      <a href="tel:112" class="px-3 h-10 flex items-center justify-center gap-2 rounded-full shadow-sm bg-red-500 text-white active:scale-95 transition-transform font-bold text-sm">
                                          <i data-lucide="phone" class="w-4 h-4"></i> 112
@@ -104,20 +126,23 @@
                                  <div class="flex justify-between items-center gap-3">
                                      <div>
                                          <h3 class="font-bold text-sm text-[#11183b]">Ligne Salariés</h3>
-                                         <p class="text-[10px] text-slate-500">Gestion de planning, Retards, Maladie</p>
+                                         <p class="text-[11px] text-slate-500">Gestion de planning, Retards, Maladie</p>
                                      </div>
                                      <a href="tel:0243724345" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
                              </div>
                              <!-- Agence -->
                              <div class="relative group rounded-xl p-4 border transition-all bg-slate-50/50 border-slate-100 hover:bg-slate-50 md:col-span-2">
-                                 <div class="flex justify-between items-center gap-3">
+                                 <div class="flex justify-between items-start gap-3">
                                      <div>
                                          <h3 class="font-bold text-sm text-[#11183b]">Agence O2 Nord Touraine</h3>
-                                         <p class="text-[10px] text-slate-500">Accident, Sinistre, Gestion de contrat</p>
-                                         <span class="text-[10px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h30 / 13h30-17h30</span>
+                                         <p class="text-[11px] text-slate-500">Accident, Sinistre, Gestion de contrat</p>
+                                         <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" class="text-[11px] font-medium text-teal-600 hover:text-teal-800 hover:underline mt-1 flex items-center gap-1">
+                                             <i data-lucide="map-pin" class="w-3 h-3"></i> 134 Bd Charles de Gaulle, 37540
+                                         </a>
+                                         <span class="text-[11px] text-slate-400 mt-1 block">Lun-Ven : 9h-12h30 / 13h30-17h30</span>
                                      </div>
-                                     <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform"><i data-lucide="phone" class="w-4 h-4"></i></a>
+                                     <a href="tel:0246656880" class="w-10 h-10 flex items-center justify-center rounded-full shadow-sm bg-white text-teal-600 border border-slate-200 active:scale-95 transition-transform shrink-0"><i data-lucide="phone" class="w-4 h-4"></i></a>
                                  </div>
                              </div>
                          </div>
@@ -134,9 +159,9 @@
                               <div class="text-white text-center sm:text-left">
                                  <h2 class="text-lg font-bold">My Silae</h2>
                                  <p class="text-teal-200 text-xs font-medium">Votre portail RH & Congés</p>
-                                 <p class="text-teal-100 text-[10px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">La pose des congés se fait du lundi au samedi inclus</p>
+                                 <p class="text-teal-100 text-[11px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">La pose des congés se fait du lundi au samedi inclus</p>
                                  <div class="mt-2">
-                                     <a href="#" class="inline-flex items-center gap-1 text-[10px] text-teal-300 hover:text-white transition-colors underline decoration-dotted">
+                                     <a href="#" class="inline-flex items-center gap-1 text-[11px] text-teal-300 hover:text-white transition-colors underline decoration-dotted">
                                          <i data-lucide="file-text" class="w-3 h-3"></i>
                                          Note de service congés payés
                                      </a>
@@ -187,8 +212,8 @@
                             <div>
                                 <h4 class="text-xs font-bold text-red-600 uppercase mb-2 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Accident Travail / Trajet</h4>
                                 <div class="bg-red-50 p-3 rounded-lg border border-red-100 space-y-2">
-                                    <p class="text-[10px] text-red-800 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
-                                    <p class="text-[10px] text-red-800 leading-tight">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
+                                    <p class="text-[11px] text-red-800 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
+                                    <p class="text-[11px] text-red-800 leading-tight">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
                                 </div>
                             </div>
                         </div>
@@ -206,7 +231,7 @@
                                 <span class="font-bold text-[#11183b]">2,5 jours / mois</span>
                             </div>
                             <div class="bg-blue-50 p-3 rounded-lg border-l-4 border-blue-400">
-                                <p class="text-[10px] text-blue-900"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
+                                <p class="text-[11px] text-blue-900"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
                             </div>
                         </div>
                     </div>
@@ -221,22 +246,22 @@
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="shield" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Respect</h4>
-                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Vis à vis des salariés, des clients et des collègues</p>
+                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Vis à vis des salariés, des clients et des collègues</p>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="award" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Excellence</h4>
-                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Le goût du travail bien fait et de l'amélioration continue</p>
+                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Le goût du travail bien fait et de l'amélioration continue</p>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="smile" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Attitude Positive</h4>
-                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Le sourire, fournisseur de confort</p>
+                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Le sourire, fournisseur de confort</p>
                     </div>
                     <div class="bg-white p-4 rounded-xl shadow-sm border border-slate-100 text-center flex flex-col items-center">
                         <div class="inline-flex p-2 bg-slate-50 rounded-full text-[#11183b] mb-2"><i data-lucide="heart" class="w-5 h-5"></i></div>
                         <h4 class="font-bold text-sm text-slate-800">Esprit d'équipe</h4>
-                        <p class="text-[10px] text-slate-500 mt-2 leading-tight">Communication & Entraide</p>
+                        <p class="text-[11px] text-slate-500 mt-2 leading-tight">Communication & Entraide</p>
                     </div>
                 </div>
             </div>
@@ -332,7 +357,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span class="block text-2xl font-bold text-orange-600">0,45€</span>
-                                    <span class="text-[10px] text-orange-400 font-medium">/ km</span>
+                                    <span class="text-[11px] text-orange-400 font-medium">/ km</span>
                                 </div>
                             </div>
                             <div class="bg-white p-3 rounded-lg border border-orange-100">
@@ -341,29 +366,22 @@
                                     si le temps d'intermission (hors trajet) est inférieur à 15 min.
                                 </p>
                             </div>
-                            <p class="text-[10px] text-slate-500 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
+                            <p class="text-[11px] text-slate-500 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
                         </div>
 
                         <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 flex flex-col gap-3">
                             <div class="flex justify-between items-center mb-1">
                                 <div class="flex gap-3 items-center">
                                     <div class="bg-white p-2 rounded-lg shadow-sm text-slate-600"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                                    <div><p class="font-bold text-slate-800 text-sm">Prime Carburant</p><p class="text-[10px] text-slate-500">Juin & Décembre</p></div>
+                                    <div><p class="font-bold text-slate-800 text-sm">Prime Carburant</p><p class="text-[11px] text-slate-500">Juin & Décembre</p></div>
                                 </div>
                                 <div class="text-right">
                                     <span class="block text-2xl font-bold text-[#11183b]">300 €</span>
-                                    <span class="text-[10px] text-slate-400 font-medium">/ an (max)</span>
+                                    <span class="text-[11px] text-slate-400 font-medium">/ an (max)</span>
                                 </div>
                             </div>
                             
-                            <!-- Simulation -->
-                            <div class="bg-white p-2 rounded border border-slate-200 text-[10px] space-y-1">
-                                <p class="font-bold text-slate-700 mb-1">Simulations (si présent toute l'année) :</p>
-                                <div class="flex justify-between"><span>Contrat 30h :</span> <span class="font-bold text-slate-900">~ 257 € /an</span></div>
-                                <div class="flex justify-between"><span>Contrat 25h :</span> <span class="font-bold text-slate-900">~ 214 € /an</span></div>
-                            </div>
-
-                            <p class="text-[10px] text-slate-500 italic border-t border-slate-200 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
+                            <p class="text-[11px] text-slate-500 italic border-t border-slate-200 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
                         </div>
                     </div>
                 </div>
@@ -382,14 +400,14 @@
                                     <h4 class="font-bold text-blue-900">Valeur Faciale</h4>
                                     <div class="text-right">
                                         <span class="block text-2xl font-bold text-blue-600">6 €</span>
-                                        <span class="text-[10px] text-blue-400 font-bold">/ jour travaillé</span>
+                                        <span class="text-[11px] text-blue-400 font-bold">/ jour travaillé</span>
                                     </div>
                                 </div>
                                 <div class="w-full h-2 bg-blue-200 rounded-full overflow-hidden flex">
                                     <div class="w-1/2 bg-[#11183b]"></div>
                                     <div class="w-1/2 bg-blue-400"></div>
                                 </div>
-                                <div class="flex justify-between text-[10px] font-bold mt-1 uppercase tracking-wide">
+                                <div class="flex justify-between text-[11px] font-bold mt-1 uppercase tracking-wide">
                                     <span class="text-[#11183b]">Part O2 : 3€</span>
                                     <span class="text-blue-500">Votre Part : 3€</span>
                                 </div>
@@ -414,13 +432,13 @@
                             <div class="flex items-center justify-between mb-4">
                                 <div>
                                     <p class="text-sm text-slate-500 mb-1">Prise en charge à 50% par O2</p>
-                                    <div class="inline-block bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
-                                    <p class="text-[10px] text-slate-400 italic">Obligatoire sauf motifs de dispense.</p>
+                                    <div class="inline-block bg-green-100 text-green-800 text-[11px] font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
+                                    <p class="text-[11px] text-slate-400 italic">Obligatoire sauf motifs de dispense.</p>
                                 </div>
                                 <div class="text-right">
-                                    <span class="text-[10px] text-slate-400 font-medium block">Votre part / mois</span>
+                                    <span class="text-[11px] text-slate-400 font-medium block">Votre part / mois</span>
                                     <span class="text-3xl font-extrabold text-[#11183b]">13,55 €</span>
-                                    <span class="text-[10px] text-slate-400 block">Déduit du salaire</span>
+                                    <span class="text-[11px] text-slate-400 block">Déduit du salaire</span>
                                 </div>
                             </div>
                         </div>
@@ -432,7 +450,7 @@
                     <div class="px-5 py-4 border-b border-slate-50 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Chèques Cadeaux</h3>
-                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-[10px] font-bold">Sans condition d'ancienneté</div>
+                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-[11px] font-bold">Sans condition d'ancienneté</div>
                     </div>
                     <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex items-center gap-4 bg-white p-4 rounded-xl shadow-sm border border-pink-100 bg-pink-50/30">
@@ -509,7 +527,7 @@
                             <div class="bg-[#11183b] rounded-2xl p-5 shadow-lg text-white flex flex-col justify-center">
                                 <div class="flex gap-4 items-center">
                                     <div class="bg-white/20 p-3 rounded-xl"><i data-lucide="qr-code" class="w-7 h-7 text-teal-300"></i></div>
-                                    <div><h4 class="font-bold text-lg leading-none">Scan</h4><span class="inline-block mt-2 bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded shadow-sm animate-pulse">OBLIGATOIRE</span></div>
+                                    <div><h4 class="font-bold text-lg leading-none">Scan</h4><span class="inline-block mt-2 bg-red-500 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm animate-pulse">OBLIGATOIRE</span></div>
                                 </div>
                                 <p class="mt-4 text-xs text-slate-300 leading-relaxed">À réaliser au début et à la fin de chaque intervention. Garantit le paiement de vos heures.</p>
                             </div>
@@ -518,9 +536,9 @@
                                 <div class="bg-slate-50 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600"></i> Usage Professionnel</h4></div>
                                 <div class="p-3 grid grid-cols-2 gap-2 flex-1">
                                     <div class="text-center p-2 bg-blue-50/50 rounded-lg flex flex-col justify-center"><span class="block font-bold text-blue-700 text-sm">Illimités</span><span class="text-slate-500 text-xs">Appels & SMS</span></div>
-                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 text-sm">4 Go + GPS</span><span class="text-[10px] text-slate-500">Waze / Maps</span></div>
+                                    <div class="text-center p-2 bg-teal-50/50 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 text-sm">4 Go + GPS</span><span class="text-[11px] text-slate-500">Waze / Maps</span></div>
                                 </div>
-                                <p class="text-[10px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
+                                <p class="text-[11px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
                             </div>
                         </div>
 
@@ -545,21 +563,21 @@
                     <div class="p-5 space-y-4">
                         <div class="space-y-2">
                             <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">1</span> 
+                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">1</span> 
                                 <span>Appeler la <span class="font-bold">Ligne Salariés.</span></span>
                             </div>
                             <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">2</span> 
+                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">2</span> 
                                 <span>Attendre <strong>15 minutes.</strong></span>
                             </div>
                             <div class="flex items-center gap-3 text-xs text-slate-600">
-                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[10px] shrink-0">3</span> 
+                                <span class="w-5 h-5 bg-amber-100 text-amber-700 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">3</span> 
                                 <span>Contacter l'agence pour effectuer une mission de <span class="font-bold">Tractage</span> sur le temps prévu.</span>
                             </div>
                         </div>
                         <div class="bg-red-50 border border-red-100 p-3 rounded-lg text-center">
-                            <p class="text-[10px] text-red-700 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
-                            <p class="text-[10px] text-red-600 leading-tight">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
+                            <p class="text-[11px] text-red-700 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
+                            <p class="text-[11px] text-red-600 leading-tight">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
                         </div>
                     </div>
                 </div>
@@ -611,7 +629,7 @@
                             <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="shirt" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Tabliers/Gants</span></div>
                             <div class="bg-orange-50/50 p-2 rounded-lg border border-orange-100 flex items-center justify-center gap-2"><div class="bg-white p-1.5 rounded-full text-orange-500"><i data-lucide="shield-check" class="w-4 h-4"></i></div><span class="text-xs font-bold text-slate-700">Gilet/Bracelet</span></div>
                         </div>
-                        <p class="text-[10px] text-slate-400 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 uppercase">obligatoirement</span>.</p>
+                        <p class="text-[11px] text-slate-400 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 uppercase">obligatoirement</span>.</p>
                     </div>
                  </div>
              </div>
@@ -816,8 +834,8 @@
 
              <!-- Mentions Légales -->
              <div class="mt-8 pt-6 border-t border-slate-200 text-center pb-4">
-                 <h3 class="text-[10px] font-bold text-slate-400 uppercase mb-2">Mentions Légales</h3>
-                 <div class="text-[10px] text-slate-400 space-y-1">
+                 <h3 class="text-[11px] font-bold text-slate-400 uppercase mb-2">Mentions Légales</h3>
+                 <div class="text-[11px] text-slate-400 space-y-1">
                      <p>Éditeur : Agence O2 Nord Touraine</p>
                      <p>Directeur de publication : Emmanuel PERREAU</p>
                      <p>Hébergeur : GitHub</p>
@@ -833,22 +851,22 @@
             <div class="flex justify-around items-center h-full px-2 md:px-6">
                 <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                    <span class="text-[10px] md:text-sm font-medium">Accueil</span>
+                    <span class="text-[11px] md:text-sm font-medium">Accueil</span>
                 </button>
                 
                 <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-daily">
                     <div class="transition-transform duration-300"><i data-lucide="calendar-check" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                    <span class="text-[10px] md:text-sm font-medium">Quotidien</span>
+                    <span class="text-[11px] md:text-sm font-medium">Quotidien</span>
                 </button>
 
                 <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-money">
                     <div class="transition-transform duration-300"><i data-lucide="euro" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                    <span class="text-[10px] md:text-sm font-medium">Rémun.</span>
+                    <span class="text-[11px] md:text-sm font-medium">Rémun.</span>
                 </button>
                 
                 <button onclick="switchTab('docs')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-docs">
                     <div class="transition-transform duration-300"><i data-lucide="file-text" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                    <span class="text-[10px] md:text-sm font-medium">Docs</span>
+                    <span class="text-[11px] md:text-sm font-medium">Docs</span>
                 </button>
             </div>
         </div>
@@ -858,6 +876,50 @@
     <script>
         // Init Icons
         lucide.createIcons();
+
+        // Register Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('SW registered:', registration);
+                        // Check for updates
+                        registration.update();
+                    })
+                    .catch(error => {
+                        console.log('SW registration failed:', error);
+                    });
+            });
+        }
+
+        // Install Banner Logic
+        let deferredPrompt;
+        const installBanner = document.getElementById('install-banner');
+        const installText = document.getElementById('install-text');
+
+        // Check if already installed
+        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+        if (!isStandalone) {
+             // Show banner after a delay
+             setTimeout(() => {
+                // Detect OS
+                const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                    installText.innerHTML = "Appuyez sur <span class='font-bold'>Partager</span> <i data-lucide='share' class='inline w-4 h-4'></i> puis <span class='font-bold'>Sur l'écran d'accueil</span> <i data-lucide='plus-square' class='inline w-4 h-4'></i>";
+                    installBanner.classList.remove('hidden');
+                    lucide.createIcons();
+                } else if (/android/i.test(userAgent)) {
+                     installText.innerHTML = "Appuyez sur <span class='font-bold'>Menu</span> <i data-lucide='more-vertical' class='inline w-4 h-4'></i> puis <span class='font-bold'>Installer l'application</span>";
+                     installBanner.classList.remove('hidden');
+                     lucide.createIcons();
+                }
+             }, 2000);
+        }
+
+        function dismissInstall() {
+            installBanner.classList.add('hidden');
+        }
 
         function switchTab(tabName) {
             // Hide all tabs
@@ -895,6 +957,12 @@
                 const now = Date.now();
                 // If app hidden for > 10 mins (600000ms), force reload to get updates
                 if (now - lastVisibilityChange > 600000) {
+                    // Force SW update check
+                    if ('serviceWorker' in navigator) {
+                        navigator.serviceWorker.ready.then(registration => {
+                            registration.update();
+                        });
+                    }
                     window.location.reload();
                 }
                 lastVisibilityChange = now;
