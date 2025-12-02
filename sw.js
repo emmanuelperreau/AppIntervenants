@@ -4,7 +4,6 @@ const ASSETS = [
   './index.html',
   './manifest.json',
   './favicon.svg',
-  './apple-touch-icon.png',
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap'
