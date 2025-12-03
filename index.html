@@ -53,6 +53,13 @@
         .tab-content.active { display: block; }
         .nav-btn.active { color: #11183b; background-color: #eff6ff; }
         .dark .nav-btn.active { color: #fff; background-color: #1e293b; }
+        
+        /* Red Button Active State Override */
+        #btn-keys { color: #ef4444; }
+        .dark #btn-keys { color: #f87171; }
+        #btn-keys.active { color: #dc2626 !important; background-color: #fef2f2 !important; }
+        .dark #btn-keys.active { color: #f87171 !important; background-color: #450a0a !important; }
+
         .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
         /* Banner Animation */
         .slide-up { animation: slideUp 0.5s ease-out forwards; }
@@ -111,59 +118,52 @@
         <!-- SECTION: ACCUEIL -->
         <div id="tab-home" class="tab-content active space-y-6 fade-in">
             
-            <!-- 1. CLÉS & KMS -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <a href="#" target="_blank" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-5 transition-all group-hover:border-orange-400 group-hover:shadow-md h-full">
-                         <div class="bg-orange-50 dark:bg-orange-900/30 p-3 rounded-xl text-orange-600 dark:text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                             <i data-lucide="key" class="w-7 h-7"></i>
-                         </div>
-                         <div class="flex-1">
-                             <h3 class="font-bold text-slate-800 dark:text-white text-base group-hover:text-orange-700 dark:group-hover:text-orange-400">Gestion des Clés</h3>
-                             <p class="text-[11px] text-slate-500 dark:text-slate-400">Formulaire de suivi</p>
-                         </div>
-                         <i data-lucide="external-link" class="w-5 h-5 text-slate-300 group-hover:text-orange-500"></i>
+            <!-- 1. OUTILS (2x2 GRID) -->
+            <div class="grid grid-cols-2 gap-3">
+                 <!-- Clés -->
+                 <a href="#" target="_blank" class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all group">
+                     <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-orange-600 dark:text-orange-400 shadow-sm group-hover:scale-110 transition-transform">
+                         <i data-lucide="key" class="w-6 h-6"></i>
+                     </div>
+                     <div>
+                         <span class="block text-sm font-bold text-orange-900 dark:text-orange-100 leading-tight">Gestion Clés</span>
+                         <span class="text-[10px] font-medium text-orange-700 dark:text-orange-300 opacity-80">Formulaire de suivi</span>
                      </div>
                  </a>
 
-                 <a href="#" target="_blank" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-5 transition-all group-hover:border-blue-400 group-hover:shadow-md h-full">
-                         <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-xl text-blue-600 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                             <i data-lucide="car" class="w-7 h-7"></i>
-                         </div>
-                         <div class="flex-1">
-                             <h3 class="font-bold text-slate-800 dark:text-white text-base group-hover:text-blue-700 dark:group-hover:text-blue-400">Déclaration Kms</h3>
-                             <p class="text-[11px] text-slate-500 dark:text-slate-400">Kilomètres en prestation</p>
-                         </div>
-                         <i data-lucide="external-link" class="w-5 h-5 text-slate-300 group-hover:text-blue-500"></i>
+                 <!-- Kms -->
+                 <a href="#" target="_blank" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-2xl shadow-sm border border-blue-100 dark:border-blue-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all group">
+                     <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-110 transition-transform">
+                         <i data-lucide="car" class="w-6 h-6"></i>
+                     </div>
+                     <div>
+                         <span class="block text-sm font-bold text-blue-900 dark:text-blue-100 leading-tight">Déclaration Kms</span>
+                         <span class="text-[10px] font-medium text-blue-700 dark:text-blue-300 opacity-80">En prestation</span>
+                     </div>
+                 </a>
+
+                 <!-- My Silae -->
+                 <a href="https://my.silae.fr/sign-in" target="_blank" class="bg-teal-50 dark:bg-teal-900/30 p-4 rounded-2xl shadow-sm border border-teal-100 dark:border-teal-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-all group">
+                     <div class="bg-gradient-to-br from-teal-400 to-teal-600 p-2.5 rounded-full text-white shadow-sm group-hover:scale-110 transition-transform">
+                         <i data-lucide="palmtree" class="w-6 h-6 stroke-[2.5]"></i>
+                     </div>
+                     <div>
+                         <span class="block text-sm font-bold text-teal-900 dark:text-teal-100 leading-tight">My Silae</span>
+                         <span class="text-[10px] font-medium text-teal-700 dark:text-teal-300 opacity-80">Congés & Paie</span>
+                     </div>
+                 </a>
+                 
+                 <!-- Coffre Fort -->
+                 <a href="https://edocperso.fr/login" target="_blank" class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-2xl shadow-sm border border-purple-100 dark:border-purple-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all group">
+                     <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-110 transition-transform">
+                         <i data-lucide="lock" class="w-6 h-6"></i>
+                     </div>
+                     <div>
+                         <span class="block text-sm font-bold text-purple-900 dark:text-purple-100 leading-tight">Coffre Fort</span>
+                         <span class="text-[10px] font-medium text-purple-700 dark:text-purple-300 opacity-80">Bulletins de paie</span>
                      </div>
                  </a>
             </div>
-
-            <!-- 2. MY SILAE -->
-             <div class="bg-[#11183b] rounded-2xl shadow-lg overflow-hidden">
-                <div class="bg-white/5 p-6 flex flex-col sm:flex-row items-center justify-between gap-6 backdrop-blur-sm">
-                   <div class="flex items-center gap-4">
-                      <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-yellow-300 to-orange-400 flex items-center justify-center shadow-lg shrink-0 text-white">
-                          <i data-lucide="palmtree" class="w-7 h-7 transform -rotate-6 text-white stroke-[2.5]"></i>
-                      </div>
-                      <div class="text-white text-center sm:text-left">
-                         <h2 class="text-lg font-bold">My Silae</h2>
-                         <p class="text-teal-200 text-xs font-medium">Congés & Paie</p>
-                         <p class="text-teal-100 text-[11px] mt-1 bg-white/10 px-2 py-0.5 rounded inline-block">La pose des congés se fait du lundi au samedi inclus</p>
-                         <div class="mt-2">
-                             <a href="#" class="inline-flex items-center gap-1 text-[11px] text-teal-300 hover:text-white transition-colors underline decoration-dotted">
-                                 <i data-lucide="file-text" class="w-3 h-3"></i>
-                                 Note de service congés payés
-                             </a>
-                         </div>
-                      </div>
-                   </div>
-                   <a href="https://my.silae.fr/sign-in" target="_blank" class="w-full sm:w-auto flex items-center justify-center gap-2 bg-teal-500 hover:bg-teal-400 text-white font-bold py-2.5 px-5 rounded-lg shadow-lg transition-all active:scale-95 text-sm">
-                      <span>Se connecter</span> <i data-lucide="external-link" class="w-3 h-3"></i>
-                   </a>
-                </div>
-             </div>
 
              <!-- 3. MISSION & VALEURS -->
              <div class="pt-6 border-t border-slate-200 dark:border-slate-700">
@@ -440,7 +440,7 @@
                 </div>
             </div>
 
-            <!-- Majorations (Dernier) -->
+            <!-- Majorations -->
             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
                  <div class="flex items-center gap-3 mb-4">
                     <div class="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-400"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
@@ -461,6 +461,24 @@
                     </div>
                  </div>
             </div>
+
+             <!-- Acquisition Congés (Moved Here) -->
+             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800">
+                    <div class="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded text-blue-600 dark:text-blue-400"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
+                    <h3 class="font-bold text-sm text-slate-800 dark:text-white">Acquisition des Congés</h3>
+                </div>
+                <div class="p-4 space-y-3">
+                     <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-700/50 p-2 rounded-lg text-xs">
+                        <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
+                        <span class="font-bold text-[#11183b] dark:text-white">2,5 jours / mois</span>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
+                        <p class="text-[11px] text-blue-900 dark:text-blue-200"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
+                    </div>
+                    <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 italic">La pose des congés se fait du lundi au samedi inclus.</p>
+                </div>
+             </div>
         </div>
 
         <!-- SECTION: DAILY -->
@@ -505,7 +523,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Equipements & Sécurité (Moved Here) -->
+                <!-- 2. Equipements & Sécurité (Priority) -->
                  <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden h-full flex flex-col">
                     <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-amber-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="hard-hat" class="w-5 h-5"></i></div>
@@ -800,11 +818,6 @@
 
         <!-- SECTION: AUTRE (ex CLÉS & KMS) -> Contient maintenant Contacts et Infos -->
         <div id="tab-keys" class="tab-content space-y-6 fade-in">
-             <div class="bg-[#11183b] p-6 rounded-2xl shadow-lg text-white mb-6">
-                 <h2 class="text-2xl font-bold mb-2">Infos Pratiques</h2>
-                 <p class="text-teal-200 text-sm">Contacts, Maladie, Congés.</p>
-             </div>
-
              <!-- VOS CONTACTS -->
              <div class="bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-sm border border-slate-100 dark:border-slate-700">
                  <h2 class="text-lg font-bold text-[#11183b] dark:text-white mb-4 flex items-center gap-2">
@@ -920,23 +933,6 @@
                     </div>
                 </div>
              </div>
-
-             <!-- Acquisition Congés -->
-             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800">
-                    <div class="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded text-blue-600 dark:text-blue-400"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
-                    <h3 class="font-bold text-sm text-slate-800 dark:text-white">Acquisition des Congés</h3>
-                </div>
-                <div class="p-4 space-y-3">
-                     <div class="flex justify-between items-center bg-slate-50 dark:bg-slate-700/50 p-2 rounded-lg text-xs">
-                        <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
-                        <span class="font-bold text-[#11183b] dark:text-white">2,5 jours / mois</span>
-                    </div>
-                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
-                        <p class="text-[11px] text-blue-900 dark:text-blue-200"><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir en congés pour permettre les remplacements.</p>
-                    </div>
-                </div>
-             </div>
         </div>
 
     </main>
@@ -965,9 +961,9 @@
                     <span class="text-[11px] md:text-sm font-medium">Docs</span>
                 </button>
 
-                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-keys">
+                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-red-500" id="btn-keys">
                     <div class="transition-transform duration-300"><i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i></div>
-                    <span class="text-[11px] md:text-sm font-medium">Contacts</span>
+                    <span class="text-[11px] md:text-sm font-medium">Contacts & Urg.</span>
                 </button>
             </div>
         </div>
@@ -1036,12 +1032,23 @@
             // Update Navigation State
             document.querySelectorAll('.nav-btn').forEach(el => {
                 el.classList.remove('active', 'text-[#11183b]');
-                el.classList.add('text-slate-400');
+                if(el.id !== 'btn-keys') {
+                   el.classList.add('text-slate-400');
+                } else {
+                   // Keep Contacts red
+                   el.classList.add('text-red-500');
+                }
             });
             const btn = document.getElementById('btn-' + tabName);
             if(btn) {
-                btn.classList.add('active', 'text-[#11183b]');
-                btn.classList.remove('text-slate-400');
+                btn.classList.add('active');
+                if(btn.id !== 'btn-keys') {
+                    btn.classList.add('text-[#11183b]');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    // It's the contacts button, let CSS handle active state or ensure it keeps red color but gets background
+                     // The CSS rule #btn-keys.active handles the colors.
+                }
             }
             
             // Re-render icons
