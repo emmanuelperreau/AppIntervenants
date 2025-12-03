@@ -1,6 +1,7 @@
 const CACHE_NAME = 'o2-guide-v1';
 const ASSETS = [
   './',
+  './config.js',
   './index.html',
   './manifest.json',
   './favicon.svg',
