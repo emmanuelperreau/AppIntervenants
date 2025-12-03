@@ -241,32 +241,133 @@
 
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 <!-- Grille Salaire -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
                     <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-slate-50 to-white dark:from-slate-700 dark:to-slate-800">
                         <div class="bg-white dark:bg-slate-700 p-2 rounded-xl shadow-sm border border-slate-100 dark:border-slate-600 text-[#11183b] dark:text-white"><i data-lucide="euro" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base text-slate-800 dark:text-white">Grille de Salaire</h3>
                     </div>
-                    <div class="p-5">
-                        <div class="overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700">
-                            <table class="w-full text-sm text-left">
-                                <thead class="text-xs text-slate-500 dark:text-slate-400 uppercase bg-slate-50 dark:bg-slate-700 border-b border-slate-200 dark:border-slate-600">
-                                    <tr><th class="px-4 py-3 font-semibold">Niveau</th><th class="px-4 py-3 font-semibold">Postes</th></tr>
-                                </thead>
-                                <tbody class="divide-y divide-slate-100 dark:divide-slate-700 bg-white dark:bg-slate-800">
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM1</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ (SMIC)</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2, GE2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 5 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Confirmé, GE3, AV2</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 10 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Expert, GE3 Confirmé, AV3</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 15 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">AM2 Référent, GE3 Expert, AV3 Confirmé</td></tr>
-                                    <tr><td class="px-4 py-3 font-bold text-[#11183b] dark:text-white">11,88€ + 20 cts</td><td class="px-4 py-3 text-slate-600 dark:text-slate-300 text-xs">GE3 Référent, AV3 Expert</td></tr>
-                                </tbody>
-                            </table>
+                    <div class="w-full p-4 bg-slate-50 dark:bg-slate-900">
+                        
+                        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                            <div class="flex flex-col gap-3">
+                                <div class="pb-2 border-b-2 border-orange-200 dark:border-orange-800 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Assistant Ménager</h3>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AM2</span>
+                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">11,88 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AM2 Confirmé</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,10 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AM2 Expert</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700">
+                                    <div class="absolute top-0 left-0 bottom-0 w-1 bg-orange-500 rounded-l-lg"></div>
+                                    <div class="flex justify-between items-start mb-3 pl-2">
+                                        <span class="font-bold text-orange-900 dark:text-orange-100">AM2 Référent</span>
+                                        <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-800">+ 0,30 €</span>
+                                    </div>
+                                    <div class="ml-2 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
+                                        <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" /></svg>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Voiture de service</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-3">
+                                <div class="pb-2 border-b-2 border-fuchsia-200 dark:border-fuchsia-800 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Garde d'Enfants</h3>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">GE2</span>
+                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">11,88 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">GE3</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,10 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-400 dark:border-fuchsia-600 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">GE3 Confirmé</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-500 dark:border-fuchsia-500 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">GE3 Expert</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,30 €</span>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col gap-3">
+                                <div class="pb-2 border-b-2 border-purple-200 dark:border-purple-800 mb-2">
+                                    <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Auxiliaire de Vie</h3>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AV2</span>
+                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">11,88 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-700 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AV3</span>
+                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">12,11 €</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                </div>
+
+                                <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-400 dark:border-purple-600 flex justify-between items-center">
+                                    <span class="font-bold text-slate-700 dark:text-slate-200">AV3 Confirmé</span>
+                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,30 €</span>
+                                </div>
+
+                                <div class="relative bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md border border-purple-200 dark:border-slate-700">
+                                    <div class="absolute top-0 left-0 bottom-0 w-1 bg-purple-500 rounded-l-lg"></div>
+                                    <div class="flex justify-between items-start mb-3 pl-2">
+                                        <span class="font-bold text-purple-900 dark:text-purple-100">AV3 Expert</span>
+                                        <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-800">+ 0,40 €</span>
+                                    </div>
+                                    <div class="ml-2 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
+                                        <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" /></svg>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Voiture de service</span>
+                                    </div>
+                                </div>
+
+                                <div class="relative bg-white dark:bg-slate-800 p-4 rounded-lg shadow-md border border-purple-200 dark:border-slate-700">
+                                    <div class="absolute top-0 left-0 bottom-0 w-1 bg-purple-600 rounded-l-lg"></div>
+                                    <div class="flex justify-between items-start mb-3 pl-2">
+                                        <span class="font-bold text-purple-900 dark:text-purple-100">AV3 Référent</span>
+                                        <span class="text-xs font-bold bg-emerald-100 dark:bg-emerald-900/40 text-emerald-700 dark:text-emerald-400 px-2 py-1 rounded border border-emerald-200 dark:border-emerald-800">+ 0,50 €</span>
+                                    </div>
+                                    <div class="ml-2 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
+                                        <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" /><path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" /></svg>
+                                        </div>
+                                        <span class="text-xs font-semibold text-slate-600 dark:text-slate-300">Voiture de service</span>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- Prime Ancienneté -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
                     <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Prime d'Ancienneté</h3>
