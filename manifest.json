@@ -13,9 +13,9 @@
       "type": "image/png"
     },
     {
-      "src": "favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "https://drive.google.com/thumbnail?id=1wcLCHq48Cv7dkSf-jkZkEJR4Qg9bL7uC&sz=32",
+      "sizes": "32x32",
+      "type": "image/png"
     }
   ]
 }
