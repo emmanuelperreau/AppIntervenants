@@ -82,7 +82,7 @@
                 </div>
                 <div class="flex flex-col justify-center">
                     <span class="text-[11px] text-teal-600 dark:text-teal-400 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
-                    <h1 id="header-agency-name" class="text-base font-bold text-[#11183b] dark:text-white leading-tight">O2 Nord Touraine</h1>
+                    <h1 id="header-agency-name" class="text-base font-bold text-[#11183b] dark:text-white leading-tight">Agence O2</h1>
                 </div>
             </div>
             
@@ -1009,44 +1009,53 @@
 
         // Application de la configuration agence
         function applyConfig() {
-            if(typeof AGENCY_CONFIG === 'undefined') return;
+            if(typeof AGENCY_CONFIGS === 'undefined') return;
+
+            // 1. Détecter l'agence via l'URL (ex: ?agence=loches)
+            const params = new URLSearchParams(window.location.search);
+            const agencyId = params.get('agence') || 'nord-touraine'; // 'nord-touraine' par défaut
+
+            // 2. Sélectionner la config
+            const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
+
+            if (!config) return;
 
             // Header
             const headerName = document.getElementById('header-agency-name');
-            if(headerName) headerName.textContent = AGENCY_CONFIG.name;
+            if(headerName) headerName.textContent = config.name;
 
             // Home
             const linkKeys = document.getElementById('link-gestion-cles');
-            if(linkKeys) linkKeys.href = AGENCY_CONFIG.home.gestionClesUrl;
+            if(linkKeys) linkKeys.href = config.home.gestionClesUrl;
 
             const linkKms = document.getElementById('link-declaration-kms');
-            if(linkKms) linkKms.href = AGENCY_CONFIG.home.declarationKmsUrl;
+            if(linkKms) linkKms.href = config.home.declarationKmsUrl;
 
             // Remuneration
             const mutuelleName = document.getElementById('remun-mutuelle-name');
-            if(mutuelleName) mutuelleName.textContent = AGENCY_CONFIG.remuneration.mutuelleName;
+            if(mutuelleName) mutuelleName.textContent = config.remuneration.mutuelleName;
 
             const mutuellePrice = document.getElementById('remun-mutuelle-price');
-            if(mutuellePrice) mutuellePrice.textContent = AGENCY_CONFIG.remuneration.mutuellePrice;
+            if(mutuellePrice) mutuellePrice.textContent = config.remuneration.mutuellePrice;
 
             // Docs - Medecine
             const medAddress = document.getElementById('doc-medecine-address');
-            if(medAddress) medAddress.textContent = AGENCY_CONFIG.docs.medecineTravail.address;
+            if(medAddress) medAddress.textContent = config.docs.medecineTravail.address;
 
             const medPhone = document.getElementById('doc-medecine-phone');
             if(medPhone) {
-                medPhone.href = AGENCY_CONFIG.docs.medecineTravail.phoneLink;
-                medPhone.textContent = AGENCY_CONFIG.docs.medecineTravail.phoneDisplay;
+                medPhone.href = config.docs.medecineTravail.phoneLink;
+                medPhone.textContent = config.docs.medecineTravail.phoneDisplay;
             }
 
             // Docs - Links
             const docIds = {
-                'doc-link-avantages': AGENCY_CONFIG.docs.links.avantages,
-                'doc-link-conges': AGENCY_CONFIG.docs.links.conges,
-                'doc-link-due-sante': AGENCY_CONFIG.docs.links.dueSante,
-                'doc-link-garantie-sante': AGENCY_CONFIG.docs.links.garantieSante,
-                'doc-link-due-interessement': AGENCY_CONFIG.docs.links.dueInteressement,
-                'doc-link-accord-temps': AGENCY_CONFIG.docs.links.accordTemps
+                'doc-link-avantages': config.docs.links.avantages,
+                'doc-link-conges': config.docs.links.conges,
+                'doc-link-due-sante': config.docs.links.dueSante,
+                'doc-link-garantie-sante': config.docs.links.garantieSante,
+                'doc-link-due-interessement': config.docs.links.dueInteressement,
+                'doc-link-accord-temps': config.docs.links.accordTemps
             };
 
             for(const [id, url] of Object.entries(docIds)) {
@@ -1057,21 +1066,21 @@
             // Contacts
             const agPhone = document.getElementById('contact-agency-phone');
             if(agPhone) {
-                agPhone.href = AGENCY_CONFIG.contacts.agence.phoneLink;
-                agPhone.textContent = AGENCY_CONFIG.contacts.agence.phoneDisplay;
+                agPhone.href = config.contacts.agence.phoneLink;
+                agPhone.textContent = config.contacts.agence.phoneDisplay;
             }
 
             const agAddrLink = document.getElementById('contact-agency-address-link');
-            if(agAddrLink) agAddrLink.href = AGENCY_CONFIG.contacts.agence.addressLink;
+            if(agAddrLink) agAddrLink.href = config.contacts.agence.addressLink;
 
             const agAddrText = document.getElementById('contact-agency-address-text');
-            if(agAddrText) agAddrText.textContent = AGENCY_CONFIG.contacts.agence.address;
+            if(agAddrText) agAddrText.textContent = config.contacts.agence.address;
 
             const agEmailLink = document.getElementById('contact-agency-email-link');
-            if(agEmailLink) agEmailLink.href = "mailto:" + AGENCY_CONFIG.contacts.agence.email;
+            if(agEmailLink) agEmailLink.href = "mailto:" + config.contacts.agence.email;
 
             const agEmailText = document.getElementById('contact-agency-email-text');
-            if(agEmailText) agEmailText.textContent = AGENCY_CONFIG.contacts.agence.email;
+            if(agEmailText) agEmailText.textContent = config.contacts.agence.email;
         }
 
         // Appliquer la config
