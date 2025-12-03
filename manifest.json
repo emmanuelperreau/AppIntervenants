@@ -1,6 +1,6 @@
 {
-  "name": "Intervenant O2",
-  "short_name": "Intervenant O2",
+  "name": "Agence O2",
+  "short_name": "Agence O2",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#11183b",
