@@ -888,8 +888,8 @@
                         <div class="bg-teal-50 dark:bg-teal-900/10 rounded-xl p-3 border border-teal-100 dark:border-teal-900/20">
                             <p class="font-bold text-teal-800 dark:text-teal-300 text-xs mb-2 uppercase">À contacter pour :</p>
                             <ul class="space-y-2 text-xs text-slate-700 dark:text-slate-300">
-                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-1.5 shrink-0"></div><span>Organiser la gestion de clés</span></li>
-                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-1.5 shrink-0"></div><span>Modifier votre contrat & vos disponibilités</span></li>
+                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-1.5 shrink-0"></div><span>Gestion de clés</span></li>
+                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-1.5 shrink-0"></div><span>Prévenir d'un changement de disponibilités</span></li>
                                 <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-teal-500 mt-1.5 shrink-0"></div><span>Questions administratives (mutuelle, bulletin de salaire...)</span></li>
                             </ul>
                         </div>
@@ -897,71 +897,70 @@
                 </div>
             </div>
 
-             <!-- Porte Close / Client Absent (Déplacé ici) -->
+             <!-- Porte Close / Client Absent (Restyled) -->
             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
                 <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white">
                     <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="door-closed" class="w-5 h-5"></i></div>
                     <h3 class="font-bold text-base">Porte Close / Client Absent</h3>
                 </div>
-                <div class="p-5 space-y-4">
-                    <div class="space-y-2">
-                        <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
-                            <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">1</span> 
-                            <span><span class="font-normal">Appeler la</span> <span class="font-bold">Ligne Salariés.</span></span>
+                <div class="p-5 space-y-5">
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span> 
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span class="font-normal">Appeler la</span> <span class="font-bold text-slate-800 dark:text-white">Ligne Salariés.</span></span>
                         </div>
-                        <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
-                            <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">2</span> 
-                            <span><span class="font-normal">Attendre</span> <strong>15 minutes.</strong></span>
+                        <div class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span> 
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span class="font-normal">Attendre</span> <strong class="text-slate-800 dark:text-white">15 minutes.</strong></span>
                         </div>
-                        <div class="flex items-center gap-3 text-xs text-slate-600 dark:text-slate-300">
-                            <span class="w-5 h-5 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-[11px] shrink-0">3</span> 
-                            <span><span class="font-normal">Contacter l'agence pour effectuer une mission de</span> <span class="font-bold">Tractage</span> <span class="font-normal">sur le temps prévu.</span></span>
+                        <div class="flex items-start gap-3">
+                            <span class="w-6 h-6 bg-amber-100 dark:bg-amber-900 text-amber-700 dark:text-amber-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span> 
+                            <span class="text-sm text-slate-600 dark:text-slate-300"><span class="font-normal">Contacter l'agence pour effectuer une mission de</span> <span class="font-bold text-slate-800 dark:text-white">Tractage</span> <span class="font-normal">sur le temps prévu.</span></span>
                         </div>
                     </div>
                     <div class="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 p-3 rounded-lg text-center">
-                        <p class="text-[11px] text-red-700 dark:text-red-300 font-bold uppercase mb-1"><i data-lucide="alert-triangle" class="inline w-3 h-3 mr-1"></i> Attention</p>
-                        <p class="text-[11px] text-red-600 dark:text-red-300 leading-tight">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
+                        <p class="text-xs text-red-700 dark:text-red-300 font-bold uppercase mb-1 flex items-center justify-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Attention</p>
+                        <p class="text-xs text-red-600 dark:text-red-300 leading-snug">Tout retour à domicile anticipé non validé avec l'agence pourra conduire à une retenue correspondante au temps prévu non réalisé.</p>
                     </div>
                 </div>
             </div>
 
-             <!-- Maladie & Accident -->
+             <!-- Maladie & Accident (Restyled) -->
              <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20">
-                    <div class="p-1.5 bg-orange-100 dark:bg-orange-900/50 rounded text-orange-600 dark:text-orange-400"><i data-lucide="ambulance" class="w-4 h-4"></i></div>
-                    <h3 class="font-bold text-sm text-slate-800 dark:text-white">Maladie & Accident</h3>
+                <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                    <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="ambulance" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-base">Maladie & Accident</h3>
                 </div>
-                <div class="p-4 space-y-4">
+                <div class="p-5 space-y-5">
                     <!-- Section Maladie -->
                     <div>
-                        <h4 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase mb-2">Arrêt Maladie</h4>
-                        <div class="space-y-2">
-                            <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
-                                <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">1</span> 
-                                <span><span class="font-normal">Appeler la</span> <span class="font-bold">Ligne Salariés.</span></span>
+                        <h4 class="text-xs font-bold text-orange-600 dark:text-orange-400 uppercase mb-3 border-b border-orange-100 dark:border-orange-900/30 pb-1 inline-block">Arrêt Maladie</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">1</span> 
+                                <span class="text-sm text-slate-600 dark:text-slate-300"><span class="font-normal">Appeler la</span> <span class="font-bold text-slate-800 dark:text-white">Ligne Salariés.</span></span>
                             </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
-                                <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">2</span> 
-                                <span><span class="font-normal">Envoyer l'arrêt sous</span> <strong>48h.</strong></span>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span> 
+                                <span class="text-sm text-slate-600 dark:text-slate-300"><span class="font-normal">Envoyer l'arrêt sous</span> <strong class="text-slate-800 dark:text-white">48h.</strong></span>
                             </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
-                                <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">3</span> 
-                                <span>Mettre les clés à disposition de l'agence.</span>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span> 
+                                <span class="text-sm text-slate-600 dark:text-slate-300">Mettre les clés à disposition de l'agence.</span>
                             </div>
-                            <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300">
-                                <span class="w-4 h-4 bg-slate-100 dark:bg-slate-700 rounded-full flex items-center justify-center text-[9px] font-bold text-slate-500 dark:text-slate-300 shrink-0">4</span> 
-                                <span>Organiser la reprise.</span>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 rounded-full flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">4</span> 
+                                <span class="text-sm text-slate-600 dark:text-slate-300">Organiser la reprise.</span>
                             </div>
                         </div>
                     </div>
-                    <!-- Separator -->
-                    <div class="border-t border-slate-100 dark:border-slate-700"></div>
+                    
                     <!-- Section Accident -->
-                    <div>
-                        <h4 class="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2 flex items-center gap-1"><i data-lucide="alert-triangle" class="w-3 h-3"></i> Accident Travail / Trajet</h4>
-                        <div class="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg border border-red-100 dark:border-red-900/30 space-y-2">
-                            <p class="text-[11px] text-red-800 dark:text-red-300 leading-tight"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
-                            <p class="text-[11px] text-red-800 dark:text-red-300 leading-tight">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
+                    <div class="bg-red-50 dark:bg-red-900/20 p-4 rounded-xl border border-red-100 dark:border-red-900/30">
+                        <h4 class="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2 flex items-center gap-2"><i data-lucide="alert-triangle" class="w-4 h-4"></i> Accident Travail / Trajet</h4>
+                        <div class="space-y-2">
+                            <p class="text-xs text-red-800 dark:text-red-200 leading-snug"><strong>Déclaration impérative sous 24h</strong> à l'agence.</p>
+                            <p class="text-xs text-red-800 dark:text-red-200 leading-snug">Il est recommandé de ne regagner votre domicile qu'après avis médical ou contact avec l'agence.</p>
                         </div>
                     </div>
                 </div>
@@ -972,7 +971,7 @@
 
     <!-- NAVIGATION BAR -->
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
-        <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-xl mx-auto pb-safe md:pb-0">
+        <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-2xl mx-auto pb-safe md:pb-0">
             <div class="flex justify-around items-center h-full px-2 md:px-6">
                 <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i></div>
