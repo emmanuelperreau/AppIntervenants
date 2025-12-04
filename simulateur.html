@@ -235,7 +235,7 @@
             // Ratio = 0.87. C'est haut pour du net imposable mais possible pour du "Net à payer" avec défraiement.
             // Utilisons un coeff standard de 0.78 pour la base, puis ajoutons les variables.
             
-            const netBase = (salaireBrut * 0.8869) - ((salaireBrut * 0,9825) + mutuelleCost); 
+            const netBase = (salaireBrut * 0.8869) - ((salaireBrut * 0,9825) + mutuelleCost) * 0,903; 
             
             // Variables
             const gainKms = kms * KM_RATE;
