@@ -122,27 +122,6 @@
             </div>
         </div>
 
-        <!-- 3. Résultats (Yellow Style) -->
-        <div class="bg-yellow-300 rounded-2xl shadow-lg border-2 border-yellow-400 overflow-hidden text-[#11183b]">
-            <div class="p-5 flex justify-between items-center">
-                <div>
-                    <h3 class="font-black text-lg">Gain net mensuel</h3>
-                    <p class="text-xs font-semibold opacity-70">Salaire de base + Variables</p>
-                </div>
-                <div class="text-right">
-                     <span id="res-net-mensuel" class="block text-3xl font-black">1 076,06 €</span>
-                     <span class="text-xs font-bold opacity-70">Smic net: <span id="res-smic-mensuel">957,60 €</span></span>
-                </div>
-            </div>
-            <div class="px-5 py-3 bg-yellow-200/50 border-t border-yellow-400/30 flex justify-between items-center">
-                 <span class="font-bold text-sm">Gain net / heure</span>
-                 <div class="text-right">
-                     <span id="res-net-horaire" class="block text-xl font-black">10,35 €</span>
-                     <span class="text-[10px] font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">9,21 €</span></span>
-                 </div>
-            </div>
-        </div>
-
         <!-- 4. Avantages Annuels (Pink Style) -->
         <div class="bg-pink-100 dark:bg-pink-900/30 rounded-2xl shadow-sm border border-pink-200 dark:border-pink-800 p-5 space-y-3">
             <h3 class="font-bold text-pink-800 dark:text-pink-300 text-sm uppercase mb-2">Avantages & Primes (Annuels/Ponctuels)</h3>
@@ -170,12 +149,14 @@
                 </div>
                 <div class="text-right">
                      <span id="res-total-moyen" class="block text-3xl font-black">1 095,23 €</span>
+                     <span class="text-xs font-bold opacity-70">Smic net: <span id="res-smic-mensuel">957,60 €</span></span>
                 </div>
             </div>
             <div class="px-5 py-3 bg-green-600/30 border-t border-green-400/30 flex justify-between items-center">
                  <span class="font-bold text-sm">Gain net / heure moyen</span>
                  <div class="text-right">
                      <span id="res-total-horaire" class="block text-xl font-black">10,53 €</span>
+                     <span class="text-[10px] font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">9,21 €</span></span>
                  </div>
             </div>
         </div>
@@ -240,8 +221,8 @@
             const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
             
             // 3. Net Mensuel à Payer
-            // netBase est le net après cotisations, mais il faut déduire la part mutuelle et tickets, et ajouter les KMs
-            const netMensuel = netBase + gainKms - costTickets - mutuelleCost;
+            // netBase est le net après cotisations, mais il faut déduire la part mutuelle et ajouter tickets, et ajouter les KMs
+            const netMensuel = netBase + gainKms + costTickets - mutuelleCost;
             
             // 4. SMIC Net à Payer (Comparatif équivalent avec même mutuelle déduite)
             const smicMensuelFinal = smicNetBase - mutuelleCost;
