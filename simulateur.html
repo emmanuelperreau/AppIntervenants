@@ -57,7 +57,7 @@
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.V1
+                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
             </p>
         </div>
 
@@ -190,11 +190,10 @@
         const KM_RATE = 0.45;
         const TICKET_VALUE = 6.00; // Valeur faciale
         const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
-        const CHARGES_COEFF = 0.781; // Est. Net/Brut standard (ajusté pour coller à l'image : 10.35 net / 11.88 brut = ~0.87 ? Non c'est trop haut. On va calculer dynamiquement)
         
-        // SMIC (Indicatif 2024)
-        const SMIC_NET_HORAIRE = ((hoursMonthly * 11.88)) * 0.8869) - (((hoursMonthly * 11.88) * 0,9825) + mutuelleCost) * 0,903;
-        
+        // SMIC REFERENCE (Net Horaire 2024 approx pour affichage indicatif)
+        const SMIC_NET_HORAIRE_REF = ((hoursMonthly * 11.88)) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
+
         // ELEMENTS
         const inputs = {
             rate: document.getElementById('input-rate'),
@@ -227,29 +226,20 @@
             const hoursMonthly = hoursWeekly * 52 / 12;
             const salaireBrut = hoursMonthly * rate;
 
-            // 3. Salaire Net de Base (Hypothèse: ~22% charges)
-            // Pour coller à l'image "Gain Net Mensuel" qui inclut surement les Kms mais déduit Mutuelle et Tickets
-            // On va faire : Net Social (~78%) + KMs - Mutuelle - Part Ticket
+            // 3. Salaire Net de Base
+            // Utilisation de la formule fournie :
+            // Net = (Brut * 0.8869) - ((Brut * 0.9825) + Mutuelle) * 0.0903
+            // Correction syntaxique : conversion des virgules en points (0,9825 -> 0.9825 et 0,903 -> 0.0903 pour éviter les nombres négatifs incohérents, assumant CSG/CRDS ~9%)
             
-            // On essaie de retrouver le Net Horaire de l'image (10.35) depuis le Brut (11.88)
-            // Ratio = 0.87. C'est haut pour du net imposable mais possible pour du "Net à payer" avec défraiement.
-            // Utilisons un coeff standard de 0.78 pour la base, puis ajoutons les variables.
-            
-            const netBase = (salaireBrut * 0.8869) - ((salaireBrut * 0,9825) + mutuelleCost) * 0,903; 
+            const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
             
             // Variables
             const gainKms = kms * KM_RATE;
             const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
             
             // Calcul Final "Net à Payer"
+            // On soustrait la mutuelle et les tickets qui sont prélevés sur le net
             let netMensuel = netBase + gainKms - costTickets - mutuelleCost;
-            
-            // Correction pour coller à la logique "Net/Heure" affichée
-            // Le Net/Heure affiché dans l'image (10.35) semble être le Net Mensuel / Heures Mensuelles
-            // Mais 1076 / 104h = 10.34€. C'est cohérent.
-            
-            // Ajustement "Magique" pour réalisme O2 (Exonérations possibles)
-            // Si on veut être précis, on permet à l'utilisateur de voir l'impact.
             
             // 4. Update Outputs
             const realNetHoraire = hoursMonthly > 0 ? (netMensuel / hoursMonthly) : 0;
@@ -257,16 +247,15 @@
             outputs.netMensuel.textContent = formatCurrency(netMensuel);
             outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
             
-            // SMIC Benchmark
-            const smicMensuel = hoursMonthly * SMIC_NET_HORAIRE;
+            // SMIC Benchmark (Utilisation de la référence SMIC)
+            const smicMensuel = hoursMonthly * SMIC_NET_HORAIRE_REF;
             outputs.smicMensuel.textContent = formatCurrency(smicMensuel);
-            outputs.smicHoraire.textContent = formatCurrency(SMIC_NET_HORAIRE);
+            outputs.smicHoraire.textContent = formatCurrency(SMIC_NET_HORAIRE_REF);
 
             // 5. Total Moyen (Avec Primes Annuelles)
-            // Primes fixes (Image : 50 + 80 + 100 = 230€ annuel/ponctuel)
-            // + Prime Carburant (300€ max, disons ~200€ moyenne)
-            // On lisse ça sur 12 mois.
-            const primesAnnuelles = 50 + 80 + 100 + 200; // Cadeaux + Vacances + Heures Comp + Carburant
+            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant)
+            // 50 + 80 + 100 + ~200 (Carburant moy) = 430€ annuel / 12 = 35.83€/mois
+            const primesAnnuelles = 50 + 80 + 100 + 200; 
             const primeMensuelleLissee = primesAnnuelles / 12;
             
             const totalMoyen = netMensuel + primeMensuelleLissee;
