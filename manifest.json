@@ -8,13 +8,12 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "https://drive.google.com/uc?export=view&id=1hJccF_c-2NPMJ0UvCPDRH_rFAdK11SCx",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
+      "src": "https://drive.google.com/uc?export=view&id=1tgZN2DaW5SlGRkEH5yEPrqDI5p7vB9Gm",
+      "type": "image/svg+xml"
+    }    
     {
-      "src": "https://drive.google.com/uc?export=view&id=1hJccF_c-2NPMJ0UvCPDRH_rFAdK11SCx",
-      "sizes": "192x192",
+      "src": "https://drive.google.com/uc?export=view&id=1gnRN_C7P7yLoKmifvxZunXoxhJVYt1Vv",
+      "sizes": "512/512",
       "type": "image/png"
     }
   ]
