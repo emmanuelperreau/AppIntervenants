@@ -179,7 +179,7 @@
         
         // Estimation charges patronales (coeff approximatif pour SMIC + réductions)
         // 1.25 est une moyenne basse prenant en compte les allègements Fillon sur bas salaires + mutuelle/prévoyance
-        const CHARGES_PATRONALES_COEFF = 1.25; 
+        const CHARGES_PATRONALES_COEFF = 1.1; 
 
         // ELEMENTS
         const inputs = {
@@ -248,8 +248,8 @@
             if(outputs.smicHoraire) outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
 
             // 5. Total Moyen (Avec Primes Annuelles)
-            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant estimé)
-            const primesAnnuelles = 50 + 80 + 100 + 200; 
+            // Primes fixes (Cadeaux + Vacances + Heures Comp)
+            const primesAnnuelles = 50 + 80 + 100;
             const primeMensuelleLissee = primesAnnuelles / 12;
             
             const totalMoyen = netMensuel + primeMensuelleLissee;
@@ -264,7 +264,7 @@
             const partPatronaleMutuelle = mutuelleCost; // O2 paye 50% donc idem part salariale en valeur
             
             // Formule simplifiée : Brut chargé + avantages
-            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleTickets + partPatronaleMutuelle;
+            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleMutuelle;
             
             if(outputs.coutEmployeur) outputs.coutEmployeur.textContent = formatCurrency(coutGlobal);
         }
