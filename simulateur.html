@@ -57,7 +57,7 @@
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.V2
+                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
             </p>
         </div>
 
@@ -190,20 +190,8 @@
         const KM_RATE = 0.45;
         const TICKET_VALUE = 6.00; // Valeur faciale
         const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
-        const rate = parseFloat(inputs.rate.value) || 0;
-        const hoursWeekly = parseFloat(inputs.hours.value) || 0;
-        const kms = parseFloat(inputs.kms.value) || 0;
-        const tickets = parseFloat(inputs.tickets.value) || 0;
-        const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
 
-        // 2. Base Maths
-        const hoursMonthly = hoursWeekly * 52 / 12;
-        const salaireBrut = hoursMonthly * rate;
-        
-        // SMIC REFERENCE (Net Horaire 2025 approx pour affichage indicatif)
-        const SMIC_NET_HORAIRE_REF = ((hoursMonthly * 11.88)) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
-
-        // ELEMENTS
+        // ELEMENTS (Définis globalement, mais lus dans calculate)
         const inputs = {
             rate: document.getElementById('input-rate'),
             hours: document.getElementById('input-hours'),
@@ -224,30 +212,51 @@
 
         // CALCULATION ENGINE
         function calculate() {
-            const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
+            // Lecture dynamique des valeurs
+            const rate = parseFloat(inputs.rate.value) || 0;
+            const hoursWeekly = parseFloat(inputs.hours.value) || 0;
+            const kms = parseFloat(inputs.kms.value) || 0;
+            const tickets = parseFloat(inputs.tickets.value) || 0;
+            const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
+
+            // Calculs de base
+            const hoursMonthly = hoursWeekly * 52 / 12;
+            const salaireBrut = hoursMonthly * rate;
             
-            // Variables
+            // FORMULES FOURNIES (avec corrections des types et scope)
+            
+            // 1. Calcul du Net de Base
+            // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.0903)
+            const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
+
+            // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
+            // Formule: ((Heures * 11.88) * 0.8869) - ((((Heures * 11.88) * 0.9825) + Mutuelle) * 0.0903)
+            const smicNetBase = ((hoursMonthly * 11.88) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
+
+            // Calculs Annexes
             const gainKms = kms * KM_RATE;
             const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
             
-            // Calcul Final "Net à Payer"
-            // On soustrait la mutuelle et les tickets qui sont prélevés sur le net
-            let netMensuel = netBase + gainKms - costTickets - mutuelleCost;
+            // 3. Net Mensuel à Payer (Calcul Utilisateur)
+            // On soustrait la mutuelle (part salariale) et les tickets
+            const netMensuel = netBase + gainKms - costTickets - mutuelleCost;
             
-            // 4. Update Outputs
+            // 4. SMIC Net à Payer (Comparatif équivalent)
+            // Pour comparer ce qui est comparable, on applique aussi la déduction mutuelle au SMIC de base calculé
+            const smicMensuelFinal = smicNetBase - mutuelleCost;
+
+            // Affichage Résultats
             const realNetHoraire = hoursMonthly > 0 ? (netMensuel / hoursMonthly) : 0;
+            const smicHoraireFinal = hoursMonthly > 0 ? (smicMensuelFinal / hoursMonthly) : 0;
             
             outputs.netMensuel.textContent = formatCurrency(netMensuel);
             outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
             
-            // SMIC Benchmark (Utilisation de la référence SMIC)
-            const smicMensuel = hoursMonthly * SMIC_NET_HORAIRE_REF;
-            outputs.smicMensuel.textContent = formatCurrency(smicMensuel);
-            outputs.smicHoraire.textContent = formatCurrency(SMIC_NET_HORAIRE_REF);
+            outputs.smicMensuel.textContent = formatCurrency(smicMensuelFinal);
+            outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
 
             // 5. Total Moyen (Avec Primes Annuelles)
-            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant)
-            // 50 + 80 + 100 + ~200 (Carburant moy) = 430€ annuel / 12 = 35.83€/mois
+            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant) = ~430€/an
             const primesAnnuelles = 50 + 80 + 100 + 200; 
             const primeMensuelleLissee = primesAnnuelles / 12;
             
@@ -265,7 +274,7 @@
         // LISTENERS
         Object.values(inputs).forEach(input => {
             input.addEventListener('input', calculate);
-            input.addEventListener('change', calculate);
+            input.addEventListener('change', calculate); // Pour checkbox
         });
 
         // INIT
