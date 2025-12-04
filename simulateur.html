@@ -293,7 +293,7 @@
             const partPatronaleMutuelle = mutuelleCost; // O2 paye 50% donc idem part salariale en valeur
             
             // Formule simplifiée : Brut chargé + avantages
-            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleMutuelle;
+            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleTickets + partPatronaleMutuelle;
             
             if(outputs.coutEmployeur) outputs.coutEmployeur.textContent = formatCurrency(coutGlobal);
         }
