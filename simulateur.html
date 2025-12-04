@@ -57,7 +57,7 @@
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative basée sur un taux de charges moyen (~22%). Les montants réels peuvent varier selon votre situation personnelle et fiscale.
+                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
             </p>
         </div>
 
@@ -105,7 +105,7 @@
                     <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-tickets" value="20" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">ut</span>
+                        <span class="text-sm font-bold text-slate-400">/mois</span>
                     </div>
                 </div>
                 <!-- Mutuelle -->
@@ -235,7 +235,7 @@
             // Ratio = 0.87. C'est haut pour du net imposable mais possible pour du "Net à payer" avec défraiement.
             // Utilisons un coeff standard de 0.78 pour la base, puis ajoutons les variables.
             
-            const netBase = salaireBrut * 0.78; 
+            const netBase = (salaireBrut * 0.8869) - ((salaireBrut * 0,9825) + mutuelleCost); 
             
             // Variables
             const gainKms = kms * KM_RATE;
