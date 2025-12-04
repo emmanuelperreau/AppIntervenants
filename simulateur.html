@@ -148,17 +148,22 @@
                     <p class="text-xs font-semibold opacity-80 text-green-100">Lissé sur l'année (inclus primes)</p>
                 </div>
                 <div class="text-right">
-                     <span id="res-total-moyen" class="block text-3xl font-black">1 095,23 €</span>
-                     <span class="text-xs font-bold opacity-70">Smic net: <span id="res-smic-mensuel">957,60 €</span></span>
+                     <span id="res-total-moyen" class="block text-3xl font-black">--,-- €</span>
+                     <span class="text-xs font-bold opacity-70">Smic net: <span id="res-smic-mensuel">--,-- €</span></span>
                 </div>
             </div>
             <div class="px-5 py-3 bg-green-600/30 border-t border-green-400/30 flex justify-between items-center">
                  <span class="font-bold text-sm">Gain net / heure moyen</span>
                  <div class="text-right">
-                     <span id="res-total-horaire" class="block text-xl font-black">10,53 €</span>
-                     <span class="text-[10px] font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">9,21 €</span></span>
+                     <span id="res-total-horaire" class="block text-xl font-black">--,-- €</span>
+                     <span class="text-[10px] font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">--,-- €</span></span>
                  </div>
             </div>
+        </div>
+
+        <!-- Coût Employeur -->
+        <div class="mt-6 text-center pb-safe">
+            <p class="text-xs text-slate-400 font-medium">Coût global employeur estimé : <span id="res-cout-employeur" class="font-bold text-slate-600 dark:text-slate-300">--,-- €</span></p>
         </div>
 
     </main>
@@ -171,8 +176,12 @@
         const KM_RATE = 0.45;
         const TICKET_VALUE = 6.00; // Valeur faciale
         const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
+        
+        // Estimation charges patronales (coeff approximatif pour SMIC + réductions)
+        // 1.25 est une moyenne basse prenant en compte les allègements Fillon sur bas salaires + mutuelle/prévoyance
+        const CHARGES_PATRONALES_COEFF = 1.25; 
 
-        // ELEMENTS (Définis globalement, mais lus dans calculate)
+        // ELEMENTS
         const inputs = {
             rate: document.getElementById('input-rate'),
             hours: document.getElementById('input-hours'),
@@ -183,12 +192,16 @@
         };
 
         const outputs = {
+            // Optional elements (handled safely if missing)
             netMensuel: document.getElementById('res-net-mensuel'),
-            smicMensuel: document.getElementById('res-smic-mensuel'),
             netHoraire: document.getElementById('res-net-horaire'),
+            
+            // Required elements
+            smicMensuel: document.getElementById('res-smic-mensuel'),
             smicHoraire: document.getElementById('res-smic-horaire'),
             totalMoyen: document.getElementById('res-total-moyen'),
-            totalHoraire: document.getElementById('res-total-horaire')
+            totalHoraire: document.getElementById('res-total-horaire'),
+            coutEmployeur: document.getElementById('res-cout-employeur')
         };
 
         // CALCULATION ENGINE
@@ -207,13 +220,10 @@
             // FORMULES UTILISATEUR CORRIGEES (Syntaxe % remplacée par décimales)
             
             // 1. Calcul du Net de Base
-            // Formule originale: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.097)
-            // Note: 11.31% = 0.1131. (1 - 0.1131 = 0.8869)
-            // Note: 9.7% = 0.097
+            // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.097)
             const netBase = salaireBrut - (salaireBrut * 0.1131) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.097);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
-            // Formule SMIC de base : 11.88 € brut/h
             const smicNetBase = (hoursMonthly * 11.88) - ((hoursMonthly * 11.88) * 0.1131) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.097);
 
             // Calculs Annexes
@@ -227,15 +237,15 @@
             // 4. SMIC Net à Payer (Comparatif équivalent avec même mutuelle déduite)
             const smicMensuelFinal = smicNetBase - mutuelleCost;
 
-            // Affichage Résultats
+            // Affichage Résultats (avec vérification si l'élément existe)
             const realNetHoraire = hoursMonthly > 0 ? (netMensuel / hoursMonthly) : 0;
             const smicHoraireFinal = hoursMonthly > 0 ? (smicMensuelFinal / hoursMonthly) : 0;
             
-            outputs.netMensuel.textContent = formatCurrency(netMensuel);
-            outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
+            if(outputs.netMensuel) outputs.netMensuel.textContent = formatCurrency(netMensuel);
+            if(outputs.netHoraire) outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
             
-            outputs.smicMensuel.textContent = formatCurrency(smicMensuelFinal);
-            outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
+            if(outputs.smicMensuel) outputs.smicMensuel.textContent = formatCurrency(smicMensuelFinal);
+            if(outputs.smicHoraire) outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
 
             // 5. Total Moyen (Avec Primes Annuelles)
             // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant estimé)
@@ -245,8 +255,18 @@
             const totalMoyen = netMensuel + primeMensuelleLissee;
             const totalHoraire = hoursMonthly > 0 ? (totalMoyen / hoursMonthly) : 0;
 
-            outputs.totalMoyen.textContent = formatCurrency(totalMoyen);
-            outputs.totalHoraire.textContent = formatCurrency(totalHoraire);
+            if(outputs.totalMoyen) outputs.totalMoyen.textContent = formatCurrency(totalMoyen);
+            if(outputs.totalHoraire) outputs.totalHoraire.textContent = formatCurrency(totalHoraire);
+
+            // 6. Coût Global Employeur (Estimation)
+            // Salaire Brut chargé + Kms + Tickets (part employeur 50%) + Mutuelle (part employeur 50%)
+            const partPatronaleTickets = tickets * 3.00; // O2 paye 3€
+            const partPatronaleMutuelle = mutuelleCost; // O2 paye 50% donc idem part salariale en valeur
+            
+            // Formule simplifiée : Brut chargé + avantages
+            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleTickets + partPatronaleMutuelle;
+            
+            if(outputs.coutEmployeur) outputs.coutEmployeur.textContent = formatCurrency(coutGlobal);
         }
 
         function formatCurrency(val) {
@@ -255,8 +275,10 @@
 
         // LISTENERS
         Object.values(inputs).forEach(input => {
-            input.addEventListener('input', calculate);
-            input.addEventListener('change', calculate); // Pour checkbox
+            if(input) { // Sécurité si un input manque
+                input.addEventListener('input', calculate);
+                input.addEventListener('change', calculate);
+            }
         });
 
         // INIT
