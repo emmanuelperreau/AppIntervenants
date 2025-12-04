@@ -193,7 +193,7 @@
         const CHARGES_COEFF = 0.781; // Est. Net/Brut standard (ajusté pour coller à l'image : 10.35 net / 11.88 brut = ~0.87 ? Non c'est trop haut. On va calculer dynamiquement)
         
         // SMIC (Indicatif 2024)
-        const SMIC_NET_HORAIRE = 9.22;
+        const SMIC_NET_HORAIRE = ((hoursMonthly * 11.88)) * 0.8869) - (((hoursMonthly * 11.88) * 0,9825) + mutuelleCost) * 0,903;
         
         // ELEMENTS
         const inputs = {
