@@ -44,7 +44,7 @@
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
                 <span class="font-bold text-sm">Retour</span>
             </a>
-            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire1</h1>
+            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire</h1>
             <div class="w-5 h-5"></div> <!-- Spacer -->
         </div>
     </header>
@@ -223,15 +223,17 @@
             const hoursMonthly = hoursWeekly * 52 / 12;
             const salaireBrut = hoursMonthly * rate;
             
-            // FORMULES UTILISATEUR
+            // FORMULES UTILISATEUR CORRIGEES (Syntaxe % remplacée par décimales)
             
             // 1. Calcul du Net de Base
-            // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.0903)
-            const netBase = salaireBrut - (salaireBrut * 11.31%) - (((salaireBrut * 0.9825) + mutuelleCost) * 9.7%);
+            // Formule originale: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.097)
+            // Note: 11.31% = 0.1131. (1 - 0.1131 = 0.8869)
+            // Note: 9.7% = 0.097
+            const netBase = salaireBrut - (salaireBrut * 0.1131) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.097);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
-            // Formule: ((Heures * 11.88) * 0.8869) - ((((Heures * 11.88) * 0.9825) + Mutuelle) * 0.0903)
-            const smicNetBase = (hoursMonthly * 11.88) - ((hoursMonthly * 11.88) * 11.31%) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 9.7%);
+            // Formule SMIC de base : 11.88 € brut/h
+            const smicNetBase = (hoursMonthly * 11.88) - ((hoursMonthly * 11.88) * 0.1131) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.097);
 
             // Calculs Annexes
             const gainKms = kms * KM_RATE;
