@@ -44,7 +44,7 @@
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
                 <span class="font-bold text-sm">Retour</span>
             </a>
-            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire</h1>
+            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire2</h1>
             <div class="w-5 h-5"></div> <!-- Spacer -->
         </div>
     </header>
@@ -227,11 +227,11 @@
             
             // 1. Calcul du Net de Base
             // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.0903)
-            const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
+            const netBase = salaireBrut - (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
             // Formule: ((Heures * 11.88) * 0.8869) - ((((Heures * 11.88) * 0.9825) + Mutuelle) * 0.0903)
-            const smicNetBase = ((hoursMonthly * 11.88) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
+            const smicNetBase = (hoursMonthly * 11.88) - ((hoursMonthly * 11.88) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
 
             // Calculs Annexes
             const gainKms = kms * KM_RATE;
