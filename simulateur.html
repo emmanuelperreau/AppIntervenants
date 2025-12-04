@@ -9,6 +9,9 @@
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#11183b">
     
+    <!-- Config Agence -->
+    <script src="config.js"></script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -204,6 +207,32 @@
             coutEmployeur: document.getElementById('res-cout-employeur')
         };
 
+        // LOAD AGENCY CONFIG
+        function loadAgencyConfig() {
+            if(typeof AGENCY_CONFIGS === 'undefined') return;
+
+            // Get agency from URL
+            const params = new URLSearchParams(window.location.search);
+            const agencyId = params.get('agence') || 'nord-touraine';
+            const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
+
+            if(config && config.remuneration && config.remuneration.mutuellePrice) {
+                 // Convert "16,88 €" -> 16.88
+                 const priceStr = config.remuneration.mutuellePrice.replace(',','.');
+                 const price = parseFloat(priceStr);
+                 
+                 const inputMutuelle = document.getElementById('input-mutuelle-cost');
+                 if(inputMutuelle && !isNaN(price)) {
+                     inputMutuelle.value = price.toFixed(2);
+                     // Disable input
+                     inputMutuelle.disabled = true;
+                     // Visual feedback for disabled state
+                     inputMutuelle.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-100', 'dark:bg-slate-700');
+                     inputMutuelle.classList.remove('bg-slate-50', 'dark:bg-slate-900');
+                 }
+            }
+        }
+
         // CALCULATION ENGINE
         function calculate() {
             // Lecture dynamique des valeurs
@@ -282,6 +311,7 @@
         });
 
         // INIT
+        loadAgencyConfig();
         calculate();
 
     </script>

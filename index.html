@@ -242,7 +242,7 @@
 
                     <!-- Simulator CTA -->
                     <div class="flex flex-col sm:flex-row gap-3 mt-1">
-                         <a href="simulateur.html" class="flex-1 bg-white text-[#11183b] hover:bg-slate-50 transition-colors p-3.5 rounded-xl shadow-md flex items-center justify-between group border border-transparent hover:border-teal-200">
+                         <a href="simulateur.html" id="btn-simulator" class="flex-1 bg-white text-[#11183b] hover:bg-slate-50 transition-colors p-3.5 rounded-xl shadow-md flex items-center justify-between group border border-transparent hover:border-teal-200">
                              <div class="flex items-center gap-3">
                                  <div class="bg-blue-50 p-2 rounded-full text-blue-600 group-hover:bg-blue-100 transition-colors">
                                      <i data-lucide="calculator" class="w-5 h-5"></i>
@@ -1202,6 +1202,10 @@
 
             const mutuellePrice = document.getElementById('remun-mutuelle-price');
             if(mutuellePrice) mutuellePrice.textContent = config.remuneration.mutuellePrice;
+
+            // NEW: Update Simulator Link with agency param
+            const btnSimulator = document.getElementById('btn-simulator');
+            if(btnSimulator) btnSimulator.href = 'simulateur.html?agence=' + agencyId;
 
             // Docs - Medecine
             const medAddress = document.getElementById('doc-medecine-address');
