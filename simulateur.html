@@ -57,7 +57,7 @@
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
+                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.V2
             </p>
         </div>
 
@@ -190,8 +190,17 @@
         const KM_RATE = 0.45;
         const TICKET_VALUE = 6.00; // Valeur faciale
         const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
+        const rate = parseFloat(inputs.rate.value) || 0;
+        const hoursWeekly = parseFloat(inputs.hours.value) || 0;
+        const kms = parseFloat(inputs.kms.value) || 0;
+        const tickets = parseFloat(inputs.tickets.value) || 0;
+        const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
+
+        // 2. Base Maths
+        const hoursMonthly = hoursWeekly * 52 / 12;
+        const salaireBrut = hoursMonthly * rate;
         
-        // SMIC REFERENCE (Net Horaire 2024 approx pour affichage indicatif)
+        // SMIC REFERENCE (Net Horaire 2025 approx pour affichage indicatif)
         const SMIC_NET_HORAIRE_REF = ((hoursMonthly * 11.88)) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
 
         // ELEMENTS
@@ -215,22 +224,6 @@
 
         // CALCULATION ENGINE
         function calculate() {
-            // 1. Get Values
-            const rate = parseFloat(inputs.rate.value) || 0;
-            const hoursWeekly = parseFloat(inputs.hours.value) || 0;
-            const kms = parseFloat(inputs.kms.value) || 0;
-            const tickets = parseFloat(inputs.tickets.value) || 0;
-            const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
-
-            // 2. Base Maths
-            const hoursMonthly = hoursWeekly * 52 / 12;
-            const salaireBrut = hoursMonthly * rate;
-
-            // 3. Salaire Net de Base
-            // Utilisation de la formule fournie :
-            // Net = (Brut * 0.8869) - ((Brut * 0.9825) + Mutuelle) * 0.0903
-            // Correction syntaxique : conversion des virgules en points (0,9825 -> 0.9825 et 0,903 -> 0.0903 pour éviter les nombres négatifs incohérents, assumant CSG/CRDS ~9%)
-            
             const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
             
             // Variables
