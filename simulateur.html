@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Simulateur Salaire - Agence O2</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#11183b">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+          darkMode: 'media',
+          theme: {
+            extend: {
+              colors: {
+                slate: { 850: '#151e32', 900: '#0f172a' }
+              }
+            }
+          }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        .slide-in { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+        input[type=number] { -moz-appearance: textfield; }
+        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white min-h-screen pb-10">
+
+    <!-- Header -->
+    <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-[#11183b] dark:text-slate-400 dark:hover:text-white transition-colors">
+                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                <span class="font-bold text-sm">Retour</span>
+            </a>
+            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire</h1>
+            <div class="w-5 h-5"></div> <!-- Spacer -->
+        </div>
+    </header>
+
+    <main class="max-w-xl mx-auto p-4 space-y-4 slide-in">
+        
+        <!-- Info Banner -->
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-xl border border-blue-100 dark:border-blue-800 flex items-start gap-3">
+            <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-1.5 rounded-lg shrink-0">
+                <i data-lucide="info" class="w-4 h-4"></i>
+            </div>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
+                Estimation indicative basée sur un taux de charges moyen (~22%). Les montants réels peuvent varier selon votre situation personnelle et fiscale.
+            </p>
+        </div>
+
+        <!-- 1. Contrat (Inputs) -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="px-5 py-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+                <h3 class="font-bold text-sm uppercase text-slate-500 dark:text-slate-400">Votre Contrat</h3>
+            </div>
+            <div class="p-4 space-y-4">
+                <!-- Taux Horaire -->
+                <div class="flex justify-between items-center">
+                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="input-rate" value="11.88" step="0.01" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <span class="text-sm font-bold text-slate-400">€</span>
+                    </div>
+                </div>
+                <!-- Heures Hebdo -->
+                <div class="flex justify-between items-center">
+                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="input-hours" value="24" step="0.5" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <span class="text-sm font-bold text-slate-400">h</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Variables (Inputs) -->
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
+            <div class="px-5 py-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
+                <h3 class="font-bold text-sm uppercase text-slate-500 dark:text-slate-400">Éléments Variables</h3>
+            </div>
+            <div class="p-4 space-y-4">
+                <!-- KMs -->
+                <div class="flex justify-between items-center">
+                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="input-kms" value="150" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <span class="text-sm font-bold text-slate-400">km</span>
+                    </div>
+                </div>
+                <!-- Titres Resto -->
+                <div class="flex justify-between items-center">
+                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="input-tickets" value="20" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <span class="text-sm font-bold text-slate-400">ut</span>
+                    </div>
+                </div>
+                <!-- Mutuelle -->
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-2">
+                         <input type="checkbox" id="check-mutuelle" checked class="w-5 h-5 text-teal-500 rounded focus:ring-teal-500 border-gray-300">
+                         <label for="check-mutuelle" class="text-sm font-medium text-slate-700 dark:text-slate-300">Mutuelle (isolée)</label>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <input type="number" id="input-mutuelle-cost" value="20" class="w-20 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-1 px-2 text-sm font-bold text-slate-500 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-500">
+                        <span class="text-sm font-bold text-slate-400">€</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Résultats (Yellow Style) -->
+        <div class="bg-yellow-300 rounded-2xl shadow-lg border-2 border-yellow-400 overflow-hidden text-[#11183b]">
+            <div class="p-5 flex justify-between items-center">
+                <div>
+                    <h3 class="font-black text-lg">Gain net mensuel</h3>
+                    <p class="text-xs font-semibold opacity-70">Salaire de base + Variables</p>
+                </div>
+                <div class="text-right">
+                     <span id="res-net-mensuel" class="block text-3xl font-black">1 076,06 €</span>
+                     <span class="text-xs font-bold opacity-70">Smic net: <span id="res-smic-mensuel">957,60 €</span></span>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-yellow-200/50 border-t border-yellow-400/30 flex justify-between items-center">
+                 <span class="font-bold text-sm">Gain net / heure</span>
+                 <div class="text-right">
+                     <span id="res-net-horaire" class="block text-xl font-black">10,35 €</span>
+                     <span class="text-[10px] font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">9,21 €</span></span>
+                 </div>
+            </div>
+        </div>
+
+        <!-- 4. Avantages Annuels (Pink Style) -->
+        <div class="bg-pink-100 dark:bg-pink-900/30 rounded-2xl shadow-sm border border-pink-200 dark:border-pink-800 p-5 space-y-3">
+            <h3 class="font-bold text-pink-800 dark:text-pink-300 text-sm uppercase mb-2">Avantages & Primes (Annuels/Ponctuels)</h3>
+            
+            <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Chèques Cadeau</span>
+                <span class="font-bold text-[#11183b] dark:text-white">50,00 €</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Chèques Vacances</span>
+                <span class="font-bold text-[#11183b] dark:text-white">80,00 €</span>
+            </div>
+             <div class="flex justify-between items-center pt-2 border-t border-pink-200 dark:border-pink-800/50">
+                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Heures Complémentaires (Estim.)</span>
+                <span class="font-bold text-[#11183b] dark:text-white">100,00 €</span>
+            </div>
+        </div>
+
+        <!-- 5. Total Moyen (Green Style) -->
+        <div class="bg-green-500 rounded-2xl shadow-lg border-2 border-green-400 overflow-hidden text-white">
+            <div class="p-5 flex justify-between items-center">
+                <div>
+                    <h3 class="font-black text-lg">Gain net mensuel moyen</h3>
+                    <p class="text-xs font-semibold opacity-80 text-green-100">Lissé sur l'année (inclus primes)</p>
+                </div>
+                <div class="text-right">
+                     <span id="res-total-moyen" class="block text-3xl font-black">1 095,23 €</span>
+                </div>
+            </div>
+            <div class="px-5 py-3 bg-green-600/30 border-t border-green-400/30 flex justify-between items-center">
+                 <span class="font-bold text-sm">Gain net / heure moyen</span>
+                 <div class="text-right">
+                     <span id="res-total-horaire" class="block text-xl font-black">10,53 €</span>
+                 </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // INIT ICONS
+        lucide.createIcons();
+
+        // CONSTANTS
+        const KM_RATE = 0.45;
+        const TICKET_VALUE = 6.00; // Valeur faciale
+        const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
+        const CHARGES_COEFF = 0.781; // Est. Net/Brut standard (ajusté pour coller à l'image : 10.35 net / 11.88 brut = ~0.87 ? Non c'est trop haut. On va calculer dynamiquement)
+        
+        // SMIC (Indicatif 2024)
+        const SMIC_NET_HORAIRE = 9.22;
+        
+        // ELEMENTS
+        const inputs = {
+            rate: document.getElementById('input-rate'),
+            hours: document.getElementById('input-hours'),
+            kms: document.getElementById('input-kms'),
+            tickets: document.getElementById('input-tickets'),
+            mutuelleCheck: document.getElementById('check-mutuelle'),
+            mutuelleCost: document.getElementById('input-mutuelle-cost')
+        };
+
+        const outputs = {
+            netMensuel: document.getElementById('res-net-mensuel'),
+            smicMensuel: document.getElementById('res-smic-mensuel'),
+            netHoraire: document.getElementById('res-net-horaire'),
+            smicHoraire: document.getElementById('res-smic-horaire'),
+            totalMoyen: document.getElementById('res-total-moyen'),
+            totalHoraire: document.getElementById('res-total-horaire')
+        };
+
+        // CALCULATION ENGINE
+        function calculate() {
+            // 1. Get Values
+            const rate = parseFloat(inputs.rate.value) || 0;
+            const hoursWeekly = parseFloat(inputs.hours.value) || 0;
+            const kms = parseFloat(inputs.kms.value) || 0;
+            const tickets = parseFloat(inputs.tickets.value) || 0;
+            const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
+
+            // 2. Base Maths
+            const hoursMonthly = hoursWeekly * 52 / 12;
+            const salaireBrut = hoursMonthly * rate;
+
+            // 3. Salaire Net de Base (Hypothèse: ~22% charges)
+            // Pour coller à l'image "Gain Net Mensuel" qui inclut surement les Kms mais déduit Mutuelle et Tickets
+            // On va faire : Net Social (~78%) + KMs - Mutuelle - Part Ticket
+            
+            // On essaie de retrouver le Net Horaire de l'image (10.35) depuis le Brut (11.88)
+            // Ratio = 0.87. C'est haut pour du net imposable mais possible pour du "Net à payer" avec défraiement.
+            // Utilisons un coeff standard de 0.78 pour la base, puis ajoutons les variables.
+            
+            const netBase = salaireBrut * 0.78; 
+            
+            // Variables
+            const gainKms = kms * KM_RATE;
+            const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
+            
+            // Calcul Final "Net à Payer"
+            let netMensuel = netBase + gainKms - costTickets - mutuelleCost;
+            
+            // Correction pour coller à la logique "Net/Heure" affichée
+            // Le Net/Heure affiché dans l'image (10.35) semble être le Net Mensuel / Heures Mensuelles
+            // Mais 1076 / 104h = 10.34€. C'est cohérent.
+            
+            // Ajustement "Magique" pour réalisme O2 (Exonérations possibles)
+            // Si on veut être précis, on permet à l'utilisateur de voir l'impact.
+            
+            // 4. Update Outputs
+            const realNetHoraire = hoursMonthly > 0 ? (netMensuel / hoursMonthly) : 0;
+            
+            outputs.netMensuel.textContent = formatCurrency(netMensuel);
+            outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
+            
+            // SMIC Benchmark
+            const smicMensuel = hoursMonthly * SMIC_NET_HORAIRE;
+            outputs.smicMensuel.textContent = formatCurrency(smicMensuel);
+            outputs.smicHoraire.textContent = formatCurrency(SMIC_NET_HORAIRE);
+
+            // 5. Total Moyen (Avec Primes Annuelles)
+            // Primes fixes (Image : 50 + 80 + 100 = 230€ annuel/ponctuel)
+            // + Prime Carburant (300€ max, disons ~200€ moyenne)
+            // On lisse ça sur 12 mois.
+            const primesAnnuelles = 50 + 80 + 100 + 200; // Cadeaux + Vacances + Heures Comp + Carburant
+            const primeMensuelleLissee = primesAnnuelles / 12;
+            
+            const totalMoyen = netMensuel + primeMensuelleLissee;
+            const totalHoraire = hoursMonthly > 0 ? (totalMoyen / hoursMonthly) : 0;
+
+            outputs.totalMoyen.textContent = formatCurrency(totalMoyen);
+            outputs.totalHoraire.textContent = formatCurrency(totalHoraire);
+        }
+
+        function formatCurrency(val) {
+            return val.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
+        }
+
+        // LISTENERS
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', calculate);
+            input.addEventListener('change', calculate);
+        });
+
+        // INIT
+        calculate();
+
+    </script>
+</body>
+</html>

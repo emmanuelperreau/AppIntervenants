@@ -210,32 +210,58 @@
 
         <!-- SECTION: REMUNERATION (ex PAIE) -->
         <div id="tab-money" class="tab-content space-y-6 fade-in">
-            <!-- Banner -->
-            <div class="relative bg-[#11183b] rounded-3xl overflow-hidden shadow-xl p-6 sm:p-8">
-                <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl -mr-16 -mt-16"></div>
-                <div class="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl -ml-10 -mb-10"></div>
-                <i data-lucide="coins" class="absolute right-10 bottom-0 opacity-10 transform translate-y-4 w-32 h-32 text-white"></i>
-
-                <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-                    <div class="flex items-start gap-4">
-                        <div class="p-4 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl shadow-lg text-white">
-                            <i data-lucide="calendar-clock" class="w-8 h-8"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-white font-bold text-2xl mb-1">Rémunération & Avantages</h2>
-                            <div class="flex flex-col gap-1">
-                                <p class="text-teal-100 text-sm flex items-center gap-2">
+            <!-- Banner Revised -->
+            <div class="relative bg-[#11183b] rounded-3xl overflow-hidden shadow-xl">
+                <!-- Background Effects -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-teal-500/20 rounded-full blur-3xl -mr-16 -mt-16 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/20 rounded-full blur-2xl -ml-10 -mb-10 pointer-events-none"></div>
+                
+                <div class="relative z-10 p-6 flex flex-col gap-5">
+                    
+                    <!-- Top Row: Icon + Title + Date -->
+                    <div class="flex items-start justify-between gap-4">
+                        <div class="flex items-start gap-3">
+                            <div class="p-3 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl shadow-lg text-white shrink-0">
+                                <i data-lucide="calendar-clock" class="w-6 h-6"></i>
+                            </div>
+                            <div>
+                                <h2 class="text-white font-bold text-xl leading-tight">Rémunération</h2>
+                                <p class="text-teal-100 text-sm mt-1 flex items-center gap-2">
                                     <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
-                                    Versement le 7 du mois M+1
+                                    Virement le 7 du mois
                                 </p>
-                                <p class="text-slate-400 text-xs">(ex: salaire de Janvier versé le 7 Février)</p>
                             </div>
                         </div>
+
+                        <!-- Date Acompte Box -->
+                        <div class="hidden sm:block bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-right">
+                            <div class="text-[10px] font-medium text-teal-200 uppercase tracking-wider">Acompte</div>
+                            <div class="text-white font-bold text-sm">le 26</div>
+                        </div>
                     </div>
-                    <div class="bg-white/10 backdrop-blur-md px-5 py-3 rounded-xl border border-white/10 flex items-center justify-between gap-4 w-full md:w-auto">
-                        <div class="text-xs font-medium text-teal-200 uppercase tracking-wider">Acompte</div>
-                        <div class="text-white font-bold">le 26 du mois</div>
+
+                    <!-- Simulator CTA -->
+                    <div class="flex flex-col sm:flex-row gap-3 mt-1">
+                         <a href="simulateur.html" class="flex-1 bg-white text-[#11183b] hover:bg-slate-50 transition-colors p-3.5 rounded-xl shadow-md flex items-center justify-between group border border-transparent hover:border-teal-200">
+                             <div class="flex items-center gap-3">
+                                 <div class="bg-blue-50 p-2 rounded-full text-blue-600 group-hover:bg-blue-100 transition-colors">
+                                     <i data-lucide="calculator" class="w-5 h-5"></i>
+                                 </div>
+                                 <div class="flex flex-col items-start">
+                                     <span class="font-bold text-sm">Simulateur de salaire</span>
+                                     <span class="text-[11px] text-slate-500 group-hover:text-blue-600">Estimez votre net mensuel</span>
+                                 </div>
+                             </div>
+                             <i data-lucide="chevron-right" class="w-5 h-5 text-slate-300 group-hover:text-blue-500"></i>
+                         </a>
+                         
+                         <!-- Mobile Date Box (Visible only on mobile) -->
+                         <div class="sm:hidden flex items-center justify-between bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
+                            <div class="text-xs font-medium text-teal-200 uppercase tracking-wider">Acompte le</div>
+                            <div class="text-white font-bold">26 du mois</div>
+                        </div>
                     </div>
+
                 </div>
             </div>
 
@@ -622,7 +648,7 @@
                 </div>
              </div>
         </div>
-
+        
         <!-- SECTION: DAILY -->
         <div id="tab-daily" class="tab-content space-y-6 fade-in">
              <!-- Row 1: Phone & Equipments (Priority) -->

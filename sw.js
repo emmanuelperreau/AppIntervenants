@@ -1,8 +1,9 @@
-const CACHE_NAME = 'o2-guide-v1';
+const CACHE_NAME = 'o2-guide-v2';
 const ASSETS = [
   './',
   './config.js',
   './index.html',
+  './simulateur.html',
   './manifest.json',
   './favicon.svg',
   'https://cdn.tailwindcss.com',
