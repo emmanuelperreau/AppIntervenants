@@ -57,7 +57,7 @@
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
             <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.v3
+                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
             </p>
         </div>
 
@@ -223,26 +223,25 @@
             const hoursMonthly = hoursWeekly * 52 / 12;
             const salaireBrut = hoursMonthly * rate;
             
-            // FORMULES FOURNIES (avec corrections des types et scope)
+            // FORMULES UTILISATEUR
             
             // 1. Calcul du Net de Base
             // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.0903)
-            const netBase = (salaireBrut * 11.31%) - (((salaireBrut * 98.25%) + mutuelleCost) * 9.7%);
+            const netBase = (salaireBrut * 0.8869) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.0903);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
             // Formule: ((Heures * 11.88) * 0.8869) - ((((Heures * 11.88) * 0.9825) + Mutuelle) * 0.0903)
-            const smicNetBase = ((hoursMonthly * 11.88) * 11.31%) - ((((hoursMonthly * 11.88) * 98.25%) + mutuelleCost) * 9.7%);
+            const smicNetBase = ((hoursMonthly * 11.88) * 0.8869) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.0903);
 
             // Calculs Annexes
             const gainKms = kms * KM_RATE;
             const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
             
-            // 3. Net Mensuel à Payer (Calcul Utilisateur)
-            // On soustrait la mutuelle (part salariale) et les tickets
+            // 3. Net Mensuel à Payer
+            // netBase est le net après cotisations, mais il faut déduire la part mutuelle et tickets, et ajouter les KMs
             const netMensuel = netBase + gainKms - costTickets - mutuelleCost;
             
-            // 4. SMIC Net à Payer (Comparatif équivalent)
-            // Pour comparer ce qui est comparable, on applique aussi la déduction mutuelle au SMIC de base calculé
+            // 4. SMIC Net à Payer (Comparatif équivalent avec même mutuelle déduite)
             const smicMensuelFinal = smicNetBase - mutuelleCost;
 
             // Affichage Résultats
@@ -256,7 +255,7 @@
             outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
 
             // 5. Total Moyen (Avec Primes Annuelles)
-            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant) = ~430€/an
+            // Primes fixes (Cadeaux + Vacances + Heures Comp + Carburant estimé)
             const primesAnnuelles = 50 + 80 + 100 + 200; 
             const primeMensuelleLissee = primesAnnuelles / 12;
             
