@@ -246,24 +246,24 @@
 
                     <!-- Simulator CTA -->
                     <div class="flex flex-col sm:flex-row gap-3 mt-1">
-                         <a href="simulateur.html" id="btn-simulator" class="flex-1 bg-white text-[#11183b] hover:bg-slate-50 transition-colors p-3.5 rounded-xl shadow-md flex items-center justify-between group border border-transparent hover:border-teal-200">
-                             <div class="flex items-center gap-3">
-                                 <div class="bg-blue-50 p-2 rounded-full text-blue-600 group-hover:bg-blue-100 transition-colors">
-                                     <i data-lucide="calculator" class="w-5 h-5"></i>
-                                 </div>
-                                 <div class="flex flex-col items-start">
-                                     <span class="font-bold text-sm">Simulateur de salaire</span>
-                                     <span class="text-[11px] text-slate-500 group-hover:text-blue-600">Estimez votre gain mensuel</span>
-                                 </div>
-                             </div>
-                             <i data-lucide="chevron-right" class="w-5 h-5 text-slate-300 group-hover:text-blue-500"></i>
-                         </a>
-                         
                          <!-- Mobile Date Box (Visible only on mobile) -->
                          <div class="sm:hidden flex items-center justify-between bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
                             <div class="text-xs font-medium text-teal-200 uppercase tracking-wider">Acompte possible</div>
                             <div class="text-white font-bold">le 26 du mois</div>
                         </div>
+
+                         <a href="simulateur.html" id="btn-simulator" class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transition-all p-3.5 rounded-xl shadow-lg flex items-center justify-between group border border-white/10 active:scale-[0.98]">
+                             <div class="flex items-center gap-3">
+                                 <div class="bg-white/20 p-2 rounded-full text-white group-hover:bg-white/30 transition-colors">
+                                     <i data-lucide="calculator" class="w-5 h-5"></i>
+                                 </div>
+                                 <div class="flex flex-col items-start">
+                                     <span class="font-bold text-sm">Simulateur de salaire net</span>
+                                     <span class="text-[11px] text-blue-100 group-hover:text-white">Estimez votre gain mensuel</span>
+                                 </div>
+                             </div>
+                             <i data-lucide="chevron-right" class="w-5 h-5 text-blue-200 group-hover:text-white"></i>
+                         </a>
                     </div>
 
                 </div>
@@ -1029,7 +1029,10 @@
                         <h3 class="font-bold text-blue-700 dark:text-blue-400 flex items-center gap-2">
                             <i data-lucide="phone-call" class="w-5 h-5"></i> Ligne Salariés
                         </h3>
-                        <a href="tel:0243724345" class="block text-2xl font-black text-slate-800 dark:text-white mt-1">02 43 72 43 45</a>
+                        <a href="tel:0243724345" class="mt-3 flex items-center justify-center gap-2 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-md active:scale-95">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span>02 43 72 43 45</span>
+                        </a>
                     </div>
                     <div class="p-5 text-sm space-y-4 flex-1">
                         <div class="text-slate-600 dark:text-slate-300 text-xs space-y-1">
@@ -1058,7 +1061,10 @@
                         <h3 class="font-bold text-teal-700 dark:text-teal-400 flex items-center gap-2">
                             <i data-lucide="building-2" class="w-5 h-5"></i> Agence O2
                         </h3>
-                        <a href="tel:0246656880" id="contact-agency-phone" class="block text-2xl font-black text-slate-800 dark:text-white mt-1">02 46 65 68 80</a>
+                         <a href="tel:0246656880" id="contact-agency-phone" class="mt-3 flex items-center justify-center gap-2 w-full bg-teal-600 hover:bg-teal-700 text-white font-bold py-3 px-4 rounded-xl transition-all shadow-md active:scale-95">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                            <span id="contact-agency-phone-text">02 46 65 68 80</span>
+                        </a>
                     </div>
                     <div class="p-5 text-sm space-y-4 flex-1">
                          <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" id="contact-agency-address-link" class="flex items-start gap-2 text-teal-600 dark:text-teal-400 hover:underline">
@@ -1258,9 +1264,16 @@
 
             // Contacts
             const agPhone = document.getElementById('contact-agency-phone');
+            const agPhoneText = document.getElementById('contact-agency-phone-text');
+
             if(agPhone) {
                 agPhone.href = config.contacts.agence.phoneLink;
-                agPhone.textContent = config.contacts.agence.phoneDisplay;
+                if (!agPhoneText) {
+                     agPhone.textContent = config.contacts.agence.phoneDisplay;
+                }
+            }
+            if(agPhoneText) {
+                agPhoneText.textContent = config.contacts.agence.phoneDisplay;
             }
 
             const agAddrLink = document.getElementById('contact-agency-address-link');
