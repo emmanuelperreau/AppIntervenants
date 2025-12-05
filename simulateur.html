@@ -288,7 +288,7 @@
 
             // Calcul Heures Complémentaires (Nouveau)
             // Formule: Base hebdo x 100 / 24
-            const heuresComp = (hoursWeekly * 100) / 24;
+            const heuresComp = (hoursWeekly * 60) / 24;
             if(outputs.heuresComp) outputs.heuresComp.textContent = formatCurrency(heuresComp);
 
             // 5. Total Moyen (Avec Primes Annuelles)
