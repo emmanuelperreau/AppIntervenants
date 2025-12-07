@@ -915,83 +915,62 @@
                 </div>
              </div>
 
-             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                 <a href="#" id="doc-link-avantages" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-teal-50 dark:bg-teal-900/30 p-3 rounded-lg text-teal-600 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                             <i data-lucide="file-text" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-teal-700 dark:group-hover:text-teal-400">Avantages et Rémunération</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Note de service</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-teal-500"></i>
+             <!-- Link Grid -->
+             <div class="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                 <!-- CCN 3127 (New) -->
+                 <a href="https://www.legifrance.gouv.fr/conv_coll/id/KALICONT000027084096" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-slate-400 dark:hover:border-slate-500 transition-all group">
+                     <div class="bg-slate-100 dark:bg-slate-700 p-3 rounded-full text-slate-600 dark:text-slate-300 group-hover:scale-110 transition-transform">
+                         <i data-lucide="scale" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">Convention Collective</h3>
                  </a>
 
-                 <a href="#" id="doc-link-conges" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-teal-50 dark:bg-teal-900/30 p-3 rounded-lg text-teal-600 dark:text-teal-400 group-hover:bg-teal-500 group-hover:text-white transition-colors">
-                             <i data-lucide="file-text" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-teal-700 dark:group-hover:text-teal-400">Pose des congés payés</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Note de service</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-teal-500"></i>
+                 <!-- Avantages -->
+                 <a href="#" id="doc-link-avantages" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-emerald-400 transition-all group">
+                     <div class="bg-emerald-50 dark:bg-emerald-900/30 p-3 rounded-full text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="gem" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">DUE Avantages & Rémunération</h3>
                  </a>
 
-                 <a href="#" id="doc-link-due-sante" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                             <i data-lucide="file-heart" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-blue-700 dark:group-hover:text-blue-400">DUE Santé</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Document Unique</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-blue-500"></i>
+                 <!-- Congés -->
+                 <a href="#" id="doc-link-conges" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-amber-400 transition-all group">
+                     <div class="bg-amber-50 dark:bg-amber-900/30 p-3 rounded-full text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="sun" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">Note Pose des Congés</h3>
                  </a>
 
-                 <a href="#" id="doc-link-garantie-sante" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-blue-50 dark:bg-blue-900/30 p-3 rounded-lg text-blue-600 dark:text-blue-400 group-hover:bg-blue-500 group-hover:text-white transition-colors">
-                             <i data-lucide="shield-check" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-blue-700 dark:group-hover:text-blue-400">Garantie Frais de Santé</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Notice d'information</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-blue-500"></i>
+                 <!-- DUE Santé -->
+                 <a href="#" id="doc-link-due-sante" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-rose-400 transition-all group">
+                     <div class="bg-rose-50 dark:bg-rose-900/30 p-3 rounded-full text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="heart-handshake" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">DUE Santé</h3>
                  </a>
 
-                 <a href="#" id="doc-link-due-interessement" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-purple-50 dark:bg-purple-900/30 p-3 rounded-lg text-purple-600 dark:text-purple-400 group-hover:bg-purple-500 group-hover:text-white transition-colors">
-                             <i data-lucide="piggy-bank" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-purple-700 dark:group-hover:text-purple-400">DUE Intéressement</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Accord d'entreprise</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-purple-500"></i>
+                 <!-- Garantie Santé -->
+                 <a href="#" id="doc-link-garantie-sante" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-cyan-400 transition-all group">
+                     <div class="bg-cyan-50 dark:bg-cyan-900/30 p-3 rounded-full text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="shield-check" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">Garantie Frais Santé</h3>
                  </a>
 
-                 <a href="https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing" target="_blank" id="doc-link-accord-temps" class="block group">
-                     <div class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex items-center gap-4 transition-all group-hover:border-teal-400 group-hover:shadow-md">
-                         <div class="bg-orange-50 dark:bg-orange-900/30 p-3 rounded-lg text-orange-600 dark:text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-colors">
-                             <i data-lucide="clock" class="w-6 h-6"></i>
-                         </div>
-                         <div>
-                             <h3 class="font-bold text-slate-800 dark:text-white text-sm group-hover:text-orange-700 dark:group-hover:text-orange-400">Accord d'aménagement du temps de travail</h3>
-                             <p class="text-xs text-slate-500 dark:text-slate-400">Accord d'entreprise</p>
-                         </div>
-                         <i data-lucide="download" class="w-4 h-4 text-slate-300 ml-auto group-hover:text-orange-500"></i>
+                 <!-- DUE Intéressement -->
+                 <a href="#" id="doc-link-due-interessement" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-fuchsia-400 transition-all group">
+                     <div class="bg-fuchsia-50 dark:bg-fuchsia-900/30 p-3 rounded-full text-fuchsia-600 dark:text-fuchsia-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="coins" class="w-8 h-8"></i>
                      </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">DUE Intéressement</h3>
+                 </a>
+
+                 <!-- Accord Temps -->
+                 <a href="#" id="doc-link-accord-temps" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-3 hover:border-indigo-400 transition-all group">
+                     <div class="bg-indigo-50 dark:bg-indigo-900/30 p-3 rounded-full text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                         <i data-lucide="timer" class="w-8 h-8"></i>
+                     </div>
+                     <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-white leading-tight">Accord Temps de Travail</h3>
                  </a>
              </div>
 
