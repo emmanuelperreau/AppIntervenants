@@ -8,7 +8,7 @@ const AGENCY_CONFIGS = {
         },
         remuneration: {
             mutuelleName: "Mutuelle Santé (CPMS)",
-            mutuellePrice: "16,88 €"
+            mutuellePrice: "17,22 €"
         },
         docs: {
             medecineTravail: {
@@ -46,7 +46,7 @@ const AGENCY_CONFIGS = {
         },
         remuneration: {
             mutuelleName: "Mutuelle Santé (ALLIANZ)",
-            mutuellePrice: "20,41 €"
+            mutuellePrice: "21,13 €"
         },
         docs: {
             medecineTravail: {
