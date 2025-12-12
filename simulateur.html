@@ -74,7 +74,7 @@
                 <div class="flex justify-between items-center">
                     <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-rate" value="11.88" step="0.01" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-rate" value="12.02" step="0.01" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">€</span>
                     </div>
                 </div>
@@ -259,7 +259,7 @@
             const netBase = salaireBrut - (salaireBrut * 0.1131) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.097);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
-            const smicNetBase = (hoursMonthly * 11.88) - ((hoursMonthly * 11.88) * 0.1131) - ((((hoursMonthly * 11.88) * 0.9825) + mutuelleCost) * 0.097);
+            const smicNetBase = (hoursMonthly * 12.02) - ((hoursMonthly * 12.02) * 0.1131) - ((((hoursMonthly * 12.02) * 0.9825) + mutuelleCost) * 0.097);
 
             // Calculs Annexes
             const gainKms = kms * KM_RATE;
