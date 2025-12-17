@@ -1,11 +1,13 @@
-const CACHE_NAME = 'o2-guide-v2';
+const CACHE_NAME = 'o2-guide-v3'; // Changé en v3 pour forcer la mise à jour
 const ASSETS = [
   './',
-  './config.js',
   './index.html',
+  './config.js',
   './simulateur.html',
-  './manifest.json',
-  './favicon.svg',
+  // LES NOUVEAUX MANIFESTS (Crucial)
+  './manifest-loches.json',
+  './manifest-nord.json',
+  // RESSOURCES EXTERNES
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest',
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap'
@@ -13,14 +15,20 @@ const ASSETS = [
 
 // Install Event
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Force activation
+  self.skipWaiting(); // Force l'activation immédiate
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(ASSETS))
+      .then(cache => {
+        // On essaie de tout mettre en cache
+        return cache.addAll(ASSETS);
+      })
+      .catch(err => {
+        console.error('Erreur installation SW:', err);
+      })
   );
 });
 
-// Activate Event
+// Activate Event (Nettoyage des vieux caches)
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys => Promise.all(
@@ -29,16 +37,23 @@ self.addEventListener('activate', event => {
       })
     ))
   );
+  // Important : prendre le contrôle des clients immédiatement
+  return self.clients.claim();
 });
 
-// Fetch Event (Network First for HTML to ensure updates, Cache First for others)
+// Fetch Event
 self.addEventListener('fetch', event => {
+  // Stratégie pour les pages HTML (Navigation) : Network First, puis Cache
   if (event.request.mode === 'navigate') {
     event.respondWith(
       fetch(event.request)
-        .catch(() => caches.match(event.request))
+        .catch(() => {
+          // Si on est hors ligne, on renvoie index.html quel que soit le paramètre URL
+          return caches.match('./index.html');
+        })
     );
   } else {
+    // Stratégie pour les images/scripts/css : Cache First, puis Network
     event.respondWith(
       caches.match(event.request)
         .then(response => response || fetch(event.request))
