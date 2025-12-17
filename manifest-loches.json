@@ -1,4 +1,5 @@
 {
+  "id": "loches",
   "name": "O2 Loches",
   "short_name": "O2 Loches",
   "start_url": "./index.html?agence=loches",
