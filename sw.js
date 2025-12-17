@@ -7,6 +7,9 @@ const ASSETS = [
   // LES NOUVEAUX MANIFESTS (Crucial)
   './manifest-loches.json',
   './manifest-nord.json',
+  // LES IMAGES LOCALES (Crucial pour PWA)
+  './icon.svg',
+  './icon-512.png',
   // RESSOURCES EXTERNES
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest',
