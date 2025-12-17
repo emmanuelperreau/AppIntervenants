@@ -6,33 +6,32 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     
     <title id="page-title">Agence O2</title>
-    
-    <link rel="manifest" id="dynamic-manifest" href="manifest-loches.json">
-    
+    <link rel="manifest" id="dynamic-manifest" />
     <script>
         (function() {
             var params = new URLSearchParams(window.location.search);
             var agence = params.get('agence');
+            
+            // On récupère les éléments
             var manifestLink = document.getElementById('dynamic-manifest');
-
+            var pageTitle = document.getElementById('page-title');
+            
+            // Configuration Nord Touraine
             if (agence === 'nord-touraine') {
-                // Change le manifest pour Android
-                if(manifestLink) manifestLink.href = 'manifest-nord.json';
-
-                // Change le titre de la page (Safari utilisera ça comme nom d'app par défaut)
-                document.title = "O2 Nord Touraine";
-            } else {
+                manifestLink.setAttribute('href', 'manifest-nord.json');
+                document.title = "O2 Nord Touraine"; // Change le titre de l'onglet et du raccourci
+            } 
+            // Configuration Loches (par défaut)
+            else {
+                manifestLink.setAttribute('href', 'manifest-loches.json');
                 document.title = "O2 Loches";
             }
         })();
     </script>
     <meta name="theme-color" content="#11183b">
     
-    <!-- Favicon (Navigateur PC/Mac) -->
-    <link rel="icon" type="image/svg+xml" href="https://drive.google.com/uc?export=view&id=1tgZN2DaW5SlGRkEH5yEPrqDI5p7vB9Gm">
-
-    <!-- Apple Touch Icon (iPhone/iPad) - Lien Direct Google Drive -->
-    <link rel="apple-touch-icon" href="https://drive.google.com/uc?export=view&id=1gnRN_C7P7yLoKmifvxZunXoxhJVYt1Vv">
+    <link rel="icon" type="image/svg+xml" href="./icon.svg">
+    <link rel="apple-touch-icon" href="./icon-512.png">
 
     <meta name="apple-mobile-web-app-title" content="Agence O2">
     <meta name="apple-mobile-web-app-capable" content="yes">
