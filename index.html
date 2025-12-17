@@ -11,7 +11,20 @@
     <title>Agence O2</title>
     
     <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" id="dynamic-manifest" href="manifest-loches.json">
+        <script>
+            (function() {
+                var params = new URLSearchParams(window.location.search);
+                var agence = params.get('agence');
+                var link = document.getElementById('dynamic-manifest');
+                
+                // Si l'URL contient ?agence=nord-touraine, on change le fichier
+                if (agence === 'nord-touraine') {
+                    link.href = 'manifest-nord.json';
+                } 
+                // Sinon, ça reste par défaut sur manifest-loches.json
+            })();
+        </script>
     <meta name="theme-color" content="#11183b">
     
     <!-- Favicon (Navigateur PC/Mac) -->

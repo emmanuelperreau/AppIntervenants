@@ -1,0 +1,21 @@
+{
+  "name": "O2 Loches",
+  "short_name": "O2 Loches",
+  "start_url": "./index.html?agence=loches",
+  "display": "standalone",
+  "background_color": "#11183b",
+  "theme_color": "#11183b",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://drive.google.com/uc?export=view&id=1tgZN2DaW5SlGRkEH5yEPrqDI5p7vB9Gm",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "https://drive.google.com/uc?export=view&id=1gnRN_C7P7yLoKmifvxZunXoxhJVYt1Vv",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

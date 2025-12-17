@@ -1,7 +1,7 @@
 {
-  "name": "Agence O2",
-  "short_name": "Agence O2",
-  "start_url": "./index.html",
+  "name": "O2 Nord Touraine",
+  "short_name": "O2 Nord Touraine",
+  "start_url": "./index.html?agence=nord-touraine",
   "display": "standalone",
   "background_color": "#11183b",
   "theme_color": "#11183b",
@@ -9,11 +9,12 @@
   "icons": [
     {
       "src": "https://drive.google.com/uc?export=view&id=1tgZN2DaW5SlGRkEH5yEPrqDI5p7vB9Gm",
+      "sizes": "any",
       "type": "image/svg+xml"
-    }    
+    },
     {
       "src": "https://drive.google.com/uc?export=view&id=1gnRN_C7P7yLoKmifvxZunXoxhJVYt1Vv",
-      "sizes": "512/512",
+      "sizes": "512x512",
       "type": "image/png"
     }
   ]
