@@ -12,19 +12,33 @@
     
     <!-- PWA Manifest -->
     <link rel="manifest" id="dynamic-manifest" href="manifest-loches.json">
-        <script>
-            (function() {
-                var params = new URLSearchParams(window.location.search);
-                var agence = params.get('agence');
-                var link = document.getElementById('dynamic-manifest');
+    <meta name="apple-mobile-web-app-title" id="apple-title" content="O2 Loches">
+    
+    <script>
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var agence = params.get('agence');
+            
+            // Éléments à modifier
+            var manifestLink = document.getElementById('dynamic-manifest');
+            var appleTitle = document.getElementById('apple-title');
+            
+            // Si c'est Nord Touraine
+            if (agence === 'nord-touraine') {
+                // 1. Changer le manifest (Android)
+                manifestLink.href = 'manifest-nord.json';
                 
-                // Si l'URL contient ?agence=nord-touraine, on change le fichier
-                if (agence === 'nord-touraine') {
-                    link.href = 'manifest-nord.json';
-                } 
-                // Sinon, ça reste par défaut sur manifest-loches.json
-            })();
-        </script>
+                // 2. Changer le titre pour l'iPhone
+                appleTitle.content = "O2 Nord Touraine";
+                document.title = "O2 Nord Touraine"; // Change aussi le titre de l'onglet
+            } 
+            // Sinon (Loches par défaut)
+            else {
+                 appleTitle.content = "O2 Loches";
+                 document.title = "O2 Loches";
+            }
+        })();
+    </script>
     <meta name="theme-color" content="#11183b">
     
     <!-- Favicon (Navigateur PC/Mac) -->
