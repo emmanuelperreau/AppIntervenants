@@ -3,39 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Prevent Caching -->
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
     
-    <title>Agence O2</title>
+    <title id="page-title">Agence O2</title>
+    <meta name="apple-mobile-web-app-title" id="apple-title" content="Agence O2">
     
-    <!-- PWA Manifest -->
     <link rel="manifest" id="dynamic-manifest" href="manifest-loches.json">
-    <meta name="apple-mobile-web-app-title" id="apple-title" content="O2 Loches">
     
     <script>
         (function() {
-            var params = new URLSearchParams(window.location.search);
-            var agence = params.get('agence');
-            
-            // Éléments à modifier
-            var manifestLink = document.getElementById('dynamic-manifest');
-            var appleTitle = document.getElementById('apple-title');
-            
-            // Si c'est Nord Touraine
-            if (agence === 'nord-touraine') {
-                // 1. Changer le manifest (Android)
-                manifestLink.href = 'manifest-nord.json';
+            try {
+                var params = new URLSearchParams(window.location.search);
+                var agence = params.get('agence');
                 
-                // 2. Changer le titre pour l'iPhone
-                appleTitle.content = "O2 Nord Touraine";
-                document.title = "O2 Nord Touraine"; // Change aussi le titre de l'onglet
-            } 
-            // Sinon (Loches par défaut)
-            else {
-                 appleTitle.content = "O2 Loches";
-                 document.title = "O2 Loches";
+                var manifestLink = document.getElementById('dynamic-manifest');
+                var appleTitle = document.getElementById('apple-title');
+                var pageTitle = document.getElementById('page-title');
+                
+                if (agence === 'nord-touraine') {
+                    // Pour Android
+                    if(manifestLink) manifestLink.href = 'manifest-nord.json';
+                    
+                    // Pour iPhone (Change le titre de l'icone)
+                    if(appleTitle) appleTitle.content = "O2 Nord Touraine";
+                    
+                    // Change le titre de l'onglet
+                    if(pageTitle) pageTitle.innerText = "O2 Nord Touraine";
+                } else {
+                    // Force Loches par sécurité
+                    if(appleTitle) appleTitle.content = "O2 Loches";
+                    if(pageTitle) pageTitle.innerText = "O2 Loches";
+                }
+            } catch(e) {
+                console.error("Erreur script titre", e);
             }
         })();
     </script>
