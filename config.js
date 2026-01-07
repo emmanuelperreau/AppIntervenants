@@ -20,7 +20,7 @@ const AGENCY_CONFIGS = {
                 avantages: "https://drive.google.com/file/d/1yMjHoXLvFt7yCmvndAh-W70mLtxlDZQD/view?usp=share_link",
                 conges: "https://drive.google.com/file/d/1SooyVchvKi5YMKrGlAhAEhEv6QRRdb6R/view?usp=share_link",
                 dueSante: "https://drive.google.com/file/d/1njY4BCWRpQKSHILpMeRX_LeksLHiJsvs/view?usp=share_link",
-                garantieSante: "https://drive.google.com/file/d/11R0viL2AnqH74RyGAlOudkMaFr7kZ00D/view?usp=share_link",
+                garantieSante: "https://drive.google.com/file/d/1Sr3FTAWsbKMpIX3XOONjna_4A7OkX1E3/view?usp=share_link",
                 dueInteressement: "https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link",
                 accordTemps: "https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing"
             }
