@@ -17,7 +17,7 @@ const AGENCY_CONFIGS = {
                 phoneLink: "tel:0247628888"
             },
             links: {
-                avantages: "https://drive.google.com/file/d/1yMjHoXLvFt7yCmvndAh-W70mLtxlDZQD/view?usp=share_link",
+                avantages: "https://drive.google.com/file/d/1glFTwKCafdGOQgrANri7IJ5A23sKgeK5/view?usp=sharing",
                 conges: "https://drive.google.com/file/d/1jun4oU6QAAOgarSxd9r9HNoDPWYbCpVo/view?usp=share_link",
                 dueSante: "https://drive.google.com/file/d/1njY4BCWRpQKSHILpMeRX_LeksLHiJsvs/view?usp=share_link",
                 garantieSante: "https://drive.google.com/file/d/1Sr3FTAWsbKMpIX3XOONjna_4A7OkX1E3/view?usp=share_link",
@@ -55,7 +55,7 @@ const AGENCY_CONFIGS = {
                 phoneLink: "tel:0247376676"
             },
             links: {
-                avantages: "https://drive.google.com/file/d/1qgTsSptUmGsJJxXc0K5y2mZ-awmkPm4C/view?usp=share_link",
+                avantages: "https://drive.google.com/file/d/1lZhynwRzlqJE4qyLBuB75mzef1TPaFHI/view?usp=sharing",
                 conges: "https://drive.google.com/file/d/1Sx2UMvGmMRpYw8aQ6Rzi5jDK86RFf6SK/view?usp=sharing",
                 dueSante: "https://drive.google.com/file/d/1rejlxMdJqpawpC9B4aO8zxn6SIrfrsjd/view?usp=sharing",
                 garantieSante: "https://drive.google.com/file/d/1M1YvJYmCpJ-3JBBZhn6QIBKadj3xOn6v/view?usp=sharing",
