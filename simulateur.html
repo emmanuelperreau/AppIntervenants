@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Simulateur Salaire - Agence O2</title>
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#11183b">
     
     <!-- Config Agence -->
@@ -43,7 +41,7 @@
     <!-- Header -->
     <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
         <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-2 text-slate-500 hover:text-[#11183b] dark:text-slate-400 dark:hover:text-white transition-colors">
+            <a href="index.html" id="link-retour" class="flex items-center gap-2 text-slate-500 hover:text-[#11183b] dark:text-slate-400 dark:hover:text-white transition-colors">
                 <i data-lucide="arrow-left" class="w-5 h-5"></i>
                 <span class="font-bold text-sm">Retour</span>
             </a>
@@ -72,7 +70,7 @@
             <div class="p-4 space-y-4">
                 <!-- Taux Horaire -->
                 <div class="flex justify-between items-center">
-                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
+                    <label for="input-rate" class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-rate" value="12.02" step="0.01" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">€</span>
@@ -80,7 +78,7 @@
                 </div>
                 <!-- Heures Hebdo -->
                 <div class="flex justify-between items-center">
-                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
+                    <label for="input-hours" class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-hours" value="24" step="0.5" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">h</span>
@@ -97,7 +95,7 @@
             <div class="p-4 space-y-4">
                 <!-- KMs -->
                 <div class="flex justify-between items-center">
-                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
+                    <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-kms" value="150" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">km</span>
@@ -105,7 +103,7 @@
                 </div>
                 <!-- Titres Resto -->
                 <div class="flex justify-between items-center">
-                    <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
+                    <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-tickets" value="20" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">/ mois</span>
@@ -180,10 +178,15 @@
         lucide.createIcons();
 
         // CONSTANTS
+        const SMIC_HORAIRE = 12.02;
         const KM_RATE = 0.45;
         const TICKET_VALUE = 6.00; // Valeur faciale
         const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
-        
+        const PRIME_CARBURANT_MAX = 300; // Prime carburant annuelle max (€)
+        const CHEQUES_CADEAUX = 50; // Chèques cadeaux Noël (€/an)
+        const CHEQUES_VACANCES = 80; // Chèques vacances (€/an)
+        const HEURES_COMP_COEFF = 60; // Coefficient calcul heures complémentaires
+
         // Estimation charges patronales (coeff approximatif pour SMIC + réductions)
         // 1.25 est une moyenne basse prenant en compte les allègements Fillon sur bas salaires + mutuelle/prévoyance
         const CHARGES_PATRONALES_COEFF = 1.1; 
@@ -215,11 +218,15 @@
 
         // LOAD AGENCY CONFIG
         function loadAgencyConfig() {
-            if(typeof AGENCY_CONFIGS === 'undefined') return;
-
             // Get agency from URL
             const params = new URLSearchParams(window.location.search);
             const agencyId = params.get('agence') || 'nord-touraine';
+
+            // Lien retour dynamique avec paramètre agence
+            const linkRetour = document.getElementById('link-retour');
+            if(linkRetour) linkRetour.href = 'index.html?agence=' + agencyId;
+
+            if(typeof AGENCY_CONFIGS === 'undefined') return;
             const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
 
             if(config && config.remuneration && config.remuneration.mutuellePrice) {
@@ -259,7 +266,8 @@
             const netBase = salaireBrut - (salaireBrut * 0.1131) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.097);
 
             // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
-            const smicNetBase = (hoursMonthly * 12.02) - ((hoursMonthly * 12.02) * 0.1131) - ((((hoursMonthly * 12.02) * 0.9825) + mutuelleCost) * 0.097);
+            const smicBrut = hoursMonthly * SMIC_HORAIRE;
+            const smicNetBase = smicBrut - (smicBrut * 0.1131) - (((smicBrut * 0.9825) + mutuelleCost) * 0.097);
 
             // Calculs Annexes
             const gainKms = kms * KM_RATE;
@@ -283,17 +291,17 @@
             if(outputs.smicHoraire) outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
 
             // Prime Carburant
-            const primeCarburantAnnuelle = (hoursWeekly * 300) / 35;
+            const primeCarburantAnnuelle = (hoursWeekly * PRIME_CARBURANT_MAX) / 35;
             if(outputs.primeCarburant) outputs.primeCarburant.textContent = formatCurrency(primeCarburantAnnuelle);
 
             // Calcul Heures Complémentaires (Nouveau)
             // Formule: Base hebdo x 100 / 24
-            const heuresComp = (hoursWeekly * 60) / 24;
+            const heuresComp = (hoursWeekly * HEURES_COMP_COEFF) / 24;
             if(outputs.heuresComp) outputs.heuresComp.textContent = formatCurrency(heuresComp);
 
             // 5. Total Moyen (Avec Primes Annuelles)
             // Primes fixes (Cadeaux + Vacances + Heures Comp) + Carburant
-            const primesAnnuelles = 50 + 80 + heuresComp + primeCarburantAnnuelle;
+            const primesAnnuelles = CHEQUES_CADEAUX + CHEQUES_VACANCES + heuresComp + primeCarburantAnnuelle;
             const primeMensuelleLissee = primesAnnuelles / 12;
             
             const totalMoyen = netMensuel + primeMensuelleLissee;
@@ -320,8 +328,11 @@
         // LISTENERS
         Object.values(inputs).forEach(input => {
             if(input) { // Sécurité si un input manque
-                input.addEventListener('input', calculate);
-                input.addEventListener('change', calculate);
+                if(input.type === 'checkbox') {
+                    input.addEventListener('change', calculate);
+                } else {
+                    input.addEventListener('input', calculate);
+                }
             }
         });
 
