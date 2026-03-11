@@ -1,4 +1,4 @@
-const CACHE_NAME = 'o2-guide-v4';
+const CACHE_NAME = 'o2-guide-v5';
 const ASSETS = [
   './',
   './index.html',
@@ -10,7 +10,10 @@ const ASSETS = [
   './manifest-nord.json',
   // LES IMAGES LOCALES (Crucial pour PWA)
   './icon.svg',
+  './icon-192.png',
+  './icon-384.png',
   './icon-512.png',
+  './apple-touch-icon.png',
   // RESSOURCES EXTERNES
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest',
