@@ -1,3 +1,20 @@
+// GRILLE SALARIALE COMMUNE (modifiable ici, appliquée partout)
+const GRILLE_SALARIALE = {
+    smicHoraire: 12.02,          // SMIC horaire brut (base AM2/GE2/AV2)
+    tauxGE3: 12.12,              // Taux horaire GE3
+    tauxAV3: 12.17,              // Taux horaire AV3
+    bonusConfirme: 0.10,         // Supplément Confirmé
+    bonusExpert: 0.20,           // Supplément Expert
+    bonusReferent: 0.30,         // Supplément Référent
+    kmRate: 0.45,                // Indemnité kilométrique (€/km)
+    primeCarburantMax: 300,      // Prime carburant annuelle max (€)
+    ticketValue: 6.00,           // Valeur faciale titre restaurant
+    ticketEmployeeShare: 3.00,   // Part salariale titre restaurant
+    chequesCadeaux: 50,          // Chèques cadeaux Noël (€/an)
+    chequesVacances: 100,        // Chèques vacances (€/an, dont 80€ employeur)
+    chequesVacancesEmployeur: 80 // Part employeur chèques vacances
+};
+
 const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (Par défaut)
     "nord-touraine": {

@@ -178,13 +178,15 @@
         lucide.createIcons();
 
         // CONSTANTS
-        const SMIC_HORAIRE = 12.02;
-        const KM_RATE = 0.45;
-        const TICKET_VALUE = 6.00; // Valeur faciale
-        const TICKET_EMPLOYEE_SHARE = 3.00; // Part salariale (déduit du net)
-        const PRIME_CARBURANT_MAX = 300; // Prime carburant annuelle max (€)
-        const CHEQUES_CADEAUX = 50; // Chèques cadeaux Noël (€/an)
-        const CHEQUES_VACANCES = 80; // Chèques vacances (€/an)
+        // Valeurs depuis config.js (GRILLE_SALARIALE) avec fallback
+        const G = (typeof GRILLE_SALARIALE !== 'undefined') ? GRILLE_SALARIALE : {};
+        const SMIC_HORAIRE = G.smicHoraire || 12.02;
+        const KM_RATE = G.kmRate || 0.45;
+        const TICKET_VALUE = G.ticketValue || 6.00;
+        const TICKET_EMPLOYEE_SHARE = G.ticketEmployeeShare || 3.00;
+        const PRIME_CARBURANT_MAX = G.primeCarburantMax || 300;
+        const CHEQUES_CADEAUX = G.chequesCadeaux || 50;
+        const CHEQUES_VACANCES = G.chequesVacancesEmployeur || 80;
         const HEURES_COMP_COEFF = 60; // Coefficient calcul heures complémentaires
 
         // Estimation charges patronales (coeff approximatif pour SMIC + réductions)
