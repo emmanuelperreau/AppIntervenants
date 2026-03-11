@@ -1,15 +1,19 @@
-const CACHE_NAME = 'o2-guide-v3'; // Changé en v3 pour forcer la mise à jour
+const CACHE_NAME = 'o2-guide-v5';
 const ASSETS = [
   './',
   './index.html',
   './config.js',
   './simulateur.html',
+  './offline.html',
   // LES NOUVEAUX MANIFESTS (Crucial)
   './manifest-loches.json',
   './manifest-nord.json',
   // LES IMAGES LOCALES (Crucial pour PWA)
   './icon.svg',
+  './icon-192.png',
+  './icon-384.png',
   './icon-512.png',
+  './apple-touch-icon.png',
   // RESSOURCES EXTERNES
   'https://cdn.tailwindcss.com',
   'https://unpkg.com/lucide@latest',
@@ -49,8 +53,9 @@ self.addEventListener('fetch', event => {
     event.respondWith(
       fetch(event.request)
         .catch(() => {
-          // Si on est hors ligne, on renvoie index.html quel que soit le paramètre URL
-          return caches.match('./index.html');
+          // Si on est hors ligne, tenter le cache puis la page offline
+          return caches.match(event.request)
+            .then(cached => cached || caches.match('./offline.html'));
         })
     );
   } else {

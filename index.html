@@ -16,24 +16,28 @@
             var manifestLink = document.getElementById('dynamic-manifest');
             var pageTitle = document.getElementById('page-title');
             
+            var appleTitle = document.getElementById('apple-web-app-title');
+
             // Configuration Nord Touraine
             if (agence === 'nord-touraine') {
                 manifestLink.setAttribute('href', 'manifest-nord.json');
-                document.title = "O2 Nord Touraine"; // Change le titre de l'onglet et du raccourci
-            } 
+                document.title = "O2 Nord Touraine";
+                if(appleTitle) appleTitle.setAttribute('content', 'O2 Nord Touraine');
+            }
             // Configuration Loches (par défaut)
             else {
                 manifestLink.setAttribute('href', 'manifest-loches.json');
                 document.title = "O2 Loches";
+                if(appleTitle) appleTitle.setAttribute('content', 'O2 Loches');
             }
         })();
     </script>
     <meta name="theme-color" content="#11183b">
     
     <link rel="icon" type="image/svg+xml" href="./icon.svg">
-    <link rel="apple-touch-icon" href="./icon-512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 
-    <meta name="apple-mobile-web-app-title" content="Agence O2">
+    <meta id="apple-web-app-title" name="apple-mobile-web-app-title" content="Agence O2">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
@@ -83,6 +87,7 @@
     </style>
 </head>
 <body class="text-slate-900 dark:text-slate-100 pb-28 md:pb-10 bg-slate-100 dark:bg-slate-900 min-h-screen relative transition-colors duration-200">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#11183b] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu</a>
 
     <!-- HEADER -->
     <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
@@ -118,22 +123,40 @@
     </header>
 
     <!-- INSTALL BANNER (Hidden by default) -->
-    <div id="install-banner" class="hidden fixed bottom-24 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-[#11183b] text-white p-4 rounded-xl shadow-2xl z-50 slide-up border border-teal-500/30">
+    <div id="install-banner" class="hidden fixed bottom-24 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-[#11183b] text-white p-5 rounded-2xl shadow-2xl z-50 slide-up border border-teal-500/30">
         <div class="flex items-start gap-4">
-            <div class="bg-white/10 p-2 rounded-lg shrink-0">
-                <i data-lucide="download" class="w-6 h-6 text-teal-400"></i>
+            <div class="bg-teal-500/20 p-3 rounded-xl shrink-0">
+                <i data-lucide="smartphone" class="w-7 h-7 text-teal-400"></i>
             </div>
             <div class="flex-1">
-                <h4 class="font-bold text-sm mb-1">Installer l'application</h4>
-                <p id="install-text" class="text-xs text-slate-300 leading-snug mb-3">Pour un accès rapide et hors-ligne :</p>
-                <button onclick="dismissInstall()" class="text-[11px] font-bold text-slate-400 underline decoration-dotted">Pas maintenant</button>
+                <h4 class="font-bold text-base mb-1">Ajouter à l'écran d'accueil</h4>
+                <p class="text-xs text-slate-300 leading-snug mb-3">Accès rapide depuis votre téléphone, même sans internet</p>
+
+                <!-- Bouton natif Android (beforeinstallprompt) -->
+                <button id="install-btn-native" onclick="installPWA()" class="hidden w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-2.5 px-4 rounded-xl transition-all text-sm active:scale-95 mb-2">
+                    <i data-lucide="download" class="w-4 h-4 inline mr-1"></i> Installer l'application
+                </button>
+
+                <!-- Instructions manuelles iOS/Android fallback -->
+                <div id="install-steps" class="hidden space-y-2 mb-3">
+                    <div class="flex items-center gap-2 bg-white/10 rounded-lg p-2">
+                        <span class="bg-teal-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0">1</span>
+                        <p id="install-step1" class="text-xs text-slate-200"></p>
+                    </div>
+                    <div class="flex items-center gap-2 bg-white/10 rounded-lg p-2">
+                        <span class="bg-teal-500 text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center shrink-0">2</span>
+                        <p id="install-step2" class="text-xs text-slate-200"></p>
+                    </div>
+                </div>
+
+                <button onclick="dismissInstall()" class="text-[11px] font-bold text-slate-400 hover:text-slate-200 underline decoration-dotted transition-colors">Pas maintenant</button>
             </div>
-            <button onclick="dismissInstall()" class="text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button onclick="dismissInstall()" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
     </div>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
+    <main id="main-content" class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
 
         <!-- SECTION: ACCUEIL -->
         <div id="tab-home" class="tab-content active space-y-6 fade-in">
@@ -300,23 +323,23 @@
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AM2</span>
-                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">12,02 €</span>
+                                    <span id="price-am2" class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AM2 Confirmé</span>
-                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,10 €</span>
+                                    <span id="price-am2-confirme" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AM2 Expert</span>
-                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                    <span id="price-am2-expert" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-orange-300 dark:border-orange-700">
                                     <div class="flex justify-between items-start mb-3 pl-0">
                                         <span class="font-bold text-slate-700 dark:text-slate-200">AM2 Référent</span>
-                                        <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,30 €</span>
+                                        <span id="price-am2-referent" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                     </div>
                                     <div class="ml-0 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
                                         <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
@@ -334,22 +357,22 @@
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">GE2</span>
-                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">12,02 €</span>
+                                    <span id="price-ge2" class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">GE3</span>
-                                    <span class="text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">12,12 €</span>
+                                    <span id="price-ge3" class="text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-600 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">GE3 Confirmé</span>
-                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,10 €</span>
+                                    <span id="price-ge3-confirme" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-fuchsia-300 dark:border-fuchsia-500 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">GE3 Expert</span>
-                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                    <span id="price-ge3-expert" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                 </div>
                             </div>
 
@@ -360,23 +383,23 @@
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AV2</span>
-                                    <span class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">12,02 €</span>
+                                    <span id="price-av2" class="text-xs font-bold bg-slate-100 dark:bg-slate-700 px-2 py-1 rounded text-slate-700 dark:text-slate-200">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-700 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AV3</span>
-                                    <span class="text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">12,17 €</span>
+                                    <span id="price-av3" class="text-xs font-bold bg-yellow-100 dark:bg-yellow-900/30 text-yellow-800 dark:text-yellow-200 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-600 flex justify-between items-center">
                                     <span class="font-bold text-slate-700 dark:text-slate-200">AV3 Confirmé</span>
-                                    <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,10 €</span>
+                                    <span id="price-av3-confirme" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                 </div>
 
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-600 justify-between items-center">
                                     <div class="flex justify-between items-start mb-3 pl-0">
                                         <span class="font-bold text-slate-700 dark:text-slate-200">AV3 Expert</span>
-                                        <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,20 €</span>
+                                        <span id="price-av3-expert" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                     </div>
                                     <div class="ml-0 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
                                         <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
@@ -389,7 +412,7 @@
                                 <div class="bg-white dark:bg-slate-800 p-4 rounded-lg shadow-sm border-l-4 border-purple-300 dark:border-purple-600 justify-between items-center">
                                     <div class="flex justify-between items-start mb-3 pl-0">
                                         <span class="font-bold text-slate-700 dark:text-slate-200">AV3 Référent</span>
-                                        <span class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">+ 0,30 €</span>
+                                        <span id="price-av3-referent" class="text-xs font-bold bg-emerald-50 dark:bg-emerald-900/20 text-emerald-600 px-2 py-1 rounded">—</span>
                                     </div>
                                     <div class="ml-0 mt-2 bg-slate-50 dark:bg-slate-700/50 rounded p-2 flex items-center gap-3 border border-slate-100 dark:border-slate-600">
                                         <div class="bg-blue-600 text-white p-1.5 rounded-full shadow-sm">
@@ -1308,6 +1331,34 @@
 
             const agEmailText = document.getElementById('contact-agency-email-text');
             if(agEmailText) agEmailText.textContent = config.contacts.agence.email;
+
+            // Grille salariale (depuis GRILLE_SALARIALE)
+            if(typeof GRILLE_SALARIALE !== 'undefined') {
+                const g = GRILLE_SALARIALE;
+                const fmt = (v) => v.toFixed(2).replace('.', ',') + ' €';
+                const fmtBonus = (v) => '+ ' + v.toFixed(2).replace('.', ',') + ' €';
+
+                const prices = {
+                    'price-am2': fmt(g.smicHoraire),
+                    'price-am2-confirme': fmtBonus(g.bonusConfirme),
+                    'price-am2-expert': fmtBonus(g.bonusExpert),
+                    'price-am2-referent': fmtBonus(g.bonusReferent),
+                    'price-ge2': fmt(g.smicHoraire),
+                    'price-ge3': fmt(g.tauxGE3),
+                    'price-ge3-confirme': fmtBonus(g.bonusConfirme),
+                    'price-ge3-expert': fmtBonus(g.bonusExpert),
+                    'price-av2': fmt(g.smicHoraire),
+                    'price-av3': fmt(g.tauxAV3),
+                    'price-av3-confirme': fmtBonus(g.bonusConfirme),
+                    'price-av3-expert': fmtBonus(g.bonusExpert),
+                    'price-av3-referent': fmtBonus(g.bonusReferent)
+                };
+
+                for(const [id, text] of Object.entries(prices)) {
+                    const el = document.getElementById(id);
+                    if(el) el.textContent = text;
+                }
+            }
         }
 
         // Appliquer la config
@@ -1330,32 +1381,77 @@
         }
 
         // Install Banner Logic
-        let deferredPrompt;
+        let deferredPrompt = null;
         const installBanner = document.getElementById('install-banner');
-        const installText = document.getElementById('install-text');
+        const installBtnNative = document.getElementById('install-btn-native');
+        const installSteps = document.getElementById('install-steps');
 
         // Check if already installed
         const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
 
-        if (!isStandalone) {
-             // Show banner after a delay
-             setTimeout(() => {
-                // Detect OS
-                const userAgent = navigator.userAgent || navigator.vendor;
-                if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                    installText.innerHTML = "Appuyez sur <span class='font-bold'>Partager</span> <i data-lucide='share' class='inline w-4 h-4'></i> puis <span class='font-bold'>Sur l'écran d'accueil</span> <i data-lucide='plus-square' class='inline w-4 h-4'></i>";
-                    installBanner.classList.remove('hidden');
-                    lucide.createIcons();
-                } else if (/android/i.test(userAgent)) {
-                     installText.innerHTML = "Appuyez sur <span class='font-bold'>Menu</span> <i data-lucide='more-vertical' class='inline w-4 h-4'></i> puis <span class='font-bold'>Installer l'application</span>";
-                     installBanner.classList.remove('hidden');
-                     lucide.createIcons();
+        // Check if banner was dismissed recently (7 jours)
+        const DISMISS_KEY = 'install_banner_dismissed';
+        const DISMISS_DAYS = 7;
+        function wasDismissedRecently() {
+            const dismissed = localStorage.getItem(DISMISS_KEY);
+            if (!dismissed) return false;
+            const days = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
+            return days < DISMISS_DAYS;
+        }
+
+        // Capture beforeinstallprompt (Android Chrome)
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            // Si pas déjà installé et pas dismiss récent, montrer le bouton natif
+            if (!isStandalone && !wasDismissedRecently()) {
+                installBtnNative.classList.remove('hidden');
+                installBanner.classList.remove('hidden');
+                lucide.createIcons();
+            }
+        });
+
+        // Bouton installer natif (Android)
+        function installPWA() {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then((choice) => {
+                if (choice.outcome === 'accepted') {
+                    installBanner.classList.add('hidden');
                 }
-             }, 2000);
+                deferredPrompt = null;
+            });
+        }
+
+        // Fallback : instructions manuelles si pas de beforeinstallprompt après 3s
+        if (!isStandalone && !wasDismissedRecently()) {
+            setTimeout(() => {
+                // Si le banner natif n'est pas déjà affiché
+                if (installBanner.classList.contains('hidden')) {
+                    const userAgent = navigator.userAgent || navigator.vendor;
+                    const step1 = document.getElementById('install-step1');
+                    const step2 = document.getElementById('install-step2');
+
+                    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                        step1.innerHTML = "Appuyez sur <strong>Partager</strong> <i data-lucide='share' class='inline w-3.5 h-3.5'></i> (en bas de l'écran)";
+                        step2.innerHTML = "Puis <strong>Sur l'écran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
+                        installSteps.classList.remove('hidden');
+                        installBanner.classList.remove('hidden');
+                        lucide.createIcons();
+                    } else if (/android/i.test(userAgent)) {
+                        step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
+                        step2.innerHTML = "Puis <strong>Ajouter à l'écran d'accueil</strong>";
+                        installSteps.classList.remove('hidden');
+                        installBanner.classList.remove('hidden');
+                        lucide.createIcons();
+                    }
+                }
+            }, 3000);
         }
 
         function dismissInstall() {
             installBanner.classList.add('hidden');
+            localStorage.setItem(DISMISS_KEY, Date.now().toString());
         }
 
         function switchTab(tabName) {

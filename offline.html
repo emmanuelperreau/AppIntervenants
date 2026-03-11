@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hors connexion - Agence O2</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #11183b;
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+        }
+        .container { max-width: 360px; }
+        .icon {
+            width: 80px; height: 80px;
+            margin: 0 auto 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon svg { width: 40px; height: 40px; stroke: #14b8a6; }
+        h1 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+        p { font-size: 0.875rem; color: #94a3b8; line-height: 1.6; margin-bottom: 1.5rem; }
+        button {
+            background: #14b8a6;
+            color: white;
+            border: none;
+            padding: 0.75rem 2rem;
+            border-radius: 0.75rem;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+        button:active { transform: scale(0.95); }
+        @media (prefers-color-scheme: light) {
+            body { background: #f8fafc; color: #1e293b; }
+            p { color: #64748b; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.038a5.25 5.25 0 017.424 0M5.106 11.856c3.807-3.808 9.98-3.808 13.788 0M1.924 8.674c5.565-5.565 14.587-5.565 20.152 0M12 18h.008v.008H12V18z" />
+            </svg>
+        </div>
+        <h1>Pas de connexion internet</h1>
+        <p>Vérifiez votre connexion Wi-Fi ou données mobiles, puis réessayez.</p>
+        <button onclick="location.reload()">Réessayer</button>
+    </div>
+</body>
+</html>
