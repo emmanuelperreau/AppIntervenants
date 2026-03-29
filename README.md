@@ -1,20 +1,51 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# AppIntervenants
 
-# Run and deploy your AI Studio app
+Application web (PWA) de gestion pour les intervenants O2. Guide complet avec simulateur de salaire, documents RH, contacts et informations quotidiennes.
 
-This contains everything you need to run your app locally.
+## Fonctionnalites
 
-View your app in AI Studio: https://ai.studio/apps/drive/19vrdE3bLSwwCBaoatZmlPSMrWWWBe754
+- **Accueil** : outils rapides (gestion cles, declaration kms, My Silae, coffre-fort bulletins)
+- **Quotidien** : equipements, securite, obligations, fiches de route
+- **Remuneration** : grille salariale 3 metiers, primes, avantages, conges
+- **Simulateur** : estimation du salaire net en temps reel
+- **Documents** : guides metier, convention collective, accords d'entreprise
+- **Contacts** : urgences, agence, medecine du travail
 
-## Run Locally
+## Stack
 
-**Prerequisites:**  Node.js
+- HTML / CSS / TypeScript strict (Vite)
+- Tailwind CSS v4
+- PWA avec vite-plugin-pwa (Workbox)
+- Lucide Icons (seule dependance runtime)
+- Tests : Vitest (40 tests)
+- CI/CD : GitHub Actions → GitHub Pages
 
+## Demarrage
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```bash
+npm install
+npx vite          # serveur de dev (port 3000)
+```
+
+## Commandes
+
+| Commande | Description |
+|----------|-------------|
+| `npx vite` | Serveur de developpement |
+| `npx vite build` | Build de production |
+| `npm run lint` | ESLint |
+| `npx tsc --noEmit` | Verification des types |
+| `npm test` | Tests Vitest |
+| `npm run format` | Formatage Prettier |
+
+## Multi-agence
+
+L'app supporte plusieurs agences via le parametre `?agence=` :
+- `nord-touraine` (defaut)
+- `loches`
+
+Ajouter une agence = un objet dans `config.ts` + un manifest JSON dans `public/`.
+
+## Deploiement
+
+Push sur `main` → CI (lint + tsc + test + build) → deploy automatique sur GitHub Pages.

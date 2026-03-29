@@ -1,5 +1,5 @@
 // Styles (traites par Vite + Tailwind)
-import './simulateur-styles.css';
+import './styles.css';
 
 // Lucide Icons (auto-hebergees via npm)
 import { createIcons, ArrowLeft, Info } from 'lucide';
@@ -95,7 +95,7 @@ function calculate(): void {
     const netBase = calculateNetBase(salaireBrut, mutuelleCost);
 
     const smicBrut = calculateBrutMensuel(SMIC_HORAIRE, hoursWeekly);
-    const smicNetBase = calculateNetBase(smicBrut, 0);
+    const smicNetBase = calculateNetBase(smicBrut, mutuelleCost);
 
     const gainKms = calculateGainKms(kms, KM_RATE);
     const costTickets = calculateCostTickets(tickets, TICKET_EMPLOYEE_SHARE);

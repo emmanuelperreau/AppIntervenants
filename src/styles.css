@@ -10,12 +10,6 @@
 .nav-btn.active { color: #11183b; background-color: #eff6ff; }
 .dark .nav-btn.active { color: #fff; background-color: #1e293b; }
 
-/* Blue Button Active State Override */
-#btn-keys { color: #3b82f6; }
-.dark #btn-keys { color: #60a5fa; }
-#btn-keys.active { color: #2563eb !important; background-color: #eff6ff !important; }
-.dark #btn-keys.active { color: #60a5fa !important; background-color: #1e3a8a !important; }
-
 .nav-btn:focus-visible {
     outline: 2px solid #60a5fa;
     outline-offset: 2px;
@@ -24,3 +18,9 @@
 /* Banner Animation */
 .slide-up { animation: slideUp 0.5s ease-out forwards; }
 @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* Simulateur */
+.slide-in { animation: slideIn 0.3s ease-out; }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+input[type=number] { -moz-appearance: textfield; }
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }

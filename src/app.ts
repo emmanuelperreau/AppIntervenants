@@ -335,7 +335,9 @@ window.switchTab = function(tabName: string): void {
     const btn = document.getElementById('btn-' + tabName) as HTMLElement | null;
     if (btn) {
         btn.classList.add('active');
-        if (!btn.dataset.color) {
+        if (btn.dataset.color) {
+            btn.classList.remove('text-' + btn.dataset.color + '-500');
+        } else {
             btn.classList.add('text-[#11183b]');
             btn.classList.remove('text-slate-500');
         }

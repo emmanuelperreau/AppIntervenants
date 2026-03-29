@@ -34,6 +34,10 @@ jobs:
       - name: Test
         run: npm test
 
+      - name: Check Links
+        run: node scripts/check-links.js
+        continue-on-error: true
+
       - name: Build
         run: npm run build
 

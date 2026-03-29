@@ -22,5 +22,6 @@ Application web (PWA) de gestion d'intervenants.
 - Code source TypeScript dans `src/` (app.ts, simulateur.ts, calculator.ts, content.ts)
 - Configuration metier dans `config.ts` (racine)
 - Assets statiques dans `public/` (fonts, icones, manifests, offline.html)
+- CSS unique dans `src/styles.css` (importe `src/common.css` avec Tailwind v4)
 - Tests dans `src/calculator.test.ts` et `src/dom.test.js`
-- Voir synthese.md pour l'arborescence complete.
+- CI/CD dans `.github/workflows/ci.yml` (lint + tsc + test + check-links + build + deploy)
