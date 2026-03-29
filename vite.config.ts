@@ -14,6 +14,7 @@ export default defineConfig({
             registerType: 'autoUpdate',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
+                navigateFallback: null,
                 runtimeCaching: [
                     {
                         urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
