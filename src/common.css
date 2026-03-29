@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@source "../*.html";
+@source "./**/*.{js,ts}";
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/inter-400.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url('/fonts/inter-600.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('/fonts/inter-700.woff2') format('woff2');
+}
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-slate-850: #151e32;
+}
+
+/* Shared styles */
+body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom); }

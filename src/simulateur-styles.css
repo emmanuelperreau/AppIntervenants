@@ -1,9 +1,6 @@
-@import "tailwindcss";
-@source "../simulateur.html";
-@source "./**/*.{js,ts}";
+@import "./common.css";
 
-/* Styles personnalisés simulateur */
-body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+/* Styles personnalises simulateur */
 .slide-in { animation: slideIn 0.3s ease-out; }
 @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
 input[type=number] { -moz-appearance: textfield; }

@@ -1,37 +1,51 @@
 import js from "@eslint/js";
 import prettier from "eslint-config-prettier";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
 export default [
   js.configs.recommended,
+  ...tseslint.configs.recommended,
   prettier,
   {
     languageOptions: {
       ecmaVersion: "latest",
       sourceType: "module",
       globals: {
-        window: "readonly",
-        document: "readonly",
-        navigator: "readonly",
-        console: "readonly",
-        fetch: "readonly",
-        localStorage: "readonly",
-        location: "readonly",
-        URL: "readonly",
-        HTMLElement: "readonly",
-        HTMLInputElement: "readonly",
-        HTMLSelectElement: "readonly",
-        Event: "readonly",
-        KeyboardEvent: "readonly",
-        setTimeout: "readonly",
-        setInterval: "readonly",
-        clearInterval: "readonly",
-        requestAnimationFrame: "readonly",
-        alert: "readonly",
+        ...globals.browser,
       },
     },
     rules: {
-      "no-unused-vars": "warn",
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "warn",
       "no-undef": "warn",
+    },
+  },
+  {
+    files: ["**/*.ts"],
+    languageOptions: {
+      parser: tseslint.parser,
+    },
+    rules: {
+      "no-undef": "off",
+    },
+  },
+  {
+    files: ["public/sw.js"],
+    languageOptions: {
+      globals: {
+        self: "readonly",
+        caches: "readonly",
+        fetch: "readonly",
+      },
+    },
+  },
+  {
+    files: ["scripts/**/*.js"],
+    languageOptions: {
+      globals: {
+        ...globals.node,
+      },
     },
   },
 ];

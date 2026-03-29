@@ -33,10 +33,7 @@
     </script>
     <meta name="theme-color" content="#11183b">
     <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-oNKSrewSkCL98QnBOZ5FrVOULkc9Szgcui5d/7HaOkQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
 
     <link rel="icon" type="image/svg+xml" href="./icon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
@@ -44,11 +41,9 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="text-slate-900 dark:text-slate-100 pb-28 md:pb-10 bg-slate-100 dark:bg-slate-900 min-h-screen relative transition-colors duration-200">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#11183b] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu</a>
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#11183b] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu principal</a>
 
     <!-- HEADER -->
     <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
@@ -112,7 +107,7 @@
 
                 <button onclick="dismissInstall()" class="text-[11px] font-bold text-slate-400 hover:text-slate-200 underline decoration-dotted transition-colors">Pas maintenant</button>
             </div>
-            <button onclick="dismissInstall()" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button onclick="dismissInstall()" aria-label="Fermer la bannière d'installation" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
     </div>
 
@@ -460,7 +455,7 @@
                                     <span class="font-bold text-slate-800 dark:text-white text-sm">Indemnités Km</span>
                                 </div>
                                 <div class="text-right">
-                                    <span class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45€</span>
+                                    <span id="val-taux-km" class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45 €</span>
                                     <span class="text-[11px] text-orange-400 font-medium">/ km</span>
                                 </div>
                             </div>
@@ -481,7 +476,7 @@
                                     <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-[11px] text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
                                 </div>
                                 <div class="text-right">
-                                    <span class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
+                                    <span id="val-prime-carburant" class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
                                     <span class="text-[11px] text-slate-400 font-medium">/ an (max)</span>
                                 </div>
                             </div>
@@ -516,7 +511,7 @@
                                 <div class="flex justify-between items-center mb-2">
                                     <h4 class="font-bold text-blue-900 dark:text-blue-200">Valeur Faciale</h4>
                                     <div class="text-right">
-                                        <span class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
+                                        <span id="val-ticket" class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
                                         <span class="text-[11px] text-blue-400 font-bold">/ jour travaillé</span>
                                     </div>
                                 </div>
@@ -574,14 +569,14 @@
                             <div class="bg-pink-100 dark:bg-pink-900 p-4 rounded-full text-pink-600 dark:text-pink-300"><i data-lucide="gift" class="w-8 h-8"></i></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Noël</h4><span class="bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-200 text-xs font-bold px-3 py-1 rounded-full">Novembre</span></div>
-                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-pink-600 dark:text-pink-400 text-lg">50€ /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-pink-600 dark:text-pink-400 text-lg"><span id="val-cheques-cadeaux">50 €</span> /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
                             </div>
                         </div>
                         <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-orange-100 dark:border-orange-900/30 bg-orange-50/30 dark:bg-orange-900/10">
                             <div class="bg-orange-100 dark:bg-orange-900 p-4 rounded-full text-orange-600 dark:text-orange-300"><i data-lucide="sun" class="w-8 h-8"></i></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Vacances</h4><span class="bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
-                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg">100€ /an</span> <span class="text-xs text-slate-400">(Co-financement 20%)</span></p>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg"><span id="val-cheques-vacances">100 €</span> /an</span> <span class="text-xs text-slate-400">(Co-financement 20%)</span></p>
                             </div>
                         </div>
                     </div>
@@ -594,14 +589,14 @@
                 <div class="bg-[#ee9572] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
                     <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Clients</h3>
                     <i data-lucide="users" class="w-12 h-12 my-2"></i>
-                    <div class="text-5xl font-black tracking-tighter">40 €</div>
+                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-client">40 €</span></div>
                     <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
                 </div>
                 <!-- Parrainage Salarié -->
                 <div class="bg-[#b93c7d] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
                     <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Salariés</h3>
                     <i data-lucide="users" class="w-12 h-12 my-2"></i>
-                    <div class="text-5xl font-black tracking-tighter">200 €</div>
+                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-intervenant">200 €</span></div>
                     <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
                 </div>
             </div>
@@ -996,27 +991,27 @@
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
         <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-2xl mx-auto pb-safe md:pb-0">
             <div class="flex justify-around items-center h-full px-2 md:px-6" role="tablist" aria-label="Navigation principale">
-                <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home" role="tab" aria-selected="true" aria-controls="tab-home">
+                <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-[#11183b]" id="btn-home" role="tab" aria-selected="true" aria-controls="tab-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Accueil</span>
                 </button>
                 
-                <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-daily" role="tab" aria-selected="false" aria-controls="tab-daily">
+                <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-500" id="btn-daily" role="tab" aria-selected="false" aria-controls="tab-daily">
                     <div class="transition-transform duration-300"><i data-lucide="calendar-check" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Quotidien</span>
                 </button>
 
-                <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-money" role="tab" aria-selected="false" aria-controls="tab-money">
+                <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-500" id="btn-money" role="tab" aria-selected="false" aria-controls="tab-money">
                     <div class="transition-transform duration-300"><i data-lucide="euro" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Rémunération</span>
                 </button>
                 
-                <button onclick="switchTab('docs')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-docs" role="tab" aria-selected="false" aria-controls="tab-docs">
+                <button onclick="switchTab('docs')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-500" id="btn-docs" role="tab" aria-selected="false" aria-controls="tab-docs">
                     <div class="transition-transform duration-300"><i data-lucide="file-text" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Docs</span>
                 </button>
 
-                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-blue-500" id="btn-keys" role="tab" aria-selected="false" aria-controls="tab-keys">
+                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-blue-500" id="btn-keys" data-color="blue" role="tab" aria-selected="false" aria-controls="tab-keys">
                     <div class="transition-transform duration-300"><i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Contacts & Urgences</span>
                 </button>
@@ -1025,6 +1020,6 @@
     </div>
 
     <!-- Script principal (module ES, traite par Vite) -->
-    <script type="module" src="/src/app.js"></script>
+    <script type="module" src="/src/app.ts"></script>
 </body>
 </html>

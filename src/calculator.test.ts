@@ -3,7 +3,6 @@ import {
   TAUX_COTISATIONS_SALARIALES,
   ASSIETTE_CSG_CRDS,
   TAUX_CSG_CRDS,
-  HEURES_COMP_COEFF,
   CHARGES_PATRONALES_COEFF,
   calculateHoursMonthly,
   calculateBrutMensuel,
@@ -16,9 +15,9 @@ import {
   calculateHeuresComp,
   calculateTotalMoyen,
   calculateCoutEmployeur
-} from './calculator.js';
+} from './calculator';
 
-// Constantes de reference pour les tests (grille salariale config.js)
+// Constantes de reference pour les tests (grille salariale config.ts)
 const SMIC_HORAIRE = 12.02;
 const KM_RATE = 0.45;
 const TICKET_EMPLOYEE_SHARE = 3.00;
@@ -53,13 +52,11 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
   describe('calculateBrutMensuel', () => {
     it('calcule le brut mensuel au SMIC pour 35h', () => {
       const result = calculateBrutMensuel(SMIC_HORAIRE, 35);
-      // 12.02 * 35 * 52 / 12 = 1823.03
       expect(result).toBeCloseTo(1823.03, 0);
     });
 
     it('calcule le brut mensuel pour 24h a 12.02', () => {
       const result = calculateBrutMensuel(12.02, 24);
-      // 12.02 * 24 * 52 / 12 = 1250.08
       expect(result).toBeCloseTo(1250.08, 0);
     });
 
@@ -79,7 +76,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
     it('applique les cotisations correctement sur un brut SMIC 35h', () => {
       const brut = calculateBrutMensuel(SMIC_HORAIRE, 35);
       const net = calculateNetBase(brut, 0);
-      // Le net doit etre entre 78% et 82% du brut (sans mutuelle)
       expect(net / brut).toBeGreaterThan(0.78);
       expect(net / brut).toBeLessThan(0.82);
     });
@@ -94,7 +90,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
     it('reproduit la formule exacte du simulateur', () => {
       const brut = 1500;
       const mutuelle = 17.22;
-      // Calcul attendu : brut - (brut * 0.1131) - ((brut * 0.9825 + mutuelle) * 0.097)
       const expected = brut
         - (brut * TAUX_COTISATIONS_SALARIALES)
         - (((brut * ASSIETTE_CSG_CRDS) + mutuelle) * TAUX_CSG_CRDS);
@@ -102,7 +97,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
     });
 
     it('retourne 0 pour un brut de 0', () => {
-      // Avec mutuelle : la formule donne -mutuelle * CSG/CRDS (negatif)
       const net = calculateNetBase(0, 0);
       expect(net).toBe(0);
     });
@@ -147,7 +141,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
       const gainKms = 45;
       const costTickets = 60;
       const mutuelle = 17.22;
-      // netBase + gainKms + costTickets - mutuelle
       const expected = 1400 + 45 + 60 - 17.22;
       expect(calculateNetMensuel(netBase, gainKms, costTickets, mutuelle)).toBeCloseTo(expected, 2);
     });
@@ -180,7 +173,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
     });
 
     it('proratise pour les temps partiels', () => {
-      // 24h/35h * 300 = 205.71
       expect(calculatePrimeCarburant(24, PRIME_CARBURANT_MAX)).toBeCloseTo(205.71, 0);
     });
 
@@ -193,17 +185,16 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
   // calculateHeuresComp
   // =========================================================================
   describe('calculateHeuresComp', () => {
-    it('donne 60 heures comp pour un contrat 24h', () => {
-      expect(calculateHeuresComp(24)).toBeCloseTo(60, 2);
+    it('donne le montant EUR pour un contrat 24h au SMIC', () => {
+      expect(calculateHeuresComp(24, SMIC_HORAIRE)).toBeCloseTo(60 * SMIC_HORAIRE * 1.10, 2);
     });
 
-    it('proratise pour 35h', () => {
-      // 35 * 60 / 24 = 87.5
-      expect(calculateHeuresComp(35)).toBeCloseTo(87.5, 1);
+    it('proratise pour 35h au SMIC', () => {
+      expect(calculateHeuresComp(35, SMIC_HORAIRE)).toBeCloseTo(87.5 * SMIC_HORAIRE * 1.10, 1);
     });
 
     it('retourne 0 pour 0 heures', () => {
-      expect(calculateHeuresComp(0)).toBe(0);
+      expect(calculateHeuresComp(0, SMIC_HORAIRE)).toBe(0);
     });
   });
 
@@ -215,15 +206,12 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
       const netMensuel = 1400;
       const heuresComp = 60;
       const primeCarburant = 205.71;
-      // Primes annuelles = 50 + 80 + 60 + 205.71 = 395.71
-      // Lisse = 395.71 / 12 = 32.98
       const expected = 1400 + 395.71 / 12;
       const result = calculateTotalMoyen(netMensuel, CHEQUES_CADEAUX, CHEQUES_VACANCES_EMPLOYEUR, heuresComp, primeCarburant);
       expect(result).toBeCloseTo(expected, 1);
     });
 
     it('sans primes, egal au net mensuel + (cadeaux+vacances)/12', () => {
-      // Meme avec 0 heures comp et 0 prime carburant, les cheques restent
       const result = calculateTotalMoyen(1400, CHEQUES_CADEAUX, CHEQUES_VACANCES_EMPLOYEUR, 0, 0);
       expect(result).toBeCloseTo(1400 + (50 + 80) / 12, 1);
     });
@@ -238,7 +226,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
       const gainKms = 45;
       const tickets = 20;
       const mutuelle = 17.22;
-      // (1822 * 1.1) + 45 + (20 * 3) + 17.22
       const expected = (1822 * CHARGES_PATRONALES_COEFF) + 45 + (20 * 3) + 17.22;
       expect(calculateCoutEmployeur(brut, gainKms, tickets, mutuelle)).toBeCloseTo(expected, 2);
     });
@@ -264,7 +251,6 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
       const tickets = 15;
       const mutuelle = 17.22;
 
-      // Etape par etape
       const hoursMonthly = calculateHoursMonthly(hoursWeekly);
       expect(hoursMonthly).toBeCloseTo(104, 0);
 
@@ -289,8 +275,8 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
       expect(netHoraire).toBeLessThan(12);
 
       const primeCarburant = calculatePrimeCarburant(hoursWeekly, PRIME_CARBURANT_MAX);
-      const heuresComp = calculateHeuresComp(hoursWeekly);
-      expect(heuresComp).toBeCloseTo(60, 0);
+      const heuresComp = calculateHeuresComp(hoursWeekly, rate);
+      expect(heuresComp).toBeCloseTo(60 * rate * 1.10, 0);
 
       const totalMoyen = calculateTotalMoyen(netMensuel, CHEQUES_CADEAUX, CHEQUES_VACANCES_EMPLOYEUR, heuresComp, primeCarburant);
       expect(totalMoyen).toBeGreaterThan(netMensuel);

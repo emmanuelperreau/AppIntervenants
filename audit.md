@@ -1,88 +1,91 @@
-# Audit AppIntervenants
+# Audit Final — AppIntervenants
 
-**Date** : 29 mars 2026
-**Version** : post-migration Vite + Tailwind v4
+> Date : 2026-03-29 | Score : 8.1/10
 
----
+## Score Global
 
-## 1. Bugs corrigés
+| Categorie | Score /10 | Justification |
+|-----------|-----------|---------------|
+| Code qualite | 9/10 | TypeScript strict (.ts), ESLint 0 erreurs 0 warnings, Prettier integre, flat config ESLint v10, `npx tsc --noEmit` passe sans erreur |
+| Accessibilite | 8/10 | Skip-to-content, `role="tabpanel"` + `aria-labelledby`, `role="tablist"`/`role="tab"`/`aria-selected`, focus-visible, navigation clavier fleches, contrastes ameliores. Pas d'audit Lighthouse formel. |
+| Performance | 8/10 | Vite build optimise (main 42.8 kB gzip 9.9 kB, config 7.9 kB, simulateur 3.4 kB), Tailwind v4 purge, Lucide tree-shake, Google Fonts en local (woff2), pre-cache Workbox 18 entries (469 kB). CSS ~79 kB x2 (pas de code splitting CSS entre entry points). |
+| Securite | 8/10 | CSP avec hash SHA-256 (plus de `unsafe-inline` ni `unsafe-eval` pour les scripts), `rel="noopener noreferrer"` sur liens externes, pas de dependance runtime lourde. `style-src 'unsafe-inline'` reste necessaire pour Tailwind inline. |
+| PWA | 9/10 | vite-plugin-pwa Workbox (generateSW, 18 entries pre-cachees), icone maskable, 2 manifests multi-agence, banniere install iOS/Android, auto-reload apres 10 min, offline.html fallback |
+| UX/UI | 7/10 | Dark mode natif, animations fade-in, navigation responsive (capsule desktop, barre mobile), safe-area iOS. Pas de feedback haptic, pas de transitions entre pages. |
+| Maintenabilite | 8/10 | TypeScript strict, config centralisee, contenu RH externalise, calculs purs testes (40 tests), CI/CD lint+test+build+deploy, arborescence propre, script check-links |
 
-### Critiques (corrigés)
+## Metriques Build
 
-| ID | Description | Correctif | Statut |
-|----|-------------|-----------|--------|
-| BUG-01 | `user-scalable=no` bloquait le zoom | Supprimé du viewport meta | OK |
-| BUG-02 | CDN Tailwind/Lucide non versionnés | Migrés vers npm (Tailwind v4 + Lucide v1.7) | OK |
-| BUG-03 | SW `cache.addAll` échouait sur CDN | Séparé LOCAL_ASSETS / CDN_ASSETS avec try/catch | OK |
+| Fichier | Taille | Gzip |
+|---------|--------|------|
+| index.html | 87.60 kB | 13.68 kB |
+| simulateur.html | 10.68 kB | 2.34 kB |
+| main.css | 79.51 kB | 12.59 kB |
+| simulateur.css | 78.90 kB | 12.42 kB |
+| main.js | 42.84 kB | 9.93 kB |
+| config.js | 7.93 kB | 3.17 kB |
+| simulateur.js | 3.45 kB | 1.45 kB |
+| **SW Workbox** | 18 entries | 469.76 kB pre-cache |
 
-### Majeurs (corrigés)
+## Metriques Qualite
 
-| ID | Description | Correctif | Statut |
-|----|-------------|-----------|--------|
-| BUG-04 | Manifest par défaut Loches au lieu de Nord | Aligné sur nord-touraine | OK |
-| BUG-05 | apple-web-app-title après le script inline | Déplacé avant le script | OK |
-| BUG-06 | Pas de rôles ARIA sur les onglets | Ajouté tablist/tab/tabpanel + aria-selected | OK |
-| BUG-07 | `clients.claim()` hors de `waitUntil` | Chaîné dans waitUntil | OK |
-| BUG-08 | SW ne cachait pas les réponses navigation | Ajouté cache.put sur les réponses fraîches | OK |
-| BUG-09 | Mutuelle hardcodée | Remplacé par placeholder via config.js | OK |
-| BUG-10 | `skipWaiting()` hors de `waitUntil` | Chaîné dans waitUntil | OK |
+| Metrique | Resultat |
+|----------|----------|
+| `npm run lint` | 0 erreurs, 0 warnings |
+| `npx tsc --noEmit` | 0 erreurs |
+| `npm test` (Vitest) | 40 tests passes (2 fichiers) |
+| Build Vite | OK en 430ms |
+| SW Workbox | `dist/sw.js` genere (2.4 kB) |
 
-### Migration Tailwind v3 -> v4 (corrigés le 29/03/2026)
+## Historique des corrections
 
-| ID | Description | Correctif | Statut |
-|----|-------------|-----------|--------|
-| BUG-29 | `@tailwind base/components/utilities` (v3) ignoré par Tailwind v4 → CSS quasi-vide (10KB au lieu de 78KB) | Migré vers `@import "tailwindcss"` + `@source` dans styles.css et simulateur-styles.css | OK |
-| BUG-30 | `createIcons()` appelé sans icônes → aucune icône SVG rendue (cercles vides) | Passé `createIcons({ icons })` avec toutes les icônes importées | OK |
-| BUG-31 | `renderObligations()` utilise `ob.color` (inexistant) → classes CSS `text-undefined-600` | Réécrit pour utiliser `ob.borderClass`, `ob.iconClass`, `ob.textClass` de content.js | OK |
-| BUG-32 | `renderDocuments()` utilise `doc.color` (inexistant) → même problème | Réécrit pour utiliser `doc.hoverClass`, `doc.iconBgClass`, `doc.iconTextClass`, `doc.hoverTextClass` | OK |
+### Bugs critiques corriges
 
----
+| ID | Fichier | Description |
+|----|---------|-------------|
+| BUG-40 | src/simulateur.ts | `createIcons()` appele sans argument (icons map manquant) — corrige avec `{ icons: { ArrowLeft, Info } }` |
 
-## 2. Bugs mineurs restants
+### Bugs majeurs corriges
 
-| ID | Description | Fichier | Statut |
-|----|-------------|---------|--------|
-| BUG-11 | Titres restaurant : signe +/- à vérifier avec le métier | simulateur.html | En attente métier |
-| BUG-12 | Formule heures complémentaires non documentée | simulateur.html | A documenter |
-| BUG-13 | SMIC net biaisé par la mutuelle | simulateur.html | A documenter |
-| BUG-33 | `tailwind.config.js` présent mais ignoré par Tailwind v4 | tailwind.config.js | A supprimer |
+| ID | Fichier | Description |
+|----|---------|-------------|
+| BUG-41 | package.json | Lint ne couvrait que les fichiers racine — elargi a `'**/*.{js,ts}'` |
+| BUG-42 | index.html + simulateur.html | CSP contenait `unsafe-eval` sans justification — retire |
+| BUG-43 | sw.js | SW ne pre-cachait pas les bundles Vite — resolu par migration vite-plugin-pwa Workbox |
 
----
+### Bugs mineurs corriges
 
-## 3. Améliorations déjà réalisées
+| ID | Fichier | Description |
+|----|---------|-------------|
+| BUG-44 | racine | 9 fichiers dupliques entre racine et public/ — supprimes |
+| BUG-45 | manifests | Icone maskable manquante — ajoutee dans les 2 manifests |
+| BUG-46 | simulateur-styles.css | Classe `.pb-safe` manquante — ajoutee |
+| BUG-47 | index.html + app.ts | Magic numbers hardcodes — injectes dynamiquement depuis config |
+| BUG-50 | eslint.config.js | Package `globals` installe, globals manuels remplaces |
+| BUG-51 | sw.js | Font-weights CDN desalignes — corrige (maintenant fonts locales) |
+| BUG-52 | index.html | Bouton Accueil `text-slate-400` en dur — corrige |
+| BUG-54 | package.json | Format Prettier elargi a `'**/*.{js,ts,html,json,css}'` |
 
-- [x] Vite activé avec modules ES (src/app.js, src/content.js, config.js)
-- [x] Tailwind CSS v4 via `@tailwindcss/vite` (CSS purgé ~78KB)
-- [x] Lucide Icons via npm, import sélectif (~42KB JS)
-- [x] Tests Vitest pour le simulateur (calculator.js)
-- [x] ESLint + Prettier configurés
-- [x] GitHub Actions CI (lint + test + build + deploy)
-- [x] CSP basique ajouté
-- [x] Navigation clavier entre onglets (ARIA tabs pattern)
-- [x] Animation fade-in rejouée entre onglets
-- [x] Content RH externalisé dans content.js
-- [x] rel="noopener noreferrer" sur tous les liens externes
-- [x] meta description ajoutée
-- [x] Manifests enrichis (lang, dir, description, scope "./")
-- [x] Google Fonts optimisé (poids réduits, preconnect)
-- [x] .env dans .gitignore
-- [x] GEMINI_API_KEY supprimé
+### Ameliorations structurelles realisees
 
----
+- Migration TypeScript strict (tous les fichiers src/ en .ts, `npx tsc --noEmit` passe)
+- vite-plugin-pwa avec Workbox (generateSW, 18 entries pre-cachees)
+- Google Fonts en local (3 fichiers woff2 dans public/fonts/, plus de CDN)
+- CSP renforcee (hash SHA-256 pour le script inline, plus de `unsafe-inline` ni `unsafe-eval` pour scripts)
+- ESLint + TypeScript ESLint integre (flat config v10)
+- Tests DOM integrite des donnees (40 tests total, 2 fichiers)
+- Magic numbers injectes dynamiquement depuis config
+- Icone maskable PWA
+- Accessibilite complete (skip-to-content, tabpanel, aria-labels, contrastes, focus visible)
+- Script CI verification des liens (`scripts/check-links.js`)
+- CSS commun factorise (`src/common.css`)
+- Fichiers dupliques racine supprimes (arborescence propre)
 
-## 4. Plan de corrections restantes
+## Points restants (non-bloquants)
 
-### Immédiat (à faire maintenant)
-
-| # | Action | Fichier | Effort |
-|---|--------|---------|--------|
-| 1 | Supprimer `tailwind.config.js` (inutilisé par Tailwind v4) | tailwind.config.js | 1 min |
-
-### Court terme
-
-| # | Action | Effort |
-|---|--------|--------|
-| 1 | Confirmer calcul titres restaurant avec le métier (BUG-11) | 1h |
-| 2 | Documenter les formules du simulateur (BUG-12, BUG-13) | 2h |
-| 3 | Auditer les contrastes couleur WCAG AA | 2h |
-| 4 | Ajouter icône maskable au manifest | 15 min |
+- Les 2 CSS restent ~79 kB chacun (Vite ne fait pas de CSS code splitting entre entry points separes)
+- Contenu content.ts utilise des classes Tailwind explicites (choix delibere pour le purge)
+- BUG-48 : Comparaison SMIC inclut la mutuelle (impact mineur sur l'affichage comparatif)
+- BUG-49 : `calculateHeuresComp` retourne un nombre d'heures affiche en EUR (nomenclature confuse mais calcul total correct)
+- BUG-53 : Logique speciale btn-keys dans switchTab (fonctionnel, refactoring cosmetique)
+- `style-src 'unsafe-inline'` necessaire pour Tailwind (contrainte framework)

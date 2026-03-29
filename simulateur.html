@@ -7,13 +7,8 @@
     
     <meta name="theme-color" content="#11183b">
     <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white min-h-screen pb-10">
 
@@ -36,7 +31,7 @@
             <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-1.5 rounded-lg shrink-0">
                 <i data-lucide="info" class="w-4 h-4"></i>
             </div>
-            <p class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
+            <p id="sim-help-info" class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
                 Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
             </p>
         </div>
@@ -51,7 +46,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-rate" class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-rate" value="12.02" step="0.01" min="0" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-rate" value="12.02" step="0.01" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">€</span>
                     </div>
                 </div>
@@ -59,7 +54,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-hours" class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-hours" value="24" step="0.5" min="0" max="48" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-hours" value="24" step="0.5" min="0" max="48" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">h</span>
                     </div>
                 </div>
@@ -76,7 +71,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-kms" value="150" min="0" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-kms" value="150" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">km</span>
                     </div>
                 </div>
@@ -84,7 +79,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-tickets" value="20" min="0" max="31" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-tickets" value="20" min="0" max="31" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">/ mois</span>
                     </div>
                 </div>
@@ -153,6 +148,6 @@
     </main>
 
     <!-- Script simulateur (module ES, traite par Vite) -->
-    <script type="module" src="/src/simulateur.js"></script>
+    <script type="module" src="/src/simulateur.ts"></script>
 </body>
 </html>

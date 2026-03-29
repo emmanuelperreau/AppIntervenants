@@ -1,81 +1,115 @@
-// Contenu RH externalisé — modifiable sans toucher au HTML
-// NOTE : les classes Tailwind sont écrites en entier (pas de concaténation dynamique)
-//        pour que le moteur de purge puisse les détecter.
+// Contenu RH externalise -- modifiable sans toucher au HTML
+// NOTE : les classes Tailwind sont ecrites en entier (pas de concatenation dynamique)
+//        pour que le moteur de purge puisse les detecter.
+
+interface ObligationBase {
+    icon: string;
+    borderClass: string;
+    iconClass: string;
+    textClass: string;
+}
+
+interface ObligationWithText extends ObligationBase {
+    text: string;
+    html?: undefined;
+    overlayIcon?: string;
+    overlayClass?: string;
+}
+
+interface ObligationWithHtml extends ObligationBase {
+    html: string;
+    text?: undefined;
+    overlayIcon?: string;
+    overlayClass?: string;
+}
+
+export type Obligation = ObligationWithText | ObligationWithHtml;
+
+export interface DocumentLink {
+    title: string;
+    url: string;
+    icon: string;
+    id?: string;
+    hoverClass: string;
+    iconBgClass: string;
+    iconTextClass: string;
+    hoverTextClass: string;
+}
 
 /**
  * Les 18 obligations de l'intervenant au quotidien.
- * Chaque entrée génère une carte dans l'onglet "Quotidien".
+ * Chaque entree genere une carte dans l'onglet "Quotidien".
  */
-export const OBLIGATIONS = [
+export const OBLIGATIONS: readonly Obligation[] = [
     {
         icon: "shirt",
         borderClass: "border-pink-100 dark:border-pink-900/30",
         iconClass: "text-pink-600 dark:text-pink-400",
         textClass: "text-pink-900 dark:text-pink-200",
-        text: "Avoir une présentation correcte et une tenue de travail adaptée en portant les équipements fournis par O2"
+        text: "Avoir une pr\u00e9sentation correcte et une tenue de travail adapt\u00e9e en portant les \u00e9quipements fournis par O2"
     },
     {
         icon: "clock",
         borderClass: "border-blue-100 dark:border-blue-900/30",
         iconClass: "text-blue-600 dark:text-blue-400",
         textClass: "text-blue-900 dark:text-blue-200",
-        text: "Être ponctuel (ne pas décider les horaires) et avertir en cas de retard ou d'absence"
+        text: "\u00catre ponctuel (ne pas d\u00e9cider les horaires) et avertir en cas de retard ou d'absence"
     },
     {
         icon: "qr-code",
         borderClass: "border-sky-100 dark:border-sky-900/30",
         iconClass: "text-sky-500",
         textClass: "text-sky-900 dark:text-sky-200",
-        text: "Scanner le QR code au début et à la fin de chaque intervention"
+        text: "Scanner le QR code au d\u00e9but et \u00e0 la fin de chaque intervention"
     },
     {
         icon: "phone",
         borderClass: "border-orange-100 dark:border-orange-900/30",
         iconClass: "text-orange-600 dark:text-orange-400",
         textClass: "text-orange-900 dark:text-orange-200",
-        html: "<p class=\"mb-1\">En cas d'absence, prévenir directement la <span class=\"font-bold\">Ligne des Salariés</span></p>"
+        html: "<p class=\"mb-1\">En cas d'absence, pr\u00e9venir directement la <span class=\"font-bold\">Ligne des Salari\u00e9s</span></p>"
     },
     {
         icon: "clipboard-list",
         borderClass: "border-indigo-100 dark:border-indigo-900/30",
         iconClass: "text-indigo-500",
         textClass: "text-indigo-900 dark:text-indigo-200",
-        text: "Respecter la feuille de route (tâches à réaliser lors de la prestation)"
+        text: "Respecter la feuille de route (t\u00e2ches \u00e0 r\u00e9aliser lors de la prestation)"
     },
     {
         icon: "key",
         borderClass: "border-amber-100 dark:border-amber-900/30",
         iconClass: "text-amber-500",
         textClass: "text-amber-900 dark:text-amber-200",
-        text: "Être responsable des clés confiées"
+        text: "\u00catre responsable des cl\u00e9s confi\u00e9es"
     },
     {
         icon: "message-circle",
         borderClass: "border-fuchsia-100 dark:border-fuchsia-900/30",
         iconClass: "text-fuchsia-500",
         textClass: "text-fuchsia-900 dark:text-fuchsia-200",
-        text: "Vouvoyer les clients, être poli et utiliser un vocabulaire correct"
+        text: "Vouvoyer les clients, \u00eatre poli et utiliser un vocabulaire correct"
     },
     {
         icon: "eye-off",
         borderClass: "border-emerald-100 dark:border-emerald-900/30",
         iconClass: "text-emerald-500",
         textClass: "text-emerald-900 dark:text-emerald-200",
-        text: "Faire preuve de discrétion (ne pas diffuser les informations personnelles, ne pas se confier...)"
+        text: "Faire preuve de discr\u00e9tion (ne pas diffuser les informations personnelles, ne pas se confier...)"
     },
     {
         icon: "heart",
         borderClass: "border-rose-100 dark:border-rose-900/30",
         iconClass: "text-rose-500 fill-rose-100 dark:fill-rose-900",
         textClass: "text-rose-900 dark:text-rose-200",
-        text: "Respecter les habitudes et les choix de vie (religion, culture, intimité ...)"
+        text: "Respecter les habitudes et les choix de vie (religion, culture, intimit\u00e9 ...)"
     },
     {
         icon: "ear",
         borderClass: "border-sky-100 dark:border-sky-900/30",
         iconClass: "text-sky-400",
         textClass: "text-sky-900 dark:text-sky-200",
-        text: "Remonter à votre agence toute modification de planning convenue avec le client ou toutes évolutions possibles de ses besoins"
+        text: "Remonter \u00e0 votre agence toute modification de planning convenue avec le client ou toutes \u00e9volutions possibles de ses besoins"
     },
     {
         icon: "gift",
@@ -91,60 +125,60 @@ export const OBLIGATIONS = [
         borderClass: "border-violet-100 dark:border-violet-900/30",
         iconClass: "text-violet-600",
         textClass: "text-violet-900 dark:text-violet-200",
-        text: "Informer O2 en cas de situation préoccupante"
+        text: "Informer O2 en cas de situation pr\u00e9occupante"
     },
     {
         icon: "book-open",
         borderClass: "border-green-100 dark:border-green-900/30",
         iconClass: "text-green-600",
         textClass: "text-green-900 dark:text-green-200",
-        text: "Remplir le cahier de liaison à chaque intervention"
+        text: "Remplir le cahier de liaison \u00e0 chaque intervention"
     },
     {
         icon: "alert-octagon",
         borderClass: "border-cyan-100 dark:border-cyan-900/30",
         iconClass: "text-cyan-500",
         textClass: "text-cyan-900 dark:text-cyan-200",
-        text: "Informer immédiatement O2 de tout sinistre, casse ou problème"
+        text: "Informer imm\u00e9diatement O2 de tout sinistre, casse ou probl\u00e8me"
     },
     {
         icon: "arrow-left-right",
         borderClass: "border-amber-100 dark:border-amber-900/30",
         iconClass: "text-amber-500",
         textClass: "text-amber-900 dark:text-amber-200",
-        text: "Assurer les remplacements avec professionnalisme (présentez votre carte O2 auprès d'un nouveau client)"
+        text: "Assurer les remplacements avec professionnalisme (pr\u00e9sentez votre carte O2 aupr\u00e8s d'un nouveau client)"
     },
     {
         icon: "file-edit",
         borderClass: "border-blue-100 dark:border-blue-900/30",
         iconClass: "text-blue-700 dark:text-blue-400",
         textClass: "text-blue-900 dark:text-blue-200",
-        text: "Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis de conduire, aptitude...)"
+        text: "Signaler \u00e0 O2 tout changement personnel (\u00e9tat civil, allergies, adresse, permis de conduire, aptitude...)"
     },
     {
         icon: "cigarette-off",
         borderClass: "border-slate-100 dark:border-slate-600",
         iconClass: "text-slate-500",
         textClass: "text-slate-900 dark:text-slate-200",
-        text: "Ne pas fumer ou consommer de boissons alcoolisées chez les clients"
+        text: "Ne pas fumer ou consommer de boissons alcoolis\u00e9es chez les clients"
     },
     {
         icon: "lock",
         borderClass: "border-red-100 dark:border-red-900/30",
         iconClass: "text-red-600",
         textClass: "text-red-900 dark:text-red-200",
-        text: "Ne pas utiliser d'objets et matériels appartenant aux clients sans leur autorisation"
+        text: "Ne pas utiliser d'objets et mat\u00e9riels appartenant aux clients sans leur autorisation"
     }
-];
+] as const;
 
 /**
- * Liens documents affichés dans l'onglet "Docs".
- * Les liens avec un `id` sont mis à jour dynamiquement via config.js (applyConfig).
+ * Liens documents affiches dans l'onglet "Docs".
+ * Les liens avec un `id` sont mis a jour dynamiquement via config.ts (applyConfig).
  * Les liens avec un `url` statique pointent directement vers leur destination.
  */
-export const DOCUMENTS = [
+export const DOCUMENTS: readonly DocumentLink[] = [
     {
-        title: "Guide Assistant(e) Ménager(ère)",
+        title: "Guide Assistant(e) M\u00e9nager(\u00e8re)",
         url: "https://drive.google.com/file/d/1QwaUc8TZ1Ob-WEUbJF61WDoL5lIWYYZI/view?usp=sharing",
         icon: "sparkles",
         hoverClass: "hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:border-orange-200",
@@ -180,7 +214,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-slate-900 dark:group-hover:text-white"
     },
     {
-        title: "DUE Avantages & Rémunération",
+        title: "DUE Avantages & R\u00e9mun\u00e9ration",
         url: "#",
         icon: "gem",
         id: "doc-link-avantages",
@@ -190,7 +224,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-emerald-700 dark:group-hover:text-emerald-300"
     },
     {
-        title: "Note Pose des Congés",
+        title: "Note Pose des Cong\u00e9s",
         url: "#",
         icon: "sun",
         id: "doc-link-conges",
@@ -200,7 +234,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-amber-700 dark:group-hover:text-amber-300"
     },
     {
-        title: "DUE Santé",
+        title: "DUE Sant\u00e9",
         url: "#",
         icon: "stethoscope",
         id: "doc-link-due-sante",
@@ -210,7 +244,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-teal-700 dark:group-hover:text-teal-300"
     },
     {
-        title: "Garantie Frais Santé",
+        title: "Garantie Frais Sant\u00e9",
         url: "#",
         icon: "shield-check",
         id: "doc-link-garantie-sante",
@@ -220,7 +254,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-cyan-700 dark:group-hover:text-cyan-300"
     },
     {
-        title: "DUE Intéressement",
+        title: "DUE Int\u00e9ressement",
         url: "#",
         icon: "coins",
         id: "doc-link-due-interessement",
@@ -240,7 +274,7 @@ export const DOCUMENTS = [
         hoverTextClass: "group-hover:text-indigo-700 dark:group-hover:text-indigo-300"
     },
     {
-        title: "Sensibilisation à la Confidentialité",
+        title: "Sensibilisation \u00e0 la Confidentialit\u00e9",
         url: "https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/view?usp=drive_link",
         icon: "shield",
         hoverClass: "hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300",

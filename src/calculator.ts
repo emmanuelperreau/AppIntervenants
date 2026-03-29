@@ -1,22 +1,22 @@
-// src/calculator.js — Moteur de calcul du simulateur (fonctions pures, testables)
+// src/calculator.ts — Moteur de calcul du simulateur (fonctions pures, testables)
 
 // Coefficients de paie (source : bulletin de paie type O2)
-export const TAUX_COTISATIONS_SALARIALES = 0.1131;   // Cotisations salariales : ~11,31% du brut
-export const ASSIETTE_CSG_CRDS = 0.9825;             // 98,25% du brut = assiette CSG/CRDS (abattement 1,75%)
-export const TAUX_CSG_CRDS = 0.097;                  // CSG 9,2% + CRDS 0,5% = 9,7%
+export const TAUX_COTISATIONS_SALARIALES = 0.1131 as const;   // Cotisations salariales : ~11,31% du brut
+export const ASSIETTE_CSG_CRDS = 0.9825 as const;             // 98,25% du brut = assiette CSG/CRDS (abattement 1,75%)
+export const TAUX_CSG_CRDS = 0.097 as const;                  // CSG 9,2% + CRDS 0,5% = 9,7%
 
 // Coefficient heures complementaires : estimation annuelle basee sur
 // un ratio de 60 heures comp. pour un contrat de reference 24h/semaine.
-export const HEURES_COMP_COEFF = 60;
+export const HEURES_COMP_COEFF = 60 as const;
 
 // Estimation charges patronales (coeff approximatif pour SMIC + reductions)
-export const CHARGES_PATRONALES_COEFF = 1.1;
+export const CHARGES_PATRONALES_COEFF = 1.1 as const;
 
 /**
  * Calcule les heures mensualisees a partir des heures hebdomadaires.
  * Formule : heuresHebdo * 52 / 12
  */
-export function calculateHoursMonthly(hoursWeekly) {
+export function calculateHoursMonthly(hoursWeekly: number): number {
   return hoursWeekly * 52 / 12;
 }
 
@@ -24,7 +24,7 @@ export function calculateHoursMonthly(hoursWeekly) {
  * Calcule le salaire brut mensuel.
  * Formule : heuresMensuelles * tauxHoraire
  */
-export function calculateBrutMensuel(tauxHoraire, hoursWeekly) {
+export function calculateBrutMensuel(tauxHoraire: number, hoursWeekly: number): number {
   const hoursMonthly = calculateHoursMonthly(hoursWeekly);
   return hoursMonthly * tauxHoraire;
 }
@@ -33,7 +33,7 @@ export function calculateBrutMensuel(tauxHoraire, hoursWeekly) {
  * Calcule le net de base a partir du brut et du cout mutuelle.
  * Formule : brut - (brut * cotisations) - ((brut * assiette + mutuelle) * CSG/CRDS)
  */
-export function calculateNetBase(brutMensuel, mutuelleCost) {
+export function calculateNetBase(brutMensuel: number, mutuelleCost: number): number {
   return brutMensuel
     - (brutMensuel * TAUX_COTISATIONS_SALARIALES)
     - (((brutMensuel * ASSIETTE_CSG_CRDS) + mutuelleCost) * TAUX_CSG_CRDS);
@@ -42,14 +42,14 @@ export function calculateNetBase(brutMensuel, mutuelleCost) {
 /**
  * Calcule l'indemnite kilometrique mensuelle.
  */
-export function calculateGainKms(kms, kmRate) {
+export function calculateGainKms(kms: number, kmRate: number): number {
   return kms * kmRate;
 }
 
 /**
  * Calcule la part salariee des tickets restaurant.
  */
-export function calculateCostTickets(tickets, ticketEmployeeShare) {
+export function calculateCostTickets(tickets: number, ticketEmployeeShare: number): number {
   return tickets * ticketEmployeeShare;
 }
 
@@ -57,36 +57,44 @@ export function calculateCostTickets(tickets, ticketEmployeeShare) {
  * Calcule le net mensuel a payer.
  * Formule : netBase + gainKms + costTickets - mutuelleCost
  */
-export function calculateNetMensuel(netBase, gainKms, costTickets, mutuelleCost) {
+export function calculateNetMensuel(netBase: number, gainKms: number, costTickets: number, mutuelleCost: number): number {
   return netBase + gainKms + costTickets - mutuelleCost;
 }
 
 /**
  * Calcule le net horaire.
  */
-export function calculateNetHoraire(netMensuel, hoursMonthly) {
+export function calculateNetHoraire(netMensuel: number, hoursMonthly: number): number {
   return hoursMonthly > 0 ? netMensuel / hoursMonthly : 0;
 }
 
 /**
  * Calcule la prime carburant annuelle (proratisee selon heures hebdo / 35h).
  */
-export function calculatePrimeCarburant(hoursWeekly, primeCarburantMax) {
+export function calculatePrimeCarburant(hoursWeekly: number, primeCarburantMax: number): number {
   return (hoursWeekly * primeCarburantMax) / 35;
 }
 
 /**
- * Calcule l'estimation des heures complementaires annuelles.
- * Prorata : heuresHebdo / 24h de reference * coefficient.
+ * Calcule le montant annuel des heures complementaires (en EUR).
+ * Prorata : heuresHebdo / 24h de reference * coefficient = heures annuelles.
+ * Montant = heures * tauxHoraire * majoration 10%.
  */
-export function calculateHeuresComp(hoursWeekly) {
-  return (hoursWeekly * HEURES_COMP_COEFF) / 24;
+export function calculateHeuresComp(hoursWeekly: number, tauxHoraire: number): number {
+  const heures = (hoursWeekly * HEURES_COMP_COEFF) / 24;
+  return heures * tauxHoraire * 1.10;
 }
 
 /**
  * Calcule le total moyen mensuel (net + primes annuelles lissees sur 12 mois).
  */
-export function calculateTotalMoyen(netMensuel, chequesCadeaux, chequesVacancesEmployeur, heuresComp, primeCarburant) {
+export function calculateTotalMoyen(
+  netMensuel: number,
+  chequesCadeaux: number,
+  chequesVacancesEmployeur: number,
+  heuresComp: number,
+  primeCarburant: number
+): number {
   const primesAnnuelles = chequesCadeaux + chequesVacancesEmployeur + heuresComp + primeCarburant;
   const primeMensuelleLissee = primesAnnuelles / 12;
   return netMensuel + primeMensuelleLissee;
@@ -96,7 +104,7 @@ export function calculateTotalMoyen(netMensuel, chequesCadeaux, chequesVacancesE
  * Calcule le cout global employeur (estimation).
  * Formule : (brut * charges patronales) + gainKms + partPatronaleTickets + partPatronaleMutuelle
  */
-export function calculateCoutEmployeur(salaireBrut, gainKms, tickets, mutuelleCost) {
+export function calculateCoutEmployeur(salaireBrut: number, gainKms: number, tickets: number, mutuelleCost: number): number {
   const partPatronaleTickets = tickets * 3.00;
   const partPatronaleMutuelle = mutuelleCost;
   return (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleTickets + partPatronaleMutuelle;

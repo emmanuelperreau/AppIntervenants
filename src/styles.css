@@ -1,17 +1,8 @@
-@import "tailwindcss";
-@source "../*.html";
-@source "./**/*.{js,ts}";
+@import "./common.css";
 
-@theme {
-  --font-sans: 'Inter', sans-serif;
-  --color-slate-850: #151e32;
-}
-
-/* Styles personnalisés */
-body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+/* Styles personnalises */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-.pb-safe { padding-bottom: env(safe-area-inset-bottom); }
 .fade-in { animation: fadeIn 0.3s ease-in-out; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 .tab-content { display: none; }
@@ -25,6 +16,10 @@ body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparen
 #btn-keys.active { color: #2563eb !important; background-color: #eff6ff !important; }
 .dark #btn-keys.active { color: #60a5fa !important; background-color: #1e3a8a !important; }
 
+.nav-btn:focus-visible {
+    outline: 2px solid #60a5fa;
+    outline-offset: 2px;
+}
 .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
 /* Banner Animation */
 .slide-up { animation: slideUp 0.5s ease-out forwards; }

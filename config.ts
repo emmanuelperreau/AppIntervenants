@@ -1,40 +1,125 @@
+// Interfaces pour la configuration
+
+interface GrilleSalariale {
+    smicHoraire: number;
+    tauxGE3: number;
+    tauxAV3: number;
+    bonusConfirme: number;
+    bonusExpert: number;
+    bonusReferent: number;
+    kmRate: number;
+    primeCarburantMax: number;
+    ticketValue: number;
+    ticketEmployeeShare: number;
+    chequesCadeaux: number;
+    chequesVacances: number;
+    chequesVacancesEmployeur: number;
+    tauxKm: number;
+    chequeCadeaux: number;
+    chequeVacances: number;
+    parrainageClient: number;
+    parrainageIntervenant: number;
+}
+
+interface TelephoneConfig {
+    display: string;
+    link: string;
+    label: string;
+}
+
+interface HomeConfig {
+    gestionClesUrl: string;
+    declarationKmsUrl: string;
+}
+
+interface RemunerationConfig {
+    mutuelleName: string;
+    mutuellePrice: string;
+}
+
+interface MedecineTravailConfig {
+    address: string;
+    phoneDisplay: string;
+    phoneLink: string;
+}
+
+interface DocsLinksConfig {
+    avantages: string;
+    conges: string;
+    dueSante: string;
+    garantieSante: string;
+    dueInteressement: string;
+    accordTemps: string;
+}
+
+interface DocsConfig {
+    medecineTravail: MedecineTravailConfig;
+    links: DocsLinksConfig;
+}
+
+interface AgenceContactConfig {
+    phoneDisplay: string;
+    phoneLink: string;
+    address: string;
+    addressLink: string;
+    email: string;
+}
+
+interface ContactsConfig {
+    agence: AgenceContactConfig;
+}
+
+export interface AgencyConfig {
+    name: string;
+    telephone: TelephoneConfig;
+    home: HomeConfig;
+    remuneration: RemunerationConfig;
+    docs: DocsConfig;
+    contacts: ContactsConfig;
+}
+
 // GRILLE SALARIALE COMMUNE (modifiable ici, appliquee partout)
-export const GRILLE_SALARIALE = {
+export const GRILLE_SALARIALE: GrilleSalariale = {
     smicHoraire: 12.02,          // SMIC horaire brut (base AM2/GE2/AV2)
     tauxGE3: 12.12,              // Taux horaire GE3
     tauxAV3: 12.17,              // Taux horaire AV3
-    bonusConfirme: 0.10,         // Supplément Confirmé
-    bonusExpert: 0.20,           // Supplément Expert
-    bonusReferent: 0.30,         // Supplément Référent
-    kmRate: 0.45,                // Indemnité kilométrique (€/km)
-    primeCarburantMax: 300,      // Prime carburant annuelle max (€)
+    bonusConfirme: 0.10,         // Supplement Confirme
+    bonusExpert: 0.20,           // Supplement Expert
+    bonusReferent: 0.30,         // Supplement Referent
+    kmRate: 0.45,                // Indemnite kilometrique (EUR/km)
+    primeCarburantMax: 300,      // Prime carburant annuelle max (EUR)
     ticketValue: 6.00,           // Valeur faciale titre restaurant
     ticketEmployeeShare: 3.00,   // Part salariale titre restaurant
-    chequesCadeaux: 50,          // Chèques cadeaux Noël (€/an)
-    chequesVacances: 100,        // Chèques vacances (€/an, dont 80€ employeur)
-    chequesVacancesEmployeur: 80 // Part employeur chèques vacances
-};
+    chequesCadeaux: 50,          // Cheques cadeaux Noel (EUR/an)
+    chequesVacances: 100,        // Cheques vacances (EUR/an, dont 80EUR employeur)
+    chequesVacancesEmployeur: 80, // Part employeur cheques vacances
+    tauxKm: 0.45,                // Alias kmRate pour injection DOM
+    chequeCadeaux: 50,           // Alias chequesCadeaux (singulier) pour injection DOM
+    chequeVacances: 100,         // Alias chequesVacances (singulier) pour injection DOM
+    parrainageClient: 40,        // Prime parrainage client (EUR)
+    parrainageIntervenant: 200   // Prime parrainage intervenant (EUR)
+} as const;
 
-export const AGENCY_CONFIGS = {
-    // CONFIGURATION NORD TOURAINE (Par défaut)
+export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {
+    // CONFIGURATION NORD TOURAINE (Par defaut)
     "nord-touraine": {
         name: "O2 Nord Touraine",
         telephone: {
             display: "02 43 72 43 45",
             link: "tel:0243724345",
-            label: "Ligne Salariés"
+            label: "Ligne Salaries"
         },
         home: {
-            gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link", 
+            gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link",
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link"
         },
         remuneration: {
-            mutuelleName: "Mutuelle Santé (CPMS)",
-            mutuellePrice: "17,22 €"
+            mutuelleName: "Mutuelle Sante (CPMS)",
+            mutuellePrice: "17,22 \u20ac"
         },
         docs: {
             medecineTravail: {
-                address: "25 Rue de la Milletière, 37100 Tours",
+                address: "25 Rue de la Milletiere, 37100 Tours",
                 phoneDisplay: "02 47 62 88 88",
                 phoneLink: "tel:0247628888"
             },
@@ -58,26 +143,25 @@ export const AGENCY_CONFIGS = {
         }
     },
 
-    // CONFIGURATION LOCHES (À compléter)
-    // Url à utiliser : /?agence=loches
+    // CONFIGURATION LOCHES
     "loches": {
         name: "O2 Loches",
         telephone: {
             display: "02 43 72 43 45",
             link: "tel:0243724345",
-            label: "Ligne Salariés"
+            label: "Ligne Salaries"
         },
         home: {
-            gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLSczzwX9PjMXBJHHAq6TnlUQSfCSk2yLkoP1BtbVyePPAAluGQ/viewform?usp=sf_link", 
+            gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLSczzwX9PjMXBJHHAq6TnlUQSfCSk2yLkoP1BtbVyePPAAluGQ/viewform?usp=sf_link",
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeLIa2CutbQn7QVCdDbJJfr8KjCeHAj7PpAG1qhTYl1bkF9Lw/viewform?usp=sf_link"
         },
         remuneration: {
-            mutuelleName: "Mutuelle Santé (ALLIANZ)",
-            mutuellePrice: "21,13 €"
+            mutuelleName: "Mutuelle Sante (ALLIANZ)",
+            mutuellePrice: "21,13 \u20ac"
         },
         docs: {
             medecineTravail: {
-                address: "1 Pl. du Maréchal Leclerc, 37600 Beaulieu-lès-Loches",
+                address: "1 Pl. du Marechal Leclerc, 37600 Beaulieu-les-Loches",
                 phoneDisplay: "02 47 37 66 76",
                 phoneLink: "tel:0247376676"
             },

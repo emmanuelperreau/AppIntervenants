@@ -1,20 +1,34 @@
-// Styles (traités par Vite + Tailwind)
+// Styles (traites par Vite + Tailwind)
 import './styles.css';
 
-// Lucide Icons (auto-hébergées via npm)
+// Lucide Icons (auto-hebergees via npm)
 import { createIcons, Phone, Smartphone, Download, X, Key, Car, Palmtree, Lock, Quote, HeartHandshake, Target, Award, Users, Sun, CalendarClock, Calculator, ChevronRight, Euro, Sparkles, Crown, TrendingUp, Utensils, CheckCircle, Gift, CalendarDays, Info, PhoneCall, QrCode, HardHat, BookOpen, Footprints, Shirt, ShieldCheck, Ban, XCircle, AlignStartVertical, Weight, Briefcase, Clock, ClipboardList, MessageCircle, EyeOff, Heart, Ear, Headset, AlertOctagon, ArrowLeftRight, FileEdit, CigaretteOff, Baby, Scale, Gem, Stethoscope, Coins, Timer, Shield, ShieldAlert, Building2, MapPin, Mail, DoorClosed, AlertTriangle, Ambulance, HeartPulse, Home, CalendarCheck, FileText, Share, PlusSquare, EllipsisVertical } from 'lucide';
 
 // Config agence (module ES)
-import { GRILLE_SALARIALE, AGENCY_CONFIGS } from '../config.js';
+import { GRILLE_SALARIALE, AGENCY_CONFIGS } from '../config';
 
-// Contenu RH externalisé
-import { OBLIGATIONS, DOCUMENTS } from './content.js';
+// Contenu RH externalise
+import { OBLIGATIONS, DOCUMENTS } from './content';
 
-// Map des icônes pour createIcons()
+// Declaration des fonctions globales sur window
+declare global {
+    interface Window {
+        switchTab: (tabName: string) => void;
+        installPWA: () => void;
+        dismissInstall: () => void;
+    }
+}
+
+// Extend Navigator for iOS standalone detection
+interface NavigatorStandalone extends Navigator {
+    standalone?: boolean;
+}
+
+// Map des icones pour createIcons()
 const icons = { Phone, Smartphone, Download, X, Key, Car, Palmtree, Lock, Quote, HeartHandshake, Target, Award, Users, Sun, CalendarClock, Calculator, ChevronRight, Euro, Sparkles, Crown, TrendingUp, Utensils, CheckCircle, Gift, CalendarDays, Info, PhoneCall, QrCode, HardHat, BookOpen, Footprints, Shirt, ShieldCheck, Ban, XCircle, AlignStartVertical, Weight, Briefcase, Clock, ClipboardList, MessageCircle, EyeOff, Heart, Ear, Headset, AlertOctagon, ArrowLeftRight, FileEdit, CigaretteOff, Baby, Scale, Gem, Stethoscope, Coins, Timer, Shield, ShieldAlert, Building2, MapPin, Mail, DoorClosed, AlertTriangle, Ambulance, HeartPulse, Home, CalendarCheck, FileText, Share, PlusSquare, EllipsisVertical };
 
-// Génération dynamique des obligations
-function renderObligations() {
+// Generation dynamique des obligations
+function renderObligations(): void {
     const container = document.getElementById('obligations-grid');
     if (!container) return;
 
@@ -31,8 +45,8 @@ function renderObligations() {
     }).join('');
 }
 
-// Génération dynamique des liens documents
-function renderDocuments() {
+// Generation dynamique des liens documents
+function renderDocuments(): void {
     const container = document.getElementById('documents-grid');
     if (!container) return;
 
@@ -56,12 +70,10 @@ renderDocuments();
 createIcons({ icons });
 
 // Application de la configuration agence
-function applyConfig() {
-    if(typeof AGENCY_CONFIGS === 'undefined' || !AGENCY_CONFIGS) return;
-
+function applyConfig(): void {
     // 1. Detecter l'agence via l'URL (ex: ?agence=loches)
     const params = new URLSearchParams(window.location.search);
-    const agencyId = params.get('agence') || 'nord-touraine'; // 'nord-touraine' par defaut
+    const agencyId = params.get('agence') || 'nord-touraine';
 
     // 2. Selectionner la config
     const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
@@ -70,50 +82,50 @@ function applyConfig() {
 
     // Header
     const headerName = document.getElementById('header-agency-name');
-    if(headerName) headerName.textContent = config.name;
+    if (headerName) headerName.textContent = config.name;
 
     // Header - Telephone rapide (depuis config.telephone)
-    if(config.telephone) {
-        const headerPhoneLink = document.getElementById('header-phone-link');
-        if(headerPhoneLink) headerPhoneLink.href = config.telephone.link;
+    if (config.telephone) {
+        const headerPhoneLink = document.getElementById('header-phone-link') as HTMLAnchorElement | null;
+        if (headerPhoneLink) headerPhoneLink.href = config.telephone.link;
 
         const headerPhoneLabel = document.getElementById('header-phone-label');
-        if(headerPhoneLabel) headerPhoneLabel.textContent = config.telephone.label;
+        if (headerPhoneLabel) headerPhoneLabel.textContent = config.telephone.label;
 
         const headerPhoneLabelMobile = document.getElementById('header-phone-label-mobile');
-        if(headerPhoneLabelMobile) headerPhoneLabelMobile.textContent = config.telephone.label;
+        if (headerPhoneLabelMobile) headerPhoneLabelMobile.textContent = config.telephone.label;
     }
 
     // Home
-    const linkKeys = document.getElementById('link-gestion-cles');
-    if(linkKeys) linkKeys.href = config.home.gestionClesUrl;
+    const linkKeys = document.getElementById('link-gestion-cles') as HTMLAnchorElement | null;
+    if (linkKeys) linkKeys.href = config.home.gestionClesUrl;
 
-    const linkKms = document.getElementById('link-declaration-kms');
-    if(linkKms) linkKms.href = config.home.declarationKmsUrl;
+    const linkKms = document.getElementById('link-declaration-kms') as HTMLAnchorElement | null;
+    if (linkKms) linkKms.href = config.home.declarationKmsUrl;
 
     // Remuneration
     const mutuelleName = document.getElementById('remun-mutuelle-name');
-    if(mutuelleName) mutuelleName.textContent = config.remuneration.mutuelleName;
+    if (mutuelleName) mutuelleName.textContent = config.remuneration.mutuelleName;
 
     const mutuellePrice = document.getElementById('remun-mutuelle-price');
-    if(mutuellePrice) mutuellePrice.textContent = config.remuneration.mutuellePrice;
+    if (mutuellePrice) mutuellePrice.textContent = config.remuneration.mutuellePrice;
 
     // Update Simulator Link with agency param
-    const btnSimulator = document.getElementById('btn-simulator');
-    if(btnSimulator) btnSimulator.href = 'simulateur.html?agence=' + agencyId;
+    const btnSimulator = document.getElementById('btn-simulator') as HTMLAnchorElement | null;
+    if (btnSimulator) btnSimulator.href = 'simulateur.html?agence=' + agencyId;
 
     // Docs - Medecine
     const medAddress = document.getElementById('doc-medecine-address');
-    if(medAddress) medAddress.textContent = config.docs.medecineTravail.address;
+    if (medAddress) medAddress.textContent = config.docs.medecineTravail.address;
 
-    const medPhone = document.getElementById('doc-medecine-phone');
-    if(medPhone) {
+    const medPhone = document.getElementById('doc-medecine-phone') as HTMLAnchorElement | null;
+    if (medPhone) {
         medPhone.href = config.docs.medecineTravail.phoneLink;
         medPhone.textContent = config.docs.medecineTravail.phoneDisplay;
     }
 
     // Docs - Links
-    const docIds = {
+    const docIds: Record<string, string> = {
         'doc-link-avantages': config.docs.links.avantages,
         'doc-link-conges': config.docs.links.conges,
         'doc-link-due-sante': config.docs.links.dueSante,
@@ -122,63 +134,76 @@ function applyConfig() {
         'doc-link-accord-temps': config.docs.links.accordTemps
     };
 
-    for(const [id, url] of Object.entries(docIds)) {
-        const el = document.getElementById(id);
-        if(el) el.href = url;
+    for (const [id, url] of Object.entries(docIds)) {
+        const el = document.getElementById(id) as HTMLAnchorElement | null;
+        if (el) el.href = url;
     }
 
     // Contacts
-    const agPhone = document.getElementById('contact-agency-phone');
+    const agPhone = document.getElementById('contact-agency-phone') as HTMLAnchorElement | null;
     const agPhoneText = document.getElementById('contact-agency-phone-text');
 
-    if(agPhone) {
+    if (agPhone) {
         agPhone.href = config.contacts.agence.phoneLink;
         if (!agPhoneText) {
-             agPhone.textContent = config.contacts.agence.phoneDisplay;
+            agPhone.textContent = config.contacts.agence.phoneDisplay;
         }
     }
-    if(agPhoneText) {
+    if (agPhoneText) {
         agPhoneText.textContent = config.contacts.agence.phoneDisplay;
     }
 
-    const agAddrLink = document.getElementById('contact-agency-address-link');
-    if(agAddrLink) agAddrLink.href = config.contacts.agence.addressLink;
+    const agAddrLink = document.getElementById('contact-agency-address-link') as HTMLAnchorElement | null;
+    if (agAddrLink) agAddrLink.href = config.contacts.agence.addressLink;
 
     const agAddrText = document.getElementById('contact-agency-address-text');
-    if(agAddrText) agAddrText.textContent = config.contacts.agence.address;
+    if (agAddrText) agAddrText.textContent = config.contacts.agence.address;
 
-    const agEmailLink = document.getElementById('contact-agency-email-link');
-    if(agEmailLink) agEmailLink.href = "mailto:" + config.contacts.agence.email;
+    const agEmailLink = document.getElementById('contact-agency-email-link') as HTMLAnchorElement | null;
+    if (agEmailLink) agEmailLink.href = "mailto:" + config.contacts.agence.email;
 
     const agEmailText = document.getElementById('contact-agency-email-text');
-    if(agEmailText) agEmailText.textContent = config.contacts.agence.email;
+    if (agEmailText) agEmailText.textContent = config.contacts.agence.email;
 
     // Grille salariale (depuis GRILLE_SALARIALE)
-    if(typeof GRILLE_SALARIALE !== 'undefined' && GRILLE_SALARIALE) {
-        const g = GRILLE_SALARIALE;
-        const fmt = (v) => v.toFixed(2).replace('.', ',') + ' \u20ac';
-        const fmtBonus = (v) => '+ ' + v.toFixed(2).replace('.', ',') + ' \u20ac';
+    const g = GRILLE_SALARIALE;
+    const fmt = (v: number): string => v.toFixed(2).replace('.', ',') + ' \u20ac';
+    const fmtBonus = (v: number): string => '+ ' + v.toFixed(2).replace('.', ',') + ' \u20ac';
 
-        const prices = {
-            'price-am2': fmt(g.smicHoraire),
-            'price-am2-confirme': fmtBonus(g.bonusConfirme),
-            'price-am2-expert': fmtBonus(g.bonusExpert),
-            'price-am2-referent': fmtBonus(g.bonusReferent),
-            'price-ge2': fmt(g.smicHoraire),
-            'price-ge3': fmt(g.tauxGE3),
-            'price-ge3-confirme': fmtBonus(g.bonusConfirme),
-            'price-ge3-expert': fmtBonus(g.bonusExpert),
-            'price-av2': fmt(g.smicHoraire),
-            'price-av3': fmt(g.tauxAV3),
-            'price-av3-confirme': fmtBonus(g.bonusConfirme),
-            'price-av3-expert': fmtBonus(g.bonusExpert),
-            'price-av3-referent': fmtBonus(g.bonusReferent)
-        };
+    const prices: Record<string, string> = {
+        'price-am2': fmt(g.smicHoraire),
+        'price-am2-confirme': fmtBonus(g.bonusConfirme),
+        'price-am2-expert': fmtBonus(g.bonusExpert),
+        'price-am2-referent': fmtBonus(g.bonusReferent),
+        'price-ge2': fmt(g.smicHoraire),
+        'price-ge3': fmt(g.tauxGE3),
+        'price-ge3-confirme': fmtBonus(g.bonusConfirme),
+        'price-ge3-expert': fmtBonus(g.bonusExpert),
+        'price-av2': fmt(g.smicHoraire),
+        'price-av3': fmt(g.tauxAV3),
+        'price-av3-confirme': fmtBonus(g.bonusConfirme),
+        'price-av3-expert': fmtBonus(g.bonusExpert),
+        'price-av3-referent': fmtBonus(g.bonusReferent)
+    };
 
-        for(const [id, text] of Object.entries(prices)) {
-            const el = document.getElementById(id);
-            if(el) el.textContent = text;
-        }
+    for (const [id, text] of Object.entries(prices)) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
+    }
+
+    // Injection des valeurs dynamiques depuis GRILLE_SALARIALE
+    const dynamicValues: Record<string, string> = {
+        'val-taux-km': g.tauxKm + ' \u20ac',
+        'val-prime-carburant': g.primeCarburantMax + ' \u20ac',
+        'val-ticket': g.ticketValue + ' \u20ac',
+        'val-cheques-cadeaux': g.chequeCadeaux + ' \u20ac',
+        'val-cheques-vacances': g.chequeVacances + ' \u20ac',
+        'val-parrainage-client': g.parrainageClient + ' \u20ac',
+        'val-parrainage-intervenant': g.parrainageIntervenant + ' \u20ac',
+    };
+    for (const [id, text] of Object.entries(dynamicValues)) {
+        const el = document.getElementById(id);
+        if (el) el.textContent = text;
     }
 }
 
@@ -189,10 +214,9 @@ applyConfig();
 // Register Service Worker
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('/AppIntervenants/sw.js')
             .then(registration => {
                 console.log('SW registered:', registration);
-                // Verification des mises a jour
                 registration.update();
             })
             .catch(error => {
@@ -202,18 +226,24 @@ if ('serviceWorker' in navigator) {
 }
 
 // Install Banner Logic
-let deferredPrompt = null;
+let deferredPrompt: BeforeInstallPromptEvent | null = null;
 const installBanner = document.getElementById('install-banner');
 const installBtnNative = document.getElementById('install-btn-native');
 const installSteps = document.getElementById('install-steps');
 
+// BeforeInstallPromptEvent interface (not in lib.dom.d.ts)
+interface BeforeInstallPromptEvent extends Event {
+    prompt(): Promise<void>;
+    userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+}
+
 // Verification si deja installe
-const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as NavigatorStandalone).standalone === true;
 
 // Verification si le banner a ete ferme recemment (7 jours)
-const DISMISS_KEY = 'install_banner_dismissed';
-const DISMISS_DAYS = 7;
-function wasDismissedRecently() {
+const DISMISS_KEY = 'install_banner_dismissed' as const;
+const DISMISS_DAYS = 7 as const;
+function wasDismissedRecently(): boolean {
     const dismissed = localStorage.getItem(DISMISS_KEY);
     if (!dismissed) return false;
     const days = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
@@ -221,24 +251,23 @@ function wasDismissedRecently() {
 }
 
 // Capture beforeinstallprompt (Android Chrome)
-window.addEventListener('beforeinstallprompt', (e) => {
+window.addEventListener('beforeinstallprompt', ((e: Event) => {
     e.preventDefault();
-    deferredPrompt = e;
-    // Si pas deja installe et pas dismiss recent, montrer le bouton natif
+    deferredPrompt = e as BeforeInstallPromptEvent;
     if (!isStandalone && !wasDismissedRecently()) {
-        installBtnNative.classList.remove('hidden');
-        installBanner.classList.remove('hidden');
+        if (installBtnNative) installBtnNative.classList.remove('hidden');
+        if (installBanner) installBanner.classList.remove('hidden');
         createIcons({ icons });
     }
-});
+}) as EventListener);
 
 // Bouton installer natif (Android)
-window.installPWA = function() {
+window.installPWA = function(): void {
     if (!deferredPrompt) return;
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choice) => {
         if (choice.outcome === 'accepted') {
-            installBanner.classList.add('hidden');
+            if (installBanner) installBanner.classList.add('hidden');
         }
         deferredPrompt = null;
     });
@@ -247,22 +276,21 @@ window.installPWA = function() {
 // Fallback : instructions manuelles si pas de beforeinstallprompt apres 3s
 if (!isStandalone && !wasDismissedRecently()) {
     setTimeout(() => {
-        // Si le banner natif n'est pas deja affiche
-        if (installBanner.classList.contains('hidden')) {
-            const userAgent = navigator.userAgent || navigator.vendor;
+        if (installBanner && installBanner.classList.contains('hidden')) {
+            const userAgent = navigator.userAgent || (navigator as NavigatorStandalone & { vendor?: string }).vendor || '';
             const step1 = document.getElementById('install-step1');
             const step2 = document.getElementById('install-step2');
 
             if (/iPad|iPhone|iPod/.test(userAgent)) {
-                step1.innerHTML = "Appuyez sur <strong>Partager</strong> <i data-lucide='share' class='inline w-3.5 h-3.5'></i> (en bas de l'ecran)";
-                step2.innerHTML = "Puis <strong>Sur l'ecran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
-                installSteps.classList.remove('hidden');
+                if (step1) step1.innerHTML = "Appuyez sur <strong>Partager</strong> <i data-lucide='share' class='inline w-3.5 h-3.5'></i> (en bas de l'ecran)";
+                if (step2) step2.innerHTML = "Puis <strong>Sur l'ecran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
+                if (installSteps) installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
                 createIcons({ icons });
             } else if (/android/i.test(userAgent)) {
-                step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
-                step2.innerHTML = "Puis <strong>Ajouter a l'ecran d'accueil</strong>";
-                installSteps.classList.remove('hidden');
+                if (step1) step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
+                if (step2) step2.innerHTML = "Puis <strong>Ajouter a l'ecran d'accueil</strong>";
+                if (installSteps) installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
                 createIcons({ icons });
             }
@@ -271,21 +299,19 @@ if (!isStandalone && !wasDismissedRecently()) {
 }
 
 // Fermer le banner d'installation
-window.dismissInstall = function() {
-    installBanner.classList.add('hidden');
+window.dismissInstall = function(): void {
+    if (installBanner) installBanner.classList.add('hidden');
     localStorage.setItem(DISMISS_KEY, Date.now().toString());
 };
 
 // Navigation par onglets
-window.switchTab = function(tabName) {
-    // Masquer tous les onglets
+window.switchTab = function(tabName: string): void {
     document.querySelectorAll('.tab-content').forEach(el => {
         el.classList.remove('active');
         el.classList.remove('fade-in');
     });
-    // Afficher l'onglet cible
     const target = document.getElementById('tab-' + tabName);
-    if(target) {
+    if (target) {
         target.classList.add('active');
         void target.offsetWidth; // Force reflow
         target.classList.add('fade-in');
@@ -293,52 +319,50 @@ window.switchTab = function(tabName) {
         console.error('Tab not found:', tabName);
     }
 
-    // Mise a jour des etats ARIA
     document.querySelectorAll('[role="tab"]').forEach(el => el.setAttribute('aria-selected', 'false'));
     const activeTab = document.getElementById('btn-' + tabName);
-    if(activeTab) activeTab.setAttribute('aria-selected', 'true');
+    if (activeTab) activeTab.setAttribute('aria-selected', 'true');
 
-    // Mise a jour de l'etat de navigation
     document.querySelectorAll('.nav-btn').forEach(el => {
-        el.classList.remove('active', 'text-[#11183b]');
-        if(el.id !== 'btn-keys') {
-           el.classList.add('text-slate-400');
+        const htmlEl = el as HTMLElement;
+        htmlEl.classList.remove('active', 'text-[#11183b]');
+        if (!htmlEl.dataset.color) {
+            htmlEl.classList.add('text-slate-500');
         } else {
-           // Garder le bleu pour Contacts
-           el.classList.add('text-blue-500');
+            htmlEl.classList.add('text-' + htmlEl.dataset.color + '-500');
         }
     });
-    const btn = document.getElementById('btn-' + tabName);
-    if(btn) {
+    const btn = document.getElementById('btn-' + tabName) as HTMLElement | null;
+    if (btn) {
         btn.classList.add('active');
-        if(btn.id !== 'btn-keys') {
+        if (!btn.dataset.color) {
             btn.classList.add('text-[#11183b]');
-            btn.classList.remove('text-slate-400');
+            btn.classList.remove('text-slate-500');
         }
     }
 
-    // Remonter en haut
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
 // Navigation clavier onglets (ARIA tabs pattern)
-(function() {
+(function(): void {
     const tabList = document.querySelector('[role="tablist"]');
     if (!tabList) return;
-    const tabNames = ['home', 'daily', 'money', 'docs', 'keys'];
-    tabList.addEventListener('keydown', function(e) {
+    const tabNames = ['home', 'daily', 'money', 'docs', 'keys'] as const;
+    tabList.addEventListener('keydown', function(e: Event) {
+        const keyEvent = e as KeyboardEvent;
         const current = tabNames.findIndex(function(name) {
-            var btn = document.getElementById('btn-' + name);
+            const btn = document.getElementById('btn-' + name);
             return btn && btn.getAttribute('aria-selected') === 'true';
         });
         if (current === -1) return;
-        var next = current;
-        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (current + 1) % tabNames.length;
-        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (current - 1 + tabNames.length) % tabNames.length;
+        let next = current;
+        if (keyEvent.key === 'ArrowRight' || keyEvent.key === 'ArrowDown') next = (current + 1) % tabNames.length;
+        if (keyEvent.key === 'ArrowLeft' || keyEvent.key === 'ArrowUp') next = (current - 1 + tabNames.length) % tabNames.length;
         if (next !== current) {
-            e.preventDefault();
-            switchTab(tabNames[next]);
-            var btn = document.getElementById('btn-' + tabNames[next]);
+            keyEvent.preventDefault();
+            window.switchTab(tabNames[next]);
+            const btn = document.getElementById('btn-' + tabNames[next]);
             if (btn) btn.focus();
         }
     });
@@ -349,9 +373,7 @@ let lastVisibilityChange = Date.now();
 document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {
         const now = Date.now();
-        // Si l'app est masquee depuis > 10 min (600000ms), forcer le rechargement
         if (now - lastVisibilityChange > 600000) {
-            // Forcer la verification de mise a jour du SW
             if ('serviceWorker' in navigator) {
                 navigator.serviceWorker.ready.then(registration => {
                     registration.update();
