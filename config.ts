@@ -12,11 +12,8 @@ interface GrilleSalariale {
     ticketValue: number;
     ticketEmployeeShare: number;
     chequesCadeaux: number;
-    chequesVacances: number;
+    chequesVacancesTotal: number;
     chequesVacancesEmployeur: number;
-    tauxKm: number;
-    chequeCadeaux: number;
-    chequeVacances: number;
     parrainageClient: number;
     parrainageIntervenant: number;
 }
@@ -91,11 +88,8 @@ export const GRILLE_SALARIALE: GrilleSalariale = {
     ticketValue: 6.00,           // Valeur faciale titre restaurant
     ticketEmployeeShare: 3.00,   // Part salariale titre restaurant
     chequesCadeaux: 50,          // Cheques cadeaux Noel (EUR/an)
-    chequesVacances: 100,        // Cheques vacances (EUR/an, dont 80EUR employeur)
+    chequesVacancesTotal: 100,   // Cheques vacances total (EUR/an)
     chequesVacancesEmployeur: 80, // Part employeur cheques vacances
-    tauxKm: 0.45,                // Alias kmRate pour injection DOM
-    chequeCadeaux: 50,           // Alias chequesCadeaux (singulier) pour injection DOM
-    chequeVacances: 100,         // Alias chequesVacances (singulier) pour injection DOM
     parrainageClient: 40,        // Prime parrainage client (EUR)
     parrainageIntervenant: 200   // Prime parrainage intervenant (EUR)
 } as const;

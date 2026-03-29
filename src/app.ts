@@ -193,13 +193,17 @@ function applyConfig(): void {
 
     // Injection des valeurs dynamiques depuis GRILLE_SALARIALE
     const dynamicValues: Record<string, string> = {
-        'val-taux-km': g.tauxKm + ' \u20ac',
+        'val-taux-km': g.kmRate + ' \u20ac',
         'val-prime-carburant': g.primeCarburantMax + ' \u20ac',
         'val-ticket': g.ticketValue + ' \u20ac',
-        'val-cheques-cadeaux': g.chequeCadeaux + ' \u20ac',
-        'val-cheques-vacances': g.chequeVacances + ' \u20ac',
+        'val-cheques-cadeaux': g.chequesCadeaux + ' \u20ac',
+        'val-cheques-vacances': g.chequesVacancesTotal + ' \u20ac',
         'val-parrainage-client': g.parrainageClient + ' \u20ac',
         'val-parrainage-intervenant': g.parrainageIntervenant + ' \u20ac',
+        'val-ticket-employer': String(g.ticketValue - g.ticketEmployeeShare),
+        'val-ticket-employee': String(g.ticketEmployeeShare),
+        'val-prime-carburant-30h': String(Math.round((30 * g.primeCarburantMax) / 35)),
+        'val-prime-carburant-25h': String(Math.round((25 * g.primeCarburantMax) / 35)),
     };
     for (const [id, text] of Object.entries(dynamicValues)) {
         const el = document.getElementById(id);

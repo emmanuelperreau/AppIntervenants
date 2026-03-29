@@ -146,5 +146,18 @@ Object.values(inputs).forEach((input) => {
 });
 
 // INIT
+// Injecter les valeurs par defaut depuis config
+if (inputs.rate) inputs.rate.value = SMIC_HORAIRE.toFixed(2);
+
+// Injecter les valeurs statiques depuis config
+const simStaticValues: Record<string, string> = {
+    'val-sim-cheques-cadeaux': formatCurrency(CHEQUES_CADEAUX),
+    'val-sim-cheques-vacances': formatCurrency(CHEQUES_VACANCES),
+};
+for (const [id, text] of Object.entries(simStaticValues)) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = text;
+}
+
 loadAgencyConfig();
 calculate();

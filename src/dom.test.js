@@ -63,7 +63,7 @@ describe('Content data integrity', () => {
 describe('Config data integrity', () => {
     it('GRILLE_SALARIALE has all required fields', () => {
         expect(GRILLE_SALARIALE).toHaveProperty('smicHoraire');
-        expect(GRILLE_SALARIALE).toHaveProperty('tauxKm');
+        expect(GRILLE_SALARIALE).toHaveProperty('kmRate');
         expect(GRILLE_SALARIALE).toHaveProperty('ticketValue');
         expect(GRILLE_SALARIALE).toHaveProperty('primeCarburantMax');
         expect(GRILLE_SALARIALE.smicHoraire).toBeGreaterThan(0);
