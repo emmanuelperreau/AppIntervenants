@@ -2,39 +2,18 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulateur Salaire - Agence O2</title>
     
     <meta name="theme-color" content="#11183b">
-    
-    <!-- Config Agence -->
-    <script src="config.js"></script>
+    <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-          darkMode: 'media',
-          theme: {
-            extend: {
-              colors: {
-                slate: { 850: '#151e32', 900: '#0f172a' }
-              }
-            }
-          }
-        }
-    </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .slide-in { animation: slideIn 0.3s ease-out; }
-        @keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
-        input[type=number] { -moz-appearance: textfield; }
-        input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white min-h-screen pb-10">
 
@@ -72,7 +51,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-rate" class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-rate" value="12.02" step="0.01" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-rate" value="12.02" step="0.01" min="0" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">€</span>
                     </div>
                 </div>
@@ -80,7 +59,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-hours" class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-hours" value="24" step="0.5" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-hours" value="24" step="0.5" min="0" max="48" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">h</span>
                     </div>
                 </div>
@@ -97,7 +76,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-kms" value="150" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-kms" value="150" min="0" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">km</span>
                     </div>
                 </div>
@@ -105,7 +84,7 @@
                 <div class="flex justify-between items-center">
                     <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-tickets" value="20" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
+                        <input type="number" id="input-tickets" value="20" min="0" max="31" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">/ mois</span>
                     </div>
                 </div>
@@ -116,7 +95,7 @@
                          <label for="check-mutuelle" class="text-sm font-medium text-slate-700 dark:text-slate-300">Mutuelle (isolée)</label>
                     </div>
                     <div class="flex items-center gap-2">
-                        <input type="number" id="input-mutuelle-cost" value="20" class="w-20 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-1 px-2 text-sm font-bold text-slate-500 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-500">
+                        <input type="number" id="input-mutuelle-cost" value="20" min="0" class="w-20 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-1 px-2 text-sm font-bold text-slate-500 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-500">
                         <span class="text-sm font-bold text-slate-400">€</span>
                     </div>
                 </div>
@@ -173,175 +152,7 @@
 
     </main>
 
-    <script>
-        // INIT ICONS
-        lucide.createIcons();
-
-        // CONSTANTS
-        // Valeurs depuis config.js (GRILLE_SALARIALE) avec fallback
-        const G = (typeof GRILLE_SALARIALE !== 'undefined') ? GRILLE_SALARIALE : {};
-        const SMIC_HORAIRE = G.smicHoraire || 12.02;
-        const KM_RATE = G.kmRate || 0.45;
-        const TICKET_VALUE = G.ticketValue || 6.00;
-        const TICKET_EMPLOYEE_SHARE = G.ticketEmployeeShare || 3.00;
-        const PRIME_CARBURANT_MAX = G.primeCarburantMax || 300;
-        const CHEQUES_CADEAUX = G.chequesCadeaux || 50;
-        const CHEQUES_VACANCES = G.chequesVacancesEmployeur || 80;
-        const HEURES_COMP_COEFF = 60; // Coefficient calcul heures complémentaires
-
-        // Estimation charges patronales (coeff approximatif pour SMIC + réductions)
-        // 1.25 est une moyenne basse prenant en compte les allègements Fillon sur bas salaires + mutuelle/prévoyance
-        const CHARGES_PATRONALES_COEFF = 1.1; 
-
-        // ELEMENTS
-        const inputs = {
-            rate: document.getElementById('input-rate'),
-            hours: document.getElementById('input-hours'),
-            kms: document.getElementById('input-kms'),
-            tickets: document.getElementById('input-tickets'),
-            mutuelleCheck: document.getElementById('check-mutuelle'),
-            mutuelleCost: document.getElementById('input-mutuelle-cost')
-        };
-
-        const outputs = {
-            // Optional elements (handled safely if missing)
-            netMensuel: document.getElementById('res-net-mensuel'),
-            netHoraire: document.getElementById('res-net-horaire'),
-            primeCarburant: document.getElementById('res-prime-carburant'),
-            heuresComp: document.getElementById('res-heures-comp'),
-            
-            // Required elements
-            smicMensuel: document.getElementById('res-smic-mensuel'),
-            smicHoraire: document.getElementById('res-smic-horaire'),
-            totalMoyen: document.getElementById('res-total-moyen'),
-            totalHoraire: document.getElementById('res-total-horaire'),
-            coutEmployeur: document.getElementById('res-cout-employeur')
-        };
-
-        // LOAD AGENCY CONFIG
-        function loadAgencyConfig() {
-            // Get agency from URL
-            const params = new URLSearchParams(window.location.search);
-            const agencyId = params.get('agence') || 'nord-touraine';
-
-            // Lien retour dynamique avec paramètre agence
-            const linkRetour = document.getElementById('link-retour');
-            if(linkRetour) linkRetour.href = 'index.html?agence=' + agencyId;
-
-            if(typeof AGENCY_CONFIGS === 'undefined') return;
-            const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
-
-            if(config && config.remuneration && config.remuneration.mutuellePrice) {
-                 // Convert "16,88 €" -> 16.88
-                 const priceStr = config.remuneration.mutuellePrice.replace(',','.');
-                 const price = parseFloat(priceStr);
-                 
-                 const inputMutuelle = document.getElementById('input-mutuelle-cost');
-                 if(inputMutuelle && !isNaN(price)) {
-                     inputMutuelle.value = price.toFixed(2);
-                     // Disable input
-                     inputMutuelle.disabled = true;
-                     // Visual feedback for disabled state
-                     inputMutuelle.classList.add('opacity-50', 'cursor-not-allowed', 'bg-slate-100', 'dark:bg-slate-700');
-                     inputMutuelle.classList.remove('bg-slate-50', 'dark:bg-slate-900');
-                 }
-            }
-        }
-
-        // CALCULATION ENGINE
-        function calculate() {
-            // Lecture dynamique des valeurs
-            const rate = parseFloat(inputs.rate.value) || 0;
-            const hoursWeekly = parseFloat(inputs.hours.value) || 0;
-            const kms = parseFloat(inputs.kms.value) || 0;
-            const tickets = parseFloat(inputs.tickets.value) || 0;
-            const mutuelleCost = inputs.mutuelleCheck.checked ? (parseFloat(inputs.mutuelleCost.value) || 0) : 0;
-
-            // Calculs de base
-            const hoursMonthly = hoursWeekly * 52 / 12;
-            const salaireBrut = hoursMonthly * rate;
-            
-            // FORMULES UTILISATEUR CORRIGEES (Syntaxe % remplacée par décimales)
-            
-            // 1. Calcul du Net de Base
-            // Formule: (SalaireBrut * 0.8869) - (((SalaireBrut * 0.9825) + Mutuelle) * 0.097)
-            const netBase = salaireBrut - (salaireBrut * 0.1131) - (((salaireBrut * 0.9825) + mutuelleCost) * 0.097);
-
-            // 2. Calcul du SMIC de Référence (Mensuel) pour ces heures
-            const smicBrut = hoursMonthly * SMIC_HORAIRE;
-            const smicNetBase = smicBrut - (smicBrut * 0.1131) - (((smicBrut * 0.9825) + mutuelleCost) * 0.097);
-
-            // Calculs Annexes
-            const gainKms = kms * KM_RATE;
-            const costTickets = tickets * TICKET_EMPLOYEE_SHARE;
-            
-            // 3. Net Mensuel à Payer
-            // netBase est le net après cotisations, mais il faut déduire la part mutuelle et ajouter tickets, et ajouter les KMs
-            const netMensuel = netBase + gainKms + costTickets - mutuelleCost;
-            
-            // 4. SMIC Net à Payer (Comparatif équivalent avec même mutuelle déduite)
-            const smicMensuelFinal = smicNetBase - mutuelleCost;
-
-            // Affichage Résultats (avec vérification si l'élément existe)
-            const realNetHoraire = hoursMonthly > 0 ? (netMensuel / hoursMonthly) : 0;
-            const smicHoraireFinal = hoursMonthly > 0 ? (smicMensuelFinal / hoursMonthly) : 0;
-            
-            if(outputs.netMensuel) outputs.netMensuel.textContent = formatCurrency(netMensuel);
-            if(outputs.netHoraire) outputs.netHoraire.textContent = formatCurrency(realNetHoraire);
-            
-            if(outputs.smicMensuel) outputs.smicMensuel.textContent = formatCurrency(smicMensuelFinal);
-            if(outputs.smicHoraire) outputs.smicHoraire.textContent = formatCurrency(smicHoraireFinal);
-
-            // Prime Carburant
-            const primeCarburantAnnuelle = (hoursWeekly * PRIME_CARBURANT_MAX) / 35;
-            if(outputs.primeCarburant) outputs.primeCarburant.textContent = formatCurrency(primeCarburantAnnuelle);
-
-            // Calcul Heures Complémentaires (Nouveau)
-            // Formule: Base hebdo x 100 / 24
-            const heuresComp = (hoursWeekly * HEURES_COMP_COEFF) / 24;
-            if(outputs.heuresComp) outputs.heuresComp.textContent = formatCurrency(heuresComp);
-
-            // 5. Total Moyen (Avec Primes Annuelles)
-            // Primes fixes (Cadeaux + Vacances + Heures Comp) + Carburant
-            const primesAnnuelles = CHEQUES_CADEAUX + CHEQUES_VACANCES + heuresComp + primeCarburantAnnuelle;
-            const primeMensuelleLissee = primesAnnuelles / 12;
-            
-            const totalMoyen = netMensuel + primeMensuelleLissee;
-            const totalHoraire = hoursMonthly > 0 ? (totalMoyen / hoursMonthly) : 0;
-
-            if(outputs.totalMoyen) outputs.totalMoyen.textContent = formatCurrency(totalMoyen);
-            if(outputs.totalHoraire) outputs.totalHoraire.textContent = formatCurrency(totalHoraire);
-
-            // 6. Coût Global Employeur (Estimation)
-            // Salaire Brut chargé + Kms + Tickets (part employeur 50%) + Mutuelle (part employeur 50%)
-            const partPatronaleTickets = tickets * 3.00; // O2 paye 3€
-            const partPatronaleMutuelle = mutuelleCost; // O2 paye 50% donc idem part salariale en valeur
-            
-            // Formule simplifiée : Brut chargé + avantages
-            const coutGlobal = (salaireBrut * CHARGES_PATRONALES_COEFF) + gainKms + partPatronaleTickets + partPatronaleMutuelle;
-            
-            if(outputs.coutEmployeur) outputs.coutEmployeur.textContent = formatCurrency(coutGlobal);
-        }
-
-        function formatCurrency(val) {
-            return val.toLocaleString('fr-FR', { style: 'currency', currency: 'EUR' });
-        }
-
-        // LISTENERS
-        Object.values(inputs).forEach(input => {
-            if(input) { // Sécurité si un input manque
-                if(input.type === 'checkbox') {
-                    input.addEventListener('change', calculate);
-                } else {
-                    input.addEventListener('input', calculate);
-                }
-            }
-        });
-
-        // INIT
-        loadAgencyConfig();
-        calculate();
-
-    </script>
+    <!-- Script simulateur (module ES, traite par Vite) -->
+    <script type="module" src="/src/simulateur.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
-// GRILLE SALARIALE COMMUNE (modifiable ici, appliquée partout)
-const GRILLE_SALARIALE = {
+// GRILLE SALARIALE COMMUNE (modifiable ici, appliquee partout)
+export const GRILLE_SALARIALE = {
     smicHoraire: 12.02,          // SMIC horaire brut (base AM2/GE2/AV2)
     tauxGE3: 12.12,              // Taux horaire GE3
     tauxAV3: 12.17,              // Taux horaire AV3
@@ -15,10 +15,15 @@ const GRILLE_SALARIALE = {
     chequesVacancesEmployeur: 80 // Part employeur chèques vacances
 };
 
-const AGENCY_CONFIGS = {
+export const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (Par défaut)
     "nord-touraine": {
         name: "O2 Nord Touraine",
+        telephone: {
+            display: "02 43 72 43 45",
+            link: "tel:0243724345",
+            label: "Ligne Salariés"
+        },
         home: {
             gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link", 
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link"
@@ -57,6 +62,11 @@ const AGENCY_CONFIGS = {
     // Url à utiliser : /?agence=loches
     "loches": {
         name: "O2 Loches",
+        telephone: {
+            display: "02 43 72 43 45",
+            link: "tel:0243724345",
+            label: "Ligne Salariés"
+        },
         home: {
             gestionClesUrl: "https://docs.google.com/forms/d/e/1FAIpQLSczzwX9PjMXBJHHAq6TnlUQSfCSk2yLkoP1BtbVyePPAAluGQ/viewform?usp=sf_link", 
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeLIa2CutbQn7QVCdDbJJfr8KjCeHAj7PpAG1qhTYl1bkF9Lw/viewform?usp=sf_link"

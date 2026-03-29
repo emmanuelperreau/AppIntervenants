@@ -2,10 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">Agence O2</title>
+    <meta id="apple-web-app-title" name="apple-mobile-web-app-title" content="Agence O2">
     <link rel="manifest" id="dynamic-manifest" />
     <script>
         (function() {
@@ -18,73 +17,35 @@
             
             var appleTitle = document.getElementById('apple-web-app-title');
 
-            // Configuration Nord Touraine
-            if (agence === 'nord-touraine') {
-                manifestLink.setAttribute('href', 'manifest-nord.json');
-                document.title = "O2 Nord Touraine";
-                if(appleTitle) appleTitle.setAttribute('content', 'O2 Nord Touraine');
-            }
-            // Configuration Loches (par défaut)
-            else {
+            // Configuration Loches
+            if (agence === 'loches') {
                 manifestLink.setAttribute('href', 'manifest-loches.json');
                 document.title = "O2 Loches";
                 if(appleTitle) appleTitle.setAttribute('content', 'O2 Loches');
             }
+            // Configuration Nord Touraine (par défaut)
+            else {
+                manifestLink.setAttribute('href', 'manifest-nord.json');
+                document.title = "O2 Nord Touraine";
+                if(appleTitle) appleTitle.setAttribute('content', 'O2 Nord Touraine');
+            }
         })();
     </script>
     <meta name="theme-color" content="#11183b">
-    
+    <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link rel="icon" type="image/svg+xml" href="./icon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 
-    <meta id="apple-web-app-title" name="apple-mobile-web-app-title" content="Agence O2">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
 
-    <!-- Configuration Agence -->
-    <script src="config.js"></script>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-          darkMode: 'media', // Utilise le réglage système (media query)
-          theme: {
-            extend: {
-              colors: {
-                slate: { 850: '#151e32', 900: '#0f172a' }
-              }
-            }
-          }
-        }
-    </script>
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
-        .no-scrollbar::-webkit-scrollbar { display: none; }
-        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
-        .fade-in { animation: fadeIn 0.3s ease-in-out; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .nav-btn.active { color: #11183b; background-color: #eff6ff; }
-        .dark .nav-btn.active { color: #fff; background-color: #1e293b; }
-        
-        /* Blue Button Active State Override */
-        #btn-keys { color: #3b82f6; }
-        .dark #btn-keys { color: #60a5fa; }
-        #btn-keys.active { color: #2563eb !important; background-color: #eff6ff !important; }
-        .dark #btn-keys.active { color: #60a5fa !important; background-color: #1e3a8a !important; }
-
-        .nav-btn.active svg { stroke-width: 2.5px; transform: scale(1.1); }
-        /* Banner Animation */
-        .slide-up { animation: slideUp 0.5s ease-out forwards; }
-        @keyframes slideUp { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="text-slate-900 dark:text-slate-100 pb-28 md:pb-10 bg-slate-100 dark:bg-slate-900 min-h-screen relative transition-colors duration-200">
     <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-[#11183b] focus:text-white focus:px-4 focus:py-2 focus:rounded-lg">Aller au contenu</a>
@@ -109,15 +70,15 @@
             </div>
             
             <!-- Quick Call Button (Blue) -->
-            <a href="tel:0243724345" class="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-800 text-blue-800 dark:text-blue-300 px-3 py-2 rounded-xl border border-blue-100 transition-all active:scale-95 shadow-sm">
+            <a href="tel:0243724345" id="header-phone-link" class="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-800 text-blue-800 dark:text-blue-300 px-3 py-2 rounded-xl border border-blue-100 transition-all active:scale-95 shadow-sm">
                 <div class="bg-blue-500 text-white p-1.5 rounded-full flex items-center justify-center">
                     <i data-lucide="phone" class="w-3 h-3 fill-white"></i>
                 </div>
                 <div class="hidden sm:flex flex-col items-start leading-none">
                     <span class="text-[11px] uppercase font-bold text-blue-600 dark:text-blue-400">Maladie/Urgence</span>
-                    <span class="text-xs font-bold">Ligne Salariés</span>
+                    <span id="header-phone-label" class="text-xs font-bold">Ligne Salariés</span>
                 </div>
-                <span class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
+                <span id="header-phone-label-mobile" class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
             </a>
         </div>
     </header>
@@ -159,12 +120,12 @@
     <main id="main-content" class="max-w-5xl mx-auto p-4 md:p-6 lg:p-8">
 
         <!-- SECTION: ACCUEIL -->
-        <div id="tab-home" class="tab-content active space-y-6 fade-in">
+        <div id="tab-home" class="tab-content active space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-home">
             
             <!-- 1. OUTILS (2x2 GRID) -->
             <div class="grid grid-cols-2 gap-3">
                  <!-- Clés -->
-                 <a href="#" id="link-gestion-cles" target="_blank" class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all group">
+                 <a href="#" id="link-gestion-cles" target="_blank" rel="noopener noreferrer" class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all group">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-orange-600 dark:text-orange-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="key" class="w-6 h-6"></i>
                      </div>
@@ -175,7 +136,7 @@
                  </a>
 
                  <!-- Kms -->
-                 <a href="#" id="link-declaration-kms" target="_blank" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-2xl shadow-sm border border-blue-100 dark:border-blue-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all group">
+                 <a href="#" id="link-declaration-kms" target="_blank" rel="noopener noreferrer" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-2xl shadow-sm border border-blue-100 dark:border-blue-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all group">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="car" class="w-6 h-6"></i>
                      </div>
@@ -186,7 +147,7 @@
                  </a>
 
                  <!-- My Silae -->
-                 <a href="https://my.silae.fr/sign-in" target="_blank" class="bg-teal-50 dark:bg-teal-900/30 p-4 rounded-2xl shadow-sm border border-teal-100 dark:border-teal-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-all group">
+                 <a href="https://my.silae.fr/sign-in" target="_blank" rel="noopener noreferrer" class="bg-teal-50 dark:bg-teal-900/30 p-4 rounded-2xl shadow-sm border border-teal-100 dark:border-teal-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-all group">
                      <div class="bg-gradient-to-br from-teal-400 to-teal-600 p-2.5 rounded-full text-white shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="palmtree" class="w-6 h-6 stroke-[2.5]"></i>
                      </div>
@@ -197,7 +158,7 @@
                  </a>
                  
                  <!-- Coffre Fort -->
-                 <a href="https://edocperso.fr/login" target="_blank" class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-2xl shadow-sm border border-purple-100 dark:border-purple-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all group">
+                 <a href="https://edocperso.fr/login" target="_blank" rel="noopener noreferrer" class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-2xl shadow-sm border border-purple-100 dark:border-purple-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all group">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="lock" class="w-6 h-6"></i>
                      </div>
@@ -249,7 +210,7 @@
         </div>
 
         <!-- SECTION: REMUNERATION (ex PAIE) -->
-        <div id="tab-money" class="tab-content space-y-6 fade-in">
+        <div id="tab-money" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-money">
             <!-- Banner Revised -->
             <div class="relative bg-[#11183b] rounded-3xl overflow-hidden shadow-xl">
                 <!-- Background Effects -->
@@ -593,7 +554,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span class="text-[11px] text-slate-400 font-medium block">Votre part / mois</span>
-                                    <span id="remun-mutuelle-price" class="text-3xl font-extrabold text-[#11183b] dark:text-white">13,55 €</span>
+                                    <span id="remun-mutuelle-price" class="text-3xl font-extrabold text-[#11183b] dark:text-white">--,-- €</span>
                                     <span class="text-[11px] text-slate-400 block">Déduit du salaire</span>
                                 </div>
                             </div>
@@ -710,7 +671,7 @@
         </div>
         
         <!-- SECTION: DAILY -->
-        <div id="tab-daily" class="tab-content space-y-6 fade-in">
+        <div id="tab-daily" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-daily">
              <!-- Row 1: Phone & Equipments (Priority) -->
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- 1. Téléphone & Scan (Takes 2 cols on Large) -->
@@ -819,99 +780,8 @@
                     <h3 class="font-bold text-base">Obligations au quotidien</h3>
                 </div>
                 <div class="p-5">
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                        <!-- 1. Présentation -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-pink-100 dark:border-pink-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="shirt" class="w-8 h-8 text-pink-600 dark:text-pink-400"></i>
-                            <p class="text-xs font-medium text-pink-900 dark:text-pink-200 leading-snug">Avoir une présentation correcte et une tenue de travail adaptée en portant les équipements fournis par O2</p>
-                        </div>
-                        <!-- 2. Ponctualité -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-blue-100 dark:border-blue-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="clock" class="w-8 h-8 text-blue-600 dark:text-blue-400"></i>
-                            <p class="text-xs font-medium text-blue-900 dark:text-blue-200 leading-snug">Être ponctuel (ne pas décider les horaires) et avertir en cas de retard ou d’absence</p>
-                        </div>
-                        <!-- 3. Scanner QR -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-sky-100 dark:border-sky-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="qr-code" class="w-8 h-8 text-sky-500"></i>
-                            <p class="text-xs font-medium text-sky-900 dark:text-sky-200 leading-snug">Scanner le QR code au début et à la fin de chaque intervention</p>
-                        </div>
-                        <!-- 4. Ligne Salariés -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-orange-100 dark:border-orange-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="phone" class="w-8 h-8 text-orange-600 dark:text-orange-400"></i>
-                            <div class="text-xs font-medium text-orange-900 dark:text-orange-200 leading-snug">
-                                <p class="mb-1">En cas d’absence, prévenir directement la <span class="font-bold">Ligne des Salariés</span></p>
-                            </div>
-                        </div>
-                        <!-- 5. Feuille de route -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-indigo-100 dark:border-indigo-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="clipboard-list" class="w-8 h-8 text-indigo-500"></i>
-                            <p class="text-xs font-medium text-indigo-900 dark:text-indigo-200 leading-snug">Respecter la feuille de route (tâches à réaliser lors de la prestation)</p>
-                        </div>
-                        <!-- 6. Clés -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-amber-100 dark:border-amber-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="key" class="w-8 h-8 text-amber-500"></i>
-                            <p class="text-xs font-medium text-amber-900 dark:text-amber-200 leading-snug">Être responsable des clés confiées</p>
-                        </div>
-                        <!-- 7. Vouvoyer -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-fuchsia-100 dark:border-fuchsia-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="message-circle" class="w-8 h-8 text-fuchsia-500"></i>
-                            <p class="text-xs font-medium text-fuchsia-900 dark:text-fuchsia-200 leading-snug">Vouvoyer les clients, être poli et utiliser un vocabulaire correct</p>
-                        </div>
-                        <!-- 8. Discrétion -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-emerald-100 dark:border-emerald-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="eye-off" class="w-8 h-8 text-emerald-500"></i>
-                            <p class="text-xs font-medium text-emerald-900 dark:text-emerald-200 leading-snug">Faire preuve de discrétion (ne pas diffuser les informations personnelles, ne pas se confier...)</p>
-                        </div>
-                         <!-- 9. Respect -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-rose-100 dark:border-rose-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="heart" class="w-8 h-8 text-rose-500 fill-rose-100 dark:fill-rose-900"></i>
-                            <p class="text-xs font-medium text-rose-900 dark:text-rose-200 leading-snug">Respecter les habitudes et les choix de vie (religion, culture, intimité ...)</p>
-                        </div>
-                        <!-- 10. Remonter Info -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-sky-100 dark:border-sky-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="ear" class="w-8 h-8 text-sky-400"></i>
-                            <p class="text-xs font-medium text-sky-900 dark:text-sky-200 leading-snug">Remonter à votre agence toute modification de planning convenue avec le client ou toutes évolutions possibles de ses besoins</p>
-                        </div>
-                         <!-- 11. Cadeaux -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-red-100 dark:border-red-900/30 flex flex-col items-center text-center gap-3">
-                            <div class="relative"><i data-lucide="gift" class="w-8 h-8 text-red-500"></i><i data-lucide="x" class="w-4 h-4 text-red-600 absolute -top-1 -right-1 bg-white dark:bg-slate-700 rounded-full"></i></div>
-                            <p class="text-xs font-medium text-red-900 dark:text-red-200 leading-snug">Ne pas accepter d’agent ou de cadeaux de la part des clients</p>
-                        </div>
-                        <!-- 12. Situation préoc -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-violet-100 dark:border-violet-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="headset" class="w-8 h-8 text-violet-600"></i>
-                            <p class="text-xs font-medium text-violet-900 dark:text-violet-200 leading-snug">Informer O2 en cas de situation préoccupante</p>
-                        </div>
-                         <!-- 13. Cahier -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-green-100 dark:border-green-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="book-open" class="w-8 h-8 text-green-600"></i>
-                            <p class="text-xs font-medium text-green-900 dark:text-green-200 leading-snug">Remplir le cahier de liaison à chaque intervention</p>
-                        </div>
-                        <!-- 14. Sinistre -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-cyan-100 dark:border-cyan-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="alert-octagon" class="w-8 h-8 text-cyan-500"></i>
-                            <p class="text-xs font-medium text-cyan-900 dark:text-cyan-200 leading-snug">Informer immédiatement O2 de tout sinistre, casse ou problème</p>
-                        </div>
-                        <!-- 15. Remplacement -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-amber-100 dark:border-amber-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="arrow-left-right" class="w-8 h-8 text-amber-500"></i>
-                            <p class="text-xs font-medium text-amber-900 dark:text-amber-200 leading-snug">Assurer les remplacements avec professionnalisme (présentez votre carte O2 auprès d’un nouveau client)</p>
-                        </div>
-                        <!-- 16. Signaler Changement -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-blue-100 dark:border-blue-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="file-edit" class="w-8 h-8 text-blue-700 dark:text-blue-400"></i>
-                            <p class="text-xs font-medium text-blue-900 dark:text-blue-200 leading-snug">Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis de conduire, aptitude...)</p>
-                        </div>
-                        <!-- 17. Fumer/Alcool -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-slate-100 dark:border-slate-600 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="cigarette-off" class="w-8 h-8 text-slate-500"></i>
-                            <p class="text-xs font-medium text-slate-900 dark:text-slate-200 leading-snug">Ne pas fumer ou consommer de boissons alcoolisées chez les clients</p>
-                        </div>
-                        <!-- 18. Objets Clients -->
-                        <div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 border-red-100 dark:border-red-900/30 flex flex-col items-center text-center gap-3">
-                            <i data-lucide="lock" class="w-8 h-8 text-red-600"></i>
-                            <p class="text-xs font-medium text-red-900 dark:text-red-200 leading-snug">Ne pas utiliser d’objets et matériels appartenant aux clients sans leur autorisation</p>
-                        </div>
+                    <!-- Obligations générées dynamiquement depuis content.js -->
+                    <div id="obligations-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                     </div>
                     
                     <div class="mt-6 text-center">
@@ -922,97 +792,10 @@
         </div>
 
         <!-- SECTION: DOCUMENTS -->
-        <div id="tab-docs" class="tab-content space-y-6 fade-in">
+        <div id="tab-docs" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-docs">
 
-             <!-- Link Grid -->
-             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                 <!-- 1. Guide Assistant Ménager -->
-                 <a href="https://drive.google.com/file/d/1QwaUc8TZ1Ob-WEUbJF61WDoL5lIWYYZI/view?usp=sharing" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:border-orange-200 transition-all group h-32">
-                     <div class="bg-orange-100 dark:bg-orange-900/50 p-3 rounded-full text-orange-600 dark:text-orange-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="sparkles" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-orange-700 dark:group-hover:text-orange-300">Guide Assistant(e) Ménager(ère)</h3>
-                 </a>
-
-                 <!-- 2. Guide Garde d'Enfant -->
-                 <a href="https://drive.google.com/file/d/1WQ38xAV4ZLMPdgYLpp1PbkHLa_uO4Ek_/view?usp=sharing" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-fuchsia-50 dark:hover:bg-fuchsia-900/20 hover:border-fuchsia-200 transition-all group h-32">
-                     <div class="bg-fuchsia-100 dark:bg-fuchsia-900/50 p-3 rounded-full text-fuchsia-600 dark:text-fuchsia-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="baby" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-fuchsia-700 dark:group-hover:text-fuchsia-300">Guide Garde d'Enfant(s)</h3>
-                 </a>
-
-                 <!-- 3. Guide Assistant de Vie -->
-                 <a href="https://drive.google.com/file/d/1SscPY3Q6noC3F1ddvqJ9jouXdxVm6smh/view?usp=sharing" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-200 transition-all group h-32">
-                     <div class="bg-purple-100 dark:bg-purple-900/50 p-3 rounded-full text-purple-600 dark:text-purple-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="heart-handshake" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-purple-700 dark:group-hover:text-purple-300">Guide Assistant(e) de Vie</h3>
-                 </a>
-
-                 <!-- 4. CCN 3127 -->
-                 <a href="https://www.legifrance.gouv.fr/conv_coll/id/KALICONT000027084096" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300 transition-all group h-32">
-                     <div class="bg-slate-100 dark:bg-slate-700 p-3 rounded-full text-slate-600 dark:text-slate-300 group-hover:scale-110 transition-transform">
-                         <i data-lucide="scale" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-slate-900 dark:group-hover:text-white">Convention Collective</h3>
-                 </a>
-
-                 <!-- Avantages -->
-                 <a href="#" id="doc-link-avantages" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-emerald-50 dark:hover:bg-emerald-900/20 hover:border-emerald-200 transition-all group h-32">
-                     <div class="bg-emerald-100 dark:bg-emerald-900/50 p-3 rounded-full text-emerald-600 dark:text-emerald-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="gem" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-emerald-700 dark:group-hover:text-emerald-300">DUE Avantages & Rémunération</h3>
-                 </a>
-
-                 <!-- Congés -->
-                 <a href="#" id="doc-link-conges" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-200 transition-all group h-32">
-                     <div class="bg-amber-100 dark:bg-amber-900/50 p-3 rounded-full text-amber-600 dark:text-amber-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="sun" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-amber-700 dark:group-hover:text-amber-300">Note Pose des Congés</h3>
-                 </a>
-
-                 <!-- DUE Santé -->
-                 <a href="#" id="doc-link-due-sante" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:border-teal-200 transition-all group h-32">
-                     <div class="bg-teal-100 dark:bg-teal-900/50 p-3 rounded-full text-teal-600 dark:text-teal-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="stethoscope" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-teal-700 dark:group-hover:text-teal-300">DUE Santé</h3>
-                 </a>
-
-                 <!-- Garantie Santé -->
-                 <a href="#" id="doc-link-garantie-sante" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-cyan-50 dark:hover:bg-cyan-900/20 hover:border-cyan-200 transition-all group h-32">
-                     <div class="bg-cyan-100 dark:bg-cyan-900/50 p-3 rounded-full text-cyan-600 dark:text-cyan-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="shield-check" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-cyan-700 dark:group-hover:text-cyan-300">Garantie Frais Santé</h3>
-                 </a>
-
-                 <!-- DUE Intéressement -->
-                 <a href="#" id="doc-link-due-interessement" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-rose-50 dark:hover:bg-rose-900/20 hover:border-rose-200 transition-all group h-32">
-                     <div class="bg-rose-100 dark:bg-rose-900/50 p-3 rounded-full text-rose-600 dark:text-rose-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="coins" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-rose-700 dark:group-hover:text-rose-300">DUE Intéressement</h3>
-                 </a>
-
-                 <!-- Accord Temps -->
-                 <a href="#" id="doc-link-accord-temps" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-200 transition-all group h-32">
-                     <div class="bg-indigo-100 dark:bg-indigo-900/50 p-3 rounded-full text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
-                         <i data-lucide="timer" class="w-6 h-6"></i>
-                     </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-indigo-700 dark:group-hover:text-indigo-300">Accord Temps de Travail</h3>
-                 </a>
-
-                 <!-- Confidentialité -->
-                 <a href="https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/view?usp=drive_link" target="_blank" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300 transition-all group h-32">
-                    <div class="bg-slate-100 dark:bg-slate-700 p-3 rounded-full text-slate-600 dark:text-slate-300 group-hover:scale-110 transition-transform">
-                        <i data-lucide="shield" class="w-6 h-6"></i>
-                    </div>
-                    <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight group-hover:text-slate-900 dark:group-hover:text-white">Sensibilisation à la Confidentialité</h3>
-                </a>
+             <!-- Liens documents générés dynamiquement depuis content.js -->
+             <div id="documents-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
              </div>
 
              <!-- Mentions Légales -->
@@ -1027,7 +810,7 @@
         </div>
 
         <!-- SECTION: AUTRE (ex CLÉS & KMS) -> Contient maintenant Contacts et Infos -->
-        <div id="tab-keys" class="tab-content space-y-6 fade-in">
+        <div id="tab-keys" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-keys">
              <!-- VOS CONTACTS -->
              <!-- Urgences Block (Standalone) -->
             <div class="bg-red-500 rounded-2xl p-4 shadow-lg text-white flex items-center justify-between mb-6">
@@ -1068,7 +851,7 @@
                                 <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Prévenir de votre absence ou éventuel retard</span></li>
                                 <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Déclarer un incident pendant la prestation (casse…)</span></li>
                                 <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Faire part d’un doute sur les tâches à réaliser</span></li>
-                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Notifier une demande client de changement (< 48h)</span></li>
+                                <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Notifier une demande client de changement (&lt; 48h)</span></li>
                                 <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-blue-500 mt-1.5 shrink-0"></div><span>Avertir de tout problème, danger ou situation préoccupante</span></li>
                             </ul>
                         </div>
@@ -1087,7 +870,7 @@
                         </a>
                     </div>
                     <div class="p-5 text-sm space-y-4 flex-1">
-                         <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" id="contact-agency-address-link" class="flex items-start gap-2 text-teal-600 dark:text-teal-400 hover:underline">
+                         <a href="https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire" target="_blank" rel="noopener noreferrer" id="contact-agency-address-link" class="flex items-start gap-2 text-teal-600 dark:text-teal-400 hover:underline">
                              <i data-lucide="map-pin" class="w-4 h-4 mt-0.5 shrink-0"></i>
                              <span class="text-xs" id="contact-agency-address-text">134 Bd Charles de Gaulle, 37540 Saint-Cyr-Sur-Loire</span>
                          </a>
@@ -1212,28 +995,28 @@
     <!-- NAVIGATION BAR -->
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
         <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-16 md:rounded-full md:shadow-2xl md:max-w-2xl mx-auto pb-safe md:pb-0">
-            <div class="flex justify-around items-center h-full px-2 md:px-6">
-                <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home">
+            <div class="flex justify-around items-center h-full px-2 md:px-6" role="tablist" aria-label="Navigation principale">
+                <button onclick="switchTab('home')" class="nav-btn active flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-home" role="tab" aria-selected="true" aria-controls="tab-home">
                     <div class="transition-transform duration-300"><i data-lucide="home" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Accueil</span>
                 </button>
                 
-                <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-daily">
+                <button onclick="switchTab('daily')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-daily" role="tab" aria-selected="false" aria-controls="tab-daily">
                     <div class="transition-transform duration-300"><i data-lucide="calendar-check" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Quotidien</span>
                 </button>
 
-                <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-money">
+                <button onclick="switchTab('money')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-money" role="tab" aria-selected="false" aria-controls="tab-money">
                     <div class="transition-transform duration-300"><i data-lucide="euro" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Rémunération</span>
                 </button>
                 
-                <button onclick="switchTab('docs')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-docs">
+                <button onclick="switchTab('docs')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-slate-400" id="btn-docs" role="tab" aria-selected="false" aria-controls="tab-docs">
                     <div class="transition-transform duration-300"><i data-lucide="file-text" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Docs</span>
                 </button>
 
-                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-blue-500" id="btn-keys">
+                <button onclick="switchTab('keys')" class="nav-btn flex flex-col md:flex-row items-center justify-center w-full h-full md:space-x-2 rounded-xl transition-all duration-300 text-blue-500" id="btn-keys" role="tab" aria-selected="false" aria-controls="tab-keys">
                     <div class="transition-transform duration-300"><i data-lucide="phone" class="w-5 h-5 md:w-6 md:h-6"></i></div>
                     <span class="text-[11px] md:text-sm font-medium">Contacts & Urgences</span>
                 </button>
@@ -1241,276 +1024,7 @@
         </div>
     </div>
 
-    <!-- SCRIPT -->
-    <script>
-        // Init Icons
-        lucide.createIcons();
-
-        // Application de la configuration agence
-        function applyConfig() {
-            if(typeof AGENCY_CONFIGS === 'undefined') return;
-
-            // 1. Détecter l'agence via l'URL (ex: ?agence=loches)
-            const params = new URLSearchParams(window.location.search);
-            const agencyId = params.get('agence') || 'nord-touraine'; // 'nord-touraine' par défaut
-
-            // 2. Sélectionner la config
-            const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
-
-            if (!config) return;
-
-            // Header
-            const headerName = document.getElementById('header-agency-name');
-            if(headerName) headerName.textContent = config.name;
-
-            // Home
-            const linkKeys = document.getElementById('link-gestion-cles');
-            if(linkKeys) linkKeys.href = config.home.gestionClesUrl;
-
-            const linkKms = document.getElementById('link-declaration-kms');
-            if(linkKms) linkKms.href = config.home.declarationKmsUrl;
-
-            // Remuneration
-            const mutuelleName = document.getElementById('remun-mutuelle-name');
-            if(mutuelleName) mutuelleName.textContent = config.remuneration.mutuelleName;
-
-            const mutuellePrice = document.getElementById('remun-mutuelle-price');
-            if(mutuellePrice) mutuellePrice.textContent = config.remuneration.mutuellePrice;
-
-            // NEW: Update Simulator Link with agency param
-            const btnSimulator = document.getElementById('btn-simulator');
-            if(btnSimulator) btnSimulator.href = 'simulateur.html?agence=' + agencyId;
-
-            // Docs - Medecine
-            const medAddress = document.getElementById('doc-medecine-address');
-            if(medAddress) medAddress.textContent = config.docs.medecineTravail.address;
-
-            const medPhone = document.getElementById('doc-medecine-phone');
-            if(medPhone) {
-                medPhone.href = config.docs.medecineTravail.phoneLink;
-                medPhone.textContent = config.docs.medecineTravail.phoneDisplay;
-            }
-
-            // Docs - Links
-            const docIds = {
-                'doc-link-avantages': config.docs.links.avantages,
-                'doc-link-conges': config.docs.links.conges,
-                'doc-link-due-sante': config.docs.links.dueSante,
-                'doc-link-garantie-sante': config.docs.links.garantieSante,
-                'doc-link-due-interessement': config.docs.links.dueInteressement,
-                'doc-link-accord-temps': config.docs.links.accordTemps
-            };
-
-            for(const [id, url] of Object.entries(docIds)) {
-                const el = document.getElementById(id);
-                if(el) el.href = url;
-            }
-
-            // Contacts
-            const agPhone = document.getElementById('contact-agency-phone');
-            const agPhoneText = document.getElementById('contact-agency-phone-text');
-
-            if(agPhone) {
-                agPhone.href = config.contacts.agence.phoneLink;
-                if (!agPhoneText) {
-                     agPhone.textContent = config.contacts.agence.phoneDisplay;
-                }
-            }
-            if(agPhoneText) {
-                agPhoneText.textContent = config.contacts.agence.phoneDisplay;
-            }
-
-            const agAddrLink = document.getElementById('contact-agency-address-link');
-            if(agAddrLink) agAddrLink.href = config.contacts.agence.addressLink;
-
-            const agAddrText = document.getElementById('contact-agency-address-text');
-            if(agAddrText) agAddrText.textContent = config.contacts.agence.address;
-
-            const agEmailLink = document.getElementById('contact-agency-email-link');
-            if(agEmailLink) agEmailLink.href = "mailto:" + config.contacts.agence.email;
-
-            const agEmailText = document.getElementById('contact-agency-email-text');
-            if(agEmailText) agEmailText.textContent = config.contacts.agence.email;
-
-            // Grille salariale (depuis GRILLE_SALARIALE)
-            if(typeof GRILLE_SALARIALE !== 'undefined') {
-                const g = GRILLE_SALARIALE;
-                const fmt = (v) => v.toFixed(2).replace('.', ',') + ' €';
-                const fmtBonus = (v) => '+ ' + v.toFixed(2).replace('.', ',') + ' €';
-
-                const prices = {
-                    'price-am2': fmt(g.smicHoraire),
-                    'price-am2-confirme': fmtBonus(g.bonusConfirme),
-                    'price-am2-expert': fmtBonus(g.bonusExpert),
-                    'price-am2-referent': fmtBonus(g.bonusReferent),
-                    'price-ge2': fmt(g.smicHoraire),
-                    'price-ge3': fmt(g.tauxGE3),
-                    'price-ge3-confirme': fmtBonus(g.bonusConfirme),
-                    'price-ge3-expert': fmtBonus(g.bonusExpert),
-                    'price-av2': fmt(g.smicHoraire),
-                    'price-av3': fmt(g.tauxAV3),
-                    'price-av3-confirme': fmtBonus(g.bonusConfirme),
-                    'price-av3-expert': fmtBonus(g.bonusExpert),
-                    'price-av3-referent': fmtBonus(g.bonusReferent)
-                };
-
-                for(const [id, text] of Object.entries(prices)) {
-                    const el = document.getElementById(id);
-                    if(el) el.textContent = text;
-                }
-            }
-        }
-
-        // Appliquer la config
-        applyConfig();
-
-
-        // Register Service Worker
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js')
-                    .then(registration => {
-                        console.log('SW registered:', registration);
-                        // Check for updates
-                        registration.update();
-                    })
-                    .catch(error => {
-                        console.log('SW registration failed:', error);
-                    });
-            });
-        }
-
-        // Install Banner Logic
-        let deferredPrompt = null;
-        const installBanner = document.getElementById('install-banner');
-        const installBtnNative = document.getElementById('install-btn-native');
-        const installSteps = document.getElementById('install-steps');
-
-        // Check if already installed
-        const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
-
-        // Check if banner was dismissed recently (7 jours)
-        const DISMISS_KEY = 'install_banner_dismissed';
-        const DISMISS_DAYS = 7;
-        function wasDismissedRecently() {
-            const dismissed = localStorage.getItem(DISMISS_KEY);
-            if (!dismissed) return false;
-            const days = (Date.now() - parseInt(dismissed)) / (1000 * 60 * 60 * 24);
-            return days < DISMISS_DAYS;
-        }
-
-        // Capture beforeinstallprompt (Android Chrome)
-        window.addEventListener('beforeinstallprompt', (e) => {
-            e.preventDefault();
-            deferredPrompt = e;
-            // Si pas déjà installé et pas dismiss récent, montrer le bouton natif
-            if (!isStandalone && !wasDismissedRecently()) {
-                installBtnNative.classList.remove('hidden');
-                installBanner.classList.remove('hidden');
-                lucide.createIcons();
-            }
-        });
-
-        // Bouton installer natif (Android)
-        function installPWA() {
-            if (!deferredPrompt) return;
-            deferredPrompt.prompt();
-            deferredPrompt.userChoice.then((choice) => {
-                if (choice.outcome === 'accepted') {
-                    installBanner.classList.add('hidden');
-                }
-                deferredPrompt = null;
-            });
-        }
-
-        // Fallback : instructions manuelles si pas de beforeinstallprompt après 3s
-        if (!isStandalone && !wasDismissedRecently()) {
-            setTimeout(() => {
-                // Si le banner natif n'est pas déjà affiché
-                if (installBanner.classList.contains('hidden')) {
-                    const userAgent = navigator.userAgent || navigator.vendor;
-                    const step1 = document.getElementById('install-step1');
-                    const step2 = document.getElementById('install-step2');
-
-                    if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-                        step1.innerHTML = "Appuyez sur <strong>Partager</strong> <i data-lucide='share' class='inline w-3.5 h-3.5'></i> (en bas de l'écran)";
-                        step2.innerHTML = "Puis <strong>Sur l'écran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
-                        installSteps.classList.remove('hidden');
-                        installBanner.classList.remove('hidden');
-                        lucide.createIcons();
-                    } else if (/android/i.test(userAgent)) {
-                        step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
-                        step2.innerHTML = "Puis <strong>Ajouter à l'écran d'accueil</strong>";
-                        installSteps.classList.remove('hidden');
-                        installBanner.classList.remove('hidden');
-                        lucide.createIcons();
-                    }
-                }
-            }, 3000);
-        }
-
-        function dismissInstall() {
-            installBanner.classList.add('hidden');
-            localStorage.setItem(DISMISS_KEY, Date.now().toString());
-        }
-
-        function switchTab(tabName) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // Show target tab
-            const target = document.getElementById('tab-' + tabName);
-            if(target) {
-                target.classList.add('active');
-            } else {
-                console.error('Tab not found:', tabName);
-            }
-            
-            // Update Navigation State
-            document.querySelectorAll('.nav-btn').forEach(el => {
-                el.classList.remove('active', 'text-[#11183b]');
-                if(el.id !== 'btn-keys') {
-                   el.classList.add('text-slate-400');
-                } else {
-                   // Keep Contacts blue
-                   el.classList.add('text-blue-500');
-                }
-            });
-            const btn = document.getElementById('btn-' + tabName);
-            if(btn) {
-                btn.classList.add('active');
-                if(btn.id !== 'btn-keys') {
-                    btn.classList.add('text-[#11183b]');
-                    btn.classList.remove('text-slate-400');
-                } else {
-                    // It's the contacts button, let CSS handle active state or ensure it keeps blue color but gets background
-                     // The CSS rule #btn-keys.active handles the colors.
-                }
-            }
-            
-            // Scroll top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // AUTO-RELOAD FOR WEBAPP
-        let lastVisibilityChange = Date.now();
-        document.addEventListener('visibilitychange', () => {
-            if (document.visibilityState === 'visible') {
-                const now = Date.now();
-                // If app hidden for > 10 mins (600000ms), force reload to get updates
-                if (now - lastVisibilityChange > 600000) {
-                    // Force SW update check
-                    if ('serviceWorker' in navigator) {
-                        navigator.serviceWorker.ready.then(registration => {
-                            registration.update();
-                        });
-                    }
-                    window.location.reload();
-                }
-                lastVisibilityChange = now;
-            } else {
-                lastVisibilityChange = Date.now();
-            }
-        });
-    </script>
+    <!-- Script principal (module ES, traite par Vite) -->
+    <script type="module" src="/src/app.js"></script>
 </body>
 </html>

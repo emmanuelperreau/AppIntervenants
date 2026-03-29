@@ -1,37 +1,36 @@
-const CACHE_NAME = 'o2-guide-v5';
-const ASSETS = [
+const CACHE_NAME = 'o2-guide-v6';
+const LOCAL_ASSETS = [
   './',
   './index.html',
-  './config.js',
   './simulateur.html',
   './offline.html',
-  // LES NOUVEAUX MANIFESTS (Crucial)
   './manifest-loches.json',
   './manifest-nord.json',
-  // LES IMAGES LOCALES (Crucial pour PWA)
   './icon.svg',
   './icon-192.png',
   './icon-384.png',
   './icon-512.png',
-  './apple-touch-icon.png',
-  // RESSOURCES EXTERNES
-  'https://cdn.tailwindcss.com',
-  'https://unpkg.com/lucide@latest',
+  './apple-touch-icon.png'
+];
+const CDN_ASSETS = [
   'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&display=swap'
 ];
 
 // Install Event
 self.addEventListener('install', event => {
-  self.skipWaiting(); // Force l'activation immédiate
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => {
-        // On essaie de tout mettre en cache
-        return cache.addAll(ASSETS);
-      })
-      .catch(err => {
-        console.error('Erreur installation SW:', err);
-      })
+    caches.open(CACHE_NAME).then(async cache => {
+      // Assets locaux : obligatoires
+      await cache.addAll(LOCAL_ASSETS);
+      // CDN : optionnels (best effort)
+      for (const url of CDN_ASSETS) {
+        try { await cache.add(url); } catch (e) { console.warn('CDN cache fail:', url); }
+      }
+    })
+    .then(() => self.skipWaiting())
+    .catch(err => {
+      console.error('Erreur installation SW:', err);
+    })
   );
 });
 
@@ -41,9 +40,8 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys => Promise.all(
       keys.filter(key => key !== CACHE_NAME).map(key => caches.delete(key))
     ))
+    .then(() => self.clients.claim())
   );
-  // Important : prendre le contrôle des clients immédiatement
-  return self.clients.claim();
 });
 
 // Fetch Event
@@ -51,12 +49,16 @@ self.addEventListener('fetch', event => {
   // Stratégie pour les pages HTML (Navigation) : Network First, puis Cache
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request)
-        .catch(() => {
-          // Si on est hors ligne, tenter le cache puis la page offline
-          return caches.match(event.request)
-            .then(cached => cached || caches.match('./offline.html'));
-        })
+      fetch(event.request).then(response => {
+        // Mettre en cache la réponse fraîche
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        return response;
+      }).catch(() => {
+        // Si on est hors ligne, tenter le cache puis la page offline
+        return caches.match(event.request)
+          .then(cached => cached || caches.match('./offline.html'));
+      })
     );
   } else {
     // Stratégie pour les images/scripts/css : Cache First, puis Network
