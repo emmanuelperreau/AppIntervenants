@@ -1,6 +1,11 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../*.html";
+@source "./**/*.{js,ts}";
+
+@theme {
+  --font-sans: 'Inter', sans-serif;
+  --color-slate-850: #151e32;
+}
 
 /* Styles personnalisés */
 body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }

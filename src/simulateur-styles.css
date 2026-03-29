@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@source "../simulateur.html";
+@source "./**/*.{js,ts}";
 
 /* Styles personnalisés simulateur */
 body { font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
