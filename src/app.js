@@ -10,36 +10,24 @@ import { GRILLE_SALARIALE, AGENCY_CONFIGS } from '../config.js';
 // Contenu RH externalisé
 import { OBLIGATIONS, DOCUMENTS } from './content.js';
 
+// Map des icônes pour createIcons()
+const icons = { Phone, Smartphone, Download, X, Key, Car, Palmtree, Lock, Quote, HeartHandshake, Target, Award, Users, Sun, CalendarClock, Calculator, ChevronRight, Euro, Sparkles, Crown, TrendingUp, Utensils, CheckCircle, Gift, CalendarDays, Info, PhoneCall, QrCode, HardHat, BookOpen, Footprints, Shirt, ShieldCheck, Ban, XCircle, AlignStartVertical, Weight, Briefcase, Clock, ClipboardList, MessageCircle, EyeOff, Heart, Ear, Headset, AlertOctagon, ArrowLeftRight, FileEdit, CigaretteOff, Baby, Scale, Gem, Stethoscope, Coins, Timer, Shield, ShieldAlert, Building2, MapPin, Mail, DoorClosed, AlertTriangle, Ambulance, HeartPulse, Home, CalendarCheck, FileText, Share, PlusSquare, EllipsisVertical };
+
 // Génération dynamique des obligations
 function renderObligations() {
     const container = document.getElementById('obligations-grid');
     if (!container) return;
 
     container.innerHTML = OBLIGATIONS.map(ob => {
-        // Icône avec overlay optionnel (ex: cadeau barré)
-        let iconHtml;
-        if (ob.overlayIcon) {
-            iconHtml = `<div class="relative"><i data-lucide="${ob.icon}" class="w-8 h-8 text-${ob.color}-${ob.color === 'slate' ? '500' : ob.color === 'sky' ? '500' : '600'} dark:text-${ob.color}-400"></i><i data-lucide="${ob.overlayIcon}" class="w-4 h-4 text-${ob.color}-600 absolute -top-1 -right-1 bg-white dark:bg-slate-700 rounded-full"></i></div>`;
-        } else {
-            const fill = ob.fillClass ? ` ${ob.fillClass}` : '';
-            const colorSuffix = (ob.color === 'sky' || ob.color === 'amber' || ob.color === 'cyan') ? '500'
-                : (ob.color === 'slate') ? '500'
-                : (ob.color === 'violet') ? '600'
-                : (ob.color === 'blue' && ob.icon === 'file-edit') ? '700 dark:text-blue-400'
-                : '600';
-            iconHtml = `<i data-lucide="${ob.icon}" class="w-8 h-8 text-${ob.color}-${colorSuffix}${fill ? ' ' + fill : ''} dark:text-${ob.color}-400"></i>`;
-        }
+        const iconHtml = ob.overlayIcon
+            ? `<div class="relative"><i data-lucide="${ob.icon}" class="w-8 h-8 ${ob.iconClass}"></i><i data-lucide="${ob.overlayIcon}" class="w-4 h-4 ${ob.overlayClass} absolute -top-1 -right-1 bg-white dark:bg-slate-700 rounded-full"></i></div>`
+            : `<i data-lucide="${ob.icon}" class="w-8 h-8 ${ob.iconClass}"></i>`;
 
-        // Texte (HTML brut ou texte simple)
-        const textContent = ob.isHtml
-            ? `<div class="text-xs font-medium text-${ob.color}-900 dark:text-${ob.color}-200 leading-snug"><p class="mb-1">${ob.text}</p></div>`
-            : `<p class="text-xs font-medium text-${ob.color}-900 dark:text-${ob.color}-200 leading-snug">${ob.text}</p>`;
+        const textContent = ob.html
+            ? `<div class="text-xs font-medium ${ob.textClass} leading-snug">${ob.html}</div>`
+            : `<p class="text-xs font-medium ${ob.textClass} leading-snug">${ob.text}</p>`;
 
-        const borderColor = (ob.color === 'slate')
-            ? 'border-slate-100 dark:border-slate-600'
-            : `border-${ob.color}-100 dark:border-${ob.color}-900/30`;
-
-        return `<div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 ${borderColor} flex flex-col items-center text-center gap-3">${iconHtml}${textContent}</div>`;
+        return `<div class="p-4 bg-white dark:bg-slate-700 rounded-xl border-2 ${ob.borderClass} flex flex-col items-center text-center gap-3">${iconHtml}${textContent}</div>`;
     }).join('');
 }
 
@@ -50,24 +38,12 @@ function renderDocuments() {
 
     container.innerHTML = DOCUMENTS.map(doc => {
         const idAttr = doc.id ? ` id="${doc.id}"` : '';
-        const hoverBg = (doc.color === 'slate')
-            ? 'hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300'
-            : `hover:bg-${doc.color}-50 dark:hover:bg-${doc.color}-900/20 hover:border-${doc.color}-200`;
-        const iconBg = (doc.color === 'slate')
-            ? 'bg-slate-100 dark:bg-slate-700'
-            : `bg-${doc.color}-100 dark:bg-${doc.color}-900/50`;
-        const iconText = (doc.color === 'slate')
-            ? 'text-slate-600 dark:text-slate-300'
-            : `text-${doc.color}-600 dark:text-${doc.color}-400`;
-        const hoverText = (doc.color === 'slate')
-            ? 'group-hover:text-slate-900 dark:group-hover:text-white'
-            : `group-hover:text-${doc.color}-700 dark:group-hover:text-${doc.color}-300`;
 
-        return `<a href="${doc.url}"${idAttr} target="_blank" rel="noopener noreferrer" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 ${hoverBg} transition-all group h-32">
-                     <div class="${iconBg} p-3 rounded-full ${iconText} group-hover:scale-110 transition-transform">
+        return `<a href="${doc.url}"${idAttr} target="_blank" rel="noopener noreferrer" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 ${doc.hoverClass} transition-all group h-32">
+                     <div class="${doc.iconBgClass} p-3 rounded-full ${doc.iconTextClass} group-hover:scale-110 transition-transform">
                          <i data-lucide="${doc.icon}" class="w-6 h-6"></i>
                      </div>
-                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight ${hoverText}">${doc.title}</h3>
+                     <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight ${doc.hoverTextClass}">${doc.title}</h3>
                  </a>`;
     }).join('');
 }
@@ -77,7 +53,7 @@ renderObligations();
 renderDocuments();
 
 // Initialiser les icones Lucide
-createIcons();
+createIcons({ icons });
 
 // Application de la configuration agence
 function applyConfig() {
@@ -252,7 +228,7 @@ window.addEventListener('beforeinstallprompt', (e) => {
     if (!isStandalone && !wasDismissedRecently()) {
         installBtnNative.classList.remove('hidden');
         installBanner.classList.remove('hidden');
-        createIcons();
+        createIcons({ icons });
     }
 });
 
@@ -282,13 +258,13 @@ if (!isStandalone && !wasDismissedRecently()) {
                 step2.innerHTML = "Puis <strong>Sur l'ecran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
                 installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
-                createIcons();
+                createIcons({ icons });
             } else if (/android/i.test(userAgent)) {
                 step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
                 step2.innerHTML = "Puis <strong>Ajouter a l'ecran d'accueil</strong>";
                 installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
-                createIcons();
+                createIcons({ icons });
             }
         }
     }, 3000);
