@@ -344,6 +344,23 @@ window.switchTab = function(tabName: string): void {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 };
 
+// Attacher les event listeners (remplace les onclick inline pour compatibilité CSP)
+const tabButtons: Record<string, string> = {
+    'btn-home': 'home',
+    'btn-daily': 'daily',
+    'btn-money': 'money',
+    'btn-docs': 'docs',
+    'btn-keys': 'keys',
+};
+for (const [id, tab] of Object.entries(tabButtons)) {
+    document.getElementById(id)?.addEventListener('click', () => window.switchTab(tab));
+}
+
+// Install banner buttons
+installBtnNative?.addEventListener('click', () => window.installPWA());
+document.getElementById('dismiss-install-text')?.addEventListener('click', () => window.dismissInstall());
+document.getElementById('dismiss-install-x')?.addEventListener('click', () => window.dismissInstall());
+
 // Navigation clavier onglets (ARIA tabs pattern)
 (function(): void {
     const tabList = document.querySelector('[role="tablist"]');
