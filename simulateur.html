@@ -7,6 +7,7 @@
     
     <meta name="theme-color" content="#11183b">
     <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
+    <link rel="preload" href="./fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
 
 </head>
@@ -42,12 +43,18 @@
                 <h3 class="font-bold text-sm uppercase text-slate-500 dark:text-slate-400">Votre Contrat</h3>
             </div>
             <div class="p-4 space-y-4">
+                <!-- Poste -->
+                <div class="flex justify-between items-center">
+                    <label for="input-poste" class="text-sm font-medium text-slate-700 dark:text-slate-300">Votre poste</label>
+                    <select id="input-poste" class="w-44 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
+                    </select>
+                </div>
                 <!-- Taux Horaire -->
                 <div class="flex justify-between items-center">
                     <label for="input-rate" class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-rate" value="12.02" step="0.01" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">€</span>
+                        <span class="text-sm font-bold text-slate-500">€</span>
                     </div>
                 </div>
                 <!-- Heures Hebdo -->
@@ -55,7 +62,7 @@
                     <label for="input-hours" class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-hours" value="24" step="0.5" min="0" max="48" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">h</span>
+                        <span class="text-sm font-bold text-slate-500">h</span>
                     </div>
                 </div>
                 <!-- Ancienneté -->
@@ -81,18 +88,18 @@
             <div class="p-4 space-y-4">
                 <!-- KMs -->
                 <div class="flex justify-between items-center">
-                    <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs KM</label>
+                    <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Kilomètres / mois</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-kms" value="150" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">km</span>
+                        <span class="text-sm font-bold text-slate-500">km</span>
                     </div>
                 </div>
                 <!-- Titres Resto -->
                 <div class="flex justify-between items-center">
-                    <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Nbrs Titres restaurant</label>
+                    <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Titres restaurant / mois</label>
                     <div class="flex items-center gap-2">
                         <input type="number" id="input-tickets" value="20" min="0" max="31" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">/ mois</span>
+                        <span class="text-sm font-bold text-slate-500">/ mois</span>
                     </div>
                 </div>
                 <!-- Mutuelle -->
@@ -102,8 +109,9 @@
                          <label for="check-mutuelle" class="text-sm font-medium text-slate-700 dark:text-slate-300">Mutuelle (isolée)</label>
                     </div>
                     <div class="flex items-center gap-2">
+                        <label for="input-mutuelle-cost" class="sr-only">Coût mutuelle mensuel</label>
                         <input type="number" id="input-mutuelle-cost" value="20" min="0" class="w-20 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-1 px-2 text-sm font-bold text-slate-500 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-400">€</span>
+                        <span class="text-sm font-bold text-slate-500">€</span>
                     </div>
                 </div>
             </div>
@@ -154,7 +162,7 @@
 
         <!-- Coût Employeur -->
         <div class="mt-6 text-center pb-safe">
-            <p class="text-xs text-slate-400 font-medium">Coût global employeur estimé : <span id="res-cout-employeur" class="font-bold text-slate-600 dark:text-slate-300">--,-- €</span></p>
+            <p class="text-xs text-slate-500 font-medium">Coût global employeur estimé : <span id="res-cout-employeur" class="font-bold text-slate-600 dark:text-slate-300">--,-- €</span></p>
         </div>
 
     </main>

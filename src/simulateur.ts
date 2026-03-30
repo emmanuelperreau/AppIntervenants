@@ -24,7 +24,7 @@ import {
 } from './calculator';
 
 // Initialiser les icones Lucide
-createIcons({ icons: { ArrowLeft, Info } });
+createIcons({ icons: { ArrowLeft, Info }, attrs: { 'aria-hidden': 'true' } });
 
 // CONSTANTES
 // Valeurs depuis config.ts (GRILLE_SALARIALE)
@@ -39,6 +39,7 @@ const CHEQUES_VACANCES = GRILLE_SALARIALE.chequesVacancesEmployeur;
 const PRIME_ANCIENNETE = GRILLE_SALARIALE.primeAnciennete;
 
 const inputs = {
+    poste: document.getElementById('input-poste') as HTMLSelectElement | null,
     rate: document.getElementById('input-rate') as HTMLInputElement | null,
     hours: document.getElementById('input-hours') as HTMLInputElement | null,
     anciennete: document.getElementById('input-anciennete') as HTMLSelectElement | null,
@@ -83,6 +84,41 @@ function loadAgencyConfig(): void {
             inputMutuelle.classList.remove('bg-slate-50', 'dark:bg-slate-900');
         }
     }
+}
+
+// POSTES DISPONIBLES (taux horaire brut de base)
+const POSTES: { label: string; rate: number }[] = [
+    { label: 'AM2', rate: GRILLE_SALARIALE.smicHoraire },
+    { label: 'AM2 Confirmé', rate: GRILLE_SALARIALE.smicHoraire + GRILLE_SALARIALE.bonusConfirme },
+    { label: 'AM2 Expert', rate: GRILLE_SALARIALE.smicHoraire + GRILLE_SALARIALE.bonusExpert },
+    { label: 'AM2 Référent', rate: GRILLE_SALARIALE.smicHoraire + GRILLE_SALARIALE.bonusReferent },
+    { label: 'GE2', rate: GRILLE_SALARIALE.smicHoraire },
+    { label: 'GE3', rate: GRILLE_SALARIALE.tauxGE3 },
+    { label: 'GE3 Confirmé', rate: GRILLE_SALARIALE.tauxGE3 + GRILLE_SALARIALE.bonusConfirme },
+    { label: 'GE3 Expert', rate: GRILLE_SALARIALE.tauxGE3 + GRILLE_SALARIALE.bonusExpert },
+    { label: 'AV2', rate: GRILLE_SALARIALE.smicHoraire },
+    { label: 'AV3', rate: GRILLE_SALARIALE.tauxAV3 },
+    { label: 'AV3 Confirmé', rate: GRILLE_SALARIALE.tauxAV3 + GRILLE_SALARIALE.bonusConfirme },
+    { label: 'AV3 Expert', rate: GRILLE_SALARIALE.tauxAV3 + GRILLE_SALARIALE.bonusExpert },
+    { label: 'AV3 Référent', rate: GRILLE_SALARIALE.tauxAV3 + GRILLE_SALARIALE.bonusReferent },
+];
+
+// Populate poste selector
+if (inputs.poste) {
+    POSTES.forEach((p, i) => {
+        const opt = document.createElement('option');
+        opt.value = String(i);
+        opt.textContent = `${p.label} (${p.rate.toFixed(2)} €)`;
+        inputs.poste!.appendChild(opt);
+    });
+    inputs.poste.addEventListener('change', () => {
+        const idx = parseInt(inputs.poste!.value, 10);
+        const poste = POSTES[idx];
+        if (poste && inputs.rate) {
+            inputs.rate.value = poste.rate.toFixed(2);
+            calculate();
+        }
+    });
 }
 
 // MOTEUR DE CALCUL

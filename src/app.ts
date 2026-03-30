@@ -53,11 +53,12 @@ function renderDocuments(): void {
     container.innerHTML = DOCUMENTS.map(doc => {
         const idAttr = doc.id ? ` id="${doc.id}"` : '';
 
-        return `<a href="${doc.url}"${idAttr} target="_blank" rel="noopener noreferrer" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 ${doc.hoverClass} transition-all group h-32">
+        return `<a href="${doc.url}"${idAttr} target="_blank" rel="noopener noreferrer" class="bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center text-center gap-2 ${doc.hoverClass} transition-all group h-32 active:scale-95">
                      <div class="${doc.iconBgClass} p-3 rounded-full ${doc.iconTextClass} group-hover:scale-110 transition-transform">
                          <i data-lucide="${doc.icon}" class="w-6 h-6"></i>
                      </div>
                      <h3 class="font-bold text-xs text-slate-800 dark:text-white leading-tight ${doc.hoverTextClass}">${doc.title}</h3>
+                     <span class="sr-only">(nouvelle fenêtre)</span>
                  </a>`;
     }).join('');
 }
@@ -67,7 +68,7 @@ renderObligations();
 renderDocuments();
 
 // Initialiser les icones Lucide
-createIcons({ icons });
+createIcons({ icons, attrs: { 'aria-hidden': 'true' } });
 
 // Application de la configuration agence
 function applyConfig(): void {
@@ -217,6 +218,14 @@ function applyConfig(): void {
 // Appliquer la config
 applyConfig();
 
+// Restore active tab after auto-reload
+try {
+    const savedTab = sessionStorage.getItem('active_tab');
+    if (savedTab && ['home', 'daily', 'money', 'docs', 'keys'].includes(savedTab)) {
+        window.switchTab(savedTab);
+    }
+} catch (_) { /* ignore */ }
+
 
 // Register Service Worker
 if ('serviceWorker' in navigator) {
@@ -267,7 +276,7 @@ window.addEventListener('beforeinstallprompt', ((e: Event) => {
     if (isMobile && !isStandalone && !wasDismissedRecently()) {
         if (installBtnNative) installBtnNative.classList.remove('hidden');
         if (installBanner) installBanner.classList.remove('hidden');
-        createIcons({ icons });
+        createIcons({ icons, attrs: { 'aria-hidden': 'true' } });
     }
 }) as EventListener);
 
@@ -296,13 +305,13 @@ if (isMobile && !isStandalone && !wasDismissedRecently()) {
                 if (step2) step2.innerHTML = "Puis <strong>Sur l'ecran d'accueil</strong> <i data-lucide='plus-square' class='inline w-3.5 h-3.5'></i>";
                 if (installSteps) installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
-                createIcons({ icons });
+                createIcons({ icons, attrs: { 'aria-hidden': 'true' } });
             } else if (/android/i.test(userAgent)) {
                 if (step1) step1.innerHTML = "Appuyez sur <strong>Menu</strong> <i data-lucide='ellipsis-vertical' class='inline w-3.5 h-3.5'></i> (les 3 points en haut)";
                 if (step2) step2.innerHTML = "Puis <strong>Ajouter a l'ecran d'accueil</strong>";
                 if (installSteps) installSteps.classList.remove('hidden');
                 installBanner.classList.remove('hidden');
-                createIcons({ icons });
+                createIcons({ icons, attrs: { 'aria-hidden': 'true' } });
             }
         }
     }, 3000);
@@ -329,9 +338,15 @@ window.switchTab = function(tabName: string): void {
         console.error('Tab not found:', tabName);
     }
 
-    document.querySelectorAll('[role="tab"]').forEach(el => el.setAttribute('aria-selected', 'false'));
+    document.querySelectorAll('[role="tab"]').forEach(el => {
+        el.setAttribute('aria-selected', 'false');
+        el.setAttribute('tabindex', '-1');
+    });
     const activeTab = document.getElementById('btn-' + tabName);
-    if (activeTab) activeTab.setAttribute('aria-selected', 'true');
+    if (activeTab) {
+        activeTab.setAttribute('aria-selected', 'true');
+        activeTab.setAttribute('tabindex', '0');
+    }
 
     document.querySelectorAll('.nav-btn').forEach(el => {
         const htmlEl = el as HTMLElement;
@@ -354,6 +369,9 @@ window.switchTab = function(tabName: string): void {
     }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Persist active tab for restore after auto-reload
+    try { sessionStorage.setItem('active_tab', tabName); } catch (_) { /* quota */ }
 };
 
 // Attacher les event listeners (remplace les onclick inline pour compatibilité CSP)
@@ -394,6 +412,35 @@ document.getElementById('dismiss-install-x')?.addEventListener('click', () => wi
             const btn = document.getElementById('btn-' + tabNames[next]);
             if (btn) btn.focus();
         }
+    });
+})();
+
+// Filtre grille salariale par métier
+(function(): void {
+    const filters = document.getElementById('salary-filters');
+    if (!filters) return;
+    filters.addEventListener('click', (e: Event) => {
+        const btn = (e.target as HTMLElement).closest('[data-filter]') as HTMLElement | null;
+        if (!btn) return;
+        const filter = btn.dataset.filter;
+
+        // Update button styles
+        filters.querySelectorAll('.salary-filter').forEach(b => {
+            b.classList.remove('bg-[#11183b]', 'text-white', 'border-[#11183b]');
+            b.classList.add('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-600');
+        });
+        btn.classList.add('bg-[#11183b]', 'text-white', 'border-[#11183b]');
+        btn.classList.remove('bg-white', 'dark:bg-slate-800', 'text-slate-600', 'dark:text-slate-300', 'border-slate-200', 'dark:border-slate-600');
+
+        // Show/hide columns
+        document.querySelectorAll('[data-metier]').forEach(col => {
+            const el = col as HTMLElement;
+            if (filter === 'all' || el.dataset.metier === filter) {
+                el.style.display = '';
+            } else {
+                el.style.display = 'none';
+            }
+        });
     });
 })();
 

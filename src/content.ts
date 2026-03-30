@@ -214,7 +214,7 @@ export const DOCUMENTS: readonly DocumentLink[] = [
         hoverTextClass: "group-hover:text-slate-900 dark:group-hover:text-white"
     },
     {
-        title: "DUE Avantages & R\u00e9mun\u00e9ration",
+        title: "Mes Avantages Salaire",
         url: "#",
         icon: "gem",
         id: "doc-link-avantages",
@@ -234,7 +234,7 @@ export const DOCUMENTS: readonly DocumentLink[] = [
         hoverTextClass: "group-hover:text-amber-700 dark:group-hover:text-amber-300"
     },
     {
-        title: "DUE Sant\u00e9",
+        title: "Ma Couverture Sant\u00e9",
         url: "#",
         icon: "stethoscope",
         id: "doc-link-due-sante",
@@ -254,7 +254,7 @@ export const DOCUMENTS: readonly DocumentLink[] = [
         hoverTextClass: "group-hover:text-cyan-700 dark:group-hover:text-cyan-300"
     },
     {
-        title: "DUE Int\u00e9ressement",
+        title: "Mon Int\u00e9ressement",
         url: "#",
         icon: "coins",
         id: "doc-link-due-interessement",

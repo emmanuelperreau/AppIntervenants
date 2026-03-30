@@ -35,6 +35,7 @@
     <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-oNKSrewSkCL98QnBOZ5FrVOULkc9Szgcui5d/7HaOkQ='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
 
+    <link rel="preload" href="./fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="icon" type="image/svg+xml" href="./icon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
 
@@ -59,18 +60,18 @@
                     <circle cx="46" cy="13" r="5" fill="#14b8a6" stroke="white" stroke-width="2"/>
                 </svg>
                 <div class="flex flex-col justify-center">
-                    <span class="text-[11px] text-teal-600 dark:text-teal-400 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
+                    <span class="text-xs text-teal-600 dark:text-teal-400 uppercase tracking-widest font-extrabold mb-0.5">Guide Intervenant</span>
                     <h1 id="header-agency-name" class="text-base font-bold text-[#11183b] dark:text-white leading-tight">Agence O2</h1>
                 </div>
             </div>
             
             <!-- Quick Call Button (Blue) -->
-            <a href="tel:0243724345" id="header-phone-link" class="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-800 text-blue-800 dark:text-blue-300 px-3 py-2 rounded-xl border border-blue-100 transition-all active:scale-95 shadow-sm">
+            <a href="tel:0243724345" id="header-phone-link" aria-label="Appeler la Ligne Salariés" class="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:border-blue-800 text-blue-800 dark:text-blue-300 px-3 py-2 rounded-xl border border-blue-100 transition-all active:scale-95 shadow-sm">
                 <div class="bg-blue-500 text-white p-1.5 rounded-full flex items-center justify-center">
                     <i data-lucide="phone" class="w-3 h-3 fill-white"></i>
                 </div>
                 <div class="hidden sm:flex flex-col items-start leading-none">
-                    <span class="text-[11px] uppercase font-bold text-blue-600 dark:text-blue-400">Maladie/Urgence</span>
+                    <span class="text-xs uppercase font-bold text-blue-600 dark:text-blue-400">Maladie/Urgence</span>
                     <span id="header-phone-label" class="text-xs font-bold">Ligne Salariés</span>
                 </div>
                 <span id="header-phone-label-mobile" class="sm:hidden text-xs font-bold flex items-center gap-1">Ligne Salariés</span>
@@ -105,9 +106,9 @@
                     </div>
                 </div>
 
-                <button id="dismiss-install-text" class="text-[11px] font-bold text-slate-400 hover:text-slate-200 underline decoration-dotted transition-colors">Pas maintenant</button>
+                <button id="dismiss-install-text" class="text-xs font-bold text-slate-400 hover:text-slate-200 underline decoration-dotted transition-colors py-3">Pas maintenant</button>
             </div>
-            <button id="dismiss-install-x" aria-label="Fermer la bannière d'installation" class="text-slate-400 hover:text-white transition-colors"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <button id="dismiss-install-x" aria-label="Fermer la bannière d'installation" class="text-slate-400 hover:text-white transition-colors p-3"><i data-lucide="x" class="w-5 h-5"></i></button>
         </div>
     </div>
 
@@ -116,72 +117,72 @@
 
         <!-- SECTION: ACCUEIL -->
         <div id="tab-home" class="tab-content active space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-home">
-            
+            <h2 class="sr-only">Accueil</h2>
             <!-- 1. OUTILS (2x2 GRID) -->
             <div class="grid grid-cols-3 gap-3">
                  <!-- Clés -->
-                 <a href="#" id="link-gestion-cles" target="_blank" rel="noopener noreferrer" class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all group">
+                 <a href="#" id="link-gestion-cles" target="_blank" rel="noopener noreferrer" class="bg-orange-50 dark:bg-orange-900/30 p-4 rounded-2xl shadow-sm border border-orange-100 dark:border-orange-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-orange-100 dark:hover:bg-orange-900/50 transition-all group active:scale-95">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-orange-600 dark:text-orange-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="key" class="w-6 h-6"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-orange-900 dark:text-orange-100 leading-tight">Gestion Clés</span>
-                         <span class="text-[10px] font-medium text-orange-700 dark:text-orange-300 opacity-80">Formulaire de suivi</span>
+                         <span class="text-xs font-medium text-orange-700 dark:text-orange-300">Déclarer un dépôt ou retrait</span>
                      </div>
                  </a>
 
                  <!-- Kms -->
-                 <a href="#" id="link-declaration-kms" target="_blank" rel="noopener noreferrer" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-2xl shadow-sm border border-blue-100 dark:border-blue-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all group">
+                 <a href="#" id="link-declaration-kms" target="_blank" rel="noopener noreferrer" class="bg-blue-50 dark:bg-blue-900/30 p-4 rounded-2xl shadow-sm border border-blue-100 dark:border-blue-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-all group active:scale-95">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-blue-600 dark:text-blue-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="car" class="w-6 h-6"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-blue-900 dark:text-blue-100 leading-tight">Déclaration Kms</span>
-                         <span class="text-[10px] font-medium text-blue-700 dark:text-blue-300 opacity-80">En prestation</span>
+                         <span class="text-xs font-medium text-blue-700 dark:text-blue-300">Déclarer mes trajets</span>
                      </div>
                  </a>
 
                  <!-- My Silae -->
-                 <a href="https://my.silae.fr/sign-in" target="_blank" rel="noopener noreferrer" class="bg-teal-50 dark:bg-teal-900/30 p-4 rounded-2xl shadow-sm border border-teal-100 dark:border-teal-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-all group">
+                 <a href="https://my.silae.fr/sign-in" target="_blank" rel="noopener noreferrer" class="bg-teal-50 dark:bg-teal-900/30 p-4 rounded-2xl shadow-sm border border-teal-100 dark:border-teal-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-teal-100 dark:hover:bg-teal-900/50 transition-all group active:scale-95">
                      <div class="bg-gradient-to-br from-teal-400 to-teal-600 p-2.5 rounded-full text-white shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="palmtree" class="w-6 h-6 stroke-[2.5]"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-teal-900 dark:text-teal-100 leading-tight">My Silae</span>
-                         <span class="text-[10px] font-medium text-teal-700 dark:text-teal-300 opacity-80">Congés & Paie</span>
+                         <span class="text-xs font-medium text-teal-700 dark:text-teal-300">Poser mes congés</span>
                      </div>
                  </a>
                  
                  <!-- Coffre Fort -->
-                 <a href="https://edocperso.fr/login" target="_blank" rel="noopener noreferrer" class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-2xl shadow-sm border border-purple-100 dark:border-purple-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all group">
+                 <a href="https://edocperso.fr/login" target="_blank" rel="noopener noreferrer" class="bg-purple-50 dark:bg-purple-900/30 p-4 rounded-2xl shadow-sm border border-purple-100 dark:border-purple-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-purple-100 dark:hover:bg-purple-900/50 transition-all group active:scale-95">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-purple-600 dark:text-purple-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="lock" class="w-6 h-6"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-purple-900 dark:text-purple-100 leading-tight">Coffre Fort</span>
-                         <span class="text-[10px] font-medium text-purple-700 dark:text-purple-300 opacity-80">Bulletins de paie</span>
+                         <span class="text-xs font-medium text-purple-700 dark:text-purple-300">Voir mes bulletins</span>
                      </div>
                  </a>
 
                  <!-- Mutuelle Swiss Life -->
-                 <a href="https://myswisslife.fr" target="_blank" rel="noopener noreferrer" class="bg-emerald-50 dark:bg-emerald-900/30 p-4 rounded-2xl shadow-sm border border-emerald-100 dark:border-emerald-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all group">
+                 <a href="https://myswisslife.fr" target="_blank" rel="noopener noreferrer" class="bg-emerald-50 dark:bg-emerald-900/30 p-4 rounded-2xl shadow-sm border border-emerald-100 dark:border-emerald-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-all group active:scale-95">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-emerald-600 dark:text-emerald-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="shield-check" class="w-6 h-6"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-emerald-900 dark:text-emerald-100 leading-tight">Swiss Life</span>
-                         <span class="text-[10px] font-medium text-emerald-700 dark:text-emerald-300 opacity-80">Espace mutuelle</span>
+                         <span class="text-xs font-medium text-emerald-700 dark:text-emerald-300">Gérer ma mutuelle</span>
                      </div>
                  </a>
 
                  <!-- UP Déjeuner -->
-                 <a href="https://utilisateur.up.coop/" target="_blank" rel="noopener noreferrer" class="bg-rose-50 dark:bg-rose-900/30 p-4 rounded-2xl shadow-sm border border-rose-100 dark:border-rose-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-rose-100 dark:hover:bg-rose-900/50 transition-all group">
+                 <a href="https://utilisateur.up.coop/" target="_blank" rel="noopener noreferrer" class="bg-rose-50 dark:bg-rose-900/30 p-4 rounded-2xl shadow-sm border border-rose-100 dark:border-rose-800 flex flex-col items-center justify-center text-center gap-2 hover:bg-rose-100 dark:hover:bg-rose-900/50 transition-all group active:scale-95">
                      <div class="bg-white dark:bg-slate-800 p-2.5 rounded-full text-rose-600 dark:text-rose-400 shadow-sm group-hover:scale-110 transition-transform">
                          <i data-lucide="utensils" class="w-6 h-6"></i>
                      </div>
                      <div>
                          <span class="block text-sm font-bold text-rose-900 dark:text-rose-100 leading-tight">UP Déjeuner</span>
-                         <span class="text-[10px] font-medium text-rose-700 dark:text-rose-300 opacity-80">Espace titres resto</span>
+                         <span class="text-xs font-medium text-rose-700 dark:text-rose-300">Consulter mon solde</span>
                      </div>
                  </a>
             </div>
@@ -243,7 +244,7 @@
                                 <i data-lucide="calendar-clock" class="w-6 h-6"></i>
                             </div>
                             <div>
-                                <h2 class="text-white font-bold text-xl leading-tight">Rémunération</h2>
+                                <h2 class="text-white font-bold text-xl leading-tight" id="heading-money">Rémunération</h2>
                                 <p class="text-teal-100 text-sm mt-1 flex items-center gap-2">
                                     <span class="w-2 h-2 bg-teal-400 rounded-full animate-pulse"></span>
                                     Virement le 7 du mois M+1
@@ -253,7 +254,7 @@
 
                         <!-- Date Acompte Box -->
                         <div class="hidden sm:block bg-white/10 backdrop-blur-md px-4 py-2 rounded-xl border border-white/10 text-right">
-                            <div class="text-[10px] font-medium text-teal-200 uppercase tracking-wider">Acompte possible</div>
+                            <div class="text-xs font-medium text-teal-200 uppercase tracking-wider">Acompte possible</div>
                             <div class="text-white font-bold text-sm">le 26 du mois</div>
                         </div>
                     </div>
@@ -273,7 +274,7 @@
                                  </div>
                                  <div class="flex flex-col items-start">
                                      <span class="font-bold text-sm">Simulateur de salaire net</span>
-                                     <span class="text-[11px] text-blue-100 group-hover:text-white">Estimez votre gain mensuel</span>
+                                     <span class="text-xs text-blue-100 group-hover:text-white">Estimez votre gain mensuel</span>
                                  </div>
                              </div>
                              <i data-lucide="chevron-right" class="w-5 h-5 text-blue-200 group-hover:text-white"></i>
@@ -291,10 +292,16 @@
                         <h3 class="font-bold text-base text-slate-800 dark:text-white">Grille de Salaire</h3>
                     </div>
                     <div class="w-full p-4 bg-slate-50 dark:bg-slate-900">
-                        
+                        <!-- Filtre par métier -->
+                        <div class="flex gap-2 mb-4" id="salary-filters">
+                            <button data-filter="all" class="salary-filter active px-3 py-1.5 rounded-lg text-xs font-bold border transition-all bg-[#11183b] text-white border-[#11183b]">Tous</button>
+                            <button data-filter="am" class="salary-filter px-3 py-1.5 rounded-lg text-xs font-bold border transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-orange-300">Ménage</button>
+                            <button data-filter="ge" class="salary-filter px-3 py-1.5 rounded-lg text-xs font-bold border transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-fuchsia-300">Garde</button>
+                            <button data-filter="av" class="salary-filter px-3 py-1.5 rounded-lg text-xs font-bold border transition-all bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border-slate-200 dark:border-slate-600 hover:border-purple-300">Vie</button>
+                        </div>
                         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 
-                            <div class="flex flex-col gap-3">
+                            <div class="flex flex-col gap-3" data-metier="am">
                                 <div class="pb-2 border-b-2 border-orange-200 dark:border-orange-800 mb-2">
                                     <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Assistant(e) Ménager(ère)</h3>
                                 </div>
@@ -328,7 +335,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex flex-col gap-3">
+                            <div class="flex flex-col gap-3" data-metier="ge">
                                 <div class="pb-2 border-b-2 border-fuchsia-200 dark:border-fuchsia-800 mb-2">
                                     <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Garde d'Enfant(s)</h3>
                                 </div>
@@ -354,7 +361,7 @@
                                 </div>
                             </div>
 
-                            <div class="flex flex-col gap-3">
+                            <div class="flex flex-col gap-3" data-metier="av">
                                 <div class="pb-2 border-b-2 border-purple-200 dark:border-purple-800 mb-2">
                                     <h3 class="text-lg font-bold text-slate-700 dark:text-slate-200 uppercase tracking-wide">Assistant(e) de Vie</h3>
                                 </div>
@@ -478,7 +485,7 @@
                                 </div>
                                 <div class="text-right">
                                     <span id="val-taux-km" class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45 €</span>
-                                    <span class="text-[11px] text-orange-400 font-medium">/ km</span>
+                                    <span class="text-xs text-orange-400 font-medium">/ km</span>
                                 </div>
                             </div>
                             <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30">
@@ -487,7 +494,7 @@
                                     si le temps d'intermission (hors trajet) est inférieur à 15 min.
                                 </p>
                             </div>
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
                         </div>
 
                         <!-- Prime Carburant Statique -->
@@ -495,11 +502,11 @@
                             <div class="flex justify-between items-center mb-1">
                                 <div class="flex gap-3 items-center">
                                     <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-slate-600 dark:text-slate-300"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                                    <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-[11px] text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
+                                    <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-xs text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
                                 </div>
                                 <div class="text-right">
                                     <span id="val-prime-carburant" class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
-                                    <span class="text-[11px] text-slate-400 font-medium">/ an (max)</span>
+                                    <span class="text-xs text-slate-500 font-medium">/ an (max)</span>
                                 </div>
                             </div>
 
@@ -515,7 +522,7 @@
                                 </div>
                             </div>
                             
-                            <p class="text-[11px] text-slate-500 dark:text-slate-400 italic border-t border-slate-200 dark:border-slate-700 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic border-t border-slate-200 dark:border-slate-700 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
                         </div>
                     </div>
                 </div>
@@ -534,14 +541,14 @@
                                     <h4 class="font-bold text-blue-900 dark:text-blue-200">Valeur Faciale</h4>
                                     <div class="text-right">
                                         <span id="val-ticket" class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
-                                        <span class="text-[11px] text-blue-400 font-bold">/ jour travaillé</span>
+                                        <span class="text-xs text-blue-400 font-bold">/ jour travaillé</span>
                                     </div>
                                 </div>
                                 <div class="w-full h-2 bg-blue-200 dark:bg-blue-900 rounded-full overflow-hidden flex">
                                     <div class="w-1/2 bg-[#11183b] dark:bg-blue-400"></div>
                                     <div class="w-1/2 bg-blue-400 dark:bg-blue-600"></div>
                                 </div>
-                                <div class="flex justify-between text-[11px] font-bold mt-1 uppercase tracking-wide">
+                                <div class="flex justify-between text-xs font-bold mt-1 uppercase tracking-wide">
                                     <span class="text-[#11183b] dark:text-blue-200">Part O2 : <span id="val-ticket-employer">3</span>€</span>
                                     <span class="text-blue-500 dark:text-blue-400">Votre Part : <span id="val-ticket-employee">3</span>€</span>
                                 </div>
@@ -566,13 +573,13 @@
                             <div class="flex items-center justify-between mb-4">
                                 <div>
                                     <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Prise en charge à 50% par O2</p>
-                                    <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-[11px] font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
-                                    <p class="text-[11px] text-slate-400 italic">Obligatoire sauf motifs de dispense.</p>
+                                    <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
+                                    <p class="text-xs text-slate-500 italic">Obligatoire sauf motifs de dispense.</p>
                                 </div>
                                 <div class="text-right">
-                                    <span class="text-[11px] text-slate-400 font-medium block">Votre part / mois</span>
+                                    <span class="text-xs text-slate-500 font-medium block">Votre part / mois</span>
                                     <span id="remun-mutuelle-price" class="text-3xl font-extrabold text-[#11183b] dark:text-white">--,-- €</span>
-                                    <span class="text-[11px] text-slate-400 block">Déduit du salaire</span>
+                                    <span class="text-xs text-slate-500 block">Déduit du salaire</span>
                                 </div>
                             </div>
                         </div>
@@ -584,7 +591,7 @@
                     <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
                         <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
                         <h3 class="font-bold text-base">Chèques Cadeaux</h3>
-                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-[11px] font-bold">Après 2 mois d'ancienneté à la date de distribution</div>
+                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-xs font-bold">Après 2 mois d'ancienneté à la date de distribution</div>
                     </div>
                     <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-pink-100 dark:border-pink-900/30 bg-pink-50/30 dark:bg-pink-900/10">
@@ -598,7 +605,7 @@
                             <div class="bg-orange-100 dark:bg-orange-900 p-4 rounded-full text-orange-600 dark:text-orange-300"><i data-lucide="sun" class="w-8 h-8"></i></div>
                             <div class="flex-1">
                                 <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Vacances</h4><span class="bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
-                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg"><span id="val-cheques-vacances">100 €</span> /an</span> <span class="text-xs text-slate-400">(Co-financement 20%)</span></p>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg"><span id="val-cheques-vacances">100 €</span> /an</span> <span class="text-xs text-slate-500">(Co-financement 20%)</span></p>
                             </div>
                         </div>
                     </div>
@@ -608,18 +615,18 @@
             <!-- Parrainages -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Parrainage Client -->
-                <div class="bg-[#ee9572] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
-                    <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Clients</h3>
+                <div class="bg-[#c96b47] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
+                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Clients</h3>
                     <i data-lucide="users" class="w-12 h-12 my-2"></i>
                     <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-client">40 €</span></div>
-                    <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
+                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
                 </div>
                 <!-- Parrainage Salarié -->
                 <div class="bg-[#b93c7d] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
-                    <h3 class="text-lg font-medium uppercase tracking-widest opacity-90">Parrainage Salariés</h3>
+                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Salariés</h3>
                     <i data-lucide="users" class="w-12 h-12 my-2"></i>
                     <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-intervenant">200 €</span></div>
-                    <p class="text-sm opacity-90 font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
+                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
                 </div>
             </div>
 
@@ -657,19 +664,19 @@
                             <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
                             <div class="text-right">
                                 <span class="font-bold text-[#11183b] dark:text-white block">2,5 jours / mois</span>
-                                <span class="text-[10px] text-slate-500 dark:text-slate-400 block">Soit 30 jours par an (5 semaines)</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 block">Soit 30 jours par an (5 semaines)</span>
                             </div>
                         </div>
-                        <p class="text-[10px] text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-600 pt-2">Tous les salariés, même à temps partiel, acquièrent le même nombre de congés (incluant le samedi).</p>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-600 pt-2">Tous les salariés, même à temps partiel, acquièrent le même nombre de congés (incluant le samedi).</p>
                     </div>
 
                     <div class="space-y-2">
                         <h4 class="font-bold text-xs text-slate-700 dark:text-slate-200 uppercase tracking-wide">Règle de pose</h4>
-                        <p class="text-[11px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
                             Du <span class="font-bold">1er jour de congés</span> jusqu'à la <span class="font-bold">veille de la reprise effective</span>.
                         </p>
                         <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded border border-amber-100 dark:border-amber-900/30">
-                             <p class="text-[10px] text-amber-800 dark:text-amber-200 leading-snug">
+                             <p class="text-xs text-amber-800 dark:text-amber-200 leading-snug">
                                 <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
                                 Cette période inclut les <span class="font-bold">samedis et fériés</span> (hors 1er mai et 25 décembre).
                                 <span class="block mt-0.5 opacity-80 font-medium">Limite : 5 samedis décomptés par an.</span>
@@ -678,7 +685,7 @@
                     </div>
 
                     <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
-                        <ul class="text-[11px] text-blue-900 dark:text-blue-200 space-y-1">
+                        <ul class="text-xs text-blue-900 dark:text-blue-200 space-y-1">
                              <li class="flex items-start gap-2"><i data-lucide="key" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir.</span></li>
                              <li class="flex items-start gap-2"><i data-lucide="phone-call" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Contactez l'agence</span> avant votre reprise pour organiser la récupération des clés.</span></li>
                         </ul>
@@ -689,6 +696,7 @@
         
         <!-- SECTION: DAILY -->
         <div id="tab-daily" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-daily">
+             <h2 class="sr-only">Quotidien</h2>
              <!-- Row 1: Phone & Equipments (Priority) -->
              <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <!-- 1. Téléphone & Scan (Takes 2 cols on Large) -->
@@ -702,7 +710,7 @@
                             <div class="bg-[#11183b] rounded-2xl p-5 shadow-lg text-white flex flex-col justify-center">
                                 <div class="flex gap-4 items-center">
                                     <div class="bg-white/20 p-3 rounded-xl"><i data-lucide="qr-code" class="w-7 h-7 text-teal-300"></i></div>
-                                    <div><h4 class="font-bold text-lg leading-none">Scan</h4><span class="inline-block mt-2 bg-red-500 text-white text-[11px] font-bold px-2 py-0.5 rounded shadow-sm animate-pulse">OBLIGATOIRE</span></div>
+                                    <div><h4 class="font-bold text-lg leading-none">Scan</h4><span class="inline-block mt-2 bg-red-500 text-white text-xs font-bold px-2 py-0.5 rounded shadow-sm animate-pulse">OBLIGATOIRE</span></div>
                                 </div>
                                 <p class="mt-4 text-xs text-slate-300 leading-relaxed">À réaliser au début et à la fin de chaque intervention. Garantit le paiement de vos heures.</p>
                             </div>
@@ -711,13 +719,13 @@
                                 <div class="bg-slate-50 dark:bg-slate-600 rounded-lg p-3 mb-1"><h4 class="font-bold text-slate-800 dark:text-white text-sm flex items-center gap-2"><i data-lucide="smartphone" class="w-4 h-4 text-teal-600 dark:text-teal-400"></i> Usage Professionnel</h4></div>
                                 <div class="p-3 grid grid-cols-2 gap-2 flex-1">
                                     <div class="text-center p-2 bg-blue-50/50 dark:bg-blue-900/30 rounded-lg flex flex-col justify-center"><span class="block font-bold text-blue-700 dark:text-blue-300 text-sm">Illimités</span><span class="text-slate-500 dark:text-slate-400 text-xs">Appels & SMS</span></div>
-                                    <div class="text-center p-2 bg-teal-50/50 dark:bg-teal-900/30 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 dark:text-teal-300 text-sm">4 Go + GPS</span><span class="text-[11px] text-slate-500 dark:text-slate-400">Waze / Maps</span></div>
+                                    <div class="text-center p-2 bg-teal-50/50 dark:bg-teal-900/30 rounded-lg flex flex-col justify-center"><span class="block font-bold text-teal-700 dark:text-teal-300 text-sm">4 Go + GPS</span><span class="text-xs text-slate-500 dark:text-slate-400">Waze / Maps</span></div>
                                 </div>
-                                <p class="text-[11px] text-slate-400 text-center p-2">Usage personnel autorisé</p>
+                                <p class="text-xs text-slate-500 text-center p-2">Usage personnel autorisé</p>
                             </div>
                         </div>
 
-                        <div class="bg-[#00cba9] text-white p-4 rounded-xl shadow-md space-y-2">
+                        <div class="bg-[#007a65] text-white p-4 rounded-xl shadow-md space-y-2">
                             <h4 class="font-bold text-sm flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Les bons comportements :</h4>
                             <ul class="text-xs leading-relaxed font-medium list-disc list-inside space-y-1">
                                 <li>Laisser la localisation activée (elle n'est pas enregistrée ni communiquée à l'agence).</li>
@@ -743,16 +751,16 @@
                                 <div class="bg-orange-50/50 dark:bg-orange-900/20 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="shirt" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Tablier/Gants</span></div>
                                 <div class="bg-orange-50/50 dark:bg-orange-900/20 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30 flex items-center justify-center gap-2"><div class="bg-white dark:bg-slate-700 p-1.5 rounded-full text-orange-500"><i data-lucide="shield-check" class="w-5 h-5"></i></div><span class="text-xs font-bold text-slate-700 dark:text-slate-300">Gilet/Bracelet</span></div>
                             </div>
-                            <p class="text-[11px] text-slate-400 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 dark:text-orange-400 uppercase">obligatoirement</span>.</p>
+                            <p class="text-xs text-slate-500 text-center mt-3">Matériel fourni par l'agence. À porter <span class="font-bold text-orange-600 dark:text-orange-400 uppercase">obligatoirement</span>.</p>
                         </div>
                         
                         <!-- Interdits / Sécurité -->
                         <div class="bg-red-50 dark:bg-red-900/20 border border-red-100 dark:border-red-900/30 rounded-xl p-3 mt-auto">
                             <h4 class="text-xs font-bold text-red-600 dark:text-red-400 uppercase mb-2 flex items-center gap-1"><i data-lucide="ban" class="w-3 h-3"></i> Interdits (Sécurité)</h4>
                             <ul class="space-y-1.5">
-                                <li class="flex items-center gap-2 text-[11px] text-red-800 dark:text-red-200"><i data-lucide="x-circle" class="w-3 h-3 shrink-0"></i> Ne pas monter sur chaises/tables.</li>
-                                <li class="flex items-center gap-2 text-[11px] text-red-800 dark:text-red-200"><i data-lucide="align-start-vertical" class="w-3 h-3 shrink-0"></i> Escabeau : Maximum 3 marches.</li>
-                                <li class="flex items-center gap-2 text-[11px] text-red-800 dark:text-red-200"><i data-lucide="weight" class="w-3 h-3 shrink-0"></i> Charges : Pas plus de 25 kg.</li>
+                                <li class="flex items-center gap-2 text-xs text-red-800 dark:text-red-200"><i data-lucide="x-circle" class="w-3 h-3 shrink-0"></i> Ne pas monter sur chaises/tables.</li>
+                                <li class="flex items-center gap-2 text-xs text-red-800 dark:text-red-200"><i data-lucide="align-start-vertical" class="w-3 h-3 shrink-0"></i> Escabeau : Maximum 3 marches.</li>
+                                <li class="flex items-center gap-2 text-xs text-red-800 dark:text-red-200"><i data-lucide="weight" class="w-3 h-3 shrink-0"></i> Charges : Pas plus de 25 kg.</li>
                             </ul>
                         </div>
                     </div>
@@ -769,7 +777,7 @@
                     </div>
                     <div class="p-5 space-y-3">
                         <p class="text-xs text-slate-600 dark:text-slate-300 mb-2 font-medium">Disponible sur l'appli <span class="font-bold">O2 et Nous</span> & au domicile client. C'est votre guide pour une prestation réussie : <span class="font-bold">Respect scrupuleux des consignes = Client Satisfait !</span></p>
-                        <div class="bg-[#ee9572] text-white p-4 rounded-xl shadow-sm">
+                        <div class="bg-[#c96b47] text-white p-4 rounded-xl shadow-sm">
                             <p class="text-xs leading-relaxed">Données erronées ou manquantes ? <span class="font-bold underline">Informez immédiatement</span> l'agence pour rectification.</p>
                         </div>
                     </div>
@@ -810,7 +818,7 @@
 
         <!-- SECTION: DOCUMENTS -->
         <div id="tab-docs" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-docs">
-
+             <h2 class="sr-only">Documents & Services</h2>
              <!-- Liens documents générés dynamiquement depuis content.js -->
              <div id="documents-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
              </div>
@@ -822,36 +830,13 @@
                  </h2>
                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-                     <!-- Écoute psychologique Swisslife -->
-                     <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                         <div class="px-4 py-3 bg-gradient-to-r from-violet-500 to-purple-600 flex items-center gap-3">
-                             <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="heart-pulse" class="w-4 h-4 text-white"></i></div>
-                             <div>
-                                 <h3 class="font-bold text-sm text-white">Écoute & Soutien Psychologique</h3>
-                                 <p class="text-[10px] text-violet-100">Swiss Life — Service confidentiel</p>
-                             </div>
-                         </div>
-                         <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
-                             <p>Besoin de parler ? Un <strong>psychologue professionnel</strong> vous écoute en toute confidentialité, pour vous aider à clarifier une situation difficile.</p>
-                             <a href="tel:0170735600" class="flex items-center justify-center gap-2 w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-2.5 px-4 rounded-xl transition-all shadow-sm active:scale-95">
-                                 <i data-lucide="phone" class="w-4 h-4"></i> 01 70 73 56 00
-                             </a>
-                             <p class="text-center text-slate-400 dark:text-slate-500">Depuis l'étranger : +33 1 70 73 56 00</p>
-                             <div class="bg-violet-50 dark:bg-violet-900/10 rounded-xl p-3 border border-violet-100 dark:border-violet-800/30 space-y-2">
-                                 <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Disponible :</strong> 24h/24, 7j/7</span></div>
-                                 <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Prise en charge :</strong> Jusqu'à 3 entretiens / an</span></div>
-                                 <div class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Secret professionnel</strong> garanti</span></div>
-                             </div>
-                         </div>
-                     </div>
-
                      <!-- Action Logement -->
                      <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
                          <div class="px-4 py-3 bg-gradient-to-r from-sky-500 to-blue-600 flex items-center gap-3">
                              <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="home" class="w-4 h-4 text-white"></i></div>
                              <div>
                                  <h3 class="font-bold text-sm text-white">Action Logement</h3>
-                                 <p class="text-[10px] text-sky-100">Service gratuit pour tous les salariés</p>
+                                 <p class="text-xs text-sky-100">Service gratuit pour tous les salariés</p>
                              </div>
                          </div>
                          <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
@@ -859,7 +844,7 @@
                              <a href="tel:0970800800" class="flex items-center justify-center gap-2 w-full bg-sky-600 hover:bg-sky-700 text-white font-bold py-2.5 px-4 rounded-xl transition-all shadow-sm active:scale-95">
                                  <i data-lucide="phone" class="w-4 h-4"></i> 0 970 800 800
                              </a>
-                             <p class="text-center text-slate-400 dark:text-slate-500">Appel non surtaxé</p>
+                             <p class="text-center text-slate-500 dark:text-slate-400">Appel non surtaxé</p>
                              <a href="https://www.actionlogement.fr" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 w-full bg-sky-50 dark:bg-sky-900/20 text-sky-700 dark:text-sky-300 font-bold py-2.5 px-4 rounded-xl border border-sky-200 dark:border-sky-800 hover:bg-sky-100 dark:hover:bg-sky-900/40 transition-all active:scale-95">
                                  <i data-lucide="external-link" class="w-4 h-4"></i> actionlogement.fr
                              </a>
@@ -872,7 +857,7 @@
                              <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="shield-check" class="w-4 h-4 text-white"></i></div>
                              <div>
                                  <h3 class="font-bold text-sm text-white">Mutuelle Swiss Life</h3>
-                                 <p class="text-[10px] text-teal-100">Complémentaire santé obligatoire</p>
+                                 <p class="text-xs text-teal-100">Complémentaire santé obligatoire</p>
                              </div>
                          </div>
                          <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
@@ -889,7 +874,7 @@
                              <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="utensils" class="w-4 h-4 text-white"></i></div>
                              <div>
                                  <h3 class="font-bold text-sm text-white">Bons Plans UP Déjeuner</h3>
-                                 <p class="text-[10px] text-orange-100">Programme "Bonne Journée"</p>
+                                 <p class="text-xs text-orange-100">Programme "Bonne Journée"</p>
                              </div>
                          </div>
                          <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
@@ -908,7 +893,7 @@
                              <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="car" class="w-4 h-4 text-white"></i></div>
                              <div>
                                  <h3 class="font-bold text-sm text-white">Offre Véhicule Dacia</h3>
-                                 <p class="text-[10px] text-blue-100">Partenariat O2 x Dacia</p>
+                                 <p class="text-xs text-blue-100">Partenariat O2 x Dacia</p>
                              </div>
                          </div>
                          <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
@@ -925,7 +910,7 @@
                              <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="shield" class="w-4 h-4 text-white"></i></div>
                              <div>
                                  <h3 class="font-bold text-sm text-white">Prévoyance</h3>
-                                 <p class="text-[10px] text-slate-200">Couverture incapacité, invalidité, décès</p>
+                                 <p class="text-xs text-slate-200">Couverture incapacité, invalidité, décès</p>
                              </div>
                          </div>
                          <div class="p-4 text-xs text-slate-500 dark:text-slate-400 flex items-center gap-2">
@@ -939,8 +924,8 @@
 
              <!-- Mentions Légales -->
              <div class="mt-8 pt-6 border-t border-slate-200 dark:border-slate-700 text-center pb-4">
-                 <h3 class="text-[11px] font-bold text-slate-400 uppercase mb-2">Mentions Légales</h3>
-                 <div class="text-[11px] text-slate-400 space-y-1">
+                 <h3 class="text-xs font-bold text-slate-500 uppercase mb-2">Mentions Légales</h3>
+                 <div class="text-xs text-slate-500 space-y-1">
                      <p>Éditeur : Serviam</p>
                      <p>Directeur de publication : Emmanuel PERREAU</p>
                      <p>Hébergeur : GitHub</p>
@@ -950,6 +935,7 @@
 
         <!-- SECTION: AUTRE (ex CLÉS & KMS) -> Contient maintenant Contacts et Infos -->
         <div id="tab-keys" class="tab-content space-y-6 fade-in" role="tabpanel" aria-labelledby="btn-keys">
+             <h2 class="sr-only">Contacts & Urgences</h2>
              <!-- VOS CONTACTS -->
              <!-- Urgences Block (Standalone) -->
             <div class="bg-red-500 rounded-2xl p-4 shadow-lg text-white flex items-center justify-between mb-6">
@@ -1127,6 +1113,29 @@
                 </div>
              </div>
 
+             <!-- Écoute psychologique Swisslife -->
+             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                 <div class="px-4 py-3 bg-gradient-to-r from-violet-500 to-purple-600 flex items-center gap-3">
+                     <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="heart-pulse" class="w-4 h-4 text-white"></i></div>
+                     <div>
+                         <h3 class="font-bold text-sm text-white">Écoute & Soutien Psychologique</h3>
+                         <p class="text-xs text-violet-100">Swiss Life — Service confidentiel</p>
+                     </div>
+                 </div>
+                 <div class="p-4 space-y-3 text-xs text-slate-600 dark:text-slate-300">
+                     <p>Besoin de parler ? Un <strong>psychologue professionnel</strong> vous écoute en toute confidentialité, pour vous aider à clarifier une situation difficile.</p>
+                     <a href="tel:0170735600" class="flex items-center justify-center gap-2 w-full bg-violet-600 hover:bg-violet-700 text-white font-bold py-2.5 px-4 rounded-xl transition-all shadow-sm active:scale-95">
+                         <i data-lucide="phone" class="w-4 h-4"></i> 01 70 73 56 00
+                     </a>
+                     <p class="text-center text-slate-500 dark:text-slate-400">Depuis l'étranger : +33 1 70 73 56 00</p>
+                     <div class="bg-violet-50 dark:bg-violet-900/10 rounded-xl p-3 border border-violet-100 dark:border-violet-800/30 space-y-2">
+                         <div class="flex items-center gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Disponible :</strong> 24h/24, 7j/7</span></div>
+                         <div class="flex items-center gap-2"><i data-lucide="check-circle" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Prise en charge :</strong> Jusqu'à 3 entretiens / an</span></div>
+                         <div class="flex items-center gap-2"><i data-lucide="lock" class="w-3.5 h-3.5 text-violet-500 shrink-0"></i><span><strong>Secret professionnel</strong> garanti</span></div>
+                     </div>
+                 </div>
+             </div>
+
         </div>
 
     </main>
@@ -1135,29 +1144,29 @@
     <div class="fixed bottom-0 left-0 w-full z-50 pointer-events-none md:bottom-6">
         <div class="pointer-events-auto bg-white/95 dark:bg-slate-900/95 backdrop-blur-lg border-t md:border border-slate-200 dark:border-slate-800 h-20 md:h-20 md:rounded-2xl md:shadow-2xl md:max-w-4xl mx-auto pb-safe md:pb-0">
             <div class="flex justify-around items-center h-full px-1 md:px-4" role="tablist" aria-label="Navigation principale">
-                <button class="nav-btn active flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-[#11183b]" id="btn-home" role="tab" aria-selected="true" aria-controls="tab-home">
+                <button class="nav-btn active flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-[#11183b]" id="btn-home" role="tab" aria-selected="true" aria-controls="tab-home" tabindex="0">
                     <i data-lucide="home" class="w-5 h-5 mb-1"></i>
-                    <span class="text-[11px] md:text-xs font-medium text-center leading-tight">Accueil</span>
+                    <span class="text-xs md:text-xs font-medium text-center leading-tight">Accueil</span>
                 </button>
 
-                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-daily" role="tab" aria-selected="false" aria-controls="tab-daily">
+                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-daily" role="tab" aria-selected="false" aria-controls="tab-daily" tabindex="-1">
                     <i data-lucide="calendar-check" class="w-5 h-5 mb-1"></i>
-                    <span class="text-[11px] md:text-xs font-medium text-center leading-tight">Quotidien</span>
+                    <span class="text-xs md:text-xs font-medium text-center leading-tight">Quotidien</span>
                 </button>
 
-                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-money" role="tab" aria-selected="false" aria-controls="tab-money">
+                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-money" role="tab" aria-selected="false" aria-controls="tab-money" tabindex="-1">
                     <i data-lucide="euro" class="w-5 h-5 mb-1"></i>
-                    <span class="text-[11px] md:text-xs font-medium text-center leading-tight">Rémunération</span>
+                    <span class="text-xs md:text-xs font-medium text-center leading-tight">Rémunération</span>
                 </button>
 
-                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-docs" role="tab" aria-selected="false" aria-controls="tab-docs">
+                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-slate-500" id="btn-docs" role="tab" aria-selected="false" aria-controls="tab-docs" tabindex="-1">
                     <i data-lucide="file-text" class="w-5 h-5 mb-1"></i>
-                    <span class="text-[11px] md:text-xs font-medium text-center leading-tight">Docs &amp;<br>Services</span>
+                    <span class="text-xs md:text-xs font-medium text-center leading-tight">Docs &amp;<br>Services</span>
                 </button>
 
-                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-blue-500" id="btn-keys" data-color="blue" role="tab" aria-selected="false" aria-controls="tab-keys">
+                <button class="nav-btn flex flex-col items-center justify-center flex-1 h-full rounded-xl transition-all duration-300 text-blue-500" id="btn-keys" data-color="blue" role="tab" aria-selected="false" aria-controls="tab-keys" tabindex="-1">
                     <i data-lucide="phone" class="w-5 h-5 mb-1"></i>
-                    <span class="text-[11px] md:text-xs font-medium text-center leading-tight">Contacts &amp;<br>Urgences</span>
+                    <span class="text-xs md:text-xs font-medium text-center leading-tight">Contacts &amp;<br>Urgences</span>
                 </button>
             </div>
         </div>
