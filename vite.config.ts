@@ -14,8 +14,7 @@ export default defineConfig({
             registerType: 'autoUpdate',
             workbox: {
                 globPatterns: ['**/*.{js,css,html,svg,png,json,woff2}'],
-                navigateFallback: '/AppIntervenants/offline.html',
-                navigateFallbackAllowlist: [/^\/AppIntervenants\//]
+                navigateFallback: null
             },
             manifest: false,
             injectRegister: null,
