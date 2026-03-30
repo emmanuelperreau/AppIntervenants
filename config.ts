@@ -33,6 +33,7 @@ interface HomeConfig {
 interface RemunerationConfig {
     mutuelleName: string;
     mutuellePrice: string;
+    mutuellePortailUrl: string;
 }
 
 interface MedecineTravailConfig {
@@ -117,8 +118,9 @@ export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link"
         },
         remuneration: {
-            mutuelleName: "Mutuelle Sante (CPMS)",
-            mutuellePrice: "17,22 \u20ac"
+            mutuelleName: "Mutuelle Sante (Swiss Life)",
+            mutuellePrice: "16,82 \u20ac",
+            mutuellePortailUrl: "https://bia.swisslife.fr/public/contrat/018619953/entreprise/424571b1-073d-4cb7-b93f-923c0bf5b37f"
         },
         docs: {
             medecineTravail: {
@@ -159,8 +161,9 @@ export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {
             declarationKmsUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeLIa2CutbQn7QVCdDbJJfr8KjCeHAj7PpAG1qhTYl1bkF9Lw/viewform?usp=sf_link"
         },
         remuneration: {
-            mutuelleName: "Mutuelle Sante (ALLIANZ)",
-            mutuellePrice: "21,13 \u20ac"
+            mutuelleName: "Mutuelle Sante (Swiss Life)",
+            mutuellePrice: "16,82 \u20ac",
+            mutuellePortailUrl: "https://bia.swisslife.fr/public/contrat/018619949/entreprise/397c1cad-4c95-4ace-892d-b66724d2fed4"
         },
         docs: {
             medecineTravail: {
