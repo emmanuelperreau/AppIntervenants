@@ -16,6 +16,7 @@ interface GrilleSalariale {
     chequesVacancesEmployeur: number;
     parrainageClient: number;
     parrainageIntervenant: number;
+    primeAnciennete: Record<number, number>;
 }
 
 interface TelephoneConfig {
@@ -91,7 +92,15 @@ export const GRILLE_SALARIALE: GrilleSalariale = {
     chequesVacancesTotal: 100,   // Cheques vacances total (EUR/an)
     chequesVacancesEmployeur: 80, // Part employeur cheques vacances
     parrainageClient: 40,        // Prime parrainage client (EUR)
-    parrainageIntervenant: 200   // Prime parrainage intervenant (EUR)
+    parrainageIntervenant: 200,  // Prime parrainage intervenant (EUR)
+    primeAnciennete: {           // Bonus horaire par annees d'anciennete
+        0: 0,
+        1: 0.05,
+        2: 0.10,
+        3: 0.15,
+        5: 0.20,
+        10: 0.30
+    }
 } as const;
 
 export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {

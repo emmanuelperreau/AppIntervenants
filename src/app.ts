@@ -244,6 +244,9 @@ interface BeforeInstallPromptEvent extends Event {
 // Verification si deja installe
 const isStandalone = window.matchMedia('(display-mode: standalone)').matches || (navigator as NavigatorStandalone).standalone === true;
 
+// Detection mobile (iOS ou Android uniquement)
+const isMobile = /iPad|iPhone|iPod|android/i.test(navigator.userAgent);
+
 // Verification si le banner a ete ferme recemment (7 jours)
 const DISMISS_KEY = 'install_banner_dismissed' as const;
 const DISMISS_DAYS = 7 as const;
@@ -254,11 +257,11 @@ function wasDismissedRecently(): boolean {
     return days < DISMISS_DAYS;
 }
 
-// Capture beforeinstallprompt (Android Chrome)
+// Capture beforeinstallprompt (mobile uniquement)
 window.addEventListener('beforeinstallprompt', ((e: Event) => {
     e.preventDefault();
     deferredPrompt = e as BeforeInstallPromptEvent;
-    if (!isStandalone && !wasDismissedRecently()) {
+    if (isMobile && !isStandalone && !wasDismissedRecently()) {
         if (installBtnNative) installBtnNative.classList.remove('hidden');
         if (installBanner) installBanner.classList.remove('hidden');
         createIcons({ icons });
@@ -278,7 +281,7 @@ window.installPWA = function(): void {
 };
 
 // Fallback : instructions manuelles si pas de beforeinstallprompt apres 3s
-if (!isStandalone && !wasDismissedRecently()) {
+if (isMobile && !isStandalone && !wasDismissedRecently()) {
     setTimeout(() => {
         if (installBanner && installBanner.classList.contains('hidden')) {
             const userAgent = navigator.userAgent || (navigator as NavigatorStandalone & { vendor?: string }).vendor || '';

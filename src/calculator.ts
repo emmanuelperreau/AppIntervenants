@@ -13,6 +13,13 @@ export const HEURES_COMP_COEFF = 60 as const;
 export const CHARGES_PATRONALES_COEFF = 1.1 as const;
 
 /**
+ * Applique le bonus d'anciennete au taux horaire.
+ */
+export function calculateTauxAvecAnciennete(tauxHoraire: number, bonusAnciennete: number): number {
+  return tauxHoraire + bonusAnciennete;
+}
+
+/**
  * Calcule les heures mensualisees a partir des heures hebdomadaires.
  * Formule : heuresHebdo * 52 / 12
  */

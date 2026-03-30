@@ -9,6 +9,7 @@ import { GRILLE_SALARIALE, AGENCY_CONFIGS } from '../config';
 
 // Moteur de calcul (fonctions pures)
 import {
+    calculateTauxAvecAnciennete,
     calculateHoursMonthly,
     calculateBrutMensuel,
     calculateNetBase,
@@ -35,9 +36,12 @@ const CHEQUES_CADEAUX = GRILLE_SALARIALE.chequesCadeaux;
 const CHEQUES_VACANCES = GRILLE_SALARIALE.chequesVacancesEmployeur;
 
 // ELEMENTS
+const PRIME_ANCIENNETE = GRILLE_SALARIALE.primeAnciennete;
+
 const inputs = {
     rate: document.getElementById('input-rate') as HTMLInputElement | null,
     hours: document.getElementById('input-hours') as HTMLInputElement | null,
+    anciennete: document.getElementById('input-anciennete') as HTMLSelectElement | null,
     kms: document.getElementById('input-kms') as HTMLInputElement | null,
     tickets: document.getElementById('input-tickets') as HTMLInputElement | null,
     mutuelleCheck: document.getElementById('check-mutuelle') as HTMLInputElement | null,
@@ -83,8 +87,11 @@ function loadAgencyConfig(): void {
 
 // MOTEUR DE CALCUL
 function calculate(): void {
-    const rate = parseFloat(inputs.rate?.value ?? '0') || 0;
+    const rateBase = parseFloat(inputs.rate?.value ?? '0') || 0;
     const hoursWeekly = parseFloat(inputs.hours?.value ?? '0') || 0;
+    const ancienneteKey = parseInt(inputs.anciennete?.value ?? '0', 10);
+    const bonusAnciennete = PRIME_ANCIENNETE[ancienneteKey as keyof typeof PRIME_ANCIENNETE] ?? 0;
+    const rate = calculateTauxAvecAnciennete(rateBase, bonusAnciennete);
     const kms = parseFloat(inputs.kms?.value ?? '0') || 0;
     const tickets = parseFloat(inputs.tickets?.value ?? '0') || 0;
     const mutuelleCost = inputs.mutuelleCheck?.checked ? (parseFloat(inputs.mutuelleCost?.value ?? '0') || 0) : 0;
@@ -137,7 +144,7 @@ function formatCurrency(val: number): string {
 // LISTENERS
 Object.values(inputs).forEach((input) => {
     if (input) {
-        if (input.type === 'checkbox') {
+        if (input.type === 'checkbox' || input instanceof HTMLSelectElement) {
             input.addEventListener('change', calculate);
         } else {
             input.addEventListener('input', calculate);

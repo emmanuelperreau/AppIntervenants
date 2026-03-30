@@ -4,6 +4,7 @@ import {
   ASSIETTE_CSG_CRDS,
   TAUX_CSG_CRDS,
   CHARGES_PATRONALES_COEFF,
+  calculateTauxAvecAnciennete,
   calculateHoursMonthly,
   calculateBrutMensuel,
   calculateNetBase,
@@ -26,6 +27,27 @@ const CHEQUES_CADEAUX = 50;
 const CHEQUES_VACANCES_EMPLOYEUR = 80;
 
 describe('Simulateur de salaire — Fonctions de calcul', () => {
+
+  // =========================================================================
+  // calculateTauxAvecAnciennete
+  // =========================================================================
+  describe('calculateTauxAvecAnciennete', () => {
+    it('retourne le taux inchange sans anciennete', () => {
+      expect(calculateTauxAvecAnciennete(12.02, 0)).toBe(12.02);
+    });
+
+    it('ajoute le bonus 1 an (+0.05)', () => {
+      expect(calculateTauxAvecAnciennete(12.02, 0.05)).toBeCloseTo(12.07, 2);
+    });
+
+    it('ajoute le bonus 3 ans (+0.15)', () => {
+      expect(calculateTauxAvecAnciennete(12.02, 0.15)).toBeCloseTo(12.17, 2);
+    });
+
+    it('ajoute le bonus 10 ans (+0.30)', () => {
+      expect(calculateTauxAvecAnciennete(12.02, 0.30)).toBeCloseTo(12.32, 2);
+    });
+  });
 
   // =========================================================================
   // calculateHoursMonthly
@@ -243,6 +265,25 @@ describe('Simulateur de salaire — Fonctions de calcul', () => {
   // =========================================================================
   // Test d'integration : scenario complet
   // =========================================================================
+  describe('Scenario avec anciennete 3 ans', () => {
+    it('le net augmente avec le bonus anciennete', () => {
+      const hoursWeekly = 24;
+      const mutuelle = 17.22;
+
+      const rateSans = SMIC_HORAIRE;
+      const rateAvec = calculateTauxAvecAnciennete(SMIC_HORAIRE, 0.15);
+      expect(rateAvec).toBeCloseTo(12.17, 2);
+
+      const brutSans = calculateBrutMensuel(rateSans, hoursWeekly);
+      const brutAvec = calculateBrutMensuel(rateAvec, hoursWeekly);
+      expect(brutAvec).toBeGreaterThan(brutSans);
+
+      const netSans = calculateNetBase(brutSans, mutuelle);
+      const netAvec = calculateNetBase(brutAvec, mutuelle);
+      expect(netAvec).toBeGreaterThan(netSans);
+    });
+  });
+
   describe('Scenario complet : contrat 24h au SMIC avec mutuelle', () => {
     it('reproduit le calcul complet du simulateur', () => {
       const rate = SMIC_HORAIRE;
