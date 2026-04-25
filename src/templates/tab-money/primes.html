@@ -1,0 +1,222 @@
+                <!-- Transport (Tall Column) -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="car" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Mobilité & Transport</h3>
+                    </div>
+                    <div class="p-5 space-y-4 flex-1">
+                        <div class="bg-orange-50/50 dark:bg-orange-900/10 p-4 rounded-xl border border-orange-100 dark:border-orange-900/30">
+                            <div class="flex justify-between items-center mb-2">
+                                <div class="flex gap-3 items-center">
+                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-orange-500"><i data-lucide="car" class="w-5 h-5"></i></div>
+                                    <span class="font-bold text-slate-800 dark:text-white text-sm">Indemnités Km</span>
+                                </div>
+                                <div class="text-right">
+                                    <span id="val-taux-km" class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45 €</span>
+                                    <span class="text-xs text-orange-400 font-medium">/ km</span>
+                                </div>
+                            </div>
+                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30">
+                                <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">
+                                    Rémunération du temps de trajet et des frais kilométriques entre 2 prestations,
+                                    si le temps d'intermission (hors trajet) est inférieur à 15 min.
+                                </p>
+                            </div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
+                        </div>
+
+                        <!-- Prime Carburant Statique -->
+                        <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-100 dark:border-slate-700 flex flex-col gap-3">
+                            <div class="flex justify-between items-center mb-1">
+                                <div class="flex gap-3 items-center">
+                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-slate-600 dark:text-slate-300"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                                    <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-xs text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
+                                </div>
+                                <div class="text-right">
+                                    <span id="val-prime-carburant" class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
+                                    <span class="text-xs text-slate-500 font-medium">/ an (max)</span>
+                                </div>
+                            </div>
+
+                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-600">
+                                <p class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Simulations (si présent toute l'année) :</p>
+                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400 border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">
+                                    <span>Contrat 30h :</span>
+                                    <span class="font-bold text-[#11183b] dark:text-white">~ <span id="val-prime-carburant-30h">257</span> € /an</span>
+                                </div>
+                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400">
+                                    <span>Contrat 25h :</span>
+                                    <span class="font-bold text-[#11183b] dark:text-white">~ <span id="val-prime-carburant-25h">214</span> € /an</span>
+                                </div>
+                            </div>
+
+                            <p class="text-xs text-slate-500 dark:text-slate-400 italic border-t border-slate-200 dark:border-slate-700 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Column for Restaurant + Mutuelle -->
+                <div class="flex flex-col gap-6">
+                    <!-- Titres Restaurant -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="utensils" class="w-5 h-5"></i></div>
+                            <h3 class="font-bold text-base">Titres Restaurant</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-900/30 mb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <h4 class="font-bold text-blue-900 dark:text-blue-200">Valeur Faciale</h4>
+                                    <div class="text-right">
+                                        <span id="val-ticket" class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
+                                        <span class="text-xs text-blue-400 font-bold">/ jour travaillé</span>
+                                    </div>
+                                </div>
+                                <div class="w-full h-2 bg-blue-200 dark:bg-blue-900 rounded-full overflow-hidden flex">
+                                    <div class="w-1/2 bg-[#11183b] dark:bg-blue-400"></div>
+                                    <div class="w-1/2 bg-blue-400 dark:bg-blue-600"></div>
+                                </div>
+                                <div class="flex justify-between text-xs font-bold mt-1 uppercase tracking-wide">
+                                    <span class="text-[#11183b] dark:text-blue-200">Part O2 : <span id="val-ticket-employer">3</span>€</span>
+                                    <span class="text-blue-500 dark:text-blue-400">Votre Part : <span id="val-ticket-employee">3</span>€</span>
+                                </div>
+                            </div>
+                            <div class="space-y-2">
+                                <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg border border-green-100 dark:border-green-900/30">
+                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-green-600 dark:text-green-400"></i>
+                                    <span class="font-bold text-green-800 dark:text-green-300">Après 2 mois d'ancienneté</span>
+                                </div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed px-1">Eligible pour tous les jours ayant une pause méridienne.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mutuelle Santé -->
+                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
+                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
+                            <h3 id="remun-mutuelle-name" class="font-bold text-base">Mutuelle Santé (Swiss Life)</h3>
+                        </div>
+                        <div class="p-5">
+                            <div class="flex items-center justify-between mb-4">
+                                <div>
+                                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Prise en charge à 50% par O2</p>
+                                    <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
+                                    <p class="text-xs text-slate-500 italic">Obligatoire sauf motifs de dispense.</p>
+                                </div>
+                                <div class="text-right">
+                                    <span class="text-xs text-slate-500 font-medium block">Votre part / mois</span>
+                                    <span id="remun-mutuelle-price" class="text-3xl font-extrabold text-[#11183b] dark:text-white">--,-- €</span>
+                                    <span class="text-xs text-slate-500 block">Déduit du salaire</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chèques Cadeaux (Full Width) -->
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
+                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
+                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
+                        <h3 class="font-bold text-base">Chèques Cadeaux</h3>
+                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-xs font-bold">Après 2 mois d'ancienneté à la date de distribution</div>
+                    </div>
+                    <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-pink-100 dark:border-pink-900/30 bg-pink-50/30 dark:bg-pink-900/10">
+                            <div class="bg-pink-100 dark:bg-pink-900 p-4 rounded-full text-pink-600 dark:text-pink-300"><i data-lucide="gift" class="w-8 h-8"></i></div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Noël</h4><span class="bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-200 text-xs font-bold px-3 py-1 rounded-full">Novembre</span></div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-pink-600 dark:text-pink-400 text-lg"><span id="val-cheques-cadeaux">50 €</span> /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-orange-100 dark:border-orange-900/30 bg-orange-50/30 dark:bg-orange-900/10">
+                            <div class="bg-orange-100 dark:bg-orange-900 p-4 rounded-full text-orange-600 dark:text-orange-300"><i data-lucide="sun" class="w-8 h-8"></i></div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Vacances</h4><span class="bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
+                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg"><span id="val-cheques-vacances">100 €</span> /an</span> <span class="text-xs text-slate-500">(Co-financement 20%)</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Parrainages -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Parrainage Client -->
+                <div class="bg-[#c96b47] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
+                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Clients</h3>
+                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
+                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-client">40 €</span></div>
+                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
+                </div>
+                <!-- Parrainage Salarié -->
+                <div class="bg-[#b93c7d] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
+                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Salariés</h3>
+                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
+                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-intervenant">200 €</span></div>
+                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
+                </div>
+            </div>
+
+            <!-- Majorations -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
+                 <div class="flex items-center gap-3 mb-4">
+                    <div class="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-400"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
+                    <h3 class="font-bold text-slate-800 dark:text-white">Majorations Horaires</h3>
+                 </div>
+                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                    <div class="p-3 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-100 dark:border-teal-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Dimanche & Nuit</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-teal-600 dark:text-teal-400 block">+ 10%</span></div>
+                    </div>
+                    <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-100 dark:border-purple-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Heures Complémentaires</span>
+                        <div class="text-right sm:text-center"><span class="text-xl font-black text-purple-600 dark:text-purple-400 block">10 à 25%</span></div>
+                    </div>
+                    <div class="p-3 bg-[#11183b] text-white rounded-xl flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center shadow-md">
+                        <span class="text-xs font-bold text-teal-100 uppercase">Jours Fériés</span>
+                        <div class="text-right sm:text-center"><span class="text-2xl font-black block">+ 100%</span></div>
+                    </div>
+                 </div>
+            </div>
+
+             <!-- Acquisition Congés (Moved Here) -->
+             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
+                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800">
+                    <div class="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded text-blue-600 dark:text-blue-400"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
+                    <h3 class="font-bold text-sm text-slate-800 dark:text-white">Acquisition des Congés</h3>
+                </div>
+                <div class="p-4 space-y-4">
+                     <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg text-xs space-y-2">
+                        <div class="flex justify-between items-center">
+                            <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
+                            <div class="text-right">
+                                <span class="font-bold text-[#11183b] dark:text-white block">2,5 jours / mois</span>
+                                <span class="text-xs text-slate-500 dark:text-slate-400 block">Soit 30 jours par an (5 semaines)</span>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-600 pt-2">Tous les salariés, même à temps partiel, acquièrent le même nombre de congés (incluant le samedi).</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <h4 class="font-bold text-xs text-slate-700 dark:text-slate-200 uppercase tracking-wide">Règle de pose</h4>
+                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            Du <span class="font-bold">1er jour de congés</span> jusqu'à la <span class="font-bold">veille de la reprise effective</span>.
+                        </p>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded border border-amber-100 dark:border-amber-900/30">
+                             <p class="text-xs text-amber-800 dark:text-amber-200 leading-snug">
+                                <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
+                                Cette période inclut les <span class="font-bold">samedis et fériés</span> (hors 1er mai et 25 décembre).
+                                <span class="block mt-0.5 opacity-80 font-medium">Limite : 5 samedis décomptés par an.</span>
+                             </p>
+                        </div>
+                    </div>
+
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
+                        <ul class="text-xs text-blue-900 dark:text-blue-200 space-y-1">
+                             <li class="flex items-start gap-2"><i data-lucide="key" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir.</span></li>
+                             <li class="flex items-start gap-2"><i data-lucide="phone-call" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Contactez l'agence</span> avant votre reprise pour organiser la récupération des clés.</span></li>
+                        </ul>
+                    </div>
+                </div>
+             </div>

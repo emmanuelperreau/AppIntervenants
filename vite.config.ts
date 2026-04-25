@@ -20,6 +20,9 @@ export default defineConfig({
             injectRegister: null,
         })
     ],
+    esbuild: {
+        drop: ['console', 'debugger']
+    },
     build: {
       rollupOptions: {
         input: {
