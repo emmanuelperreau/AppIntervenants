@@ -34,10 +34,10 @@ export function initTabs(): void {
         const target = document.getElementById('tab-' + tabName);
         if (target) {
             target.classList.add('active');
-            void target.offsetWidth; // Force reflow
+            void target.offsetWidth; // Force le reflow
             target.classList.add('fade-in');
         } else {
-            console.error('Tab not found:', tabName);
+            console.error('Onglet introuvable :', tabName);
         }
 
         document.querySelectorAll('[role="tab"]').forEach(el => {
@@ -72,7 +72,7 @@ export function initTabs(): void {
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Persist active tab for restore after auto-reload
+        // Persistance de l'onglet actif pour restauration apres auto-reload
         // QUICK-WIN #5 : catch sans parametre
         try { sessionStorage.setItem('active_tab', tabName); } catch { /* quota */ }
     };

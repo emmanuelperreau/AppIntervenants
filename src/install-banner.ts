@@ -1,6 +1,6 @@
 import { createIcons, APP_ICONS } from './icons';
 
-// BeforeInstallPromptEvent interface (non presente dans lib.dom.d.ts)
+// Interface BeforeInstallPromptEvent (absente de lib.dom.d.ts)
 interface BeforeInstallPromptEvent extends Event {
     prompt(): Promise<void>;
     userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
@@ -92,4 +92,9 @@ export function initInstallBanner(): void {
             localStorage.setItem(DISMISS_KEY, Date.now().toString());
         } catch { /* quota/incognito */ }
     };
+
+    // Boutons de la banniere (event listeners non-inline pour CSP)
+    installBtnNative?.addEventListener('click', () => window.installPWA());
+    document.getElementById('dismiss-install-text')?.addEventListener('click', () => window.dismissInstall());
+    document.getElementById('dismiss-install-x')?.addEventListener('click', () => window.dismissInstall());
 }
