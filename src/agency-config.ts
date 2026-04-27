@@ -65,7 +65,8 @@ export function applyConfig(): void {
         'doc-link-due-sante': config.docs.links.dueSante,
         'doc-link-garantie-sante': config.docs.links.garantieSante,
         'doc-link-due-interessement': config.docs.links.dueInteressement,
-        'doc-link-accord-temps': config.docs.links.accordTemps
+        'doc-link-accord-temps': config.docs.links.accordTemps,
+        'doc-link-prevoyance': config.docs.links.prevoyance
     };
 
     for (const [id, url] of Object.entries(docIds)) {

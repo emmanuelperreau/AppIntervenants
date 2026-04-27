@@ -49,6 +49,7 @@ interface DocsLinksConfig {
     garantieSante: string;
     dueInteressement: string;
     accordTemps: string;
+    prevoyance: string;
 }
 
 interface DocsConfig {
@@ -131,10 +132,11 @@ export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {
             links: {
                 avantages: "https://drive.google.com/file/d/1glFTwKCafdGOQgrANri7IJ5A23sKgeK5/view?usp=sharing",
                 conges: "https://drive.google.com/file/d/1jun4oU6QAAOgarSxd9r9HNoDPWYbCpVo/view?usp=share_link",
-                dueSante: "https://drive.google.com/file/d/1njY4BCWRpQKSHILpMeRX_LeksLHiJsvs/view?usp=share_link",
-                garantieSante: "https://drive.google.com/file/d/1Sr3FTAWsbKMpIX3XOONjna_4A7OkX1E3/view?usp=share_link",
+                dueSante: "https://drive.google.com/file/d/1emfqsZHfmRlDsQUeCtW1kSeXMoZFFY3h/view?usp=sharing",
+                garantieSante: "https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing",
                 dueInteressement: "https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link",
-                accordTemps: "https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing"
+                accordTemps: "https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing",
+                prevoyance: "https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing"
             }
         },
         contacts: {
@@ -174,10 +176,11 @@ export const AGENCY_CONFIGS: Record<string, AgencyConfig> = {
             links: {
                 avantages: "https://drive.google.com/file/d/1lZhynwRzlqJE4qyLBuB75mzef1TPaFHI/view?usp=sharing",
                 conges: "https://drive.google.com/file/d/1Sx2UMvGmMRpYw8aQ6Rzi5jDK86RFf6SK/view?usp=sharing",
-                dueSante: "https://drive.google.com/file/d/1rejlxMdJqpawpC9B4aO8zxn6SIrfrsjd/view?usp=sharing",
-                garantieSante: "https://drive.google.com/file/d/1M1YvJYmCpJ-3JBBZhn6QIBKadj3xOn6v/view?usp=sharing",
+                dueSante: "https://drive.google.com/file/d/1PzYqLGD9OXLcxxN6doMlw3xAlJv3Ib2r/view?usp=drive_link",
+                garantieSante: "https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing",
                 dueInteressement: "https://drive.google.com/file/d/1JfBIJ7xgqNpoOZN96PKd0homgqhrlXy6/view?usp=share_link",
-                accordTemps: "https://drive.google.com/file/d/1rQAralibJ0CWLL4SRWZVKP3NNW1hsr1P/view?usp=share_link"
+                accordTemps: "https://drive.google.com/file/d/1rQAralibJ0CWLL4SRWZVKP3NNW1hsr1P/view?usp=share_link",
+                prevoyance: "https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing"
             }
         },
         contacts: {
