@@ -80,9 +80,9 @@ export interface AgencyConfig {
 
 // GRILLE SALARIALE COMMUNE (modifiable ici, appliquee partout)
 export const GRILLE_SALARIALE: GrilleSalariale = {
-    smicHoraire: 12.02,          // SMIC horaire brut (base AM2/GE2/AV2)
-    tauxGE3: 12.12,              // Taux horaire GE3
-    tauxAV3: 12.17,              // Taux horaire AV3
+    smicHoraire: 12.31,          // SMIC horaire brut (base AM2/GE2/AV2)
+    tauxGE3: 12.31,              // Taux horaire GE3 (rattrape par le SMIC)
+    tauxAV3: 12.31,              // Taux horaire AV3 (rattrape par le SMIC)
     bonusConfirme: 0.10,         // Supplement Confirme
     bonusExpert: 0.20,           // Supplement Expert
     bonusReferent: 0.30,         // Supplement Referent
