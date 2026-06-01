@@ -1,56 +1,76 @@
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
-                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-teal-600 to-emerald-600 text-white">
-                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="sparkles" class="w-5 h-5"></i></div>
-                        <h3 class="font-bold text-base">Prime d'Ancienneté</h3>
-                    </div>
-
-                    <div class="p-5">
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-6 font-medium italic">Votre fidélité valorisée : majoration automatique du taux horaire.</p>
-
-                        <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
-
-                            <div class="flex flex-col items-center justify-center p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-100 dark:border-slate-600">
-                                <span class="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider mb-1">Dès 1 An</span>
-                                <div class="flex items-baseline gap-0.5 text-teal-600 dark:text-teal-400">
-                                    <span class="text-xl font-black">+ 5</span>
-                                    <span class="text-xs font-bold">cts/h</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col items-center justify-center p-3 bg-slate-50 dark:bg-slate-700/50 rounded-xl border border-slate-100 dark:border-slate-600">
-                                <span class="text-xs font-bold text-slate-400 dark:text-slate-400 uppercase tracking-wider mb-1">Dès 2 Ans</span>
-                                <div class="flex items-baseline gap-0.5 text-teal-600 dark:text-teal-400">
-                                    <span class="text-xl font-black">+ 10</span>
-                                    <span class="text-xs font-bold">cts/h</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col items-center justify-center p-3 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-100 dark:border-teal-800">
-                                <span class="text-xs font-bold text-teal-600 dark:text-teal-300 uppercase tracking-wider mb-1">Dès 3 Ans</span>
-                                <div class="flex items-baseline gap-0.5 text-teal-700 dark:text-teal-400">
-                                    <span class="text-xl font-black">+ 15</span>
-                                    <span class="text-xs font-bold">cts/h</span>
-                                </div>
-                            </div>
-
-                            <div class="flex flex-col items-center justify-center p-3 bg-emerald-50 dark:bg-emerald-900/20 rounded-xl border border-emerald-200 dark:border-emerald-800">
-                                <span class="text-xs font-bold text-emerald-600 dark:text-emerald-300 uppercase tracking-wider mb-1">Dès 5 Ans</span>
-                                <div class="flex items-baseline gap-0.5 text-emerald-700 dark:text-emerald-400">
-                                    <span class="text-xl font-black">+ 20</span>
-                                    <span class="text-xs font-bold">cts/h</span>
-                                </div>
-                            </div>
-
-                            <div class="col-span-2 md:col-span-1 flex flex-col items-center justify-center p-3 bg-gradient-to-br from-amber-50 to-orange-50 dark:from-amber-900/20 dark:to-orange-900/20 rounded-xl border border-orange-200 dark:border-orange-800 relative overflow-hidden">
-                                <div class="absolute top-0 right-0 p-1 opacity-10 text-orange-600"><i data-lucide="crown" class="w-8 h-8"></i></div>
-
-                                <span class="text-xs font-bold text-orange-600 dark:text-orange-300 uppercase tracking-wider mb-1">Dès 10 Ans</span>
-                                <div class="flex items-baseline gap-0.5 text-orange-600 dark:text-orange-400">
-                                    <span class="text-2xl font-black">+ 30</span>
-                                    <span class="text-xs font-bold">cts/h</span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+<!-- Prime d'ancienneté -->
+<div class="card">
+    <div class="card-header section-header-gradient shg-green-teal">
+        <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="20"
+                 height="20"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                <path d="M5 3v4" />
+                <path d="M19 17v4" />
+                <path d="M3 5h4" />
+                <path d="M17 19h4" />
+            </svg>
+        </div>
+        <h3>Prime d'Ancienneté</h3>
+    </div>
+    <div class="card-body">
+        <p style="font-size:.7rem;
+                  color:#64748b;
+                  margin:0 0 1.5rem;
+                  font-weight:500;
+                  font-style:italic">Votre fidélité valorisée : majoration automatique du taux horaire.</p>
+        <div class="anciennete-grid">
+            <div class="anciennete-card anc-default">
+                <span class="anciennete-card-label">Dès 1 An</span>
+                <div class="anciennete-val">
+                    <span class="big">+ 5</span>
+                    <span class="unit">cts/h</span>
                 </div>
+            </div>
+            <div class="anciennete-card anc-default">
+                <span class="anciennete-card-label">Dès 2 Ans</span>
+                <div class="anciennete-val">
+                    <span class="big">+ 10</span>
+                    <span class="unit">cts/h</span>
+                </div>
+            </div>
+            <div class="anciennete-card anc-teal">
+                <span class="anciennete-card-label">Dès 3 Ans</span>
+                <div class="anciennete-val">
+                    <span class="big">+ 15</span>
+                    <span class="unit">cts/h</span>
+                </div>
+            </div>
+            <div class="anciennete-card anc-emerald">
+                <span class="anciennete-card-label">Dès 5 Ans</span>
+                <div class="anciennete-val">
+                    <span class="big">+ 20</span>
+                    <span class="unit">cts/h</span>
+                </div>
+            </div>
+            <div class="anciennete-card anc-orange col-span-2">
+                <div class="anc-orange-crown">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24"
+                         fill="currentColor"
+                         aria-hidden="true">
+                        <path d="m2 4 3 12h14l3-12-6 7-4-7-4 7-6-7zm3 16h14" />
+                    </svg>
+                </div>
+                <span class="anciennete-card-label">Dès 10 Ans</span>
+                <div class="anciennete-val">
+                    <span class="big">+ 30</span>
+                    <span class="unit">cts/h</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,217 @@
+/* ============================================================
+   styles/contacts.css — Quotidien, Documents, Services, Contacts, Médecine
+   ============================================================ */
+
+/* ---------- ONGLET QUOTIDIEN ---------- */
+.obligation-card {
+    padding: 1rem; background: white; border-radius: .75rem;
+    border: 2px solid; display: flex; flex-direction: column;
+    align-items: center; text-align: center; gap: .75rem;
+}
+@media (prefers-color-scheme: dark) { .obligation-card { background: #334155; } }
+.obligation-card svg { width: 2rem; height: 2rem; }
+.obligation-card p, .obligation-card div { font-size: .75rem; font-weight: 500; line-height: 1.4; }
+
+/* ---------- ONGLET DOCUMENTS ---------- */
+.doc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+@media (min-width: 768px) { .doc-grid { grid-template-columns: repeat(3, 1fr); } }
+.doc-tile {
+    background: white; padding: 1rem; border-radius: .75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9;
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; gap: .5rem;
+    height: 8rem; transition: all .15s; cursor: pointer; text-decoration: none;
+}
+.doc-tile:active { transform: scale(.95); }
+@media (prefers-color-scheme: dark) { .doc-tile { background: #1e293b; border-color: #334155; } }
+.doc-tile-icon { padding: .75rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .15s; }
+.doc-tile:hover .doc-tile-icon { transform: scale(1.1); }
+.doc-tile-icon svg { width: 1.5rem; height: 1.5rem; }
+.doc-tile-label { font-weight: 700; font-size: .75rem; color: #1e293b; line-height: 1.2; }
+@media (prefers-color-scheme: dark) { .doc-tile-label { color: white; } }
+
+/* Couleurs doc-tile */
+.doc-orange .doc-tile-icon { background: #ffedd5; color: #ea580c; }
+.doc-orange:hover { background: #fff7ed; border-color: #fbd5b5; }
+.doc-orange:hover .doc-tile-label { color: #c2410c; }
+@media (prefers-color-scheme: dark) { .doc-orange .doc-tile-icon { background: rgba(194,65,12,.3); color: #fb923c; } .doc-orange:hover { background: rgba(194,65,12,.2); } .doc-orange:hover .doc-tile-label { color: #fdba74; } }
+.doc-fuchsia .doc-tile-icon { background: #fdf4ff; color: #c026d3; }
+.doc-fuchsia:hover { background: #fdf4ff; border-color: #f0abfc; }
+.doc-fuchsia:hover .doc-tile-label { color: #a21caf; }
+@media (prefers-color-scheme: dark) { .doc-fuchsia .doc-tile-icon { background: rgba(192,38,211,.2); color: #e879f9; } .doc-fuchsia:hover { background: rgba(192,38,211,.1); } .doc-fuchsia:hover .doc-tile-label { color: #f0abfc; } }
+.doc-purple .doc-tile-icon { background: #faf5ff; color: #9333ea; }
+.doc-purple:hover { background: #faf5ff; border-color: #e9d5ff; }
+.doc-purple:hover .doc-tile-label { color: #7e22ce; }
+@media (prefers-color-scheme: dark) { .doc-purple .doc-tile-icon { background: rgba(147,51,234,.2); color: #c084fc; } .doc-purple:hover { background: rgba(147,51,234,.1); } .doc-purple:hover .doc-tile-label { color: #d8b4fe; } }
+.doc-slate .doc-tile-icon { background: #f1f5f9; color: #475569; }
+.doc-slate:hover { background: #f8fafc; border-color: #cbd5e1; }
+.doc-slate:hover .doc-tile-label { color: #1e293b; }
+@media (prefers-color-scheme: dark) { .doc-slate .doc-tile-icon { background: #334155; color: #cbd5e1; } .doc-slate:hover { background: rgba(51,65,85,.5); border-color: #475569; } .doc-slate:hover .doc-tile-label { color: white; } }
+.doc-emerald .doc-tile-icon { background: #ecfdf5; color: #059669; }
+.doc-emerald:hover { background: #ecfdf5; border-color: #6ee7b7; }
+.doc-emerald:hover .doc-tile-label { color: #047857; }
+@media (prefers-color-scheme: dark) { .doc-emerald .doc-tile-icon { background: rgba(5,150,105,.2); color: #34d399; } .doc-emerald:hover { background: rgba(5,150,105,.1); } .doc-emerald:hover .doc-tile-label { color: #6ee7b7; } }
+.doc-amber .doc-tile-icon { background: #fffbeb; color: #d97706; }
+.doc-amber:hover { background: #fffbeb; border-color: #fde68a; }
+.doc-amber:hover .doc-tile-label { color: #92400e; }
+@media (prefers-color-scheme: dark) { .doc-amber .doc-tile-icon { background: rgba(217,119,6,.2); color: #fbbf24; } .doc-amber:hover { background: rgba(217,119,6,.1); } .doc-amber:hover .doc-tile-label { color: #fde68a; } }
+.doc-teal .doc-tile-icon { background: #f0fdfa; color: #0d9488; }
+.doc-teal:hover { background: #f0fdfa; border-color: #99f6e4; }
+.doc-teal:hover .doc-tile-label { color: #0f766e; }
+@media (prefers-color-scheme: dark) { .doc-teal .doc-tile-icon { background: rgba(13,148,136,.2); color: #2dd4bf; } .doc-teal:hover { background: rgba(13,148,136,.1); } .doc-teal:hover .doc-tile-label { color: #5eead4; } }
+.doc-cyan .doc-tile-icon { background: #ecfeff; color: #0891b2; }
+.doc-cyan:hover { background: #ecfeff; border-color: #a5f3fc; }
+.doc-cyan:hover .doc-tile-label { color: #0e7490; }
+@media (prefers-color-scheme: dark) { .doc-cyan .doc-tile-icon { background: rgba(8,145,178,.2); color: #22d3ee; } .doc-cyan:hover { background: rgba(8,145,178,.1); } .doc-cyan:hover .doc-tile-label { color: #67e8f9; } }
+.doc-rose .doc-tile-icon { background: #fff1f2; color: #e11d48; }
+.doc-rose:hover { background: #fff1f2; border-color: #fecdd3; }
+.doc-rose:hover .doc-tile-label { color: #9f1239; }
+@media (prefers-color-scheme: dark) { .doc-rose .doc-tile-icon { background: rgba(225,29,72,.2); color: #fb7185; } .doc-rose:hover { background: rgba(225,29,72,.1); } .doc-rose:hover .doc-tile-label { color: #fda4af; } }
+.doc-indigo .doc-tile-icon { background: #eef2ff; color: #4f46e5; }
+.doc-indigo:hover { background: #eef2ff; border-color: #c7d2fe; }
+.doc-indigo:hover .doc-tile-label { color: #4338ca; }
+@media (prefers-color-scheme: dark) { .doc-indigo .doc-tile-icon { background: rgba(79,70,229,.2); color: #818cf8; } .doc-indigo:hover { background: rgba(79,70,229,.1); } .doc-indigo:hover .doc-tile-label { color: #c7d2fe; } }
+
+/* Aides & services */
+.services-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+@media (prefers-color-scheme: dark) { .services-section { border-top-color: #334155; } }
+.services-title { font-weight: 700; font-size: 1.125rem; color: #11183b; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
+@media (prefers-color-scheme: dark) { .services-title { color: white; } }
+.services-title svg { width: 1.25rem; height: 1.25rem; color: #14b8a6; }
+.services-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 768px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
+.service-card { background: white; border-radius: 1rem; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+@media (prefers-color-scheme: dark) { .service-card { background: #1e293b; border-color: #334155; } }
+.service-card-header { padding: .75rem 1rem; display: flex; align-items: center; gap: .75rem; }
+.service-card-header .icon-box { background: rgba(255,255,255,.2); padding: .5rem; border-radius: .75rem; backdrop-filter: blur(4px); }
+.service-card-header .icon-box svg { width: 1rem; height: 1rem; color: white; }
+.service-card-header .title { font-weight: 700; font-size: .875rem; color: white; margin: 0; }
+.service-card-header .subtitle { font-size: .7rem; color: rgba(255,255,255,.8); }
+.service-card-body { padding: 1rem; font-size: .75rem; color: #475569; }
+@media (prefers-color-scheme: dark) { .service-card-body { color: #cbd5e1; } }
+.service-card-body p { margin: 0 0 .75rem; }
+.service-btn { display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font-weight: 700; padding: .625rem 1rem; border-radius: .75rem; font-size: .875rem; transition: background .15s; text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,.1); margin-bottom: .5rem; }
+.service-btn:active { transform: scale(.95); }
+.service-btn svg { width: 1rem; height: 1rem; }
+.service-btn-outline { display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font-weight: 700; padding: .625rem 1rem; border-radius: .75rem; font-size: .875rem; transition: background .15s; text-decoration: none; border: 1px solid; }
+.service-btn-outline:active { transform: scale(.95); }
+.service-btn-outline svg { width: 1rem; height: 1rem; }
+.btn-sky { background: #0284c7; color: white; }
+.btn-sky:hover { background: #0369a1; }
+.btn-sky-outline { color: #0369a1; border-color: #bae6fd; background: #f0f9ff; }
+.btn-sky-outline:hover { background: #e0f2fe; }
+@media (prefers-color-scheme: dark) { .btn-sky-outline { color: #38bdf8; border-color: #075985; background: rgba(2,132,199,.1); } }
+.btn-teal { background: #0d9488; color: white; }
+.btn-teal:hover { background: #0f766e; }
+.btn-orange { background: #f97316; color: white; }
+.btn-orange:hover { background: #ea580c; }
+.btn-blue { background: #2563eb; color: white; }
+.btn-blue:hover { background: #1d4ed8; }
+.btn-violet { background: #7c3aed; color: white; }
+.btn-violet:hover { background: #6d28d9; }
+.service-feature-list { margin-top: .75rem; }
+.service-feature-box { background: #fff7ed; border-radius: .75rem; padding: .75rem; border: 1px solid #fed7aa; display: flex; flex-direction: column; gap: .5rem; }
+@media (prefers-color-scheme: dark) { .service-feature-box { background: rgba(194,65,12,.1); border-color: rgba(194,65,12,.3); } }
+.service-feature-item { display: flex; align-items: center; gap: .5rem; }
+.service-feature-item svg { width: .875rem; height: .875rem; color: #f97316; flex-shrink: 0; }
+.service-feature-item span { color: #475569; }
+@media (prefers-color-scheme: dark) { .service-feature-item span { color: #cbd5e1; } }
+.soutien-feature-box { background: #faf5ff; border-radius: .75rem; padding: .75rem; border: 1px solid #e9d5ff; display: flex; flex-direction: column; gap: .5rem; }
+@media (prefers-color-scheme: dark) { .soutien-feature-box { background: rgba(109,40,217,.1); border-color: rgba(109,40,217,.3); } }
+.soutien-feature-item { display: flex; align-items: center; gap: .5rem; }
+.soutien-feature-item svg { width: .875rem; height: .875rem; color: #7c3aed; flex-shrink: 0; }
+.soutien-feature-item span { color: #475569; }
+@media (prefers-color-scheme: dark) { .soutien-feature-item span { color: #cbd5e1; } }
+
+/* Mentions légales */
+.mentions { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; text-align: center; padding-bottom: 1rem; }
+@media (prefers-color-scheme: dark) { .mentions { border-top-color: #334155; } }
+.mentions h3 { font-size: .7rem; font-weight: 700; text-transform: uppercase; color: #64748b; margin-bottom: .5rem; }
+.mentions p { font-size: .7rem; color: #64748b; margin: .25rem 0; }
+
+/* ---------- ONGLET CONTACTS ---------- */
+.urgence-bar { background: #ef4444; border-radius: 1rem; padding: 1rem; box-shadow: 0 4px 16px rgba(239,68,68,.3); color: white; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.urgence-bar-icon { background: rgba(255,255,255,.2); padding: .5rem; border-radius: 50%; }
+.urgence-bar-icon svg { width: 1.5rem; height: 1.5rem; }
+.urgence-bar h3 { font-weight: 700; font-size: 1.125rem; line-height: 1; margin: 0; }
+.urgence-bar p { color: #fecaca; font-size: .75rem; margin: 0; }
+.urgence-bar-num { background: white; color: #dc2626; padding: .5rem 1rem; border-radius: 9999px; font-weight: 900; font-size: 1.25rem; text-decoration: none; box-shadow: 0 1px 3px rgba(0,0,0,.1); transition: background .15s; }
+.urgence-bar-num:hover { background: #fef2f2; }
+
+.contacts-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .contacts-grid { grid-template-columns: repeat(2, 1fr); } }
+.contact-card { background: white; border-radius: 1rem; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); display: flex; flex-direction: column; }
+@media (prefers-color-scheme: dark) { .contact-card { background: #1e293b; border-color: #334155; } }
+.contact-card-header { padding: 1rem; border-bottom: 1px solid; }
+.contact-card-header h3 { font-weight: 700; display: flex; align-items: center; gap: .5rem; margin: 0; }
+.contact-card-header h3 svg { width: 1.25rem; height: 1.25rem; }
+.contact-card-header-blue { background: #eff6ff; border-color: #bfdbfe; }
+.contact-card-header-blue h3 { color: #1d4ed8; }
+@media (prefers-color-scheme: dark) { .contact-card-header-blue { background: rgba(30,64,175,.2); border-color: rgba(30,64,175,.3); } .contact-card-header-blue h3 { color: #60a5fa; } }
+.contact-card-header-teal { background: #f0fdfa; border-color: #99f6e4; }
+.contact-card-header-teal h3 { color: #0f766e; }
+@media (prefers-color-scheme: dark) { .contact-card-header-teal { background: rgba(13,148,136,.2); border-color: rgba(13,148,136,.3); } .contact-card-header-teal h3 { color: #2dd4bf; } }
+.contact-call-btn { margin-top: .75rem; display: flex; align-items: center; justify-content: center; gap: .5rem; width: 100%; font-weight: 700; padding: .75rem 1rem; border-radius: .75rem; font-size: 1rem; text-decoration: none; box-shadow: 0 2px 8px rgba(0,0,0,.15); transition: background .15s; }
+.contact-call-btn:active { transform: scale(.95); }
+.contact-call-btn svg { width: 1.25rem; height: 1.25rem; }
+.contact-call-blue { background: #2563eb; color: white; }
+.contact-call-blue:hover { background: #1d4ed8; }
+.contact-call-teal { background: #0d9488; color: white; }
+.contact-call-teal:hover { background: #0f766e; }
+.contact-card-body { padding: 1.25rem; font-size: .875rem; flex: 1; display: flex; flex-direction: column; gap: 1rem; }
+.contact-hours { font-size: .75rem; color: #475569; }
+@media (prefers-color-scheme: dark) { .contact-hours { color: #cbd5e1; } }
+.contact-hours p { margin: .25rem 0; }
+.contact-hours .key { font-weight: 700; }
+.contact-info-box { border-radius: .75rem; padding: .75rem; border: 1px solid; }
+.contact-info-box-blue { background: #eff6ff; border-color: #bfdbfe; }
+.contact-info-box-blue .contact-info-title { font-weight: 700; color: #1e40af; font-size: .75rem; text-transform: uppercase; margin-bottom: .5rem; }
+@media (prefers-color-scheme: dark) { .contact-info-box-blue { background: rgba(30,64,175,.1); border-color: rgba(30,64,175,.2); } .contact-info-box-blue .contact-info-title { color: #93c5fd; } }
+.contact-info-box-teal { background: #f0fdfa; border-color: #99f6e4; }
+.contact-info-box-teal .contact-info-title { font-weight: 700; color: #0f766e; font-size: .75rem; text-transform: uppercase; margin-bottom: .5rem; }
+@media (prefers-color-scheme: dark) { .contact-info-box-teal { background: rgba(13,148,136,.1); border-color: rgba(13,148,136,.2); } .contact-info-box-teal .contact-info-title { color: #5eead4; } }
+.contact-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .5rem; }
+.contact-list li { display: flex; align-items: flex-start; gap: .5rem; font-size: .75rem; color: #334155; }
+.contact-list li .dot { width: .375rem; height: .375rem; border-radius: 50%; margin-top: .375rem; flex-shrink: 0; }
+.dot-blue { background: #3b82f6; }
+.dot-teal { background: #14b8a6; }
+@media (prefers-color-scheme: dark) { .contact-list li { color: #cbd5e1; } }
+.contact-link { display: flex; align-items: flex-start; gap: .5rem; color: #0d9488; text-decoration: none; font-size: .75rem; transition: opacity .15s; }
+.contact-link:hover { opacity: .75; text-decoration: underline; }
+@media (prefers-color-scheme: dark) { .contact-link { color: #2dd4bf; } }
+.contact-link svg { width: 1rem; height: 1rem; margin-top: .125rem; flex-shrink: 0; }
+.contact-clock { display: flex; align-items: flex-start; gap: .5rem; color: #64748b; font-size: .75rem; }
+.contact-clock svg { width: 1rem; height: 1rem; margin-top: .125rem; flex-shrink: 0; }
+@media (prefers-color-scheme: dark) { .contact-clock { color: #94a3b8; } }
+
+/* Porte close */
+.procedure-steps { display: flex; flex-direction: column; gap: .75rem; }
+.procedure-step { display: flex; align-items: flex-start; gap: .75rem; }
+.procedure-step-num { width: 1.5rem; height: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .75rem; flex-shrink: 0; margin-top: .125rem; }
+.step-amber { background: #fef3c7; color: #92400e; }
+.step-orange { background: #ffedd5; color: #9a3412; }
+@media (prefers-color-scheme: dark) { .step-amber { background: rgba(120,53,15,.4); color: #fcd34d; } .step-orange { background: rgba(154,52,18,.4); color: #fdba74; } }
+.procedure-step-text { font-size: .875rem; color: #475569; }
+@media (prefers-color-scheme: dark) { .procedure-step-text { color: #cbd5e1; } }
+.alert-red { background: #fef2f2; border: 1px solid #fecaca; padding: .75rem; border-radius: .5rem; text-align: center; }
+@media (prefers-color-scheme: dark) { .alert-red { background: rgba(127,29,29,.2); border-color: rgba(127,29,29,.3); } }
+.alert-red-title { font-size: .7rem; font-weight: 700; text-transform: uppercase; color: #b91c1c; display: flex; align-items: center; justify-content: center; gap: .25rem; margin-bottom: .25rem; }
+.alert-red-title svg { width: .75rem; height: .75rem; }
+.alert-red p { font-size: .7rem; color: #dc2626; line-height: 1.4; margin: 0; }
+@media (prefers-color-scheme: dark) { .alert-red-title { color: #f87171; } .alert-red p { color: #fca5a5; } }
+
+/* Médecine du travail */
+.medecine-card { background: white; border-radius: .75rem; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 1.5rem; }
+@media (prefers-color-scheme: dark) { .medecine-card { background: #1e293b; border-color: #334155; } }
+.medecine-header { padding: .75rem 1.25rem; border-bottom: 1px solid #f8fafc; display: flex; align-items: center; gap: .75rem; }
+@media (prefers-color-scheme: dark) { .medecine-header { border-bottom-color: #334155; } }
+.medecine-body { padding: 1rem; display: flex; flex-direction: column; gap: .5rem; }
+.medecine-body .row { display: flex; align-items: flex-start; gap: .75rem; font-size: .875rem; color: #475569; }
+@media (prefers-color-scheme: dark) { .medecine-body .row { color: #cbd5e1; } }
+.medecine-body .row svg { width: 1rem; height: 1rem; color: #0d9488; margin-top: .125rem; flex-shrink: 0; }
+@media (prefers-color-scheme: dark) { .medecine-body .row svg { color: #2dd4bf; } }
+.medecine-body a { color: #1e293b; font-weight: 700; transition: color .15s; }
+.medecine-body a:hover { color: #0d9488; }
+@media (prefers-color-scheme: dark) { .medecine-body a { color: white; } }
+.medecine-note { margin-top: .5rem; background: #f0fdfa; padding: .5rem; border-radius: .5rem; font-size: .75rem; color: #0f766e; }
+@media (prefers-color-scheme: dark) { .medecine-note { background: rgba(13,148,136,.3); color: #99f6e4; } }

@@ -13,30 +13,30 @@ Application web (PWA) de gestion pour les intervenants O2. Guide complet avec si
 
 ## Stack
 
-- HTML / CSS / TypeScript strict (Vite)
-- Tailwind CSS v4
-- PWA avec vite-plugin-pwa (Workbox)
-- Lucide Icons (seule dependance runtime)
-- Tests : Vitest (40 tests)
+- HTML / CSS minimaliste écrits main
+- JS Vanilla (modules ES natifs), zéro build navigateur
+- PWA : Service Worker et manifests écrits main
+- Icônes : SVG inline (aucune dépendance runtime)
+- Tests : Vitest (~45 tests) sur le calculateur ; types vérifiés par `tsc --checkJs`
 - CI/CD : GitHub Actions → GitHub Pages
 
-## Demarrage
+## Démarrage
 
 ```bash
-npm install
-npx vite          # serveur de dev (port 3000)
+python3 -m http.server   # servir les fichiers statiques, puis ouvrir index.html
 ```
+
+Aucune installation requise pour faire tourner l'app : ce sont des fichiers statiques bruts.
 
 ## Commandes
 
 | Commande | Description |
 |----------|-------------|
-| `npx vite` | Serveur de developpement |
-| `npx vite build` | Build de production |
-| `npm run lint` | ESLint |
-| `npx tsc --noEmit` | Verification des types |
-| `npm test` | Tests Vitest |
-| `npm run format` | Formatage Prettier |
+| `python3 -m http.server` | Servir l'app en local |
+| `npx vitest run` | Tests (calculateur + intégrité des données) |
+| `npx tsc --noEmit` | Vérification des types (JSDoc, `checkJs`) |
+| `npx eslint .` | Lint |
+| `npx prettier --write .` | Formatage |
 
 ## Multi-agence
 
@@ -44,8 +44,8 @@ L'app supporte plusieurs agences via le parametre `?agence=` :
 - `nord-touraine` (defaut)
 - `loches`
 
-Ajouter une agence = un objet dans `config.ts` + un manifest JSON dans `public/`.
+Ajouter une agence = un objet dans `config.js` + un manifest JSON à la racine.
 
 ## Deploiement
 
-Push sur `main` → CI (lint + tsc + test + build) → deploy automatique sur GitHub Pages.
+Push sur `main` → CI (lint + tsc + tests + assemblage statique) → deploy automatique sur GitHub Pages.

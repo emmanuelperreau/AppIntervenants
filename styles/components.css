@@ -1,0 +1,357 @@
+/* ============================================================
+   styles/components.css — Accueil, rémunération, primes, ancienneté, congés, chèques
+   ============================================================ */
+
+/* ---------- ONGLET ACCUEIL ---------- */
+.tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+.tool-tile {
+    padding: 1rem; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    display: flex; flex-direction: column; align-items: center;
+    justify-content: center; text-align: center; gap: .5rem;
+    transition: background .15s; cursor: pointer; text-decoration: none;
+}
+.tool-tile:active { transform: scale(.95); }
+.tool-tile-icon {
+    padding: .625rem; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,.1);
+    display: flex; align-items: center; justify-content: center; transition: transform .15s;
+}
+.tool-tile:hover .tool-tile-icon { transform: scale(1.1); }
+.tool-tile-icon svg { width: 1.5rem; height: 1.5rem; }
+.tool-tile-label { display: block; font-size: .875rem; font-weight: 700; line-height: 1.2; }
+.tool-tile-sub { display: block; font-size: .7rem; font-weight: 500; }
+
+/* Couleurs tool tiles */
+.tile-orange { background: #fff7ed; border: 1px solid #fed7aa; }
+.tile-orange:hover { background: #ffedd5; }
+.tile-orange .tool-tile-icon { background: white; color: #ea580c; }
+.tile-orange .tool-tile-label { color: #7c2d12; }
+.tile-orange .tool-tile-sub { color: #c2410c; }
+@media (prefers-color-scheme: dark) {
+    .tile-orange { background: rgba(194,65,12,.2); border-color: #9a3412; }
+    .tile-orange .tool-tile-icon { background: #1e293b; color: #fb923c; }
+    .tile-orange .tool-tile-label { color: #fed7aa; }
+    .tile-orange .tool-tile-sub { color: #fdba74; }
+}
+.tile-blue { background: #eff6ff; border: 1px solid #bfdbfe; }
+.tile-blue:hover { background: #dbeafe; }
+.tile-blue .tool-tile-icon { background: white; color: #2563eb; }
+.tile-blue .tool-tile-label { color: #1e3a8a; }
+.tile-blue .tool-tile-sub { color: #1d4ed8; }
+@media (prefers-color-scheme: dark) {
+    .tile-blue { background: rgba(37,99,235,.2); border-color: #1e40af; }
+    .tile-blue .tool-tile-icon { background: #1e293b; color: #60a5fa; }
+    .tile-blue .tool-tile-label { color: #bfdbfe; }
+    .tile-blue .tool-tile-sub { color: #93c5fd; }
+}
+.tile-teal { background: #f0fdfa; border: 1px solid #99f6e4; }
+.tile-teal:hover { background: #ccfbf1; }
+.tile-teal .tool-tile-icon { background: linear-gradient(135deg, #2dd4bf, #0d9488); color: white; }
+.tile-teal .tool-tile-label { color: #134e4a; }
+.tile-teal .tool-tile-sub { color: #0f766e; }
+@media (prefers-color-scheme: dark) {
+    .tile-teal { background: rgba(13,148,136,.2); border-color: #115e59; }
+    .tile-teal .tool-tile-label { color: #99f6e4; }
+    .tile-teal .tool-tile-sub { color: #5eead4; }
+}
+.tile-purple { background: #faf5ff; border: 1px solid #e9d5ff; }
+.tile-purple:hover { background: #f3e8ff; }
+.tile-purple .tool-tile-icon { background: white; color: #9333ea; }
+.tile-purple .tool-tile-label { color: #581c87; }
+.tile-purple .tool-tile-sub { color: #7e22ce; }
+@media (prefers-color-scheme: dark) {
+    .tile-purple { background: rgba(147,51,234,.2); border-color: #6b21a8; }
+    .tile-purple .tool-tile-icon { background: #1e293b; color: #c084fc; }
+    .tile-purple .tool-tile-label { color: #e9d5ff; }
+    .tile-purple .tool-tile-sub { color: #d8b4fe; }
+}
+.tile-emerald { background: #ecfdf5; border: 1px solid #a7f3d0; }
+.tile-emerald:hover { background: #d1fae5; }
+.tile-emerald .tool-tile-icon { background: white; color: #059669; }
+.tile-emerald .tool-tile-label { color: #064e3b; }
+.tile-emerald .tool-tile-sub { color: #047857; }
+@media (prefers-color-scheme: dark) {
+    .tile-emerald { background: rgba(5,150,105,.2); border-color: #065f46; }
+    .tile-emerald .tool-tile-icon { background: #1e293b; color: #34d399; }
+    .tile-emerald .tool-tile-label { color: #a7f3d0; }
+    .tile-emerald .tool-tile-sub { color: #6ee7b7; }
+}
+.tile-rose { background: #fff1f2; border: 1px solid #fecdd3; }
+.tile-rose:hover { background: #ffe4e6; }
+.tile-rose .tool-tile-icon { background: white; color: #e11d48; }
+.tile-rose .tool-tile-label { color: #881337; }
+.tile-rose .tool-tile-sub { color: #be123c; }
+@media (prefers-color-scheme: dark) {
+    .tile-rose { background: rgba(225,29,72,.2); border-color: #9f1239; }
+    .tile-rose .tool-tile-icon { background: #1e293b; color: #fb7185; }
+    .tile-rose .tool-tile-label { color: #fecdd3; }
+    .tile-rose .tool-tile-sub { color: #fda4af; }
+}
+
+/* Mission & Valeurs */
+.mission-section { padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
+@media (prefers-color-scheme: dark) { .mission-section { border-top-color: #334155; } }
+.mission-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: #94a3b8; text-align: center; margin-bottom: .75rem; }
+.mission-quote { text-align: center; margin-bottom: 2.5rem; }
+.mission-quote-inner { display: inline-block; position: relative; }
+.mission-quote-text { font-size: 1.25rem; font-weight: 900; color: #11183b; line-height: 1.3; padding: 0 .5rem; margin: 0; }
+@media (min-width: 768px) { .mission-quote-text { font-size: 1.5rem; } }
+@media (prefers-color-scheme: dark) { .mission-quote-text { color: white; } }
+.mission-quote-mark { position: absolute; width: 1rem; height: 1rem; color: #14b8a6; opacity: .5; }
+.mission-quote-mark.open  { top: -.75rem; left: -1rem; transform: scaleX(-1); }
+.mission-quote-mark.close { bottom: -.5rem; right: -1rem; }
+
+.valeurs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+@media (min-width: 768px) { .valeurs-grid { grid-template-columns: repeat(5, 1fr); } }
+.valeur-card {
+    background: white; padding: .75rem; border-radius: .75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06); border: 1px solid #f1f5f9;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; height: 6rem; text-align: center;
+}
+.valeur-card.col-span-2 { grid-column: span 2; }
+@media (min-width: 768px) { .valeur-card.col-span-2 { grid-column: span 1; } }
+@media (prefers-color-scheme: dark) { .valeur-card { background: #1e293b; border-color: #334155; } }
+.valeur-card svg { width: 1.5rem; height: 1.5rem; color: #11183b; margin-bottom: .5rem; }
+@media (prefers-color-scheme: dark) { .valeur-card svg { color: #2dd4bf; } }
+.valeur-label { font-size: .6rem; font-weight: 700; text-transform: uppercase; color: #1e293b; }
+@media (prefers-color-scheme: dark) { .valeur-label { color: white; } }
+
+/* ---------- ONGLET REMUNERATION ---------- */
+.money-banner { position: relative; background: #11183b; border-radius: 1.5rem; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.2); }
+.money-banner-bg1 {
+    position: absolute; top: -4rem; right: -4rem; width: 16rem; height: 16rem;
+    background: rgba(20,184,166,.2); border-radius: 50%; filter: blur(3rem); pointer-events: none;
+}
+.money-banner-bg2 {
+    position: absolute; bottom: -2.5rem; left: -2.5rem; width: 10rem; height: 10rem;
+    background: rgba(168,85,247,.2); border-radius: 50%; filter: blur(2rem); pointer-events: none;
+}
+.money-banner-content { position: relative; z-index: 1; padding: 1.5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.money-banner-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+.money-banner-icon-wrap {
+    padding: .75rem; background: linear-gradient(135deg, #2dd4bf, #0d9488);
+    border-radius: 1rem; box-shadow: 0 4px 12px rgba(0,0,0,.2); color: white; flex-shrink: 0;
+}
+.money-banner-icon-wrap svg { width: 1.5rem; height: 1.5rem; }
+.money-banner-title { color: white; font-weight: 700; font-size: 1.25rem; line-height: 1.2; margin: 0; }
+.money-banner-sub { color: #99f6e4; font-size: .875rem; margin-top: .25rem; display: flex; align-items: center; gap: .5rem; }
+.money-banner-pulse { width: .5rem; height: .5rem; background: #2dd4bf; border-radius: 50%; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: .5; } }
+.money-banner-acompte-desktop {
+    display: none; background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+    padding: .5rem 1rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.1); text-align: right;
+}
+@media (min-width: 640px) { .money-banner-acompte-desktop { display: block; } }
+.money-banner-acompte-label { font-size: .7rem; font-weight: 500; color: #99f6e4; text-transform: uppercase; letter-spacing: .05em; }
+.money-banner-acompte-value { color: white; font-weight: 700; font-size: .875rem; }
+.money-banner-acompte-mobile {
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+    padding: .75rem 1rem; border-radius: .75rem; border: 1px solid rgba(255,255,255,.1);
+}
+@media (min-width: 640px) { .money-banner-acompte-mobile { display: none; } }
+.money-banner-cta { display: flex; flex-direction: column; gap: .75rem; margin-top: .25rem; }
+@media (min-width: 640px) { .money-banner-cta { flex-direction: row; } }
+
+/* CTA simulateur (bouton sur index dans tab-money) */
+.sim-cta-btn {
+    flex: 1; background: linear-gradient(135deg, #2563eb, #4f46e5); color: white;
+    padding: .875rem; border-radius: .75rem; box-shadow: 0 4px 12px rgba(0,0,0,.2);
+    display: flex; align-items: center; justify-content: space-between;
+    border: 1px solid rgba(255,255,255,.1); transition: background .15s; text-decoration: none;
+}
+.sim-cta-btn:hover { background: linear-gradient(135deg, #1d4ed8, #4338ca); }
+.sim-cta-btn:active { transform: scale(.98); }
+.sim-cta-btn-inner { display: flex; align-items: center; gap: .75rem; }
+.sim-cta-icon { background: rgba(255,255,255,.2); padding: .5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: background .15s; }
+.sim-cta-btn:hover .sim-cta-icon { background: rgba(255,255,255,.3); }
+.sim-cta-icon svg { width: 1.25rem; height: 1.25rem; color: white; }
+.sim-cta-text { display: flex; flex-direction: column; align-items: flex-start; }
+.sim-cta-title { font-weight: 700; font-size: .875rem; color: white; }
+.sim-cta-sub { font-size: .7rem; color: #bfdbfe; }
+.sim-cta-btn:hover .sim-cta-sub { color: white; }
+.sim-cta-arrow svg { width: 1.25rem; height: 1.25rem; color: #93c5fd; }
+.sim-cta-btn:hover .sim-cta-arrow svg { color: white; }
+
+/* Grilles rémunération */
+.money-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 1024px) { .money-grid { grid-template-columns: repeat(2, 1fr); } }
+.money-grid-full { grid-column: 1 / -1; }
+
+/* Filtre salaire */
+.salary-filter-bar { display: flex; gap: .5rem; margin-bottom: 1rem; }
+.salary-filter { padding: .375rem .75rem; border-radius: .5rem; font-size: .75rem; font-weight: 700; border: 1px solid; transition: all .15s; cursor: pointer; }
+.salary-filter.active, .salary-filter-active { background: #11183b; color: white; border-color: #11183b; }
+.salary-filter:not(.active) { background: white; color: #475569; border-color: #e2e8f0; }
+.salary-filter:not(.active):hover { border-color: #94a3b8; }
+@media (prefers-color-scheme: dark) { .salary-filter:not(.active) { background: #1e293b; color: #cbd5e1; border-color: #475569; } }
+
+/* Colonnes métier */
+.metier-col { display: flex; flex-direction: column; gap: .75rem; }
+.metier-col-header { padding-bottom: .5rem; border-bottom: 2px solid; margin-bottom: .5rem; }
+.metier-col-header h3 { font-size: 1.125rem; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; color: #334155; margin: 0; }
+@media (prefers-color-scheme: dark) { .metier-col-header h3 { color: #e2e8f0; } }
+.col-am .metier-col-header { border-color: #fbd5b5; }
+.col-ge .metier-col-header { border-color: #f0abfc; }
+.col-av .metier-col-header { border-color: #d8b4fe; }
+@media (prefers-color-scheme: dark) {
+    .col-am .metier-col-header { border-color: #9a3412; }
+    .col-ge .metier-col-header { border-color: #86198f; }
+    .col-av .metier-col-header { border-color: #6b21a8; }
+}
+
+/* Lignes de salaire */
+.salary-row { background: white; padding: 1rem; border-radius: .5rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); border-left: 4px solid; display: flex; justify-content: space-between; align-items: center; }
+@media (prefers-color-scheme: dark) { .salary-row { background: #1e293b; } }
+.salary-row-label { font-weight: 700; color: #334155; font-size: .9rem; }
+@media (prefers-color-scheme: dark) { .salary-row-label { color: #e2e8f0; } }
+.salary-row.am { border-left-color: #fdba74; }
+.salary-row.ge { border-left-color: #f0abfc; }
+.salary-row.av { border-left-color: #c084fc; }
+@media (prefers-color-scheme: dark) { .salary-row.am { border-left-color: #c2410c; } .salary-row.ge { border-left-color: #a21caf; } .salary-row.av { border-left-color: #7e22ce; } }
+.price-badge { font-size: .7rem; font-weight: 700; padding: .25rem .5rem; border-radius: .25rem; }
+.price-badge-base { background: #f1f5f9; color: #334155; }
+.price-badge-bonus { background: #ecfdf5; color: #059669; }
+.price-badge-alt { background: #fef9c3; color: #92400e; }
+@media (prefers-color-scheme: dark) { .price-badge-base { background: #334155; color: #e2e8f0; } .price-badge-bonus { background: rgba(5,150,105,.2); color: #34d399; } .price-badge-alt { background: rgba(234,179,8,.2); color: #fde68a; } }
+.service-car { margin-top: .5rem; background: #f8fafc; border-radius: .375rem; padding: .5rem; display: flex; align-items: center; gap: .75rem; border: 1px solid #f1f5f9; }
+@media (prefers-color-scheme: dark) { .service-car { background: rgba(51,65,85,.5); border-color: #475569; } }
+.service-car-icon { background: #2563eb; color: white; padding: .375rem; border-radius: 50%; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.service-car-icon svg { width: 1rem; height: 1rem; }
+.service-car-text { font-size: .7rem; font-weight: 600; color: #475569; }
+@media (prefers-color-scheme: dark) { .service-car-text { color: #cbd5e1; } }
+
+/* Ancienneté */
+.anciennete-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; }
+@media (min-width: 768px) { .anciennete-grid { grid-template-columns: repeat(5, 1fr); } }
+.anciennete-card { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: .75rem; border-radius: .75rem; border: 1px solid; text-align: center; }
+.anciennete-card.col-span-2 { grid-column: span 2; }
+@media (min-width: 768px) { .anciennete-card.col-span-2 { grid-column: span 1; } }
+.anciennete-card-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; margin-bottom: .25rem; }
+.anciennete-val { display: flex; align-items: baseline; gap: .125rem; }
+.anciennete-val .big { font-size: 1.25rem; font-weight: 900; }
+.anciennete-val .unit { font-size: .7rem; font-weight: 700; }
+.anc-default { background: #f8fafc; border-color: #f1f5f9; }
+.anc-default .anciennete-card-label { color: #94a3b8; }
+.anc-default .anciennete-val { color: #0d9488; }
+@media (prefers-color-scheme: dark) { .anc-default { background: rgba(51,65,85,.5); border-color: #475569; } .anc-default .anciennete-val { color: #2dd4bf; } }
+.anc-teal { background: #f0fdfa; border-color: #99f6e4; }
+.anc-teal .anciennete-card-label { color: #0d9488; }
+.anc-teal .anciennete-val { color: #0f766e; }
+@media (prefers-color-scheme: dark) { .anc-teal { background: rgba(13,148,136,.2); border-color: #115e59; } .anc-teal .anciennete-card-label { color: #5eead4; } .anc-teal .anciennete-val { color: #2dd4bf; } }
+.anc-emerald { background: #ecfdf5; border-color: #6ee7b7; }
+.anc-emerald .anciennete-card-label { color: #059669; }
+.anc-emerald .anciennete-val { color: #047857; }
+@media (prefers-color-scheme: dark) { .anc-emerald { background: rgba(5,150,105,.2); border-color: #065f46; } .anc-emerald .anciennete-card-label { color: #34d399; } .anc-emerald .anciennete-val { color: #6ee7b7; } }
+.anc-orange { grid-column: span 2; background: linear-gradient(135deg, #fffbeb, #fff7ed); border-color: #fed7aa; position: relative; overflow: hidden; }
+@media (min-width: 768px) { .anc-orange { grid-column: span 1; } }
+.anc-orange .anciennete-card-label { color: #ea580c; }
+.anc-orange .anciennete-val { color: #ea580c; }
+.anc-orange .big { font-size: 1.5rem; }
+.anc-orange-crown { position: absolute; top: 0; right: 0; padding: .25rem; opacity: .1; color: #ea580c; }
+.anc-orange-crown svg { width: 2rem; height: 2rem; }
+@media (prefers-color-scheme: dark) { .anc-orange { background: linear-gradient(135deg, rgba(120,53,15,.2), rgba(154,52,18,.2)); border-color: #9a3412; } .anc-orange .anciennete-card-label { color: #fdba74; } .anc-orange .anciennete-val { color: #fb923c; } }
+
+/* En-têtes de section dégradés (partagés tous onglets) */
+.section-header-gradient { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.25rem; color: white; border-radius: 1rem 1rem 0 0; }
+.section-header-gradient .icon-box { background: rgba(255,255,255,.2); padding: .5rem; border-radius: .75rem; backdrop-filter: blur(4px); }
+.section-header-gradient .icon-box svg { width: 1.25rem; height: 1.25rem; }
+.section-header-gradient h3 { font-weight: 700; font-size: 1rem; margin: 0; }
+.shg-orange { background: linear-gradient(135deg, #f97316, #ef4444); }
+.shg-blue   { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+.shg-teal   { background: linear-gradient(135deg, #14b8a6, #059669); }
+.shg-pink   { background: linear-gradient(135deg, #ec4899, #f43f5e); }
+.shg-cyan   { background: linear-gradient(135deg, #06b6d4, #3b82f6); }
+.shg-purple { background: linear-gradient(135deg, #8b5cf6, #a855f7); }
+.shg-navy   { background: linear-gradient(135deg, #11183b, #1e2952); }
+.shg-green-teal { background: linear-gradient(135deg, #059669, #14b8a6); }
+.shg-blue-teal  { background: linear-gradient(135deg, #0ea5e9, #0d9488); }
+.shg-violet { background: linear-gradient(135deg, #7c3aed, #9333ea); }
+
+/* Transport */
+.km-block { background: rgba(249,115,22,.08); padding: 1rem; border-radius: .75rem; border: 1px solid #fed7aa; }
+@media (prefers-color-scheme: dark) { .km-block { background: rgba(194,65,12,.1); border-color: rgba(194,65,12,.3); } }
+.km-value { font-size: 1.5rem; font-weight: 700; color: #ea580c; }
+@media (prefers-color-scheme: dark) { .km-value { color: #fb923c; } }
+.km-unit { font-size: .7rem; color: #f97316; font-weight: 500; }
+
+/* Tickets restaurant */
+.ticket-bar { width: 100%; height: .5rem; background: #bfdbfe; border-radius: 9999px; overflow: hidden; display: flex; }
+.ticket-bar-o2 { width: 50%; background: #11183b; }
+.ticket-bar-sal { width: 50%; background: #60a5fa; }
+@media (prefers-color-scheme: dark) { .ticket-bar { background: #1e3a8a; } .ticket-bar-o2 { background: #60a5fa; } .ticket-bar-sal { background: #1d4ed8; } }
+.ticket-bar-labels { display: flex; justify-content: space-between; font-size: .7rem; font-weight: 700; margin-top: .25rem; text-transform: uppercase; letter-spacing: .025em; }
+.ticket-bar-labels .o2 { color: #11183b; }
+.ticket-bar-labels .sal { color: #3b82f6; }
+@media (prefers-color-scheme: dark) { .ticket-bar-labels .o2 { color: #93c5fd; } }
+
+/* Parrainage */
+.parrainage-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .parrainage-grid { grid-template-columns: repeat(2, 1fr); } }
+.parrainage-card { border-radius: 1rem; padding: 1.5rem; color: white; box-shadow: 0 4px 16px rgba(0,0,0,.2); display: flex; flex-direction: column; align-items: center; text-align: center; gap: .5rem; position: relative; overflow: hidden; }
+.parrainage-card h3 { font-size: 1.125rem; font-weight: 500; text-transform: uppercase; letter-spacing: .1em; margin: 0; }
+.parrainage-card svg { width: 3rem; height: 3rem; margin: .5rem 0; }
+.parrainage-amount { font-size: 3rem; font-weight: 900; letter-spacing: -.025em; line-height: 1; }
+.parrainage-sub { font-size: .875rem; font-weight: 500; background: rgba(255,255,255,.2); padding: .25rem .75rem; border-radius: 9999px; }
+.parrainage-clients { background: #c96b47; }
+.parrainage-salaries { background: #b93c7d; }
+
+/* Majorations */
+.majorations-card { background: white; border-radius: 1rem; border-top: 4px solid #a855f7; padding: 1.25rem; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+@media (prefers-color-scheme: dark) { .majorations-card { background: #1e293b; } }
+.majorations-header { display: flex; align-items: center; gap: .75rem; margin-bottom: 1rem; }
+.majorations-icon { background: #f3e8ff; padding: .5rem; border-radius: .5rem; color: #9333ea; }
+.majorations-icon svg { width: 1.25rem; height: 1.25rem; }
+@media (prefers-color-scheme: dark) { .majorations-icon { background: rgba(168,85,247,.2); } }
+.majorations-title { font-weight: 700; color: #1e293b; margin: 0; }
+@media (prefers-color-scheme: dark) { .majorations-title { color: white; } }
+.majorations-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 640px) { .majorations-grid { grid-template-columns: repeat(3, 1fr); } }
+.majoration-item { padding: .75rem; border-radius: .75rem; border: 1px solid; display: flex; flex-direction: row; align-items: center; justify-content: space-between; }
+@media (min-width: 640px) { .majoration-item { flex-direction: column; text-align: center; justify-content: center; } }
+.majoration-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; color: #64748b; }
+@media (prefers-color-scheme: dark) { .majoration-label { color: #94a3b8; } }
+.majoration-value { font-size: 1.25rem; font-weight: 900; display: block; }
+.maj-teal { background: #f0fdfa; border-color: #99f6e4; }
+.maj-teal .majoration-value { color: #0d9488; }
+@media (prefers-color-scheme: dark) { .maj-teal { background: rgba(13,148,136,.2); border-color: rgba(13,148,136,.3); } .maj-teal .majoration-value { color: #2dd4bf; } }
+.maj-purple { background: #faf5ff; border-color: #e9d5ff; }
+.maj-purple .majoration-value { color: #9333ea; }
+@media (prefers-color-scheme: dark) { .maj-purple { background: rgba(168,85,247,.2); border-color: rgba(168,85,247,.3); } .maj-purple .majoration-value { color: #c084fc; } }
+.maj-navy { background: #11183b; color: white; border-color: #11183b; }
+.maj-navy .majoration-label { color: #99f6e4; }
+.maj-navy .majoration-value { color: white; font-size: 1.5rem; }
+
+/* Congés */
+.conges-section { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+.conges-acquis { background: #f8fafc; padding: .75rem; border-radius: .5rem; font-size: .75rem; }
+@media (prefers-color-scheme: dark) { .conges-acquis { background: rgba(51,65,85,.5); } }
+.conges-alert { background: #fffbeb; padding: .5rem; border-radius: .375rem; border: 1px solid #fde68a; }
+@media (prefers-color-scheme: dark) { .conges-alert { background: rgba(120,53,15,.2); border-color: rgba(120,53,15,.3); } }
+.conges-alert p { font-size: .7rem; color: #92400e; margin: 0; line-height: 1.5; }
+@media (prefers-color-scheme: dark) { .conges-alert p { color: #fde68a; } }
+.conges-reminder { background: #eff6ff; padding: .75rem; border-radius: .5rem; border-left: 4px solid #60a5fa; }
+@media (prefers-color-scheme: dark) { .conges-reminder { background: rgba(30,64,175,.2); border-left-color: #3b82f6; } }
+.conges-reminder li { display: flex; align-items: flex-start; gap: .5rem; font-size: .7rem; }
+.conges-reminder li svg { width: .75rem; height: .75rem; margin-top: .125rem; flex-shrink: 0; }
+.conges-reminder li span { color: #1e3a8a; }
+@media (prefers-color-scheme: dark) { .conges-reminder li span { color: #93c5fd; } }
+
+/* Chèques cadeaux */
+.cheques-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; padding: 1.5rem; }
+@media (min-width: 768px) { .cheques-grid { grid-template-columns: repeat(2, 1fr); } }
+.cheque-item { display: flex; align-items: center; gap: 1rem; padding: 1rem; border-radius: .75rem; border: 1px solid; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
+.cheque-icon { padding: 1rem; border-radius: 50%; }
+.cheque-icon svg { width: 2rem; height: 2rem; }
+.cheque-amount { font-size: 1.125rem; font-weight: 900; }
+.cheque-noel { background: rgba(236,72,153,.1); border-color: #fce7f3; }
+.cheque-noel .cheque-icon { background: #fce7f3; color: #db2777; }
+.cheque-noel .cheque-amount { color: #db2777; }
+@media (prefers-color-scheme: dark) { .cheque-noel { background: rgba(236,72,153,.1); border-color: rgba(236,72,153,.3); } .cheque-noel .cheque-icon { background: rgba(236,72,153,.2); color: #f9a8d4; } .cheque-noel .cheque-amount { color: #f9a8d4; } }
+.cheque-vacances { background: rgba(249,115,22,.08); border-color: #fed7aa; }
+.cheque-vacances .cheque-icon { background: #ffedd5; color: #ea580c; }
+.cheque-vacances .cheque-amount { color: #ea580c; }
+@media (prefers-color-scheme: dark) { .cheque-vacances { background: rgba(194,65,12,.1); border-color: rgba(194,65,12,.3); } .cheque-vacances .cheque-icon { background: rgba(194,65,12,.2); color: #fdba74; } .cheque-vacances .cheque-amount { color: #fdba74; } }
+.cheque-badge { font-size: .7rem; font-weight: 700; padding: .25rem .75rem; border-radius: 9999px; }
+.cheque-badge-noel { background: #fce7f3; color: #be185d; }
+.cheque-badge-vacances { background: #ffedd5; color: #c2410c; }
+@media (prefers-color-scheme: dark) { .cheque-badge-noel { background: rgba(236,72,153,.2); color: #f9a8d4; } .cheque-badge-vacances { background: rgba(194,65,12,.2); color: #fdba74; } }

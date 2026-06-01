@@ -1,222 +1,565 @@
-                <!-- Transport (Tall Column) -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden flex flex-col h-full">
-                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-orange-500 to-red-500 text-white">
-                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="car" class="w-5 h-5"></i></div>
-                        <h3 class="font-bold text-base">Mobilité & Transport</h3>
+<!-- Transport & Mobilité -->
+<div class="card">
+    <div class="card-header section-header-gradient shg-orange">
+        <div class="icon-box">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="20"
+                 height="20"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+                <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
+                <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
+            </svg>
+        </div>
+        <h3>Mobilité &amp; Transport</h3>
+    </div>
+    <div class="card-body" style="display:flex;flex-direction:column;gap:1rem">
+        <!-- Indemnités km -->
+        <div class="km-block">
+            <div style="display:flex;
+                        justify-content:space-between;
+                        align-items:center;
+                        margin-bottom:.5rem">
+                <div style="display:flex;gap:.75rem;align-items:center">
+                    <div style="background:white;
+                                padding:.5rem;
+                                border-radius:.5rem;
+                                box-shadow:0 1px 2px rgba(0,0,0,.08);
+                                color:#f97316">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20"
+                             height="20"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
+                            <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
+                        </svg>
                     </div>
-                    <div class="p-5 space-y-4 flex-1">
-                        <div class="bg-orange-50/50 dark:bg-orange-900/10 p-4 rounded-xl border border-orange-100 dark:border-orange-900/30">
-                            <div class="flex justify-between items-center mb-2">
-                                <div class="flex gap-3 items-center">
-                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-orange-500"><i data-lucide="car" class="w-5 h-5"></i></div>
-                                    <span class="font-bold text-slate-800 dark:text-white text-sm">Indemnités Km</span>
-                                </div>
-                                <div class="text-right">
-                                    <span id="val-taux-km" class="block text-2xl font-bold text-orange-600 dark:text-orange-400">0,45 €</span>
-                                    <span class="text-xs text-orange-400 font-medium">/ km</span>
-                                </div>
-                            </div>
-                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-orange-100 dark:border-orange-900/30">
-                                <p class="text-xs text-slate-600 dark:text-slate-400 font-medium">
-                                    Rémunération du temps de trajet et des frais kilométriques entre 2 prestations,
-                                    si le temps d'intermission (hors trajet) est inférieur à 15 min.
-                                </p>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-2 px-1">Aussi pour trajets domicile-travail > 20km (début/fin de journée).</p>
-                        </div>
-
-                        <!-- Prime Carburant Statique -->
-                        <div class="bg-slate-50 dark:bg-slate-700/30 p-4 rounded-xl border border-slate-100 dark:border-slate-700 flex flex-col gap-3">
-                            <div class="flex justify-between items-center mb-1">
-                                <div class="flex gap-3 items-center">
-                                    <div class="bg-white dark:bg-slate-700 p-2 rounded-lg shadow-sm text-slate-600 dark:text-slate-300"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                                    <div><p class="font-bold text-slate-800 dark:text-white text-sm">Prime Carburant</p><p class="text-xs text-slate-500 dark:text-slate-400">Juin & Décembre</p></div>
-                                </div>
-                                <div class="text-right">
-                                    <span id="val-prime-carburant" class="block text-2xl font-bold text-[#11183b] dark:text-white">300 €</span>
-                                    <span class="text-xs text-slate-500 font-medium">/ an (max)</span>
-                                </div>
-                            </div>
-
-                            <div class="bg-white dark:bg-slate-900/50 p-3 rounded-lg border border-slate-200 dark:border-slate-600">
-                                <p class="text-xs font-bold text-slate-700 dark:text-slate-300 mb-2">Simulations (si présent toute l'année) :</p>
-                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400 border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">
-                                    <span>Contrat 30h :</span>
-                                    <span class="font-bold text-[#11183b] dark:text-white">~ <span id="val-prime-carburant-30h">257</span> € /an</span>
-                                </div>
-                                <div class="flex justify-between items-center text-xs text-slate-600 dark:text-slate-400">
-                                    <span>Contrat 25h :</span>
-                                    <span class="font-bold text-[#11183b] dark:text-white">~ <span id="val-prime-carburant-25h">214</span> € /an</span>
-                                </div>
-                            </div>
-
-                            <p class="text-xs text-slate-500 dark:text-slate-400 italic border-t border-slate-200 dark:border-slate-700 pt-2">Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.</p>
-                        </div>
-                    </div>
+                    <span style="font-weight:700;color:#1e293b;font-size:.875rem">Indemnités Km</span>
                 </div>
-
-                <!-- Column for Restaurant + Mutuelle -->
-                <div class="flex flex-col gap-6">
-                    <!-- Titres Restaurant -->
-                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-blue-500 to-indigo-500 text-white">
-                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="utensils" class="w-5 h-5"></i></div>
-                            <h3 class="font-bold text-base">Titres Restaurant</h3>
-                        </div>
-                        <div class="p-5">
-                            <div class="p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-xl border border-blue-100 dark:border-blue-900/30 mb-4">
-                                <div class="flex justify-between items-center mb-2">
-                                    <h4 class="font-bold text-blue-900 dark:text-blue-200">Valeur Faciale</h4>
-                                    <div class="text-right">
-                                        <span id="val-ticket" class="block text-2xl font-bold text-blue-600 dark:text-blue-400">6 €</span>
-                                        <span class="text-xs text-blue-400 font-bold">/ jour travaillé</span>
-                                    </div>
-                                </div>
-                                <div class="w-full h-2 bg-blue-200 dark:bg-blue-900 rounded-full overflow-hidden flex">
-                                    <div class="w-1/2 bg-[#11183b] dark:bg-blue-400"></div>
-                                    <div class="w-1/2 bg-blue-400 dark:bg-blue-600"></div>
-                                </div>
-                                <div class="flex justify-between text-xs font-bold mt-1 uppercase tracking-wide">
-                                    <span class="text-[#11183b] dark:text-blue-200">Part O2 : <span id="val-ticket-employer">3</span>€</span>
-                                    <span class="text-blue-500 dark:text-blue-400">Votre Part : <span id="val-ticket-employee">3</span>€</span>
-                                </div>
-                            </div>
-                            <div class="space-y-2">
-                                <div class="flex items-center gap-2 text-xs text-slate-600 dark:text-slate-300 bg-green-50 dark:bg-green-900/20 p-2 rounded-lg border border-green-100 dark:border-green-900/30">
-                                    <i data-lucide="check-circle" class="w-3.5 h-3.5 text-green-600 dark:text-green-400"></i>
-                                    <span class="font-bold text-green-800 dark:text-green-300">Après 2 mois d'ancienneté</span>
-                                </div>
-                                <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed px-1">Eligible pour tous les jours ayant une pause méridienne.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Mutuelle Santé -->
-                    <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                        <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white">
-                            <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="heart-handshake" class="w-5 h-5"></i></div>
-                            <h3 id="remun-mutuelle-name" class="font-bold text-base">Mutuelle Santé (Swiss Life)</h3>
-                        </div>
-                        <div class="p-5">
-                            <div class="flex items-center justify-between mb-4">
-                                <div>
-                                    <p class="text-sm text-slate-500 dark:text-slate-400 mb-1">Prise en charge à 50% par O2</p>
-                                    <div class="inline-block bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 text-xs font-bold px-2 py-1 rounded-full mb-1">Sans condition d'ancienneté</div>
-                                    <p class="text-xs text-slate-500 italic">Obligatoire sauf motifs de dispense.</p>
-                                </div>
-                                <div class="text-right">
-                                    <span class="text-xs text-slate-500 font-medium block">Votre part / mois</span>
-                                    <span id="remun-mutuelle-price" class="text-3xl font-extrabold text-[#11183b] dark:text-white">--,-- €</span>
-                                    <span class="text-xs text-slate-500 block">Déduit du salaire</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Chèques Cadeaux (Full Width) -->
-                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden lg:col-span-2">
-                    <div class="px-5 py-4 border-b border-slate-50 dark:border-slate-700 flex items-center gap-3 bg-gradient-to-r from-pink-500 to-rose-500 text-white">
-                        <div class="bg-white/20 p-2 rounded-xl backdrop-blur-sm"><i data-lucide="gift" class="w-5 h-5"></i></div>
-                        <h3 class="font-bold text-base">Chèques Cadeaux</h3>
-                        <div class="ml-auto bg-white/20 px-2 py-0.5 rounded text-xs font-bold">Après 2 mois d'ancienneté à la date de distribution</div>
-                    </div>
-                    <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-pink-100 dark:border-pink-900/30 bg-pink-50/30 dark:bg-pink-900/10">
-                            <div class="bg-pink-100 dark:bg-pink-900 p-4 rounded-full text-pink-600 dark:text-pink-300"><i data-lucide="gift" class="w-8 h-8"></i></div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Noël</h4><span class="bg-pink-100 dark:bg-pink-900 text-pink-700 dark:text-pink-200 text-xs font-bold px-3 py-1 rounded-full">Novembre</span></div>
-                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-pink-600 dark:text-pink-400 text-lg"><span id="val-cheques-cadeaux">50 €</span> /an</span> <span class="text-xs">+ 15€ / enfant (-16 ans)</span></p>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-4 bg-white dark:bg-slate-700/50 p-4 rounded-xl shadow-sm border border-orange-100 dark:border-orange-900/30 bg-orange-50/30 dark:bg-orange-900/10">
-                            <div class="bg-orange-100 dark:bg-orange-900 p-4 rounded-full text-orange-600 dark:text-orange-300"><i data-lucide="sun" class="w-8 h-8"></i></div>
-                            <div class="flex-1">
-                                <div class="flex justify-between items-center"><h4 class="font-bold text-lg text-slate-800 dark:text-white">Vacances</h4><span class="bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-200 text-xs font-bold px-3 py-1 rounded-full">Juin</span></div>
-                                <p class="text-sm text-slate-600 dark:text-slate-300 mt-1"><span class="font-black text-orange-600 dark:text-orange-400 text-lg"><span id="val-cheques-vacances">100 €</span> /an</span> <span class="text-xs text-slate-500">(Co-financement 20%)</span></p>
-                            </div>
-                        </div>
-                    </div>
+                <div style="text-align:right">
+                    <span id="val-taux-km" class="km-value">0,45 €</span>
+                    <span class="km-unit">/ km</span>
                 </div>
             </div>
-
-            <!-- Parrainages -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <!-- Parrainage Client -->
-                <div class="bg-[#c96b47] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
-                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Clients</h3>
-                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
-                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-client">40 €</span></div>
-                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque nouveau client</p>
+            <div style="background:white;
+                        padding:.75rem;
+                        border-radius:.5rem;
+                        border:1px solid #fed7aa">
+                <p style="font-size:.7rem;color:#475569;font-weight:500;margin:0">
+                    Rémunération du temps de trajet et des frais kilométriques entre 2 prestations, si le temps d'intermission (hors trajet) est inférieur à 15 min.
+                </p>
+            </div>
+            <p style="font-size:.7rem;
+                      color:#64748b;
+                      margin:.5rem 0 0;
+                      padding:0 .25rem">Aussi pour trajets domicile-travail &gt; 20km (début/fin de journée).</p>
+        </div>
+        <!-- Prime carburant -->
+        <div style="background:#f8fafc;
+                    padding:1rem;
+                    border-radius:.75rem;
+                    border:1px solid #f1f5f9;
+                    display:flex;
+                    flex-direction:column;
+                    gap:.75rem">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+                <div style="display:flex;gap:.75rem;align-items:center">
+                    <div style="background:white;
+                                padding:.5rem;
+                                border-radius:.5rem;
+                                box-shadow:0 1px 2px rgba(0,0,0,.08);
+                                color:#475569">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="20"
+                             height="20"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
+                        </svg>
+                    </div>
+                    <div>
+                        <p style="font-weight:700;color:#1e293b;font-size:.875rem;margin:0">Prime Carburant</p>
+                        <p style="font-size:.7rem;color:#64748b;margin:0">Juin &amp; Décembre</p>
+                    </div>
                 </div>
-                <!-- Parrainage Salarié -->
-                <div class="bg-[#b93c7d] rounded-2xl p-6 text-white shadow-lg relative overflow-hidden flex flex-col items-center text-center gap-2">
-                    <h3 class="text-lg font-medium uppercase tracking-widest">Parrainage Salariés</h3>
-                    <i data-lucide="users" class="w-12 h-12 my-2"></i>
-                    <div class="text-5xl font-black tracking-tighter"><span id="val-parrainage-intervenant">200 €</span></div>
-                    <p class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">Pour chaque salarié recruté</p>
+                <div style="text-align:right">
+                    <span id="val-prime-carburant"
+                          style="display:block;
+                                 font-size:1.5rem;
+                                 font-weight:700;
+                                 color:#11183b">300 €</span>
+                    <span style="font-size:.7rem;color:#64748b;font-weight:500">/ an (max)</span>
                 </div>
             </div>
-
-            <!-- Majorations -->
-            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border-t-4 border-t-purple-500 p-5">
-                 <div class="flex items-center gap-3 mb-4">
-                    <div class="bg-purple-100 dark:bg-purple-900/50 p-2 rounded-lg text-purple-600 dark:text-purple-400"><i data-lucide="trending-up" class="w-5 h-5"></i></div>
-                    <h3 class="font-bold text-slate-800 dark:text-white">Majorations Horaires</h3>
-                 </div>
-                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    <div class="p-3 bg-teal-50 dark:bg-teal-900/20 rounded-xl border border-teal-100 dark:border-teal-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
-                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Dimanche & Nuit</span>
-                        <div class="text-right sm:text-center"><span class="text-xl font-black text-teal-600 dark:text-teal-400 block">+ 10%</span></div>
-                    </div>
-                    <div class="p-3 bg-purple-50 dark:bg-purple-900/20 rounded-xl border border-purple-100 dark:border-purple-900/30 flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center">
-                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Heures Complémentaires</span>
-                        <div class="text-right sm:text-center"><span class="text-xl font-black text-purple-600 dark:text-purple-400 block">10 à 25%</span></div>
-                    </div>
-                    <div class="p-3 bg-[#11183b] text-white rounded-xl flex flex-row sm:flex-col items-center justify-between sm:justify-center text-center shadow-md">
-                        <span class="text-xs font-bold text-teal-100 uppercase">Jours Fériés</span>
-                        <div class="text-right sm:text-center"><span class="text-2xl font-black block">+ 100%</span></div>
-                    </div>
-                 </div>
+            <div style="background:white;
+                        padding:.75rem;
+                        border-radius:.5rem;
+                        border:1px solid #e2e8f0">
+                <p style="font-size:.7rem;
+                          font-weight:700;
+                          color:#334155;
+                          margin:0 0 .5rem">Simulations (si présent toute l'année) :</p>
+                <div style="display:flex;
+                            justify-content:space-between;
+                            font-size:.7rem;
+                            color:#475569;
+                            border-bottom:1px solid #f1f5f9;
+                            padding-bottom:.25rem;
+                            margin-bottom:.25rem">
+                    <span>Contrat 30h :</span>
+                    <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-30h">257</span> € /an</span>
+                </div>
+                <div style="display:flex;
+                            justify-content:space-between;
+                            font-size:.7rem;
+                            color:#475569">
+                    <span>Contrat 25h :</span>
+                    <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-25h">214</span> € /an</span>
+                </div>
             </div>
-
-             <!-- Acquisition Congés (Moved Here) -->
-             <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden">
-                <div class="px-5 py-3 border-b border-slate-50 dark:border-slate-700 flex items-center gap-2 bg-gradient-to-r from-blue-50 to-white dark:from-blue-900/20 dark:to-slate-800">
-                    <div class="p-1.5 bg-blue-100 dark:bg-blue-900/50 rounded text-blue-600 dark:text-blue-400"><i data-lucide="calendar-days" class="w-4 h-4"></i></div>
-                    <h3 class="font-bold text-sm text-slate-800 dark:text-white">Acquisition des Congés</h3>
+            <p style="font-size:.7rem;
+                      color:#64748b;
+                      font-style:italic;
+                      border-top:1px solid #e2e8f0;
+                      padding-top:.5rem;
+                      margin:0">
+                Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.
+            </p>
+        </div>
+    </div>
+</div>
+<!-- Titres restaurant + Mutuelle côte à côte -->
+<div style="display:grid;grid-template-columns:1fr;gap:1.5rem">
+    <!-- Titres restaurant -->
+    <div class="card">
+        <div class="card-header section-header-gradient shg-blue">
+            <div class="icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="20"
+                     height="20"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <line x1="3" y1="2" x2="3" y2="22" />
+                    <path d="M7 2v7a3 3 0 0 0 6 0V2" />
+                    <line x1="10" y1="12" x2="10" y2="22" />
+                </svg>
+            </div>
+            <h3>Titres Restaurant</h3>
+        </div>
+        <div class="card-body">
+            <div style="background:rgba(59,130,246,.06);
+                        padding:1rem;
+                        border-radius:.75rem;
+                        border:1px solid #bfdbfe;
+                        margin-bottom:1rem">
+                <div style="display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            margin-bottom:.5rem">
+                    <h4 style="font-weight:700;color:#1e3a8a;margin:0">Valeur Faciale</h4>
+                    <div style="text-align:right">
+                        <span id="val-ticket"
+                              style="display:block;
+                                     font-size:1.5rem;
+                                     font-weight:700;
+                                     color:#2563eb">6 €</span>
+                        <span style="font-size:.7rem;color:#60a5fa;font-weight:700">/ jour travaillé</span>
+                    </div>
                 </div>
-                <div class="p-4 space-y-4">
-                     <div class="bg-slate-50 dark:bg-slate-700/50 p-3 rounded-lg text-xs space-y-2">
-                        <div class="flex justify-between items-center">
-                            <span class="text-slate-600 dark:text-slate-300">Acquisition</span>
-                            <div class="text-right">
-                                <span class="font-bold text-[#11183b] dark:text-white block">2,5 jours / mois</span>
-                                <span class="text-xs text-slate-500 dark:text-slate-400 block">Soit 30 jours par an (5 semaines)</span>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 border-t border-slate-200 dark:border-slate-600 pt-2">Tous les salariés, même à temps partiel, acquièrent le même nombre de congés (incluant le samedi).</p>
-                    </div>
-
-                    <div class="space-y-2">
-                        <h4 class="font-bold text-xs text-slate-700 dark:text-slate-200 uppercase tracking-wide">Règle de pose</h4>
-                        <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                            Du <span class="font-bold">1er jour de congés</span> jusqu'à la <span class="font-bold">veille de la reprise effective</span>.
-                        </p>
-                        <div class="bg-amber-50 dark:bg-amber-900/20 p-2 rounded border border-amber-100 dark:border-amber-900/30">
-                             <p class="text-xs text-amber-800 dark:text-amber-200 leading-snug">
-                                <i data-lucide="info" class="w-3 h-3 inline mr-1"></i>
-                                Cette période inclut les <span class="font-bold">samedis et fériés</span> (hors 1er mai et 25 décembre).
-                                <span class="block mt-0.5 opacity-80 font-medium">Limite : 5 samedis décomptés par an.</span>
-                             </p>
-                        </div>
-                    </div>
-
-                    <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg border-l-4 border-blue-400 dark:border-blue-500">
-                        <ul class="text-xs text-blue-900 dark:text-blue-200 space-y-1">
-                             <li class="flex items-start gap-2"><i data-lucide="key" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Déposez vos clés</span> à l'agence avant de partir.</span></li>
-                             <li class="flex items-start gap-2"><i data-lucide="phone-call" class="w-3 h-3 mt-0.5 shrink-0"></i> <span><span class="font-bold">Contactez l'agence</span> avant votre reprise pour organiser la récupération des clés.</span></li>
-                        </ul>
+                <div class="ticket-bar">
+                    <div class="ticket-bar-o2"></div>
+                    <div class="ticket-bar-sal"></div>
+                </div>
+                <div class="ticket-bar-labels">
+                    <span class="o2">Part O2 : <span id="val-ticket-employer">3</span>€</span>
+                    <span class="sal">Votre Part : <span id="val-ticket-employee">3</span>€</span>
+                </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.5rem">
+                <div style="display:flex;
+                            align-items:center;
+                            gap:.5rem;
+                            font-size:.7rem;
+                            color:#15803d;
+                            background:#f0fdf4;
+                            padding:.5rem;
+                            border-radius:.5rem;
+                            border:1px solid #bbf7d0">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="14"
+                         height="14"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                        <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                    <span style="font-weight:700">Après 2 mois d'ancienneté</span>
+                </div>
+                <p style="font-size:.7rem;
+                          color:#64748b;
+                          margin:0;
+                          line-height:1.5;
+                          padding:0 .25rem">Eligible pour tous les jours ayant une pause méridienne.</p>
+            </div>
+        </div>
+    </div>
+    <!-- Mutuelle -->
+    <div class="card">
+        <div class="card-header section-header-gradient shg-cyan">
+            <div class="icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="20"
+                     height="20"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+                    <path d="m18 15-2-2" />
+                    <path d="m15 18-2-2" />
+                </svg>
+            </div>
+            <h3 id="remun-mutuelle-name">Mutuelle Santé (Swiss Life)</h3>
+        </div>
+        <div class="card-body">
+            <div style="display:flex;
+                        align-items:center;
+                        justify-content:space-between;
+                        margin-bottom:1rem">
+                <div>
+                    <p style="font-size:.875rem;color:#64748b;margin:0 0 .25rem">Prise en charge à 50% par O2</p>
+                    <span style="display:inline-block;
+                                 background:#dcfce7;
+                                 color:#15803d;
+                                 font-size:.7rem;
+                                 font-weight:700;
+                                 padding:.25rem .5rem;
+                                 border-radius:9999px;
+                                 margin-bottom:.25rem">Sans condition d'ancienneté</span>
+                    <p style="font-size:.7rem;color:#64748b;font-style:italic;margin:0">Obligatoire sauf motifs de dispense.</p>
+                </div>
+                <div style="text-align:right">
+                    <span style="font-size:.7rem;color:#64748b;font-weight:500;display:block">Votre part / mois</span>
+                    <span id="remun-mutuelle-price"
+                          style="font-size:1.875rem;
+                                 font-weight:800;
+                                 color:#11183b">--,-- €</span>
+                    <span style="font-size:.7rem;color:#64748b;display:block">Déduit du salaire</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Chèques cadeaux -->
+<div class="card">
+    <div class="card-header section-header-gradient shg-pink"
+         style="justify-content:space-between">
+        <div style="display:flex;align-items:center;gap:.75rem">
+            <div class="icon-box">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     width="20"
+                     height="20"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <polyline points="20 12 20 22 4 22 4 12" /><rect x="2" y="7" width="20" height="5" /><line x1="12" y1="22" x2="12" y2="7" />
+                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                </svg>
+            </div>
+            <h3>Chèques Cadeaux</h3>
+        </div>
+        <div style="background:rgba(255,255,255,.2);
+                    padding:.125rem .5rem;
+                    border-radius:.25rem;
+                    font-size:.7rem;
+                    font-weight:700">Après 2 mois d'ancienneté à la date de distribution</div>
+    </div>
+    <div class="cheques-grid">
+        <div class="cheque-item cheque-noel">
+            <div class="cheque-icon">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <polyline points="20 12 20 22 4 22 4 12" /><rect x="2" y="7" width="20" height="5" /><line x1="12" y1="22" x2="12" y2="7" />
+                    <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                    <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                </svg>
+            </div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <h4 style="font-weight:700;font-size:1.125rem;color:#1e293b;margin:0">Noël</h4>
+                    <span class="cheque-badge cheque-badge-noel">Novembre</span>
+                </div>
+                <p style="font-size:.875rem;color:#475569;margin:.25rem 0 0">
+                    <span class="cheque-amount"><span id="val-cheques-cadeaux">50 €</span> /an</span>
+                    <span style="font-size:.7rem">+ 15€ / enfant (-16 ans)</span>
+                </p>
+            </div>
+        </div>
+        <div class="cheque-item cheque-vacances">
+            <div class="cheque-icon">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                     viewBox="0 0 24 24"
+                     fill="none"
+                     stroke="currentColor"
+                     stroke-width="2"
+                     stroke-linecap="round"
+                     stroke-linejoin="round"
+                     aria-hidden="true">
+                    <circle cx="12" cy="12" r="5" /><line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" /><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" /><line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" /><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                </svg>
+            </div>
+            <div style="flex:1">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <h4 style="font-weight:700;font-size:1.125rem;color:#1e293b;margin:0">Vacances</h4>
+                    <span class="cheque-badge cheque-badge-vacances">Juin</span>
+                </div>
+                <p style="font-size:.875rem;color:#475569;margin:.25rem 0 0">
+                    <span class="cheque-amount"><span id="val-cheques-vacances">100 €</span> /an</span>
+                    <span style="font-size:.7rem;color:#64748b">(Co-financement 20%)</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Parrainage -->
+<div class="parrainage-grid">
+    <div class="parrainage-card parrainage-clients">
+        <h3>Parrainage Clients</h3>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <div class="parrainage-amount">
+            <span id="val-parrainage-client">40 €</span>
+        </div>
+        <p class="parrainage-sub">Pour chaque nouveau client</p>
+    </div>
+    <div class="parrainage-card parrainage-salaries">
+        <h3>Parrainage Salariés</h3>
+        <svg xmlns="http://www.w3.org/2000/svg"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="2"
+             stroke-linecap="round"
+             stroke-linejoin="round"
+             aria-hidden="true">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+            <circle cx="9" cy="7" r="4" />
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+        </svg>
+        <div class="parrainage-amount">
+            <span id="val-parrainage-intervenant">200 €</span>
+        </div>
+        <p class="parrainage-sub">Pour chaque salarié recruté</p>
+    </div>
+</div>
+<!-- Majorations horaires -->
+<div class="majorations-card">
+    <div class="majorations-header">
+        <div class="majorations-icon">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
+            </svg>
+        </div>
+        <h3 class="majorations-title">Majorations Horaires</h3>
+    </div>
+    <div class="majorations-grid">
+        <div class="majoration-item maj-teal">
+            <span class="majoration-label">Dimanche &amp; Nuit</span>
+            <span class="majoration-value">+ 10%</span>
+        </div>
+        <div class="majoration-item maj-purple">
+            <span class="majoration-label">Heures Complémentaires</span>
+            <span class="majoration-value">10 à 25%</span>
+        </div>
+        <div class="majoration-item maj-navy">
+            <span class="majoration-label">Jours Fériés</span>
+            <span class="majoration-value">+ 100%</span>
+        </div>
+    </div>
+</div>
+<!-- Acquisition congés -->
+<div class="card">
+    <div class="card-header"
+         style="background:linear-gradient(135deg,#eff6ff,#fff);
+                border-bottom:1px solid #f1f5f9">
+        <div style="background:#dbeafe;
+                    padding:.375rem;
+                    border-radius:.375rem;
+                    color:#2563eb">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 width="16"
+                 height="16"
+                 viewBox="0 0 24 24"
+                 fill="none"
+                 stroke="currentColor"
+                 stroke-width="2"
+                 stroke-linecap="round"
+                 stroke-linejoin="round"
+                 aria-hidden="true">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" /><line x1="8" y1="14" x2="8.01" y2="14" /><line x1="12" y1="14" x2="12.01" y2="14" /><line x1="16" y1="14" x2="16.01" y2="14" /><line x1="8" y1="18" x2="8.01" y2="18" /><line x1="12" y1="18" x2="12.01" y2="18" />
+            </svg>
+        </div>
+        <h3 style="font-weight:700;font-size:.875rem;color:#1e293b;margin:0">Acquisition des Congés</h3>
+    </div>
+    <div class="card-body">
+        <div class="conges-section">
+            <div class="conges-acquis">
+                <div style="display:flex;
+                            justify-content:space-between;
+                            align-items:center;
+                            font-size:.75rem">
+                    <span style="color:#475569">Acquisition</span>
+                    <div style="text-align:right">
+                        <span style="font-weight:700;color:#11183b;display:block">2,5 jours / mois</span>
+                        <span style="font-size:.7rem;color:#64748b;display:block">Soit 30 jours par an (5 semaines)</span>
                     </div>
                 </div>
-             </div>
+                <p style="font-size:.7rem;
+                          color:#64748b;
+                          border-top:1px solid #e2e8f0;
+                          padding-top:.5rem;
+                          margin:.5rem 0 0">
+                    Tous les salariés, même à temps partiel, acquièrent le même nombre de congés (incluant le samedi).
+                </p>
+            </div>
+            <div>
+                <h4 style="font-weight:700;
+                           font-size:.7rem;
+                           color:#334155;
+                           text-transform:uppercase;
+                           letter-spacing:.025em;
+                           margin:0 0 .5rem">Règle de pose</h4>
+                <p style="font-size:.7rem;
+                          color:#475569;
+                          line-height:1.5;
+                          margin:0 0 .5rem">
+                    Du <strong>1er jour de congés</strong> jusqu'à la <strong>veille de la reprise effective</strong>.
+                </p>
+                <div class="conges-alert">
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="12"
+                             height="12"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true"
+                             style="display:inline;
+                                    vertical-align:middle;
+                                    margin-right:.25rem">
+                            <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        Cette période inclut les <strong>samedis et fériés</strong> (hors 1er mai et 25 décembre).
+                        <span style="display:block;margin-top:.25rem;opacity:.8;font-weight:500">Limite : 5 samedis décomptés par an.</span>
+                    </p>
+                </div>
+            </div>
+            <ul class="conges-reminder" style="list-style:none;padding:0;margin:0">
+                <li class="conges-reminder"
+                    style="display:flex;
+                           align-items:flex-start;
+                           gap:.5rem;
+                           font-size:.7rem;
+                           margin-bottom:.5rem">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="12"
+                         height="12"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="#3b82f6"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true"
+                         style="margin-top:.125rem;
+                                flex-shrink:0">
+                        <path d="m21 2-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0 3 3L22 7l-3-3m-3.5 3.5L19 4" />
+                    </svg>
+                    <span style="color:#1e3a8a"><span style="font-weight:700">Déposez vos clés</span> à l'agence avant de partir.</span>
+                </li>
+                <li style="display:flex;align-items:flex-start;gap:.5rem;font-size:.7rem">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="12"
+                         height="12"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="#3b82f6"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true"
+                         style="margin-top:.125rem;
+                                flex-shrink:0">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.65 3.18 2 2 0 0 1 3.62 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.69a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                        <path d="M14.05 2a9 9 0 0 1 8 7.94" />
+                        <path d="M14.05 6A5 5 0 0 1 18 10" />
+                    </svg>
+                    <span style="color:#1e3a8a"><span style="font-weight:700">Contactez l'agence</span> avant votre reprise pour organiser la récupération des clés.</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

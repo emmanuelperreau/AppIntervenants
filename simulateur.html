@@ -1,173 +1,214 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulateur Salaire - Agence O2</title>
-    
-    <meta name="theme-color" content="#11183b">
-    <meta name="description" content="Guide complet pour les intervenants O2 - rémunération, contacts, documents, simulateur de salaire">
-    <link rel="preload" href="./fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin>
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
-
-</head>
-<body class="bg-slate-100 dark:bg-slate-900 text-slate-900 dark:text-white min-h-screen pb-10">
-
-    <!-- Header -->
-    <header class="sticky top-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl z-40 border-b border-slate-200 dark:border-slate-800 shadow-sm">
-        <div class="max-w-xl mx-auto px-4 py-3 flex items-center justify-between">
-            <a href="index.html" id="link-retour" class="flex items-center gap-2 text-slate-500 hover:text-[#11183b] dark:text-slate-400 dark:hover:text-white transition-colors">
-                <i data-lucide="arrow-left" class="w-5 h-5"></i>
-                <span class="font-bold text-sm">Retour</span>
-            </a>
-            <h1 class="text-base font-bold text-[#11183b] dark:text-white">Simulateur de Salaire</h1>
-            <div class="w-5 h-5"></div> <!-- Spacer -->
-        </div>
-    </header>
-
-    <main class="max-w-xl mx-auto p-4 space-y-4 slide-in">
-        
-        <!-- Info Banner -->
-        <div class="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-xl border border-blue-100 dark:border-blue-800 flex items-start gap-3">
-            <div class="bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300 p-1.5 rounded-lg shrink-0">
-                <i data-lucide="info" class="w-4 h-4"></i>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Simulateur Salaire - Agence O2</title>
+        <meta name="theme-color" content="#11183b">
+        <meta name="description"
+              content="Simulateur de salaire net pour les intervenants O2">
+        <meta http-equiv="Content-Security-Policy"
+              content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' data:; connect-src 'self'">
+        <link rel="preload"
+              href="./fonts/inter-400.woff2"
+              as="font"
+              type="font/woff2"
+              crossorigin>
+        <link rel="stylesheet" href="./styles/base.css">
+        <link rel="stylesheet" href="./styles/components.css">
+        <link rel="stylesheet" href="./styles/contacts.css">
+        <link rel="stylesheet" href="./styles/simulateur.css">
+        <link rel="icon" type="image/svg+xml" href="./icon.svg">
+    </head>
+    <body>
+        <!-- Header -->
+        <header class="sim-header">
+            <div class="sim-header-inner">
+                <a href="./index.html" id="link-retour" class="sim-back-link">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" />
+                    </svg>
+                    <span>Retour</span>
+                </a>
+                <h1 class="sim-header-title">Simulateur de Salaire</h1>
+                <div style="width:1.25rem;height:1.25rem"></div>
             </div>
-            <p id="sim-help-info" class="text-xs text-slate-600 dark:text-slate-300 leading-snug">
-                Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
-            </p>
-        </div>
-
-        <!-- 1. Contrat (Inputs) -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <div class="px-5 py-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
-                <h3 class="font-bold text-sm uppercase text-slate-500 dark:text-slate-400">Votre Contrat</h3>
-            </div>
-            <div class="p-4 space-y-4">
-                <!-- Poste -->
-                <div class="flex justify-between items-center">
-                    <label for="input-poste" class="text-sm font-medium text-slate-700 dark:text-slate-300">Votre poste</label>
-                    <select id="input-poste" class="w-44 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
-                    </select>
+        </header>
+        <main class="sim-main slide-in">
+            <!-- Bannière d'aide -->
+            <div class="sim-info-banner">
+                <div class="sim-info-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="16"
+                         height="16"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <circle cx="12" cy="12" r="10" /><line x1="12" y1="16" x2="12" y2="12" /><line x1="12" y1="8" x2="12.01" y2="8" />
+                    </svg>
                 </div>
-                <!-- Taux Horaire -->
-                <div class="flex justify-between items-center">
-                    <label for="input-rate" class="text-sm font-medium text-slate-700 dark:text-slate-300">Taux horaire brut</label>
-                    <div class="flex items-center gap-2">
-                        <input type="number" id="input-rate" value="12.02" step="0.01" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-500">€</span>
+                <p id="sim-help-info" class="sim-info-text">
+                    Estimation indicative. Les montants réels peuvent varier selon votre situation personnelle et fiscale.
+                </p>
+            </div>
+            <!-- 1. Contrat -->
+            <div class="sim-card">
+                <div class="sim-card-header">
+                    <h3>Votre Contrat</h3>
+                </div>
+                <div class="sim-card-body">
+                    <div class="sim-field">
+                        <label for="input-poste">Votre poste</label>
+                        <select id="input-poste" class="sim-select" aria-describedby="sim-help-info"></select>
+                    </div>
+                    <div class="sim-field">
+                        <label for="input-rate">Taux horaire brut</label>
+                        <div class="sim-input-wrap">
+                            <input type="number"
+                                   id="input-rate"
+                                   value="12.31"
+                                   step="0.01"
+                                   min="0"
+                                   aria-describedby="sim-help-info"
+                                   class="sim-input">
+                            <span class="sim-unit">€</span>
+                        </div>
+                    </div>
+                    <div class="sim-field">
+                        <label for="input-hours">Durée Hebdo</label>
+                        <div class="sim-input-wrap">
+                            <input type="number"
+                                   id="input-hours"
+                                   value="24"
+                                   step="0.5"
+                                   min="0"
+                                   max="48"
+                                   aria-describedby="sim-help-info"
+                                   class="sim-input">
+                            <span class="sim-unit">h</span>
+                        </div>
+                    </div>
+                    <div class="sim-field">
+                        <label for="input-anciennete">Ancienneté</label>
+                        <select id="input-anciennete"
+                                aria-describedby="sim-help-info"
+                                class="sim-select wide">
+                            <option value="0">Moins d'1 an</option>
+                            <option value="1">1 an (+5 cts/h)</option>
+                            <option value="2">2 ans (+10 cts/h)</option>
+                            <option value="3">3 ans (+15 cts/h)</option>
+                            <option value="5">5 ans (+20 cts/h)</option>
+                            <option value="10">10 ans (+30 cts/h)</option>
+                        </select>
                     </div>
                 </div>
-                <!-- Heures Hebdo -->
-                <div class="flex justify-between items-center">
-                    <label for="input-hours" class="text-sm font-medium text-slate-700 dark:text-slate-300">Durée Hebdo</label>
-                    <div class="flex items-center gap-2">
-                        <input type="number" id="input-hours" value="24" step="0.5" min="0" max="48" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-500">h</span>
-                    </div>
-                </div>
-                <!-- Ancienneté -->
-                <div class="flex justify-between items-center">
-                    <label for="input-anciennete" class="text-sm font-medium text-slate-700 dark:text-slate-300">Ancienneté</label>
-                    <select id="input-anciennete" aria-describedby="sim-help-info" class="w-40 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500 appearance-none">
-                        <option value="0">Moins d'1 an</option>
-                        <option value="1">1 an (+5 cts/h)</option>
-                        <option value="2">2 ans (+10 cts/h)</option>
-                        <option value="3">3 ans (+15 cts/h)</option>
-                        <option value="5">5 ans (+20 cts/h)</option>
-                        <option value="10">10 ans (+30 cts/h)</option>
-                    </select>
-                </div>
             </div>
-        </div>
-
-        <!-- 2. Variables (Inputs) -->
-        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 overflow-hidden">
-            <div class="px-5 py-3 border-b border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
-                <h3 class="font-bold text-sm uppercase text-slate-500 dark:text-slate-400">Éléments Variables</h3>
-            </div>
-            <div class="p-4 space-y-4">
-                <!-- KMs -->
-                <div class="flex justify-between items-center">
-                    <label for="input-kms" class="text-sm font-medium text-slate-700 dark:text-slate-300">Kilomètres / mois</label>
-                    <div class="flex items-center gap-2">
-                        <input type="number" id="input-kms" value="150" min="0" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-500">km</span>
-                    </div>
+            <!-- 2. Variables -->
+            <div class="sim-card">
+                <div class="sim-card-header">
+                    <h3>Éléments Variables</h3>
                 </div>
-                <!-- Titres Resto -->
-                <div class="flex justify-between items-center">
-                    <label for="input-tickets" class="text-sm font-medium text-slate-700 dark:text-slate-300">Titres restaurant / mois</label>
-                    <div class="flex items-center gap-2">
-                        <input type="number" id="input-tickets" value="20" min="0" max="31" aria-describedby="sim-help-info" class="w-24 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-2 px-3 font-bold text-[#11183b] dark:text-white focus:outline-none focus:ring-2 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-500">/ mois</span>
+                <div class="sim-card-body">
+                    <div class="sim-field">
+                        <label for="input-kms">Kilomètres / mois</label>
+                        <div class="sim-input-wrap">
+                            <input type="number"
+                                   id="input-kms"
+                                   value="150"
+                                   min="0"
+                                   aria-describedby="sim-help-info"
+                                   class="sim-input">
+                            <span class="sim-unit">km</span>
+                        </div>
                     </div>
-                </div>
-                <!-- Mutuelle -->
-                <div class="flex justify-between items-center">
-                    <div class="flex items-center gap-2">
-                         <input type="checkbox" id="check-mutuelle" checked class="w-5 h-5 text-teal-500 rounded focus:ring-teal-500 border-gray-300">
-                         <label for="check-mutuelle" class="text-sm font-medium text-slate-700 dark:text-slate-300">Mutuelle (isolée)</label>
+                    <div class="sim-field">
+                        <label for="input-tickets">Titres restaurant / mois</label>
+                        <div class="sim-input-wrap">
+                            <input type="number"
+                                   id="input-tickets"
+                                   value="20"
+                                   min="0"
+                                   max="31"
+                                   aria-describedby="sim-help-info"
+                                   class="sim-input">
+                            <span class="sim-unit">/ mois</span>
+                        </div>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <label for="input-mutuelle-cost" class="sr-only">Coût mutuelle mensuel</label>
-                        <input type="number" id="input-mutuelle-cost" value="20" min="0" class="w-20 text-right bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-600 rounded-lg py-1 px-2 text-sm font-bold text-slate-500 dark:text-slate-400 focus:outline-none focus:ring-1 focus:ring-teal-500">
-                        <span class="text-sm font-bold text-slate-500">€</span>
+                    <div class="sim-field">
+                        <div class="sim-checkbox">
+                            <input type="checkbox" id="check-mutuelle" checked>
+                            <label for="check-mutuelle">Mutuelle (isolée)</label>
+                        </div>
+                        <div class="sim-input-wrap">
+                            <label for="input-mutuelle-cost" class="sr-only">Coût mutuelle mensuel</label>
+                            <input type="number"
+                                   id="input-mutuelle-cost"
+                                   value="20"
+                                   min="0"
+                                   class="sim-input-sm">
+                            <span class="sim-unit">€</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- 4. Avantages Annuels (Pink Style) -->
-        <div class="bg-pink-100 dark:bg-pink-900/30 rounded-2xl shadow-sm border border-pink-200 dark:border-pink-800 p-5 space-y-3">
-            <h3 class="font-bold text-pink-800 dark:text-pink-300 text-sm uppercase mb-2">Avantages & Primes (Annuels/Ponctuels)</h3>
-            
-            <div class="flex justify-between items-center">
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Chèques Cadeau</span>
-                <span id="val-sim-cheques-cadeaux" class="font-bold text-[#11183b] dark:text-white">-- €</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Chèques Vacances</span>
-                <span id="val-sim-cheques-vacances" class="font-bold text-[#11183b] dark:text-white">-- €</span>
-            </div>
-             <div class="flex justify-between items-center pt-2 border-t border-pink-200 dark:border-pink-800/50">
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Heures Complémentaires (Estim.)</span>
-                <span id="res-heures-comp" class="font-bold text-[#11183b] dark:text-white">--,-- €</span>
-            </div>
-            <div class="flex justify-between items-center">
-                <span class="text-sm font-medium text-slate-700 dark:text-slate-300">Prime Carburant (Estim.)</span>
-                <span id="res-prime-carburant" class="font-bold text-[#11183b] dark:text-white">--,-- €</span>
-            </div>
-        </div>
-
-        <!-- 5. Total Moyen (Green Style) -->
-        <div class="bg-green-500 rounded-2xl shadow-lg border-2 border-green-400 overflow-hidden text-white">
-            <div class="p-5 flex justify-between items-center">
-                <div>
-                    <h3 class="font-black text-lg">Gain net mensuel moyen</h3>
-                    <p class="text-sm font-semibold opacity-80 text-green-100">Lissé sur l'année (inclus primes)</p>
+            <!-- 3. Avantages annuels -->
+            <div class="sim-annual-card">
+                <h3>Avantages &amp; Primes (Annuels/Ponctuels)</h3>
+                <div class="sim-annual-row">
+                    <span class="label">Chèques Cadeau</span>
+                    <span id="val-sim-cheques-cadeaux" class="val">-- €</span>
                 </div>
-                <div class="text-right">
-                     <span id="res-total-moyen" class="block text-3xl font-black">--,-- €</span>
-                     <span class="text-sm font-bold opacity-70">Smic net: <span id="res-smic-mensuel">--,-- €</span></span>
+                <div class="sim-annual-row">
+                    <span class="label">Chèques Vacances</span>
+                    <span id="val-sim-cheques-vacances" class="val">-- €</span>
+                </div>
+                <div class="sim-annual-row sim-annual-sep">
+                    <span class="label">Heures Complémentaires (Estim.)</span>
+                    <span id="res-heures-comp" class="val">--,-- €</span>
+                </div>
+                <div class="sim-annual-row">
+                    <span class="label">Prime Carburant (Estim.)</span>
+                    <span id="res-prime-carburant" class="val">--,-- €</span>
                 </div>
             </div>
-            <div class="px-5 py-3 bg-green-600/30 border-t border-green-400/30 flex justify-between items-center">
-                 <span class="font-bold text-base">Gain net / heure moyen</span>
-                 <div class="text-right">
-                     <span id="res-total-horaire" class="block text-2xl font-black">--,-- €</span>
-                     <span class="text-sm font-bold opacity-70">Smic net / heure : <span id="res-smic-horaire">--,-- €</span></span>
-                 </div>
+            <!-- 4. Total moyen -->
+            <div class="sim-total-card">
+                <div class="sim-total-main">
+                    <div>
+                        <h3>Gain net mensuel moyen</h3>
+                        <p>Lissé sur l'année (inclus primes)</p>
+                    </div>
+                    <div style="text-align:right">
+                        <span id="res-total-moyen" class="sim-total-amount">--,-- €</span>
+                        <span class="sim-total-smic">Smic net: <span id="res-smic-mensuel">--,-- €</span></span>
+                    </div>
+                </div>
+                <div class="sim-total-footer">
+                    <span class="footer-label">Gain net / heure moyen</span>
+                    <div style="text-align:right">
+                        <span id="res-total-horaire" class="footer-amount">--,-- €</span>
+                        <span class="footer-smic">Smic net / heure : <span id="res-smic-horaire">--,-- €</span></span>
+                    </div>
+                </div>
             </div>
-        </div>
-
-        <!-- Coût Employeur -->
-        <div class="mt-6 text-center pb-safe">
-            <p class="text-xs text-slate-500 font-medium">Coût global employeur estimé : <span id="res-cout-employeur" class="font-bold text-slate-600 dark:text-slate-300">--,-- €</span></p>
-        </div>
-
-    </main>
-
-    <!-- Script simulateur (module ES, traite par Vite) -->
-    <script type="module" src="/src/simulateur.ts"></script>
-</body>
+            <!-- Coût employeur -->
+            <div class="sim-cout pb-safe">
+                <p>
+                    Coût global employeur estimé : <span id="res-cout-employeur" class="cout-val">--,-- €</span>
+                </p>
+            </div>
+        </main>
+        <script type="module" src="./src/simulateur.js"></script>
+    </body>
 </html>
