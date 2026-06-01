@@ -4,7 +4,6 @@
     var params = new URLSearchParams(window.location.search);
     var agence = params.get('agence');
     var manifestLink = document.getElementById('dynamic-manifest');
-    var pageTitle = document.getElementById('page-title');
     var appleTitle = document.getElementById('apple-web-app-title');
 
     if (agence === 'loches') {
