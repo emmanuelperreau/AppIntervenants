@@ -82,8 +82,8 @@ export function renderObligations() {
         const iconHtml = ob.overlayIcon
             ? `<div style="position:relative;display:inline-flex">
                  ${icon(ob.icon, '', '32', '32')}
-                 <span style="position:absolute;top:-4px;right:-4px;background:white;border-radius:50%;display:flex">
-                   ${icon(ob.overlayIcon, '', '16', '16')}
+                 <span style="position:absolute;top:-5px;right:-5px;background:white;border-radius:50%;padding:2px;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 3px rgba(0,0,0,.25)">
+                   ${icon(ob.overlayIcon, '', '14', '14')}
                  </span>
                </div>`
             : icon(ob.icon, '', '32', '32');

@@ -130,7 +130,7 @@
 .mentions p { font-size: .7rem; color: #64748b; margin: .25rem 0; }
 
 /* ---------- ONGLET CONTACTS ---------- */
-.urgence-bar { background: #ef4444; border-radius: 1rem; padding: 1rem; box-shadow: 0 4px 16px rgba(239,68,68,.3); color: white; display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; }
+.urgence-bar { background: #ef4444; border-radius: 1rem; padding: 1rem; box-shadow: 0 4px 16px rgba(239,68,68,.3); color: white; display: flex; align-items: center; justify-content: space-between; }
 .urgence-bar-icon { background: rgba(255,255,255,.2); padding: .5rem; border-radius: 50%; }
 .urgence-bar-icon svg { width: 1.5rem; height: 1.5rem; }
 .urgence-bar h3 { font-weight: 700; font-size: 1.125rem; line-height: 1; margin: 0; }
@@ -201,7 +201,7 @@
 @media (prefers-color-scheme: dark) { .alert-red-title { color: #f87171; } .alert-red p { color: #fca5a5; } }
 
 /* Médecine du travail */
-.medecine-card { background: white; border-radius: .75rem; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); margin-bottom: 1.5rem; }
+.medecine-card { background: white; border-radius: .75rem; border: 1px solid #f1f5f9; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.06); }
 @media (prefers-color-scheme: dark) { .medecine-card { background: #1e293b; border-color: #334155; } }
 .medecine-header { padding: .75rem 1.25rem; border-bottom: 1px solid #f8fafc; display: flex; align-items: center; gap: .75rem; }
 @media (prefers-color-scheme: dark) { .medecine-header { border-bottom-color: #334155; } }

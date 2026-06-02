@@ -88,7 +88,7 @@ export const OBLIGATIONS = [
         overlayClass: 'text-red-600'
     },
     {
-        icon: 'headset',
+        icon: 'phone-call',
         borderClass: 'border-violet-100 dark:border-violet-900/30',
         iconClass: 'text-violet-600',
         textClass: 'text-violet-900 dark:text-violet-200',
