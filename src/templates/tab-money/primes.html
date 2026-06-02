@@ -1,154 +1,8 @@
-<!-- Transport & Mobilité -->
-<div class="card">
-    <div class="card-header section-header-gradient shg-orange">
-        <div class="icon-box">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                 width="20"
-                 height="20"
-                 viewBox="0 0 24 24"
-                 fill="none"
-                 stroke="currentColor"
-                 stroke-width="2"
-                 stroke-linecap="round"
-                 stroke-linejoin="round"
-                 aria-hidden="true">
-                <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
-                <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
-            </svg>
-        </div>
-        <h3>Mobilité &amp; Transport</h3>
-    </div>
-    <div class="card-body" style="display:flex;flex-direction:column;gap:1rem">
-        <!-- Indemnités km -->
-        <div class="km-block">
-            <div style="display:flex;
-                        justify-content:space-between;
-                        align-items:center;
-                        margin-bottom:.5rem">
-                <div style="display:flex;gap:.75rem;align-items:center">
-                    <div style="background:white;
-                                padding:.5rem;
-                                border-radius:.5rem;
-                                box-shadow:0 1px 2px rgba(0,0,0,.08);
-                                color:#f97316">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="20"
-                             height="20"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round"
-                             aria-hidden="true">
-                            <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
-                            <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
-                        </svg>
-                    </div>
-                    <span style="font-weight:700;color:#1e293b;font-size:.875rem">Indemnités Km</span>
-                </div>
-                <div style="text-align:right">
-                    <span id="val-taux-km" class="km-value">0,45 €</span>
-                    <span class="km-unit">/ km</span>
-                </div>
-            </div>
-            <div style="background:white;
-                        padding:.75rem;
-                        border-radius:.5rem;
-                        border:1px solid #fed7aa">
-                <p style="font-size:.7rem;color:#475569;font-weight:500;margin:0">
-                    Rémunération du temps de trajet et des frais kilométriques entre 2 prestations, si le temps d'intermission (hors trajet) est inférieur à 15 min.
-                </p>
-            </div>
-            <p style="font-size:.7rem;
-                      color:#64748b;
-                      margin:.5rem 0 0;
-                      padding:0 .25rem">Aussi pour trajets domicile-travail &gt; 20km (début/fin de journée).</p>
-        </div>
-        <!-- Prime carburant -->
-        <div style="background:#f8fafc;
-                    padding:1rem;
-                    border-radius:.75rem;
-                    border:1px solid #f1f5f9;
-                    display:flex;
-                    flex-direction:column;
-                    gap:.75rem">
-            <div style="display:flex;justify-content:space-between;align-items:center">
-                <div style="display:flex;gap:.75rem;align-items:center">
-                    <div style="background:white;
-                                padding:.5rem;
-                                border-radius:.5rem;
-                                box-shadow:0 1px 2px rgba(0,0,0,.08);
-                                color:#475569">
-                        <svg xmlns="http://www.w3.org/2000/svg"
-                             width="20"
-                             height="20"
-                             viewBox="0 0 24 24"
-                             fill="none"
-                             stroke="currentColor"
-                             stroke-width="2"
-                             stroke-linecap="round"
-                             stroke-linejoin="round"
-                             aria-hidden="true">
-                            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
-                        </svg>
-                    </div>
-                    <div>
-                        <p style="font-weight:700;color:#1e293b;font-size:.875rem;margin:0">Prime Carburant</p>
-                        <p style="font-size:.7rem;color:#64748b;margin:0">Juin &amp; Décembre</p>
-                    </div>
-                </div>
-                <div style="text-align:right">
-                    <span id="val-prime-carburant"
-                          style="display:block;
-                                 font-size:1.5rem;
-                                 font-weight:700;
-                                 color:#11183b">300 €</span>
-                    <span style="font-size:.7rem;color:#64748b;font-weight:500">/ an (max)</span>
-                </div>
-            </div>
-            <div style="background:white;
-                        padding:.75rem;
-                        border-radius:.5rem;
-                        border:1px solid #e2e8f0">
-                <p style="font-size:.7rem;
-                          font-weight:700;
-                          color:#334155;
-                          margin:0 0 .5rem">Simulations (si présent toute l'année) :</p>
-                <div style="display:flex;
-                            justify-content:space-between;
-                            font-size:.7rem;
-                            color:#475569;
-                            border-bottom:1px solid #f1f5f9;
-                            padding-bottom:.25rem;
-                            margin-bottom:.25rem">
-                    <span>Contrat 30h :</span>
-                    <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-30h">257</span> € /an</span>
-                </div>
-                <div style="display:flex;
-                            justify-content:space-between;
-                            font-size:.7rem;
-                            color:#475569">
-                    <span>Contrat 25h :</span>
-                    <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-25h">214</span> € /an</span>
-                </div>
-            </div>
-            <p style="font-size:.7rem;
-                      color:#64748b;
-                      font-style:italic;
-                      border-top:1px solid #e2e8f0;
-                      padding-top:.5rem;
-                      margin:0">
-                Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.
-            </p>
-        </div>
-    </div>
-</div>
-<!-- Titres restaurant + Mutuelle côte à côte -->
-<div class="duo-md">
-    <!-- Titres restaurant -->
+<!-- Mobilité & Transport + Titres/Mutuelle : 2 colonnes en desktop -->
+<div class="money-grid" style="align-items:start">
+    <!-- Transport & Mobilité -->
     <div class="card">
-        <div class="card-header section-header-gradient shg-blue">
+        <div class="card-header section-header-gradient shg-orange">
             <div class="icon-box">
                 <svg xmlns="http://www.w3.org/2000/svg"
                      width="20"
@@ -160,55 +14,147 @@
                      stroke-linecap="round"
                      stroke-linejoin="round"
                      aria-hidden="true">
-                    <line x1="3" y1="2" x2="3" y2="22" />
-                    <path d="M7 2v7a3 3 0 0 0 6 0V2" />
-                    <line x1="10" y1="12" x2="10" y2="22" />
+                    <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
+                    <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
                 </svg>
             </div>
-            <h3>Titres Restaurant</h3>
+            <h3>Mobilité &amp; Transport</h3>
         </div>
-        <div class="card-body">
-            <div style="background:rgba(59,130,246,.06);
-                        padding:1rem;
-                        border-radius:.75rem;
-                        border:1px solid #bfdbfe;
-                        margin-bottom:1rem">
+        <div class="card-body" style="display:flex;flex-direction:column;gap:1rem">
+            <!-- Indemnités km -->
+            <div class="km-block">
                 <div style="display:flex;
                             justify-content:space-between;
                             align-items:center;
                             margin-bottom:.5rem">
-                    <h4 style="font-weight:700;color:#1e3a8a;margin:0">Valeur Faciale</h4>
+                    <div style="display:flex;gap:.75rem;align-items:center">
+                        <div style="background:white;
+                                    padding:.5rem;
+                                    border-radius:.5rem;
+                                    box-shadow:0 1px 2px rgba(0,0,0,.08);
+                                    color:#f97316">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 aria-hidden="true">
+                                <path d="M19 17H5v-6l2-4h10l2 4v6Z" />
+                                <circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" />
+                            </svg>
+                        </div>
+                        <span style="font-weight:700;color:#1e293b;font-size:.875rem">Indemnités Km</span>
+                    </div>
                     <div style="text-align:right">
-                        <span id="val-ticket"
+                        <span id="val-taux-km" class="km-value">0,45 €</span>
+                        <span class="km-unit">/ km</span>
+                    </div>
+                </div>
+                <div style="background:white;
+                            padding:.75rem;
+                            border-radius:.5rem;
+                            border:1px solid #fed7aa">
+                    <p style="font-size:.7rem;color:#475569;font-weight:500;margin:0">
+                        Rémunération du temps de trajet et des frais kilométriques entre 2 prestations, si le temps d'intermission (hors trajet) est inférieur à 15 min.
+                    </p>
+                </div>
+                <p style="font-size:.7rem;
+                          color:#64748b;
+                          margin:.5rem 0 0;
+                          padding:0 .25rem">Aussi pour trajets domicile-travail &gt; 20km (début/fin de journée).</p>
+            </div>
+            <!-- Prime carburant -->
+            <div style="background:#f8fafc;
+                        padding:1rem;
+                        border-radius:.75rem;
+                        border:1px solid #f1f5f9;
+                        display:flex;
+                        flex-direction:column;
+                        gap:.75rem">
+                <div style="display:flex;justify-content:space-between;align-items:center">
+                    <div style="display:flex;gap:.75rem;align-items:center">
+                        <div style="background:white;
+                                    padding:.5rem;
+                                    border-radius:.5rem;
+                                    box-shadow:0 1px 2px rgba(0,0,0,.08);
+                                    color:#475569">
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                 width="20"
+                                 height="20"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 stroke="currentColor"
+                                 stroke-width="2"
+                                 stroke-linecap="round"
+                                 stroke-linejoin="round"
+                                 aria-hidden="true">
+                                <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" /><polyline points="16 7 22 7 22 13" />
+                            </svg>
+                        </div>
+                        <div>
+                            <p style="font-weight:700;color:#1e293b;font-size:.875rem;margin:0">Prime Carburant</p>
+                            <p style="font-size:.7rem;color:#64748b;margin:0">Juin &amp; Décembre</p>
+                        </div>
+                    </div>
+                    <div style="text-align:right">
+                        <span id="val-prime-carburant"
                               style="display:block;
                                      font-size:1.5rem;
                                      font-weight:700;
-                                     color:#2563eb">6 €</span>
-                        <span style="font-size:.7rem;color:#60a5fa;font-weight:700">/ jour travaillé</span>
+                                     color:#11183b">300 €</span>
+                        <span style="font-size:.7rem;color:#64748b;font-weight:500">/ an (max)</span>
                     </div>
                 </div>
-                <div class="ticket-bar">
-                    <div class="ticket-bar-o2"></div>
-                    <div class="ticket-bar-sal"></div>
-                </div>
-                <div class="ticket-bar-labels">
-                    <span class="o2">Part O2 : <span id="val-ticket-employer">3</span>€</span>
-                    <span class="sal">Votre Part : <span id="val-ticket-employee">3</span>€</span>
-                </div>
-            </div>
-            <div style="display:flex;flex-direction:column;gap:.5rem">
-                <div style="display:flex;
-                            align-items:center;
-                            gap:.5rem;
-                            font-size:.7rem;
-                            color:#15803d;
-                            background:#f0fdf4;
-                            padding:.5rem;
+                <div style="background:white;
+                            padding:.75rem;
                             border-radius:.5rem;
-                            border:1px solid #bbf7d0">
+                            border:1px solid #e2e8f0">
+                    <p style="font-size:.7rem;
+                              font-weight:700;
+                              color:#334155;
+                              margin:0 0 .5rem">Simulations (si présent toute l'année) :</p>
+                    <div style="display:flex;
+                                justify-content:space-between;
+                                font-size:.7rem;
+                                color:#475569;
+                                border-bottom:1px solid #f1f5f9;
+                                padding-bottom:.25rem;
+                                margin-bottom:.25rem">
+                        <span>Contrat 30h :</span>
+                        <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-30h">257</span> € /an</span>
+                    </div>
+                    <div style="display:flex;
+                                justify-content:space-between;
+                                font-size:.7rem;
+                                color:#475569">
+                        <span>Contrat 25h :</span>
+                        <span style="font-weight:700;color:#11183b">~ <span id="val-prime-carburant-25h">214</span> € /an</span>
+                    </div>
+                </div>
+                <p style="font-size:.7rem;
+                          color:#64748b;
+                          font-style:italic;
+                          border-top:1px solid #e2e8f0;
+                          padding-top:.5rem;
+                          margin:0">
+                    Proratisée au temps de présence et au temps de travail effectif. Le salarié doit être présent au versement.
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Colonne : Titres restaurant + Mutuelle empilés -->
+    <div style="display:flex;flex-direction:column;gap:1.5rem">
+        <!-- Titres restaurant -->
+        <div class="card">
+            <div class="card-header section-header-gradient shg-blue">
+                <div class="icon-box">
                     <svg xmlns="http://www.w3.org/2000/svg"
-                         width="14"
-                         height="14"
+                         width="20"
+                         height="20"
                          viewBox="0 0 24 24"
                          fill="none"
                          stroke="currentColor"
@@ -216,65 +162,122 @@
                          stroke-linecap="round"
                          stroke-linejoin="round"
                          aria-hidden="true">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                        <polyline points="22 4 12 14.01 9 11.01" />
+                        <line x1="3" y1="2" x2="3" y2="22" />
+                        <path d="M7 2v7a3 3 0 0 0 6 0V2" />
+                        <line x1="10" y1="12" x2="10" y2="22" />
                     </svg>
-                    <span style="font-weight:700">Après 2 mois d'ancienneté</span>
                 </div>
-                <p style="font-size:.7rem;
-                          color:#64748b;
-                          margin:0;
-                          line-height:1.5;
-                          padding:0 .25rem">Eligible pour tous les jours ayant une pause méridienne.</p>
+                <h3>Titres Restaurant</h3>
+            </div>
+            <div class="card-body">
+                <div style="background:rgba(59,130,246,.06);
+                            padding:1rem;
+                            border-radius:.75rem;
+                            border:1px solid #bfdbfe;
+                            margin-bottom:1rem">
+                    <div style="display:flex;
+                                justify-content:space-between;
+                                align-items:center;
+                                margin-bottom:.5rem">
+                        <h4 style="font-weight:700;color:#1e3a8a;margin:0">Valeur Faciale</h4>
+                        <div style="text-align:right">
+                            <span id="val-ticket"
+                                  style="display:block;
+                                         font-size:1.5rem;
+                                         font-weight:700;
+                                         color:#2563eb">6 €</span>
+                            <span style="font-size:.7rem;color:#60a5fa;font-weight:700">/ jour travaillé</span>
+                        </div>
+                    </div>
+                    <div class="ticket-bar">
+                        <div class="ticket-bar-o2"></div>
+                        <div class="ticket-bar-sal"></div>
+                    </div>
+                    <div class="ticket-bar-labels">
+                        <span class="o2">Part O2 : <span id="val-ticket-employer">3</span>€</span>
+                        <span class="sal">Votre Part : <span id="val-ticket-employee">3</span>€</span>
+                    </div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:.5rem">
+                    <div style="display:flex;
+                                align-items:center;
+                                gap:.5rem;
+                                font-size:.7rem;
+                                color:#15803d;
+                                background:#f0fdf4;
+                                padding:.5rem;
+                                border-radius:.5rem;
+                                border:1px solid #bbf7d0">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                             width="14"
+                             height="14"
+                             viewBox="0 0 24 24"
+                             fill="none"
+                             stroke="currentColor"
+                             stroke-width="2"
+                             stroke-linecap="round"
+                             stroke-linejoin="round"
+                             aria-hidden="true">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                            <polyline points="22 4 12 14.01 9 11.01" />
+                        </svg>
+                        <span style="font-weight:700">Après 2 mois d'ancienneté</span>
+                    </div>
+                    <p style="font-size:.7rem;
+                              color:#64748b;
+                              margin:0;
+                              line-height:1.5;
+                              padding:0 .25rem">Eligible pour tous les jours ayant une pause méridienne.</p>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Mutuelle -->
-    <div class="card">
-        <div class="card-header section-header-gradient shg-cyan">
-            <div class="icon-box">
-                <svg xmlns="http://www.w3.org/2000/svg"
-                     width="20"
-                     height="20"
-                     viewBox="0 0 24 24"
-                     fill="none"
-                     stroke="currentColor"
-                     stroke-width="2"
-                     stroke-linecap="round"
-                     stroke-linejoin="round"
-                     aria-hidden="true">
-                    <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
-                    <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
-                    <path d="m18 15-2-2" />
-                    <path d="m15 18-2-2" />
-                </svg>
-            </div>
-            <h3 id="remun-mutuelle-name">Mutuelle Santé (Swiss Life)</h3>
-        </div>
-        <div class="card-body">
-            <div style="display:flex;
-                        align-items:center;
-                        justify-content:space-between;
-                        margin-bottom:1rem">
-                <div>
-                    <p style="font-size:.875rem;color:#64748b;margin:0 0 .25rem">Prise en charge à 50% par O2</p>
-                    <span style="display:inline-block;
-                                 background:#dcfce7;
-                                 color:#15803d;
-                                 font-size:.7rem;
-                                 font-weight:700;
-                                 padding:.25rem .5rem;
-                                 border-radius:9999px;
-                                 margin-bottom:.25rem">Sans condition d'ancienneté</span>
-                    <p style="font-size:.7rem;color:#64748b;font-style:italic;margin:0">Obligatoire sauf motifs de dispense.</p>
+        <!-- Mutuelle -->
+        <div class="card">
+            <div class="card-header section-header-gradient shg-cyan">
+                <div class="icon-box">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="20"
+                         height="20"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                        <path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08v0c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66" />
+                        <path d="m18 15-2-2" />
+                        <path d="m15 18-2-2" />
+                    </svg>
                 </div>
-                <div style="text-align:right">
-                    <span style="font-size:.7rem;color:#64748b;font-weight:500;display:block">Votre part / mois</span>
-                    <span id="remun-mutuelle-price"
-                          style="font-size:1.875rem;
-                                 font-weight:800;
-                                 color:#11183b">--,-- €</span>
-                    <span style="font-size:.7rem;color:#64748b;display:block">Déduit du salaire</span>
+                <h3 id="remun-mutuelle-name">Mutuelle Santé (Swiss Life)</h3>
+            </div>
+            <div class="card-body">
+                <div style="display:flex;
+                            align-items:center;
+                            justify-content:space-between;
+                            margin-bottom:1rem">
+                    <div>
+                        <p style="font-size:.875rem;color:#64748b;margin:0 0 .25rem">Prise en charge à 50% par O2</p>
+                        <span style="display:inline-block;
+                                     background:#dcfce7;
+                                     color:#15803d;
+                                     font-size:.7rem;
+                                     font-weight:700;
+                                     padding:.25rem .5rem;
+                                     border-radius:9999px;
+                                     margin-bottom:.25rem">Sans condition d'ancienneté</span>
+                        <p style="font-size:.7rem;color:#64748b;font-style:italic;margin:0">Obligatoire sauf motifs de dispense.</p>
+                    </div>
+                    <div style="text-align:right">
+                        <span style="font-size:.7rem;color:#64748b;font-weight:500;display:block">Votre part / mois</span>
+                        <span id="remun-mutuelle-price"
+                              style="font-size:1.875rem;
+                                     font-weight:800;
+                                     color:#11183b">--,-- €</span>
+                        <span style="font-size:.7rem;color:#64748b;display:block">Déduit du salaire</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -517,9 +520,8 @@
                     </p>
                 </div>
             </div>
-            <ul class="conges-reminder" style="list-style:none;padding:0;margin:0">
-                <li class="conges-reminder"
-                    style="display:flex;
+            <ul class="conges-reminder" style="list-style:none;margin:0">
+                <li style="display:flex;
                            align-items:flex-start;
                            gap:.5rem;
                            font-size:.7rem;
