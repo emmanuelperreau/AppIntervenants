@@ -79,13 +79,11 @@ export const OBLIGATIONS = [
         text: 'Remonter à votre agence toute modification de planning convenue avec le client ou toutes évolutions possibles de ses besoins'
     },
     {
-        icon: 'gift',
+        icon: 'ban',
         borderClass: 'border-red-100 dark:border-red-900/30',
         iconClass: 'text-red-500',
         textClass: 'text-red-900 dark:text-red-200',
-        text: 'Ne pas accepter d\'argent ou de cadeaux de la part des clients',
-        overlayIcon: 'x',
-        overlayClass: 'text-red-600'
+        text: 'Ne pas accepter d\'argent ou de cadeaux de la part des clients'
     },
     {
         icon: 'phone-call',
@@ -123,7 +121,7 @@ export const OBLIGATIONS = [
         text: 'Signaler à O2 tout changement personnel (état civil, allergies, adresse, permis de conduire, aptitude...)'
     },
     {
-        icon: 'cigarette-off',
+        icon: 'ban',
         borderClass: 'border-slate-100 dark:border-slate-600',
         iconClass: 'text-slate-500',
         textClass: 'text-slate-900 dark:text-slate-200',
