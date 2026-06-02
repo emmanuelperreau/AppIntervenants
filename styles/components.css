@@ -177,6 +177,23 @@
 @media (min-width: 1024px) { .money-grid { grid-template-columns: repeat(2, 1fr); } }
 .money-grid-full { grid-column: 1 / -1; }
 
+/* Grille salaire : 3 colonnes metiers en desktop */
+.salary-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 1024px) { .salary-grid { grid-template-columns: repeat(3, 1fr); } }
+/* Duo de cartes cote a cote sur tablette+ */
+.duo-md { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 768px) { .duo-md { grid-template-columns: repeat(2, 1fr); } }
+/* Quotidien : Telephone (2/3) + Equipements (1/3) en desktop */
+.daily-top-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+@media (min-width: 1024px) { .daily-top-grid { grid-template-columns: repeat(3, 1fr); } .daily-top-grid .daily-phone-card { grid-column: span 2; } }
+/* Telephone : Scan + Usage cote a cote sur sm+ */
+.phone-split { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+@media (min-width: 640px) { .phone-split { grid-template-columns: repeat(2, 1fr); } }
+/* Obligations : 1 -> 2 -> 3 colonnes */
+.obligations-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+@media (min-width: 640px) { .obligations-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .obligations-grid { grid-template-columns: repeat(3, 1fr); } }
+
 /* Filtre salaire */
 .salary-filter-bar { display: flex; gap: .5rem; margin-bottom: 1rem; }
 .salary-filter { padding: .375rem .75rem; border-radius: .5rem; font-size: .75rem; font-weight: 700; border: 1px solid; transition: all .15s; cursor: pointer; }
