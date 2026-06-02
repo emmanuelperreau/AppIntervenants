@@ -16,6 +16,7 @@ const PRECACHE_URLS = [
     './agence-init.js',
     './manifest-nord.json',
     './manifest-loches.json',
+    './manifest-langeais.json',
     './icon.svg',
     './icon-192.png',
     './icon-384.png',

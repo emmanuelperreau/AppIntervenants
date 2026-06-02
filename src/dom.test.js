@@ -72,6 +72,7 @@ describe('Config data integrity', () => {
     it('AGENCY_CONFIGS has nord-touraine and loches', () => {
         expect(AGENCY_CONFIGS).toHaveProperty('nord-touraine');
         expect(AGENCY_CONFIGS).toHaveProperty('loches');
+        expect(AGENCY_CONFIGS).toHaveProperty('langeais');
     });
 
     it('Each agency config has all required sections', () => {

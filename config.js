@@ -73,6 +73,50 @@ export const AGENCY_CONFIGS = {
         }
     },
 
+    // CONFIGURATION LANGEAIS
+    'langeais': {
+        name: 'O2 Langeais',
+        telephone: {
+            display: '02 43 72 43 45',
+            link: 'tel:0243724345',
+            label: 'Ligne Salariés'
+        },
+        home: {
+            gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link',
+            declarationKmsUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link'
+        },
+        remuneration: {
+            mutuelleName: 'Mutuelle Santé (Swiss Life)',
+            mutuellePrice: '16,82 €',
+            mutuellePortailUrl: 'https://bia.swisslife.fr/public/contrat/018619953/entreprise/424571b1-073d-4cb7-b93f-923c0bf5b37f'
+        },
+        docs: {
+            medecineTravail: {
+                address: '25 Rue de la Milletiere, 37100 Tours',
+                phoneDisplay: '02 47 62 88 88',
+                phoneLink: 'tel:0247628888'
+            },
+            links: {
+                avantages: 'https://drive.google.com/file/d/1glFTwKCafdGOQgrANri7IJ5A23sKgeK5/view?usp=sharing',
+                conges: 'https://drive.google.com/file/d/1jun4oU6QAAOgarSxd9r9HNoDPWYbCpVo/view?usp=share_link',
+                dueSante: 'https://drive.google.com/file/d/1emfqsZHfmRlDsQUeCtW1kSeXMoZFFY3h/view?usp=sharing',
+                garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing',
+                dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link',
+                accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing',
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing'
+            }
+        },
+        contacts: {
+            agence: {
+                phoneDisplay: '07 61 03 35 02',
+                phoneLink: 'tel:0761033502',
+                address: '134 Bd Charles de Gaulle, 37540 Saint-Cyr-Sur-Loire',
+                addressLink: 'https://maps.google.com/?q=134+Bd+Charles+de+Gaulle+37540+Saint-Cyr-Sur-Loire',
+                email: 'langeais@o2.fr'
+            }
+        }
+    },
+
     // CONFIGURATION LOCHES
     'loches': {
         name: 'O2 Loches',
