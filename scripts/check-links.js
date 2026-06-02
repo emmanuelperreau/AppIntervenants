@@ -16,6 +16,9 @@ function readSource(name) {
     return readFileSync(jsPath, 'utf-8');
 }
 
+// Certains sites (Legifrance, Drive) renvoient 403 sans User-Agent navigateur.
+const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
+
 async function checkLinks() {
     const configContent = readSource('config.js');
     const contentContent = readSource('src/content.js');
@@ -32,6 +35,7 @@ async function checkLinks() {
             const headRes = await fetch(url, {
                 method: 'HEAD',
                 redirect: 'follow',
+                headers: { 'User-Agent': UA },
                 signal: AbortSignal.timeout(10000),
             });
             if (headRes.ok) {
@@ -42,6 +46,7 @@ async function checkLinks() {
             const getRes = await fetch(url, {
                 method: 'GET',
                 redirect: 'follow',
+                headers: { 'User-Agent': UA },
                 signal: AbortSignal.timeout(10000),
             });
             if (getRes.ok) {
