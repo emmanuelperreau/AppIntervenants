@@ -70,7 +70,7 @@ function formatCurrency(val) {
 
 function loadAgencyConfig() {
     const params    = new URLSearchParams(window.location.search);
-    const agencyId  = params.get('agence') || 'nord-touraine';
+    const agencyId  = window.__AGENCE__ || params.get('agence') || 'nord-touraine';
 
     const linkRetour = /** @type {HTMLAnchorElement|null} */ (document.getElementById('link-retour'));
     if (linkRetour) linkRetour.href = './index.html?agence=' + agencyId;

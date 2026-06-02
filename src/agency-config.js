@@ -3,7 +3,7 @@ import { GRILLE_SALARIALE, AGENCY_CONFIGS } from '../config.js';
 
 export function applyConfig() {
     const params = new URLSearchParams(window.location.search);
-    const agencyId = params.get('agence') || 'nord-touraine';
+    const agencyId = window.__AGENCE__ || params.get('agence') || 'nord-touraine';
     const config = AGENCY_CONFIGS[agencyId] || AGENCY_CONFIGS['nord-touraine'];
     if (!config) return;
 

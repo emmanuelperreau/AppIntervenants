@@ -13,7 +13,8 @@
   "include": [
     "src/**/*.js",
     "config.js",
-    "agence-init.js"
+    "agence-init.js",
+    "globals.d.ts"
   ],
   "exclude": [
     "src/**/*.test.js",
