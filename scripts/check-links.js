@@ -19,6 +19,10 @@ function readSource(name) {
 // Certains sites (Legifrance, Drive) renvoient 403 sans User-Agent navigateur.
 const UA = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36';
 
+// Codes "le serveur repond mais refuse le bot/methode" : lien vivant, WARN non bloquant.
+// Un vrai lien mort renvoie 404/410, une erreur reseau ou un timeout (FAIL).
+const ACCESS_DENIED = new Set([401, 403, 405, 429]);
+
 async function checkLinks() {
     const configContent = readSource('config.js');
     const contentContent = readSource('src/content.js');
@@ -51,6 +55,10 @@ async function checkLinks() {
             });
             if (getRes.ok) {
                 console.log(`[OK] ${getRes.status} ${url} (via GET)`);
+            } else if (ACCESS_DENIED.has(getRes.status)) {
+                // Le serveur repond mais refuse le bot/datacenter (Legifrance, anti-bot)
+                // ou la methode : le path existe, lien vivant. WARN non bloquant.
+                console.log(`[WARN] ${getRes.status} ${url} (acces refuse au bot, lien probablement vivant)`);
             } else {
                 failed++;
                 console.log(`[FAIL] ${getRes.status} ${url}`);
