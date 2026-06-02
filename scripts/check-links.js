@@ -29,14 +29,27 @@ async function checkLinks() {
     let failed = 0;
     for (const url of urls) {
         try {
-            const res = await fetch(url, {
+            const headRes = await fetch(url, {
                 method: 'HEAD',
                 redirect: 'follow',
                 signal: AbortSignal.timeout(10000),
             });
-            const status = res.ok ? 'OK' : 'WARN';
-            if (!res.ok) failed++;
-            console.log(`[${status}] ${res.status} ${url}`);
+            if (headRes.ok) {
+                console.log(`[OK] ${headRes.status} ${url}`);
+                continue;
+            }
+            // HEAD a echoue (405/403 faux positif possible) : retenter en GET
+            const getRes = await fetch(url, {
+                method: 'GET',
+                redirect: 'follow',
+                signal: AbortSignal.timeout(10000),
+            });
+            if (getRes.ok) {
+                console.log(`[OK] ${getRes.status} ${url} (via GET)`);
+            } else {
+                failed++;
+                console.log(`[FAIL] ${getRes.status} ${url}`);
+            }
         } catch (err) {
             failed++;
             console.log(`[FAIL] ${url} (${err.message})`);
