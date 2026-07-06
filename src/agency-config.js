@@ -61,25 +61,16 @@ export function applyConfig() {
         'doc-link-due-interessement': config.docs.links.dueInteressement,
         'doc-link-accord-temps':     config.docs.links.accordTemps,
         'doc-link-prevoyance':       config.docs.links.prevoyance,
-        'doc-link-duerp':            config.docs.links.duerp,
+        'doc-link-duerp-intervenants': config.docs.links.duerpIntervenants,
+        'doc-link-duerp-encadrants':   config.docs.links.duerpEncadrants,
         'doc-link-reglement-interieur': config.docs.links.reglementInterieur,
         'doc-link-note-rgpd':           config.docs.links.noteRgpd,
     };
     for (const [id, url] of Object.entries(docIds)) {
         const el = /** @type {HTMLAnchorElement|null} */ (document.getElementById(id));
-        if (el) el.href = url;
-    }
-
-    // Infos réglementaires : masquer toute ligne dont le lien reste '#'
-    const reglementaireRows = {
-        'doc-link-duerp':                'reglementaire-duerp',
-        'doc-link-reglement-interieur': 'reglementaire-reglement-interieur',
-        'doc-link-note-rgpd':           'reglementaire-note-rgpd',
-    };
-    for (const [linkId, rowId] of Object.entries(reglementaireRows)) {
-        const link = /** @type {HTMLAnchorElement|null} */ (document.getElementById(linkId));
-        const row = document.getElementById(rowId);
-        if (row && (!link || link.getAttribute('href') === '#')) row.style.display = 'none';
+        if (!el) continue;
+        el.href = url;
+        el.style.display = (url === '#') ? 'none' : '';
     }
 
     // Contacts

@@ -194,28 +194,6 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-emerald-700 dark:group-hover:text-emerald-300'
     },
     {
-        title: 'Ma Mutuelle : Mise en place',
-        url: '#',
-        icon: 'stethoscope',
-        id: 'doc-link-due-sante',
-        colorClass: 'doc-teal',
-        hoverClass: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:border-teal-200',
-        iconBgClass: 'bg-teal-100 dark:bg-teal-900/50',
-        iconTextClass: 'text-teal-600 dark:text-teal-400',
-        hoverTextClass: 'group-hover:text-teal-700 dark:group-hover:text-teal-300'
-    },
-    {
-        title: 'Ma Mutuelle : Garanties',
-        url: '#',
-        icon: 'shield-check',
-        id: 'doc-link-garantie-sante',
-        colorClass: 'doc-cyan',
-        hoverClass: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 hover:border-cyan-200',
-        iconBgClass: 'bg-cyan-100 dark:bg-cyan-900/50',
-        iconTextClass: 'text-cyan-600 dark:text-cyan-400',
-        hoverTextClass: 'group-hover:text-cyan-700 dark:group-hover:text-cyan-300'
-    },
-    {
         title: 'Mon Intéressement',
         url: '#',
         icon: 'coins',
@@ -231,6 +209,50 @@ export const DOCUMENTS = [
         url: '#',
         icon: 'timer',
         id: 'doc-link-accord-temps',
+        colorClass: 'doc-indigo',
+        hoverClass: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-200',
+        iconBgClass: 'bg-indigo-100 dark:bg-indigo-900/50',
+        iconTextClass: 'text-indigo-600 dark:text-indigo-400',
+        hoverTextClass: 'group-hover:text-indigo-700 dark:group-hover:text-indigo-300'
+    },
+    {
+        title: 'DUERP Intervenants',
+        url: '#',
+        icon: 'shield',
+        id: 'doc-link-duerp-intervenants',
+        colorClass: 'doc-teal',
+        hoverClass: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:border-teal-200',
+        iconBgClass: 'bg-teal-100 dark:bg-teal-900/50',
+        iconTextClass: 'text-teal-600 dark:text-teal-400',
+        hoverTextClass: 'group-hover:text-teal-700 dark:group-hover:text-teal-300'
+    },
+    {
+        title: 'DUERP Encadrants',
+        url: '#',
+        icon: 'shield-check',
+        id: 'doc-link-duerp-encadrants',
+        colorClass: 'doc-cyan',
+        hoverClass: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 hover:border-cyan-200',
+        iconBgClass: 'bg-cyan-100 dark:bg-cyan-900/50',
+        iconTextClass: 'text-cyan-600 dark:text-cyan-400',
+        hoverTextClass: 'group-hover:text-cyan-700 dark:group-hover:text-cyan-300'
+    },
+    {
+        title: 'Règlement Intérieur',
+        url: '#',
+        icon: 'scale',
+        id: 'doc-link-reglement-interieur',
+        colorClass: 'doc-slate',
+        hoverClass: 'hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300',
+        iconBgClass: 'bg-slate-100 dark:bg-slate-700',
+        iconTextClass: 'text-slate-600 dark:text-slate-300',
+        hoverTextClass: 'group-hover:text-slate-900 dark:group-hover:text-white'
+    },
+    {
+        title: 'Note d\'information RGPD',
+        url: '#',
+        icon: 'lock',
+        id: 'doc-link-note-rgpd',
         colorClass: 'doc-indigo',
         hoverClass: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-200',
         iconBgClass: 'bg-indigo-100 dark:bg-indigo-900/50',
