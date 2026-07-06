@@ -75,6 +75,7 @@
 /* Aides & services */
 .services-section { margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e2e8f0; }
 @media (prefers-color-scheme: dark) { .services-section { border-top-color: #334155; } }
+.services-section-flush { margin-top: 0; padding-top: 0; border-top: none; }
 .services-title { font-weight: 700; font-size: 1.125rem; color: #11183b; margin-bottom: 1rem; display: flex; align-items: center; gap: .5rem; }
 @media (prefers-color-scheme: dark) { .services-title { color: white; } }
 .services-title svg { width: 1.25rem; height: 1.25rem; color: #14b8a6; }
