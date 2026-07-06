@@ -144,7 +144,7 @@ export const OBLIGATIONS = [
 export const DOCUMENTS = [
     {
         title: 'Guide Assistant(e) Ménager(ère)',
-        url: 'https://drive.google.com/file/d/1QwaUc8TZ1Ob-WEUbJF61WDoL5lIWYYZI/view?usp=sharing',
+        url: 'https://drive.google.com/file/d/1QwaUc8TZ1Ob-WEUbJF61WDoL5lIWYYZI/preview',
         icon: 'sparkles',
         colorClass: 'doc-orange',
         hoverClass: 'hover:bg-orange-50 dark:hover:bg-orange-900/20 hover:border-orange-200',
@@ -154,7 +154,7 @@ export const DOCUMENTS = [
     },
     {
         title: 'Guide Garde d\'Enfant(s)',
-        url: 'https://drive.google.com/file/d/1WQ38xAV4ZLMPdgYLpp1PbkHLa_uO4Ek_/view?usp=sharing',
+        url: 'https://drive.google.com/file/d/1WQ38xAV4ZLMPdgYLpp1PbkHLa_uO4Ek_/preview',
         icon: 'baby',
         colorClass: 'doc-fuchsia',
         hoverClass: 'hover:bg-fuchsia-50 dark:hover:bg-fuchsia-900/20 hover:border-fuchsia-200',
@@ -164,7 +164,7 @@ export const DOCUMENTS = [
     },
     {
         title: 'Guide Assistant(e) de Vie',
-        url: 'https://drive.google.com/file/d/1SscPY3Q6noC3F1ddvqJ9jouXdxVm6smh/view?usp=sharing',
+        url: 'https://drive.google.com/file/d/1SscPY3Q6noC3F1ddvqJ9jouXdxVm6smh/preview',
         icon: 'heart-handshake',
         colorClass: 'doc-purple',
         hoverClass: 'hover:bg-purple-50 dark:hover:bg-purple-900/20 hover:border-purple-200',
@@ -239,7 +239,7 @@ export const DOCUMENTS = [
     },
     {
         title: 'Sensibilisation à la Confidentialité',
-        url: 'https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/view?usp=drive_link',
+        url: 'https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/preview',
         icon: 'shield',
         colorClass: 'doc-slate',
         hoverClass: 'hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300',
