@@ -173,7 +173,7 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-purple-700 dark:group-hover:text-purple-300'
     },
     {
-        title: 'Convention Collective',
+        title: 'Convention Collective (IDCC 3127)',
         url: 'https://www.legifrance.gouv.fr/conv_coll/id/KALICONT000027084096',
         icon: 'scale',
         colorClass: 'doc-slate',
@@ -194,7 +194,7 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-emerald-700 dark:group-hover:text-emerald-300'
     },
     {
-        title: 'Ma Couverture Santé',
+        title: 'Ma Mutuelle : Mise en place',
         url: '#',
         icon: 'stethoscope',
         id: 'doc-link-due-sante',
@@ -205,7 +205,7 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-teal-700 dark:group-hover:text-teal-300'
     },
     {
-        title: 'Garantie Frais Santé',
+        title: 'Ma Mutuelle : Garanties',
         url: '#',
         icon: 'shield-check',
         id: 'doc-link-garantie-sante',

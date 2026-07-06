@@ -61,6 +61,7 @@ export function applyConfig() {
         'doc-link-due-interessement': config.docs.links.dueInteressement,
         'doc-link-accord-temps':     config.docs.links.accordTemps,
         'doc-link-prevoyance':       config.docs.links.prevoyance,
+        'doc-link-duerp':            config.docs.links.duerp,
         'doc-link-reglement-interieur': config.docs.links.reglementInterieur,
         'doc-link-note-rgpd':           config.docs.links.noteRgpd,
     };
@@ -71,6 +72,7 @@ export function applyConfig() {
 
     // Infos réglementaires : masquer toute ligne dont le lien reste '#'
     const reglementaireRows = {
+        'doc-link-duerp':                'reglementaire-duerp',
         'doc-link-reglement-interieur': 'reglementaire-reglement-interieur',
         'doc-link-note-rgpd':           'reglementaire-note-rgpd',
     };
