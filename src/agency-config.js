@@ -56,16 +56,28 @@ export function applyConfig() {
     // Docs — liens dynamiques
     const docIds = {
         'doc-link-avantages':        config.docs.links.avantages,
-        'doc-link-conges':           config.docs.links.conges,
         'doc-link-due-sante':        config.docs.links.dueSante,
         'doc-link-garantie-sante':   config.docs.links.garantieSante,
         'doc-link-due-interessement': config.docs.links.dueInteressement,
         'doc-link-accord-temps':     config.docs.links.accordTemps,
         'doc-link-prevoyance':       config.docs.links.prevoyance,
+        'doc-link-reglement-interieur': config.docs.links.reglementInterieur,
+        'doc-link-note-rgpd':           config.docs.links.noteRgpd,
     };
     for (const [id, url] of Object.entries(docIds)) {
         const el = /** @type {HTMLAnchorElement|null} */ (document.getElementById(id));
         if (el) el.href = url;
+    }
+
+    // Infos réglementaires : masquer toute ligne dont le lien reste '#'
+    const reglementaireRows = {
+        'doc-link-reglement-interieur': 'reglementaire-reglement-interieur',
+        'doc-link-note-rgpd':           'reglementaire-note-rgpd',
+    };
+    for (const [linkId, rowId] of Object.entries(reglementaireRows)) {
+        const link = /** @type {HTMLAnchorElement|null} */ (document.getElementById(linkId));
+        const row = document.getElementById(rowId);
+        if (row && (!link || link.getAttribute('href') === '#')) row.style.display = 'none';
     }
 
     // Contacts
@@ -122,6 +134,7 @@ export function applyConfig() {
         'val-prime-carburant':      g.primeCarburantMax + ' €',
         'val-ticket':               g.ticketValue + ' €',
         'val-cheques-cadeaux':      g.chequesCadeaux + ' €',
+        'val-cheques-cadeaux-enfant': g.chequesCadeauxEnfant + ' €',
         'val-cheques-vacances':     g.chequesVacancesTotal + ' €',
         'val-parrainage-client':    g.parrainageClient + ' €',
         'val-parrainage-intervenant': g.parrainageIntervenant + ' €',

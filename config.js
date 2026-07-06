@@ -13,6 +13,7 @@ export const GRILLE_SALARIALE = {
     ticketValue: 6.00,              // Valeur faciale titre restaurant
     ticketEmployeeShare: 3.00,      // Part salariale titre restaurant
     chequesCadeaux: 50,             // Chèques cadeaux Noël (EUR/an)
+    chequesCadeauxEnfant: 15,       // Supplément chèques cadeaux Noël par enfant -16 ans (EUR)
     chequesVacancesTotal: 100,      // Chèques vacances total (EUR/an)
     chequesVacancesEmployeur: 80,   // Part employeur chèques vacances
     parrainageClient: 40,           // Prime parrainage client (EUR)
@@ -27,7 +28,7 @@ export const GRILLE_SALARIALE = {
     }
 };
 
-/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,conges:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
+/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string,reglementInterieur:string,noteRgpd:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
 export const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (par défaut)
     'nord-touraine': {
@@ -54,12 +55,13 @@ export const AGENCY_CONFIGS = {
             },
             links: {
                 avantages: 'https://drive.google.com/file/d/1glFTwKCafdGOQgrANri7IJ5A23sKgeK5/view?usp=sharing',
-                conges: 'https://drive.google.com/file/d/1jun4oU6QAAOgarSxd9r9HNoDPWYbCpVo/view?usp=share_link',
                 dueSante: 'https://drive.google.com/file/d/1emfqsZHfmRlDsQUeCtW1kSeXMoZFFY3h/view?usp=sharing',
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing',
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing'
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
+                reglementInterieur: '#',   // Touraine SAP : RI à fournir
+                noteRgpd: '#'              // TODO : lien à remplir dès que la note RGPD salariés TS est déposée
             }
         },
         contacts: {
@@ -98,12 +100,13 @@ export const AGENCY_CONFIGS = {
             },
             links: {
                 avantages: 'https://drive.google.com/file/d/1glFTwKCafdGOQgrANri7IJ5A23sKgeK5/view?usp=sharing',
-                conges: 'https://drive.google.com/file/d/1jun4oU6QAAOgarSxd9r9HNoDPWYbCpVo/view?usp=share_link',
                 dueSante: 'https://drive.google.com/file/d/1emfqsZHfmRlDsQUeCtW1kSeXMoZFFY3h/view?usp=sharing',
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing',
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing'
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
+                reglementInterieur: '#',   // Touraine SAP : RI à fournir
+                noteRgpd: '#'              // TODO : idem nord-touraine (note RGPD salariés TS)
             }
         },
         contacts: {
@@ -142,12 +145,13 @@ export const AGENCY_CONFIGS = {
             },
             links: {
                 avantages: 'https://drive.google.com/file/d/1lZhynwRzlqJE4qyLBuB75mzef1TPaFHI/view?usp=sharing',
-                conges: 'https://drive.google.com/file/d/1Sx2UMvGmMRpYw8aQ6Rzi5jDK86RFf6SK/view?usp=sharing',
                 dueSante: 'https://drive.google.com/file/d/1PzYqLGD9OXLcxxN6doMlw3xAlJv3Ib2r/view?usp=drive_link',
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/view?usp=sharing',
                 dueInteressement: 'https://drive.google.com/file/d/1JfBIJ7xgqNpoOZN96PKd0homgqhrlXy6/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1rQAralibJ0CWLL4SRWZVKP3NNW1hsr1P/view?usp=share_link',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing'
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
+                reglementInterieur: 'https://docs.google.com/document/d/13PCLULedeSLDoZ6cE7QmJJTmSdPqHRsI/edit',
+                noteRgpd: '#'              // TODO : lien à remplir dès que la note RGPD salariés LS (Loches) est déposée
             }
         },
         contacts: {

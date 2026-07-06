@@ -194,17 +194,6 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-emerald-700 dark:group-hover:text-emerald-300'
     },
     {
-        title: 'Note Pose des Congés',
-        url: '#',
-        icon: 'sun',
-        id: 'doc-link-conges',
-        colorClass: 'doc-amber',
-        hoverClass: 'hover:bg-amber-50 dark:hover:bg-amber-900/20 hover:border-amber-200',
-        iconBgClass: 'bg-amber-100 dark:bg-amber-900/50',
-        iconTextClass: 'text-amber-600 dark:text-amber-400',
-        hoverTextClass: 'group-hover:text-amber-700 dark:group-hover:text-amber-300'
-    },
-    {
         title: 'Ma Couverture Santé',
         url: '#',
         icon: 'stethoscope',
