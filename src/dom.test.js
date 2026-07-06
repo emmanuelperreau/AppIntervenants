@@ -21,8 +21,8 @@ describe('Content data integrity', () => {
         }
     });
 
-    it('DOCUMENTS has 11 entries', () => {
-        expect(DOCUMENTS).toHaveLength(11);
+    it('DOCUMENTS has 10 entries', () => {
+        expect(DOCUMENTS).toHaveLength(10);
     });
 
     it('Each document has required fields', () => {
