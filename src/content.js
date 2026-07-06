@@ -216,17 +216,6 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-indigo-700 dark:group-hover:text-indigo-300'
     },
     {
-        title: 'Règlement Intérieur',
-        url: '#',
-        icon: 'scale',
-        id: 'doc-link-reglement-interieur',
-        colorClass: 'doc-slate',
-        hoverClass: 'hover:bg-slate-50 dark:hover:bg-slate-700/50 hover:border-slate-300',
-        iconBgClass: 'bg-slate-100 dark:bg-slate-700',
-        iconTextClass: 'text-slate-600 dark:text-slate-300',
-        hoverTextClass: 'group-hover:text-slate-900 dark:group-hover:text-white'
-    },
-    {
         title: 'Sensibilisation à la Confidentialité',
         url: 'https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/preview',
         icon: 'shield',

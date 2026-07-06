@@ -28,7 +28,7 @@ export const GRILLE_SALARIALE = {
     }
 };
 
-/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string,reglementInterieur:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
+/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
 export const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (par défaut)
     'nord-touraine': {
@@ -59,8 +59,7 @@ export const AGENCY_CONFIGS = {
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/preview',
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/preview',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/preview',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview',
-                reglementInterieur: '#'   // Touraine SAP : pas de RI (< 50 ETP)
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview'
             }
         },
         contacts: {
@@ -103,8 +102,7 @@ export const AGENCY_CONFIGS = {
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/preview',
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/preview',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/preview',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview',
-                reglementInterieur: '#'   // Touraine SAP : pas de RI (< 50 ETP)
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview'
             }
         },
         contacts: {
@@ -147,8 +145,7 @@ export const AGENCY_CONFIGS = {
                 garantieSante: 'https://drive.google.com/file/d/1w2u7iFUTinjA2VZnyUGEdcvJSBflsw8z/preview',
                 dueInteressement: 'https://drive.google.com/file/d/1JfBIJ7xgqNpoOZN96PKd0homgqhrlXy6/preview',
                 accordTemps: 'https://drive.google.com/file/d/1rQAralibJ0CWLL4SRWZVKP3NNW1hsr1P/preview',
-                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview',
-                reglementInterieur: 'https://docs.google.com/document/d/13PCLULedeSLDoZ6cE7QmJJTmSdPqHRsI/preview'
+                prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/preview'
             }
         },
         contacts: {
