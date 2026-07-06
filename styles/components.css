@@ -380,6 +380,67 @@
 .cheque-badge-vacances { background: #ffedd5; color: #c2410c; }
 @media (prefers-color-scheme: dark) { .cheque-badge-noel { background: rgba(236,72,153,.2); color: #f9a8d4; } .cheque-badge-vacances { background: rgba(194,65,12,.2); color: #fdba74; } }
 
+/* Primes — mobilité, tickets, mutuelle, congés (factorisation styles inline) */
+.money-grid-top { align-items: start; }
+.card-body-col { display: flex; flex-direction: column; gap: 1rem; }
+.col-stack { display: flex; flex-direction: column; gap: 1.5rem; }
+.row-between-center { display: flex; justify-content: space-between; align-items: center; }
+.row-gap-center { display: flex; gap: .75rem; align-items: center; }
+.icon-chip { background: white; padding: .5rem; border-radius: .5rem; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.icon-chip-orange { color: #f97316; }
+.icon-chip-slate { color: #475569; }
+.label-strong { font-weight: 700; color: #1e293b; font-size: .875rem; }
+.text-right { text-align: right; }
+.white-box { background: white; padding: .75rem; border-radius: .5rem; border: 1px solid #e2e8f0; }
+.white-box-orange { border-color: #fed7aa; }
+.note-muted { font-size: .7rem; color: #64748b; margin: 0; }
+.note-muted-top { font-size: .7rem; color: #64748b; margin: .5rem 0 0; padding: 0 .25rem; }
+.prime-carburant-block { background: #f8fafc; padding: 1rem; border-radius: .75rem; border: 1px solid #f1f5f9; display: flex; flex-direction: column; gap: .75rem; }
+.prime-title { font-weight: 700; color: #1e293b; font-size: .875rem; margin: 0; }
+.prime-sub { font-size: .7rem; color: #64748b; margin: 0; }
+.prime-value { display: block; font-size: 1.5rem; font-weight: 700; color: #11183b; }
+.prime-value-unit { font-size: .7rem; color: #64748b; font-weight: 500; }
+.simu-title { font-size: .7rem; font-weight: 700; color: #334155; margin: 0 0 .5rem; }
+.simu-row { display: flex; justify-content: space-between; font-size: .7rem; color: #475569; border-bottom: 1px solid #f1f5f9; padding-bottom: .25rem; margin-bottom: .25rem; }
+.simu-row:last-child { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.simu-row strong { font-weight: 700; color: #11183b; }
+.prime-footnote { font-size: .7rem; color: #64748b; font-style: italic; border-top: 1px solid #e2e8f0; padding-top: .5rem; margin: 0; }
+.ticket-facial-box { background: rgba(59,130,246,.06); padding: 1rem; border-radius: .75rem; border: 1px solid #bfdbfe; margin-bottom: 1rem; }
+.ticket-facial-title { font-weight: 700; color: #1e3a8a; margin: 0; }
+.ticket-value { display: block; font-size: 1.5rem; font-weight: 700; color: #2563eb; }
+.ticket-value-unit { font-size: .7rem; color: #60a5fa; font-weight: 700; }
+.ticket-eligible-box { display: flex; align-items: center; gap: .5rem; font-size: .7rem; color: #15803d; background: #f0fdf4; padding: .5rem; border-radius: .5rem; border: 1px solid #bbf7d0; }
+.mutuelle-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+.mutuelle-desc { font-size: .875rem; color: #64748b; margin: 0 0 .25rem; }
+.mutuelle-badge { display: inline-block; background: #dcfce7; color: #15803d; font-size: .7rem; font-weight: 700; padding: .25rem .5rem; border-radius: 9999px; margin-bottom: .25rem; }
+.mutuelle-note { font-size: .7rem; color: #64748b; font-style: italic; margin: 0; }
+.mutuelle-price-label { font-size: .7rem; color: #64748b; font-weight: 500; display: block; }
+.mutuelle-price-value { font-size: 1.875rem; font-weight: 800; color: #11183b; }
+.mutuelle-price-note { font-size: .7rem; color: #64748b; display: block; }
+.cheques-header-badge { background: rgba(255,255,255,.2); padding: .125rem .5rem; border-radius: .25rem; font-size: .7rem; font-weight: 700; }
+.cheque-body { flex: 1; }
+.cheque-row-top { display: flex; justify-content: space-between; align-items: center; }
+.cheque-title { font-weight: 700; font-size: 1.125rem; color: #1e293b; margin: 0; }
+.cheque-sub { font-size: .875rem; color: #475569; margin: .25rem 0 0; }
+.cheque-sub-small { font-size: .7rem; }
+.cheque-sub-small-muted { font-size: .7rem; color: #64748b; }
+.conges-header-bg { background: linear-gradient(135deg,#eff6ff,#fff); border-bottom: 1px solid #f1f5f9; }
+.conges-header-icon { background: #dbeafe; padding: .375rem; border-radius: .375rem; color: #2563eb; }
+.conges-header-title { font-weight: 700; font-size: .875rem; color: #1e293b; margin: 0; }
+.conges-acquis-row { display: flex; justify-content: space-between; align-items: center; font-size: .75rem; }
+.conges-acquis-label { color: #475569; }
+.conges-acquis-value { font-weight: 700; color: #11183b; display: block; }
+.conges-acquis-sub { font-size: .7rem; color: #64748b; display: block; }
+.conges-acquis-note { font-size: .7rem; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: .5rem; margin: .5rem 0 0; }
+.conges-regle-title { font-weight: 700; font-size: .7rem; color: #334155; text-transform: uppercase; letter-spacing: .025em; margin: 0 0 .5rem; }
+.conges-regle-text { font-size: .7rem; color: #475569; line-height: 1.5; margin: 0 0 .5rem; }
+.conges-alert-icon { display: inline; vertical-align: middle; margin-right: .25rem; }
+.conges-reminder-plain { list-style: none; margin: 0; }
+.conges-reminder-plain li { align-items: flex-start; gap: .5rem; font-size: .7rem; margin-bottom: .5rem; }
+.conges-reminder-plain li:last-child { margin-bottom: 0; }
+.conges-reminder-plain svg { margin-top: .125rem; flex-shrink: 0; }
+.conges-reminder-plain span { color: #1e3a8a; }
+
 .reglementaire-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
 .reglementaire-item { display: flex; justify-content: space-between; align-items: center; gap: 1rem; background: #f8fafc; padding: .75rem 1rem; border-radius: .5rem; border: 1px solid #f1f5f9; font-size: .8rem; }
 @media (prefers-color-scheme: dark) { .reglementaire-item { background: rgba(51,65,85,.5); border-color: rgba(51,65,85,.5); } }
