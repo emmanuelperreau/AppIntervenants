@@ -28,7 +28,7 @@ export const GRILLE_SALARIALE = {
     }
 };
 
-/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string,duerpIntervenants:string,duerpEncadrants:string,reglementInterieur:string,noteRgpd:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
+/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string,reglementInterieur:string,noteRgpd:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
 export const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (par défaut)
     'nord-touraine': {
@@ -60,8 +60,6 @@ export const AGENCY_CONFIGS = {
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing',
                 prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
-                duerpIntervenants: 'https://docs.google.com/spreadsheets/d/1Orij-ggAvdWlpn482fQ0KsVCu-nEu7uNGRQIE0ixYy0/preview',
-                duerpEncadrants: '#',      // TODO : lien DUERP encadrants TS à coller
                 reglementInterieur: '#',   // Touraine SAP : pas de RI (< 50 ETP)
                 noteRgpd: '#'              // TODO : lien à remplir dès que la note RGPD salariés TS est déposée
             }
@@ -107,8 +105,6 @@ export const AGENCY_CONFIGS = {
                 dueInteressement: 'https://drive.google.com/file/d/1LhM0Jh_mLvTdxdMneaWYMdITyUY1A9JT/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1Akowb6VYpWDSeCs28psDmaRdqjhWnHYl/view?usp=sharing',
                 prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
-                duerpIntervenants: 'https://docs.google.com/spreadsheets/d/1Orij-ggAvdWlpn482fQ0KsVCu-nEu7uNGRQIE0ixYy0/preview',
-                duerpEncadrants: '#',      // TODO : lien DUERP encadrants TS à coller
                 reglementInterieur: '#',   // Touraine SAP : pas de RI (< 50 ETP)
                 noteRgpd: '#'              // TODO : idem nord-touraine (note RGPD salariés TS)
             }
@@ -154,8 +150,6 @@ export const AGENCY_CONFIGS = {
                 dueInteressement: 'https://drive.google.com/file/d/1JfBIJ7xgqNpoOZN96PKd0homgqhrlXy6/view?usp=share_link',
                 accordTemps: 'https://drive.google.com/file/d/1rQAralibJ0CWLL4SRWZVKP3NNW1hsr1P/view?usp=share_link',
                 prevoyance: 'https://drive.google.com/file/d/1ISFsTJGOXZD-t3t01RnjUz9mu0Q6f6Q_/view?usp=sharing',
-                duerpIntervenants: 'https://docs.google.com/spreadsheets/d/1tC8-OaFx9w9iU_dTeck2XMYmmNmfTugUsVsjV4rU6Z0/preview',
-                duerpEncadrants: '#',      // TODO : lien DUERP encadrants LS à coller
                 reglementInterieur: 'https://docs.google.com/document/d/13PCLULedeSLDoZ6cE7QmJJTmSdPqHRsI/preview',
                 noteRgpd: '#'              // TODO : lien à remplir dès que la note RGPD salariés LS (Loches) est déposée
             }

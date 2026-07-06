@@ -216,28 +216,6 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-indigo-700 dark:group-hover:text-indigo-300'
     },
     {
-        title: 'DUERP Intervenants',
-        url: '#',
-        icon: 'shield',
-        id: 'doc-link-duerp-intervenants',
-        colorClass: 'doc-teal',
-        hoverClass: 'hover:bg-teal-50 dark:hover:bg-teal-900/20 hover:border-teal-200',
-        iconBgClass: 'bg-teal-100 dark:bg-teal-900/50',
-        iconTextClass: 'text-teal-600 dark:text-teal-400',
-        hoverTextClass: 'group-hover:text-teal-700 dark:group-hover:text-teal-300'
-    },
-    {
-        title: 'DUERP Encadrants',
-        url: '#',
-        icon: 'shield-check',
-        id: 'doc-link-duerp-encadrants',
-        colorClass: 'doc-cyan',
-        hoverClass: 'hover:bg-cyan-50 dark:hover:bg-cyan-900/20 hover:border-cyan-200',
-        iconBgClass: 'bg-cyan-100 dark:bg-cyan-900/50',
-        iconTextClass: 'text-cyan-600 dark:text-cyan-400',
-        hoverTextClass: 'group-hover:text-cyan-700 dark:group-hover:text-cyan-300'
-    },
-    {
         title: 'Règlement Intérieur',
         url: '#',
         icon: 'scale',
