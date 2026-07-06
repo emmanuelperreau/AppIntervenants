@@ -62,7 +62,6 @@ export function applyConfig() {
         'doc-link-accord-temps':     config.docs.links.accordTemps,
         'doc-link-prevoyance':       config.docs.links.prevoyance,
         'doc-link-reglement-interieur': config.docs.links.reglementInterieur,
-        'doc-link-note-rgpd':           config.docs.links.noteRgpd,
     };
     for (const [id, url] of Object.entries(docIds)) {
         const el = /** @type {HTMLAnchorElement|null} */ (document.getElementById(id));

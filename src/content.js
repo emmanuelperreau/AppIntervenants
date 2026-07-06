@@ -227,17 +227,6 @@ export const DOCUMENTS = [
         hoverTextClass: 'group-hover:text-slate-900 dark:group-hover:text-white'
     },
     {
-        title: 'Note d\'information RGPD',
-        url: '#',
-        icon: 'lock',
-        id: 'doc-link-note-rgpd',
-        colorClass: 'doc-indigo',
-        hoverClass: 'hover:bg-indigo-50 dark:hover:bg-indigo-900/20 hover:border-indigo-200',
-        iconBgClass: 'bg-indigo-100 dark:bg-indigo-900/50',
-        iconTextClass: 'text-indigo-600 dark:text-indigo-400',
-        hoverTextClass: 'group-hover:text-indigo-700 dark:group-hover:text-indigo-300'
-    },
-    {
         title: 'Sensibilisation à la Confidentialité',
         url: 'https://drive.google.com/file/d/1FsTsWV1i1u-hXZhHQcinDwzSixnLduCx/preview',
         icon: 'shield',
