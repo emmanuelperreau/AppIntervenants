@@ -40,7 +40,7 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link',
-            declarationKmsUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link'
+            declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
@@ -83,7 +83,7 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link',
-            declarationKmsUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScIt7TJMrf9qr-h3xf9Ryut_PdVmSm1LRxp6_-xh4tqIqR1Tg/viewform?usp=sf_link'
+            declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
@@ -126,7 +126,7 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSczzwX9PjMXBJHHAq6TnlUQSfCSk2yLkoP1BtbVyePPAAluGQ/viewform?usp=sf_link',
-            declarationKmsUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeLIa2CutbQn7QVCdDbJJfr8KjCeHAj7PpAG1qhTYl1bkF9Lw/viewform?usp=sf_link'
+            declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
