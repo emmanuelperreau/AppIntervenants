@@ -1,6 +1,6 @@
 // sw.js — Service Worker écrit main (remplace vite-plugin-pwa)
 // Bumper CACHE_VERSION à chaque déploiement pour invalider le cache.
-const CACHE_VERSION = 'v10';
+const CACHE_VERSION = 'v11';
 const CACHE_NAME = 'appintervenants-' + CACHE_VERSION;
 
 // App shell : tous les fichiers à précacher au install

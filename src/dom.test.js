@@ -85,4 +85,20 @@ describe('Config data integrity', () => {
             expect(config).toHaveProperty('contacts');
         }
     });
+
+    // Non-regression : le lien km doit pointer vers le SIRH, jamais revenir
+    // vers l'ancien Google Form (cause du bug de cache PWA du 2026-07-29).
+    it('Each agency declarationKmsUrl points to the SIRH, not a Google Form', () => {
+        for (const agency of ['nord-touraine', 'langeais', 'loches']) {
+            expect(AGENCY_CONFIGS[agency].home.declarationKmsUrl).toBe(
+                'https://sirh.serviam.app/km'
+            );
+        }
+    });
+
+    it('No config.js URL points to docs.google.com/forms for kms declaration', () => {
+        for (const [, config] of Object.entries(AGENCY_CONFIGS)) {
+            expect(config.home.declarationKmsUrl).not.toContain('docs.google.com/forms');
+        }
+    });
 });
