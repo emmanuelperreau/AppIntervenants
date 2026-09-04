@@ -8,6 +8,7 @@ Projet conforme au CLAUDE.md global : HTML / CSS minimaliste écrits main, JS Va
 - Icônes en SVG inline (plus de Lucide). Partiels d'onglets chargés par `fetch()`.
 - PWA : `sw.js` et manifests écrits main (plus de vite-plugin-pwa).
 - Déploiement : la source EST le déployé. La CI assemble `_site/` (copie de fichiers, zéro build).
+- `CACHE_VERSION` (`sw.js`) ne se bumpe JAMAIS à la main : le fichier porte `'__BUILD_VERSION__'`, que `scripts/build-site.sh` remplace par un hash du contenu de `_site/` (`scripts/sw-version.js`). Même contenu = même version (un redéploiement n'invalide rien), tout changement de fichier déployé = nouvelle version. Le build échoue si la substitution n'a pas eu lieu.
 
 ## Exception, réduite à un seul fichier
 Node / npm sont conservés **uniquement** pour `vitest` + `tsc --checkJs` sur le module de calcul salaire (`src/calculator.js`, annoté JSDoc, ~45 tests).

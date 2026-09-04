@@ -13,3 +13,10 @@ cp config.js _site/
 find src -name '*.js' ! -name '*.test.js' -exec cp --parents {} _site/ \;
 # Copier les partiels HTML
 find src/templates -name '*.html' -exec cp --parents {} _site/ \;
+# Substituer CACHE_VERSION dans _site/sw.js par un hash du contenu deploye
+node scripts/sw-version.js _site
+# Garde-fou : le build echoue si la substitution n'a pas eu lieu
+if grep -q '__BUILD_VERSION__' _site/sw.js; then
+    echo "build-site: CACHE_VERSION non substituee dans _site/sw.js" >&2
+    exit 1
+fi
