@@ -36,7 +36,7 @@ Le hook pre-commit relance les tests et bloque si rouge : c'est lui le gate, ne 
 
 Push : le hook `review-gate.sh` joue la revue sur `@{u}..HEAD` et bloque sur finding critique. Un blocage est un verdict : corriger et re-pousser, ou empiler dans `plan.md` et ne pas livrer. **Jamais `git commit` et `git push` dans la même commande** (les deux gates s'additionnent sous le plafond de 600 s).
 
-Aucun `.claude/visual-check.conf` dans ce projet : il n'y a **pas** de vérification visuelle au push. Ne pas la déclarer faite. Un jugement de rendu se prend dans le Browser pane, serveur local `python3 -m http.server 8000`.
+Vérification visuelle au push depuis le 2026-09-19 (`.claude/visual-check.conf` : accueil comparé à sa baseline, simulateur en présence seule). Elle exige le serveur local démarré avant le push, `uv run python -m http.server 8004` (port 8004, le 8000 appartient à sirh-o2), et un `git push` lancé hors sandbox, sinon Chromium meurt dans le hook git et le push échoue pour une fausse raison. Un jugement de rendu se prend dans le Browser pane, sur ce même serveur.
 
 ## Étape 2 : Vérifier les DEUX déploiements (spécifique au projet)
 
