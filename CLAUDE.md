@@ -5,17 +5,17 @@ Projet conforme au CLAUDE.md global : HTML / CSS minimaliste écrits main, JS Va
 ## Conforme au global
 - HTML + CSS écrits main (`styles.css`, classes sémantiques, dark mode en `prefers-color-scheme`).
 - JS Vanilla en modules ES natifs (`src/*.js`), chargés directement par le navigateur.
-- Icônes en SVG inline (plus de Lucide). Partiels d'onglets chargés par `fetch()`.
-- PWA : `sw.js` et manifests écrits main (plus de vite-plugin-pwa).
+- Icônes en SVG inline. Partiels d'onglets chargés par `fetch()`.
+- PWA : `sw.js` et manifests écrits main.
 - Déploiement : la source EST le déployé. La CI assemble `_site/` (copie de fichiers, zéro build).
 - `CACHE_VERSION` (`sw.js`) ne se bumpe JAMAIS à la main : le fichier porte `'__BUILD_VERSION__'`, que `scripts/build-site.sh` remplace par un hash du contenu de `_site/` (`scripts/sw-version.js`). Même contenu = même version (un redéploiement n'invalide rien), tout changement de fichier déployé = nouvelle version. Le build échoue si la substitution n'a pas eu lieu.
 
-## Exception, réduite à un seul fichier
-Node / npm sont conservés **uniquement** pour `vitest` + `tsc --checkJs` sur le module de calcul salaire (`src/calculator.js`, annoté JSDoc, ~45 tests).
+## Exception Node, limitée aux tests et au build CI
+Node sert à `vitest` + `tsc --checkJs` (tests `src/*.test.js` : calcul salaire de `src/calculator.js` annoté JSDoc, intégrité des données, version du service worker) et, en CI, à `scripts/sw-version.js` appelé par `scripts/build-site.sh`.
 
 Justification : ce module calcule des salaires. On garde la garantie « le code livré au navigateur est exactement celui couvert par les tests » (fichier unique, importé par le navigateur ET testé). C'est la seule chose que le global ne peut pas fournir pour un calcul interactif côté client.
 
-Hors ce module : rien d'autre n'introduit de Node, de build ou de dépendance.
+Rien d'autre n'introduit de Node ni de dépendance runtime : le code servi au navigateur n'est pas transformé.
 
 ## Levé du global, et pourquoi
 - **Python / uv** : sans objet, PWA 100 % client sans runtime serveur.
@@ -23,9 +23,9 @@ Hors ce module : rien d'autre n'introduit de Node, de build ou de dépendance.
 - **pytest** : les seuls tests portent sur le calculateur JS, lancés par Vitest.
 
 ## Commandes
-- `npx vitest run` : tests (calculateur + intégrité des données).
-- `npx tsc --noEmit` : vérification de types (JSDoc, `checkJs`).
-- `npx eslint .` / `npx prettier` : lint et format.
-- Servir en local : `python3 -m http.server` à la racine, ouvrir `index.html` (ajouter `?agence=loches` pour l'autre agence).
+- `./node_modules/.bin/vitest run` : tests.
+- `./node_modules/.bin/tsc --noEmit` : vérification de types (JSDoc, `checkJs`).
+- `./node_modules/.bin/eslint` / `./node_modules/.bin/prettier` : lint et format.
+- Servir en local : `uv run python -m http.server 8004` à la racine (port de `.claude/launch.json`), ouvrir `index.html` (ajouter `?agence=loches` pour l'autre agence).
 
-Note : le hook global interdit Node en local ; `vitest`/`tsc` tournent en CI (GitHub Actions). Pour les lancer en local, lever le hook pour ce projet.
+Le hook global bloque `npm`, `npx`, `node` et `python` nu : lancer les binaires de `node_modules/.bin` directement. La CI (GitHub Actions) rejoue lint, tests et types.

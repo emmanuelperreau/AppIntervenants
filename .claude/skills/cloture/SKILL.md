@@ -7,7 +7,7 @@ description: Clôture de session pour AppIntervenants (PWA statique, JS/Vitest, 
 
 Version projet du rituel de clôture. Elle prime sur la commande globale `/cloture` tant qu'on travaille dans ce dépôt : le global est calibré Python/uv/pytest/alembic, absents ici, et il ignore les deux points qui font vraiment échouer une livraison sur ce projet — la seconde chaîne de déploiement et le `sw.js` stampé.
 
-Exécute les étapes dans l'ordre. Communication ultra-courte. Une seule étape se délègue, l'étape 3.
+Exécute les étapes dans l'ordre. Communication ultra-courte.
 
 ## Étape 0 : Faits de vérité
 
@@ -32,7 +32,7 @@ Pas de `uv`, pas de `pytest`, pas d'alembic. Le hook global interdit `node`/`npm
 ./node_modules/.bin/eslint '**/*.{js,ts}' --ignore-pattern 'dist/**' --ignore-pattern 'node_modules/**'
 ```
 
-Le hook pre-commit relance les tests et bloque si rouge : c'est lui le gate, ne pas le refaire à la main. Commits en français, format `type: description`. `.memory/` est gitignoré, jamais commité.
+Aucun hook local ne lance Vitest ici (le pre-commit central ne s'arme que sur un dépôt portant un `pyproject.toml`) : ces trois commandes sont le seul gate local, la CI GitHub les rejoue. Commits en français, format `type: description`. `.memory/` est gitignoré, jamais commité.
 
 Push : le hook `review-gate.sh` joue la revue sur `@{u}..HEAD` et bloque sur finding critique. Un blocage est un verdict : corriger et re-pousser, ou empiler dans `plan.md` et ne pas livrer. **Jamais `git commit` et `git push` dans la même commande** (les deux gates s'additionnent sous le plafond de 600 s).
 
@@ -69,14 +69,14 @@ Attendu : `const CACHE_VERSION = '<12 hex>';`, **identique partout**. Deux lectu
 
 Si le code a changé cette session, le hash doit avoir changé aussi.
 
-## Étape 3 : `.memory/` (délégué)
+## Étape 3 : `.memory/`
 
-Délègue à un sous-agent qui charge la skill `memory-bank`. Lui transmettre les faits FINAUX de l'étape 1 et 2 : HEAD post-commit, compte Vitest, hash `CACHE_VERSION` déployé, état des deux déploiements, tri des branches locales ET distantes. Il rend une ligne, tu ne relis pas les fichiers.
+Mettre `.memory/` à jour via la skill `memory-bank`, en direct comme la clôture globale (sous-agent seulement au-delà de 400K de contexte), avec les faits FINAUX des étapes 1 et 2 : HEAD post-commit, compte Vitest, hash `CACHE_VERSION` déployé, état des deux déploiements, tri des branches locales ET distantes.
 
 Il n'y a pas de CHANGELOG dans ce dépôt : aucune version à aligner, ne pas en inventer une.
 
 ## Étape 4 : Clore
 
-Valide la ligne de retour sans rouvrir les fichiers, recoupe avec ce que tu as constaté toi-même. Termine par ce rappel, en gras, seul sur sa ligne :
+Termine par ce rappel, en gras, seul sur sa ligne :
 
 **✅ Session clôturée. Tape maintenant `/clear` pour vider le contexte.**
