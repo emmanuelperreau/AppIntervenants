@@ -25,7 +25,7 @@ Rien d'autre n'introduit de Node ni de dépendance runtime : le code servi au na
 ## Commandes
 - `./node_modules/.bin/vitest run` : tests.
 - `./node_modules/.bin/tsc --noEmit` : vérification de types (JSDoc, `checkJs`).
-- `./node_modules/.bin/eslint` / `./node_modules/.bin/prettier` : lint et format.
+- `./node_modules/.bin/eslint '**/*.{js,ts}' --ignore-pattern 'dist/**' --ignore-pattern 'node_modules/**'` / `./node_modules/.bin/prettier` : lint et format.
 - Servir en local : `uv run python -m http.server 8004` à la racine (port de `.claude/launch.json`), ouvrir `index.html` (ajouter `?agence=loches` pour l'autre agence).
 
 Ni `npm`, ni `npx`, ni `node` ou `python` nus : lancer les binaires de `node_modules/.bin` directement. La CI (GitHub Actions) rejoue lint, tests et types.
