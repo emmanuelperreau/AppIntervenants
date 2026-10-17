@@ -28,4 +28,8 @@ Rien d'autre n'introduit de Node ni de dépendance runtime : le code servi au na
 - `./node_modules/.bin/eslint` / `./node_modules/.bin/prettier` : lint et format.
 - Servir en local : `uv run python -m http.server 8004` à la racine (port de `.claude/launch.json`), ouvrir `index.html` (ajouter `?agence=loches` pour l'autre agence).
 
-Le hook global bloque `npm`, `npx`, `node` et `python` nu : lancer les binaires de `node_modules/.bin` directement. La CI (GitHub Actions) rejoue lint, tests et types.
+Ni `npm`, ni `npx`, ni `node` ou `python` nus : lancer les binaires de `node_modules/.bin` directement. La CI (GitHub Actions) rejoue lint, tests et types.
+
+## Livraison
+- Un push sur main alimente deux chaînes indépendantes : GitHub Pages (environ 1 min 40) et Cloudflare Pages (environ 11 min, mesuré le 2026-09-04). Le check `Cloudflare Pages` du commit (`gh api repos/emmanuelperreau/AppIntervenants/commits/<sha>/check-runs`) est le signal fiable ; `in_progress` n'est pas un échec.
+- Livré = la ligne 4 de `sw.js` (`const CACHE_VERSION = '<12 hex>';`) identique sur les cinq hôtes, lue avec `?t=<aléa>` contre le cache : `appintervenants.pages.dev`, `o2loches.serviam.app`, `o2nordtouraine.serviam.app`, `o2langeais.serviam.app`, `emmanuelperreau.github.io/AppIntervenants`. `'v11'` ou `'__BUILD_VERSION__'` : substitution ratée, les PWA installées servent du contenu périmé (vécu le 2026-07-06 et le 2026-07-29). Deux valeurs différentes : un déploiement en retard, attendre et relire. Un fichier déployé modifié doit changer la valeur.
