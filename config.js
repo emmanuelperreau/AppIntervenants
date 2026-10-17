@@ -39,7 +39,7 @@ export const AGENCY_CONFIGS = {
             label: 'Ligne Salariés'
         },
         home: {
-            gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link',
+            gestionClesUrl: 'https://remplas.serviam.app/cles/nord-touraine-n3mm9pa8',
             declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
@@ -82,7 +82,7 @@ export const AGENCY_CONFIGS = {
             label: 'Ligne Salariés'
         },
         home: {
-            gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScYpiJS_KAWRl3h_dJCY2-cX9gYJr-Uh9qNQK2qVZ8xFNY14w/viewform?usp=sf_link',
+            gestionClesUrl: 'https://remplas.serviam.app/cles/langeais-9sncy57s',
             declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
@@ -125,7 +125,7 @@ export const AGENCY_CONFIGS = {
             label: 'Ligne Salariés'
         },
         home: {
-            gestionClesUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSczzwX9PjMXBJHHAq6TnlUQSfCSk2yLkoP1BtbVyePPAAluGQ/viewform?usp=sf_link',
+            gestionClesUrl: 'https://remplas.serviam.app/cles/loches-bn4yrqxn',
             declarationKmsUrl: 'https://sirh.serviam.app/km'
         },
         remuneration: {
