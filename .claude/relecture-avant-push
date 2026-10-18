@@ -1,0 +1,3 @@
+Dépôt public : le push publie. Ce fichier active, dans le pre-push central
+(~/.claude/git-hooks/pre-push), le refus de tout push dont le sha n'a pas passé
+l'agent relecteur et n'est pas consigné dans <git-dir>/relecture-passee.
