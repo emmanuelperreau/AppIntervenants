@@ -96,6 +96,14 @@ describe('Config data integrity', () => {
         }
     });
 
+    it('Each agency prospectionUrl opens the terrain link of its own agency', () => {
+        for (const agency of ['nord-touraine', 'langeais', 'loches']) {
+            expect(AGENCY_CONFIGS[agency].home.prospectionUrl).toMatch(
+                new RegExp('^https://prospection\\.serviam\\.app/prospection/terrain/' + agency + '-[a-z0-9]{8}$')
+            );
+        }
+    });
+
     it('No config.js URL points to docs.google.com/forms for kms declaration', () => {
         for (const [, config] of Object.entries(AGENCY_CONFIGS)) {
             expect(config.home.declarationKmsUrl).not.toContain('docs.google.com/forms');

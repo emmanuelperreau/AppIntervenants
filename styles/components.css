@@ -3,7 +3,16 @@
    ============================================================ */
 
 /* ---------- ONGLET ACCUEIL ---------- */
-.tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; }
+/* 7 tuiles : 4 en haut, 3 en bas, sur une grille de 12 colonnes. */
+.tool-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: .75rem; }
+.tool-grid > .tool-tile { grid-column: span 4; }
+.tool-grid > .tool-tile:nth-child(-n+4) { grid-column: span 3; }
+@media (max-width: 480px) {
+    .tool-grid { gap: .5rem; }
+    .tool-grid > .tool-tile:nth-child(-n+4) { padding: .75rem .25rem; }
+    .tool-grid > .tool-tile:nth-child(-n+4) .tool-tile-label { font-size: .75rem; }
+    .tool-grid > .tool-tile:nth-child(-n+4) .tool-tile-sub { font-size: .65rem; }
+}
 .tool-tile {
     padding: 1rem; border-radius: 1rem; box-shadow: 0 1px 3px rgba(0,0,0,.06);
     display: flex; flex-direction: column; align-items: center;
@@ -85,6 +94,18 @@
     .tile-rose .tool-tile-icon { background: #1e293b; color: #fb7185; }
     .tile-rose .tool-tile-label { color: #fecdd3; }
     .tile-rose .tool-tile-sub { color: #fda4af; }
+}
+
+.tile-amber { background: #fffbeb; border: 1px solid #fde68a; }
+.tile-amber:hover { background: #fef3c7; }
+.tile-amber .tool-tile-icon { background: white; color: #d97706; }
+.tile-amber .tool-tile-label { color: #78350f; }
+.tile-amber .tool-tile-sub { color: #b45309; }
+@media (prefers-color-scheme: dark) {
+    .tile-amber { background: rgba(217,119,6,.2); border-color: #92400e; }
+    .tile-amber .tool-tile-icon { background: #1e293b; color: #fbbf24; }
+    .tile-amber .tool-tile-label { color: #fde68a; }
+    .tile-amber .tool-tile-sub { color: #fcd34d; }
 }
 
 /* Mission & Valeurs */

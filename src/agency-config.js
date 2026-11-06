@@ -29,6 +29,9 @@ export function applyConfig() {
     const linkKms = /** @type {HTMLAnchorElement|null} */ (document.getElementById('link-declaration-kms'));
     if (linkKms) linkKms.href = config.home.declarationKmsUrl;
 
+    const linkProspection = /** @type {HTMLAnchorElement|null} */ (document.getElementById('link-prospection'));
+    if (linkProspection) linkProspection.href = config.home.prospectionUrl;
+
     // Rémunération
     const mutuelleName = document.getElementById('remun-mutuelle-name');
     if (mutuelleName) mutuelleName.textContent = config.remuneration.mutuelleName;

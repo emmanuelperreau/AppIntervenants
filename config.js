@@ -28,7 +28,7 @@ export const GRILLE_SALARIALE = {
     }
 };
 
-/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
+/** @type {Record<string, {name:string,telephone:{display:string,link:string,label:string},home:{gestionClesUrl:string,declarationKmsUrl:string,prospectionUrl:string},remuneration:{mutuelleName:string,mutuellePrice:string,mutuellePortailUrl:string},docs:{medecineTravail:{address:string,phoneDisplay:string,phoneLink:string},links:{avantages:string,dueSante:string,garantieSante:string,dueInteressement:string,accordTemps:string,prevoyance:string}},contacts:{agence:{phoneDisplay:string,phoneLink:string,address:string,addressLink:string,email:string}}}>} */
 export const AGENCY_CONFIGS = {
     // CONFIGURATION NORD TOURAINE (par défaut)
     'nord-touraine': {
@@ -40,7 +40,8 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://remplas.serviam.app/cles/nord-touraine-n3mm9pa8',
-            declarationKmsUrl: 'https://sirh.serviam.app/km'
+            declarationKmsUrl: 'https://sirh.serviam.app/km',
+            prospectionUrl: 'https://prospection.serviam.app/prospection/terrain/nord-touraine-qxfjyspf'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
@@ -83,7 +84,8 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://remplas.serviam.app/cles/langeais-9sncy57s',
-            declarationKmsUrl: 'https://sirh.serviam.app/km'
+            declarationKmsUrl: 'https://sirh.serviam.app/km',
+            prospectionUrl: 'https://prospection.serviam.app/prospection/terrain/langeais-sgrnssdy'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
@@ -126,7 +128,8 @@ export const AGENCY_CONFIGS = {
         },
         home: {
             gestionClesUrl: 'https://remplas.serviam.app/cles/loches-bn4yrqxn',
-            declarationKmsUrl: 'https://sirh.serviam.app/km'
+            declarationKmsUrl: 'https://sirh.serviam.app/km',
+            prospectionUrl: 'https://prospection.serviam.app/prospection/terrain/loches-yb8hawpe'
         },
         remuneration: {
             mutuelleName: 'Mutuelle Santé (Swiss Life)',
